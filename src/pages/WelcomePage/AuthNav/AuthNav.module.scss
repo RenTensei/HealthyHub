@@ -1,0 +1,16 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.signInButton {
+  color: $primary-black-2 !important;
+  background-color: $primary-green-lite;
+
+  @include tablet-and-desktop {
+    font-size: 30px;
+  }
+
+  @include desktop-only {
+    font-size: medium;
+    padding: 24px;
+  }
+}

@@ -11,5 +11,10 @@ export default defineConfig({
     },
     // extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
+  // css: {
+  //   preprocessorOptions: {
+  //     scss: { additionalData: '@import "./src/scss/base/_variables.scss"' },
+  //   },
+  // },
   plugins: [react()],
 });

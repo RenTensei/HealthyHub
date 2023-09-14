@@ -1,0 +1,38 @@
+// responsive
+@mixin mobile-only {
+  @media (max-width: 833px) {
+    @content;
+  }
+}
+
+@mixin mobile-and-tablet {
+  @media (max-width: 1439px) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media (min-width: $breakpoint-tablet) and (max-width: 1439px) {
+    @content;
+  }
+}
+
+@mixin tablet-and-desktop {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin desktop-only {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+// миксины кривые, надо переделать, в зависимости от того, будет ли верстка mobile-first
+
+/*
+  @include mobile-and-tablet {
+    width: ~px;
+  }
+*/

@@ -1,13 +1,15 @@
 import { ROUTES } from '@/constants/routes';
 import { Link } from 'react-router-dom';
-import { SomeText } from './AuthNav.styled';
+import styles from './AuthNav.module.scss';
 
 const AuthNav = () => {
   return (
     <>
-      <SomeText>Set goals and achieve them</SomeText>
-      <Link to={ROUTES.Home}>link to homepage </Link>
-      <Link to={ROUTES.MainPage}>link to mainpage</Link>
+      <div>Set goals and achieve them</div>
+      <Link to={ROUTES.SignInPage} className={styles.signInButton}>
+        Sign in
+      </Link>
+      <Link to={ROUTES.SignUpPage}>Sign up</Link>
     </>
   );
 };

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://rentensei.github.io/healthyhub",
+  "homepage": "https://rentensei.github.io/healthyhub/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

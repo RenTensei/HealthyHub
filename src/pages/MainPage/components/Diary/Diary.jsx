@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import DiaryBlock from '../DiaryBlock';
-import styles from './diary.module.scss';
+import styles from './Diary.module.scss';
 
 const Diary = () => {
   return (

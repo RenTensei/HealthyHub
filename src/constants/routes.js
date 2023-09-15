@@ -3,5 +3,5 @@ export const ROUTES = {
   MainPage: 'main',
   SignUpPage: 'signup',
   SignInPage: 'signin',
-  DiaryPage: 'DiaryPage'
+  DiaryPage: 'diary'
 };

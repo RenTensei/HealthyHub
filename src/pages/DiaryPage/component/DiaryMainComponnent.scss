@@ -1,5 +1,5 @@
-@import '../../../scss/base/variables';
-@import '../../../scss/base/mixins';
+@import '@/scss/base/variables';
+@import '@/scss/base/mixins';
 
 .ContainerDiary {
   @include tablet-and-desktop {

@@ -5,7 +5,7 @@ import App from '@/App.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter basename={import.meta.env.BASENAME}>
+    <BrowserRouter basename="/HealthyHub">
       <App />
     </BrowserRouter>
   </React.StrictMode>

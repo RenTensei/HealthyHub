@@ -9,11 +9,12 @@ const DiaryMainComponnent = ({
   Carbonohidrates,
   Protein,
   Fat,
+  srcSet
 }) => {
   return (
     <div className={styles.ContainerDiary}>
       <div className={styles.title}>
-        <img className={styles.imgTitle} src={srcImg} alt={alt} />
+        <img className={styles.imgTitle} src={srcImg} srcSet={srcSet} alt={alt} />
         <h3 className={styles.titleName}>{name}</h3>
       </div>
       {!Carbonohidrates && !Protein && !Fat ? (
@@ -39,4 +40,5 @@ DiaryMainComponnent.propTypes = {
   Carbonohidrates: PropTypes.string,
   Protein: PropTypes.string,
   Fat: PropTypes.string,
+  srcSet: PropTypes.string,
 }

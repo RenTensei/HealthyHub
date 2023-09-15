@@ -1,10 +1,10 @@
-import DoughnutChart from '../DoughnutChart/DoughnutChart';
+import DoughnutChart from '../DoughnutChart/BigDoughnutChart';
 // import styles from './Food.module.scss';
 
 const Food = () => {
   return (
     <div>
-      <DoughnutChart />
+      <DoughnutChart calories={111} />
     </div>
   );
 };

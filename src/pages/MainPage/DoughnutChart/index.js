@@ -1,1 +1,1 @@
-export { default } from './DoughnutChart';
+export { default } from './BigDoughnutChart';

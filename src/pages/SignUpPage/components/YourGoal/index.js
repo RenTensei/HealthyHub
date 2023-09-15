@@ -1,1 +1,1 @@
-export {default} from './YourGoalComponent'
+export {default} from './YourGoal'

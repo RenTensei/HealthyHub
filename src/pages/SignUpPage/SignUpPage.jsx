@@ -1,8 +1,8 @@
-import YourGoalComponent from './components/YourGoal'
+import YourGoal from './components/YourGoal'
 
 const SignUpPage = () => {
   return <>
-  <YourGoalComponent/>
+  <YourGoal/>
   this is signup page</>;
 };
 

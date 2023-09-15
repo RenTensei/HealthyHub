@@ -1,7 +1,10 @@
 export const ROUTES = {
-  Home: '/',
+  HomePage: '/',
   MainPage: 'main',
   SignUpPage: 'signup',
   SignInPage: 'signin',
-  DiaryPage: 'diary'
+  DiaryPage: 'diary',
+  DashboardPage: 'dashboard',
+  RecommendedFoodPage: 'recommended-food',
+  ProfileSettingsPage: 'settings',
 };

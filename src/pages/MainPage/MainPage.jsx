@@ -1,10 +1,11 @@
-import  MainDiary  from "../DiaryPage/main-diary/main-diary";
+import Diary from './components/Diary';
 const MainPage = () => {
-  return <div>
-    <div>hi main page</div>
-    <div><MainDiary/></div>
+  return (
+    <div>
+      <div>hi main page</div>
+      <Diary />
     </div>
-  
+  );
 };
 
 export default MainPage;

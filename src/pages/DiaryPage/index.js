@@ -1,1 +1,1 @@
-export { default } from './pageDiary/DiaryPage'
+export { default } from './DiaryPage';

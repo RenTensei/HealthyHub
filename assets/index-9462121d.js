@@ -1,0 +1,1 @@
+import{j as n}from"./index-c34bdf12.js";const s=()=>n.jsx(n.Fragment,{children:"this is signin page"}),e=s;export{e as default};

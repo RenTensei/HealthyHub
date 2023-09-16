@@ -4,15 +4,35 @@
 .container {
   display: flex;
   gap: 12px;
+  width: 216px;
 }
 
 .goal_container {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  font-size: 18px;
 }
 
 .goal_subcontainer {
+  font-size: 14px;
   display: flex;
-  gap: 52px;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.goal {
+  width: 78px;
+}
+
+.goal_value {
+  color: $primary-grey;
+}
+
+.left_value {
+  color: $primary-grey;
+}
+
+.content {
+  font-weight: 500;
 }

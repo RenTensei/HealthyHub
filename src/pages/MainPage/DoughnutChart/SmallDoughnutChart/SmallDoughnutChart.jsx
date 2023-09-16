@@ -50,7 +50,7 @@ const SmallDoughnutChart = ({ nutritionValue, arcColor, content, goal }) => {
       const xCoor = chart.getDatasetMeta(0).data[0].x;
       const yCoor = chart.getDatasetMeta(0).data[0].y;
       ctx.save();
-      ctx.font = ' 14px sans-serif';
+      ctx.font = ' 14px';
       ctx.fillStyle = '#B6B6B6';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
@@ -94,10 +94,17 @@ const SmallDoughnutChart = ({ nutritionValue, arcColor, content, goal }) => {
         <Doughnut plugins={[textCenter, backgroundCircle]} data={data} />
       </div>
       <div className={styles.goal_container}>
-        <p>{content}</p>
+        <p className={styles.content}>{content}</p>
         <div className={styles.goal_subcontainer}>
-          <p>Goal: {goal}</p>
-          <p>Left: {calculateLeft(nutritionValue, goal)}</p>
+          <p className={styles.goal}>
+            Goal: <span className={styles.goal_value}>{goal}</span>
+          </p>
+          <p className={styles.left}>
+            Left:{' '}
+            <span className={styles.left_value}>
+              {calculateLeft(nutritionValue, goal)}
+            </span>
+          </p>
         </div>
       </div>
     </div>

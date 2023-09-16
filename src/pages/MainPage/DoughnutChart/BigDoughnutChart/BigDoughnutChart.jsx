@@ -1,10 +1,10 @@
 import { Chart as ChartJS, ArcElement } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
-
+// import styles from "./BigDoughnutChart"
 ChartJS.register(ArcElement);
 
 // eslint-disable-next-line react/prop-types
-const BigDoughnutChart = ({ calories, textColor }) => {
+const BigDoughnutChart = ({ calories }) => {
   const calculateColories = calories => {
     const prc = (calories / 1700) * 100;
     return prc;
@@ -36,15 +36,15 @@ const BigDoughnutChart = ({ calories, textColor }) => {
       const xCoor = chart.getDatasetMeta(0).data[0].x;
       const yCoor = chart.getDatasetMeta(0).data[0].y;
       ctx.save();
-      ctx.font = 'bolder 32px sans-serif';
-      ctx.fillStyle = textColor;
+      ctx.font = '32px sans-serif';
+      ctx.fillStyle = '#ffffff';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(calories, xCoor, yCoor - 18);
+      ctx.fillText(calories, xCoor, yCoor - 12);
 
-      ctx.font = 'bolder 14px sans-serif';
-      ctx.fillStyle = '#ffffff';
-      ctx.fillText('calories', xCoor, yCoor + 10);
+      ctx.font = '14px sans-serif';
+      ctx.fillStyle = '#B6B6B6';
+      ctx.fillText('calories', xCoor, yCoor + 15);
     },
   };
 

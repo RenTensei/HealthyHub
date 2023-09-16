@@ -1,0 +1,73 @@
+@import '@/scss/base/variables';
+@import '@/scss/base/mixins';
+
+.ContainerDiary {
+  @include tablet-and-desktop {
+    display: grid;
+    grid-template-columns: 150px 20px 2fr 2fr;
+  }
+}
+
+.ContainerDiary:not(:last-child) {
+  margin-bottom: 28px;
+}
+.title {
+  display: flex;
+  align-items: center;
+  @include mobile-only {
+    margin-bottom: 8px;
+  }
+}
+.imgTitle {
+  margin-right: 12px;
+  width: 32px;
+  height: 32px;
+}
+.button {
+  background-color: transparent;
+  color: $primary-green-lite;
+  padding: 0;
+  cursor: pointer;
+
+  font-family: $font-regular;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.Calorie {
+  @include tablet-and-desktop {
+    display: grid;
+    grid-template-columns: 190px 110px 60px;
+    align-items: center;
+  }
+  @include mobile-only {
+    .itetemsCalories:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.titleName {
+  font-family: $font-regular;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  color: $primary-white;
+}
+
+.itetemsCalories {
+  font-family: $font-regular;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  color: $primary-white;
+  .totalCalorie {
+    color: $primary-grey;
+  }
+}

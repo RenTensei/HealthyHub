@@ -1,0 +1,116 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+@keyframes anime-icecream {
+  0% {
+    opacity: 0;
+    transform: translatey(40px);
+  }
+  40% {
+    opacity: 0.5;
+    transform: translatey(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translatey(0);
+  }
+}
+.bar_container {
+  height: 240px;
+  width: 380px;
+  display: flex;
+  gap: 40px;
+  background-color: $primary-black-2;
+  padding: 24px 22px;
+  border-radius: 12px;
+}
+
+.statistic_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outer_bar {
+  padding: 8px;
+  width: 80px;
+  height: 192px;
+  border: 1px solid $secondary-grey-1;
+  background: $primary-black;
+  border-radius: 20px;
+}
+
+.intermedeate_bar {
+  width: 64px;
+  height: 176px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  position: relative;
+}
+
+.inner_bar {
+  width: 64px;
+  background-color: $primary-violet;
+  border-radius: 20px;
+  transform-origin: bottom center;
+  animation-name: anime-icecream;
+  animation-duration: 1000ms;
+  animation-timing-function: linear;
+}
+
+.percentage {
+  position: absolute;
+  top: 28px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.consumption_statistic {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.consumption_statistic > p {
+  font-size: 14px;
+  color: $primary-grey;
+}
+
+.consumption_statistic > div {
+  display: flex;
+  align-items: center;
+}
+
+.consumption_statistic > div span {
+  font-size: 32px;
+}
+
+.statistic_title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.white_text {
+  color: $primary-white;
+  margin-right: 4px;
+}
+.grey_text {
+  color: $primary-grey;
+}
+
+.intake_button {
+  width: 166px;
+  height: 36px;
+  padding: 8px 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+}

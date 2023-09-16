@@ -1,0 +1,64 @@
+@import '@/scss//base/mixins';
+@import '@/scss/base/variables';
+.blockHeader {
+  margin-top: 16px;
+  display: flex;
+}
+.titleBlockHeader {
+  margin-left: 12px;
+}
+.itemCalories {
+  margin-top: 12px;
+  width: 178px;
+  height: 55px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.item_2 {
+  margin-right: 20px;
+  margin-top: 12px;
+}
+.item_3 {
+  margin-top: 12px;
+}
+
+.blocks {
+  min-width: 300px;
+  height: 232px;
+  border-radius: 12px;
+  background-color: $primary-black-2;
+  margin-top: 12px;
+  .blocks:not(:last-child) {
+    margin-bottom: 24px;
+  }
+  padding: 16px 12px;
+
+  display: flex;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    background-color: transparent;
+  width: 1px;
+  }
+  
+}
+.blockItems {
+    height: 100%;
+    width: 16px;
+    display: flex;
+
+    .blockItemsGrup {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+
+  .listItems{
+    margin-left: 16px;
+  }
+
+  .listProduct{
+    margin-bottom: 5px;
+  }
+

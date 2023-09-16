@@ -1,19 +1,25 @@
-import DiaryBlock from '../MainPage/components/DiaryBlock';
+import { Link } from 'react-router-dom';
+import DiaryBlock from './ components/DiaryBlock';
+import styles from './DiaryPage.module.scss';
 
 const DiaryPage = () => {
   return (
-    <>
-      <div>Hello Diary Page</div>
-      <div>
-        всего будет 4 блока, Breakfast, Dinner, Lunch, Snack. Под каждый из них
-        используй DiaryBlock /pages/DiaryPage/components/DiaryBlock
+    <section className={styles.sectionDiary}>
+      <div className={styles.containerDiary}>
+        <Link to={'/'} className={styles.BeckHome}>
+          <img
+            src="/public/arrow-right.svg"
+            alt="arrow right"
+            className={styles.arrowBack}
+          />
+          Diary
+        </Link>
         <DiaryBlock />
         <DiaryBlock />
         <DiaryBlock />
         <DiaryBlock />
       </div>
-    </>
+    </section>
   );
 };
-
 export default DiaryPage;

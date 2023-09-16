@@ -4,16 +4,16 @@ import image2 from '@/pages/SignUpPage/images/SelectGender-diskt@2x.png';
 import image3 from '@/pages/SignUpPage/images/SelectGender-tab.png';
 import image4 from '@/pages/SignUpPage/images/SelectGender-tab@2x.png';
 import image5 from '@/pages/SignUpPage/images/SelectGender-mob.png';
-import image6 from '@/pages/SignUpPage/images/SelectGender -mob@2x.png';
+import image6 from '@/pages/SignUpPage/images/SelectGender-mob@2x.png';
 
 import styles from './selectGender.module.scss';
 import { Formik, Form, Field } from 'formik';
 
-const SelectGender= () => {
-    const handleSubmite = (values, actions) => {};
+const SelectGender = () => {
+  const handleSubmite = (values, actions) => {};
 
-    return (
-        <div className={styles.container_your_goal}>
+  return (
+    <div className={styles.container_your_goal}>
       <div className={styles.container_picture}>
         <picture className={styles.picture}>
           <source
@@ -42,35 +42,35 @@ const SelectGender= () => {
         <Formik onSubmit={handleSubmite}>
           <Form className={styles.form_checked}>
             <p className={styles.text}>
-            Choose a goal so that we can help you effectively
+              Choose a goal so that we can help you effectively
             </p>
             <p className={styles.desc}>Gender</p>
             <div className={styles.container_label_list}>
               <div className={styles.container_label_item}>
-              <div className={styles.container_label}>  
-                <label className={styles.list}>
-                  <Field
-                    className={styles.item}
-                    type="radio"
-                    name="check"
-                    value="Male"
-                    onChange={() => {}}
-                  />
-                  Male
-                </label>
-              </div>
-              <div className={styles.container_label_center}>
-                <label className={styles.list}>
-                  <Field
-                    className={styles.item}
-                    type="radio"
-                    name="check"
-                    value="Female"
-                    onChange={() => {}}
-                  />
-                  Female
-                </label>
-              </div>
+                <div className={styles.container_label}>
+                  <label className={styles.list}>
+                    <Field
+                      className={styles.item}
+                      type="radio"
+                      name="check"
+                      value="Male"
+                      onChange={() => {}}
+                    />
+                    Male
+                  </label>
+                </div>
+                <div className={styles.container_label_center}>
+                  <label className={styles.list}>
+                    <Field
+                      className={styles.item}
+                      type="radio"
+                      name="check"
+                      value="Female"
+                      onChange={() => {}}
+                    />
+                    Female
+                  </label>
+                </div>
               </div>
               <div className={styles.container_label_end}>
                 <p className={styles.your_age}> Your age</p>
@@ -85,20 +85,18 @@ const SelectGender= () => {
                 </label>
               </div>
             </div>
-           
+
             <button type="submit" className={styles.btn}>
               Next
             </button>
             <button type="submit" className={styles.btn_back}>
-            Back
+              Back
             </button>
-           
           </Form>
         </Formik>
       </div>
     </div>
-    )
-
-}
+  );
+};
 
 export default SelectGender;

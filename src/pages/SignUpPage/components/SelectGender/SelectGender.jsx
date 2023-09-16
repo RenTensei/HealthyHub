@@ -77,7 +77,6 @@ const SelectGender = () => {
                 <label className={styles}>
                   <Field
                     className={styles.item_input}
-                    // type="radio"
                     name="check"
                     value="Enter your age"
                     onChange={() => {}}

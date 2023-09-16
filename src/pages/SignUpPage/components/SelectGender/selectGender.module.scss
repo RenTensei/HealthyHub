@@ -2,249 +2,257 @@
 @import '@/scss/base/mixins.scss';
 
 .container_your_goal {
-    display: flex;
-    padding-left: 150px;
-    padding-right: 150px;
-    padding-bottom: 90px;
+  display: flex;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-bottom: 90px;
+  padding-top: 40px;
+  @include tablet-only {
+    display: block;
+    padding-left: 195px;
+    padding-right: 195px;
+    padding-bottom: 244px;
     padding-top: 40px;
+  }
+  @include mobile-only {
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 24px;
+    padding-top: 24px;
+  }
+  .container_picture {
+    margin-right: 104px;
     @include tablet-only {
-        display: block;
-        padding-left: 195px;
-        padding-right: 195px;
-        padding-bottom: 244px;
-        padding-top: 40px;
+      margin: 0;
+      width: 100%;
+      img {
+        margin: auto;
+      }
     }
     @include mobile-only {
-        display: block;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-bottom: 24px;
-        padding-top: 24px;
-       
+      margin: 0;
+      width: 100%;
+      img {
+        margin: auto;
+      }
     }
-    .container_picture {
-        margin-right: 104px;
+  }
+  .container_form {
+    display: block;
+    margin-top: 80px;
+    @include tablet-only {
+      margin-top: 60px;
+    }
+    @include mobile-only {
+      margin-top: 24px;
+      text-align: start;
+      justify-content: center;
+      margin-left: auto;
+      margin-right: auto;
+      width: 300px;
+    }
+    .title {
+      font-family: $font-regular;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      @include tablet-only {
+        text-align: center;
+      }
+      @include mobile-only {
+        font-size: 24px;
+        line-height: 1.25;
+        margin-left: 10px;
+      }
+    }
+    .form_checked {
+      display: block;
+
+      .text {
+        font-family: $font-regular;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 1.45;
+        color: $primary-grey;
+        margin-bottom: 24px;
         @include tablet-only {
-            margin: 0;
-            width: 100%;
-            img {
-                margin: auto;
-            }
+          text-align: center;
         }
         @include mobile-only {
-            margin: 0;
-            width: 100%;
-            img {
-                margin: auto;
-            }
-
+          font-size: 18px;
+          line-height: 1.33;
+          margin-left: 10px;
         }
-    }
-    .container_form {
-        display: block;
-        margin-top: 80px;
+      }
+      .desc {
+        font-family: $font-regular;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1.43;
+        margin-bottom: 12px;
+        text-align: start;
+        width: 380px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: start;
+        justify-content: center;
+        @include mobile-only {
+          margin-left: 0;
+        }
+      }
+      .container_label_list {
         @include tablet-only {
-            margin-top: 60px;
-            text-align: center;          
+          margin-bottom: 24px;
+          justify-content: start;
+          @include tablet-only {
+            width: 380px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: start;
+            justify-content: center;
+          }
+        }
+      }
+      .container_label_item {
+        @include tablet-only {
+          display: flex;
+          text-align: start;
+          margin-bottom: 24px;
+          width: 380px;
+        }
+      }
+      .container_label {
+        margin-bottom: 16px;
+        @include tablet-only {
+          margin-bottom: 0;
+          margin-right: 16px;
+          width: 110px;
         }
         @include mobile-only {
-            margin-top: 24px;
-            // text-align: start;
+          margin-bottom: 24px;
         }
-        .title {
-            font-family: $font-regular;
-            font-weight: 500;
-            font-size: 30px;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            @include mobile-only {
-                font-size: 24px;
-                line-height: 1.25;
-                margin-left: 10px;
-            }
+      }
+      .container_label_center {
+        margin-bottom: 16px;
+        @include tablet-only {
+          margin-bottom: 0;
+          margin-right: 24px;
+          width: 110px;
         }
-        .form_checked {
-            display: block;
-           
-            .text {
-                font-family: $font-regular;
-                font-weight: 400;
-                font-size: 22px;
-                line-height: 1.45;
-                color: $primary-grey;
-                margin-bottom: 24px;
-                @include mobile-only {
-                    font-size: 18px;
-                    line-height: 1.33;
-                    margin-left: 10px;
-                }
-                
-            }
-            .desc {
-                font-family: $font-regular;
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 1.43;
-                margin-bottom: 12px;
-                text-align: start;
-                margin-left: 24px;
-                @include mobile-only {
-                    margin-left: 0;
-                }
-            }
-            .container_label_list {
-                 @include tablet-only {
-                
-                margin-bottom: 24px;
-                justify-content: start;
-                @include tablet-only {
-                    margin-right: 25px;
-                    margin-left: 25px;
-                }
-            }
-            }
-            .container_label_item {
-                @include tablet-only {
-                    display: flex;
-                    text-align: start;
-                    margin-bottom: 24px;
-                }
-            }
-            .container_label {
-                margin-bottom: 16px;
-                @include tablet-only {
-                    margin-bottom: 0;
-                    margin-right: 16px;
-                    // margin-left: 24px;
-                    width: 110px;
-                } 
-                @include mobile-only{
-                    margin-bottom: 24px;
-                }
-                
-            }
-            .container_label_center {
-                margin-bottom: 16px;
-                @include tablet-only {
-                    margin-bottom: 0;
-                    margin-right: 24px;
-                    width: 110px;
-                }
-                @include mobile-only{
-                    margin-bottom: 24px;
-                }
-            }
-            .container_label_end{
-                margin-bottom: 24px;
-                @include tablet-only {
-                    // margin-bottom: 0;
-                    margin-right: 24px;
-                    width: 110px;
-                }
-                @include mobile-only{
-                    margin-bottom: 24px;
-                }
-                
-            }
-            .list{
-                // color: $primary-grey;
-                font-family: $font-regular;
-                font-weight: 400;
-                font-size: 14px;
-                line-height: 1.43;
-            }
-            .item {
-                margin-right: 8px;
-                background-color: $primary-black-2;
-                border: $primary-grey; 
-            }
-            .your_age {
-                font-family: $font-regular;
-                font-weight: 500;
-                font-size: 14px;
-                line-height: 1.43;
-                margin-bottom: 12px;
-                @include tablet-only {
-                    text-align: start;
-                }
-                
+        @include mobile-only {
+          margin-bottom: 24px;
+        }
+      }
+      .container_label_end {
+        margin-bottom: 24px;
+        @include tablet-only {
+          margin-right: 24px;
+          width: 110px;
+        }
+        @include mobile-only {
+          margin-bottom: 24px;
+        }
+      }
+      .list {
+        font-family: $font-regular;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.43;
+      }
+      .item {
+        margin-right: 8px;
+        background-color: $primary-black-2;
+        border: $primary-grey;
+      }
+      .your_age {
+        font-family: $font-regular;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 1.43;
+        margin-bottom: 12px;
+        @include tablet-only {
+          text-align: start;
+        }
+      }
+      .item_input {
+        width: 212px;
+        height: 36px;
+        border-radius: 12px;
+        border: 1px solid $primary-green-lite;
+        padding-left: 8px;
+        padding: 8px, 10px, 8px, 10px;
+        gap: 10px;
+        background-color: $primary-black-2;
+        color: $primary-grey;
+        font-family: $font-regular;
+        font-weight: 400px;
+        font-size: 14px;
+        line-height: 1.43;
+        @include tablet-only {
+          width: 380px;
+          height: 36px;
+        }
+        @include mobile-only {
+          width: 300px;
+          height: 36px;
+        }
+      }
 
-            }
-            .item_input {
-                    width: 212px;
-                    height: 36px;
-                    border-radius: 12px;
-                    border: 1px solid $primary-green-lite;
-                    padding-left: 8px;
-                    padding: 8px, 10px, 8px, 10px;
-                    gap: 10px;
-                    background-color: $primary-black-2;
-                    color: $primary-grey;
-                    @include tablet-only {
-                        width: 380px;
-                        height: 36px;
-                    }
-                    @include mobile-only {
-                        width: 300px;
-                        height: 36px;
-                    
-                    }
-            }
-           
-                
-                .btn {
-                    display: block;
-                    width: 212px;
-                    height: 36px;
-                    padding: 8px, 10px, 8px, 10px;
-                    border-radius: 12px;
-                    background-color: $primary-green-lite;
-                    font-family: $font-regular;
-                    color: $primary-black-2;
-                    width: 500;
-                    font-size: 14px;
-                    line-height: 1.42;
-                    align-items: center;
-                    margin-bottom: 24px;
-                    @include tablet-only {
-                        width: 380px;
-                        height: 36px;
-                        padding: 8px, 10px, 8px, 10px;
-                        margin-left: 25px;
-                    }
-                    @include mobile-only{
-                        width: 300px;
-                        height: 36px;
-                        padding: 8px, 10px, 8px, 10px;
-                       
-                    }
-                }
-                .btn_back {
-                    display: block;
-                    background-color: $primary-black;
-                    color: $primary-grey;
-                    width: 212px;
-                    height: 36px;
-                    font-family: $font-regular;
-                    font-weight: 400;
-                    font-size: 14px;
-                    line-height: 1.42;
-                    text-align: center;
-                    @include tablet-only {
-                        width: 380px;
-                        height: 36px;
-                        margin-left: 24px;
-                    }
-                    @include mobile-only {
-                        width: 300px;
-                        height: 36px;
-                    }
-        
-                }
-          
-            
+      .btn {
+        display: block;
+        width: 212px;
+        height: 36px;
+        padding: 8px, 10px, 8px, 10px;
+        border-radius: 12px;
+        background-color: $primary-green-lite;
+        font-family: $font-regular;
+        color: $primary-black-2;
+        width: 500;
+        font-size: 14px;
+        line-height: 1.42;
+        align-items: center;
+        margin-bottom: 24px;
+        @include tablet-only {
+          width: 380px;
+          height: 36px;
+          padding: 8px, 10px, 8px, 10px;
+          margin-left: auto;
+          margin-right: auto;
+
+          justify-content: center;
         }
-        
+        @include mobile-only {
+          width: 300px;
+          height: 36px;
+          padding: 8px, 10px, 8px, 10px;
+        }
+      }
+      .btn_back {
+        display: block;
+        background-color: $primary-black;
+        color: $primary-grey;
+        width: 212px;
+        height: 36px;
+        font-family: $font-regular;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.42;
+        text-align: center;
+        @include tablet-only {
+          width: 380px;
+          height: 36px;
+          margin-left: auto;
+          margin-right: auto;
+
+          justify-content: center;
+        }
+        @include mobile-only {
+          width: 300px;
+          height: 36px;
+        }
+      }
     }
-
+  }
 }

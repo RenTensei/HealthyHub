@@ -4,18 +4,30 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement);
 
 // eslint-disable-next-line react/prop-types
-const DoughnutChart = ({ calories }) => {
+const BigDoughnutChart = ({ calories, textColor }) => {
+  const calculateColories = calories => {
+    const prc = (calories / 1700) * 100;
+    return prc;
+  };
+
+  let borderRad = [50];
+  if (calories >= 1700) {
+    borderRad = [0];
+  }
+
   const data = {
     datasets: [
       {
-        data: [77, 23],
+        data: [calculateColories(calories), 100 - calculateColories(calories)],
         backgroundColor: ['rgba(69, 255, 188, 1)', 'rgba(41, 41, 40, 1)'],
         borderColor: ['rgba(69, 255, 188, 0)'],
-        borderRadius: [50, -50],
+        borderRadius: borderRad,
         cutout: '80%',
       },
     ],
   };
+
+  // console.log(calculateColories());
 
   const textCenter = {
     id: 'textCenter',
@@ -25,7 +37,7 @@ const DoughnutChart = ({ calories }) => {
       const yCoor = chart.getDatasetMeta(0).data[0].y;
       ctx.save();
       ctx.font = 'bolder 32px sans-serif';
-      ctx.fillStyle = '#ffffff';
+      ctx.fillStyle = textColor;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText(calories, xCoor, yCoor - 18);
@@ -41,7 +53,7 @@ const DoughnutChart = ({ calories }) => {
     beforeDatasetsDraw(chart) {
       const { ctx } = chart;
       ctx.save();
-      console.log(chart.ctx);
+      // console.log(chart.ctx);
       const xCoor = chart.getDatasetMeta(0).data[0].x;
       const yCoor = chart.getDatasetMeta(0).data[0].y;
       const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;
@@ -69,4 +81,4 @@ const DoughnutChart = ({ calories }) => {
   );
 };
 
-export default DoughnutChart;
+export default BigDoughnutChart;

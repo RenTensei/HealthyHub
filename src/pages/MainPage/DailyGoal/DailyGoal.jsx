@@ -1,26 +1,28 @@
 import styles from './DailyGoal.module.scss';
 
-import CaloriesSVG from './svgImages/calories';
-import WaterSVG from './svgImages/water';
+import CaloriesSVG from './svgImages/caloriesSVG';
+import WaterSVG from './svgImages/waterSVG';
 
 const DailyGoal = () => {
   return (
     <div>
-      <h2>Daily goal</h2>
+      <h2 className={styles.daily_title}>Daily goal</h2>
       <div className={styles.goal_container}>
         <div className={styles.goal_wrapper}>
           <div className={styles.daily_goal_container}>
             <CaloriesSVG />
             <div>
               <h3>Calories</h3>
-              <p>1100</p>
+              <p>1700</p>
             </div>
           </div>
           <div className={styles.daily_goal_container}>
             <WaterSVG />
             <div>
               <h3>Water</h3>
-              <p>500</p>
+              <div className={styles.water_container}>
+                1500 <span className={styles.ml}> ml</span>
+              </div>
             </div>
           </div>
         </div>

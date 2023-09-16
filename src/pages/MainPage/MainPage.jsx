@@ -9,7 +9,7 @@ const MainPage = () => {
       <DailyGoal />
       <Water />
       <Food />
-      <Diary/>
+      <Diary />
     </>
   );
 };

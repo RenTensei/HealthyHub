@@ -31,6 +31,14 @@
                 margin: auto;
             }
         }
+        @include mobile-only {
+            margin: 0;
+            width: 100%;
+            img {
+                margin: auto;
+            }
+
+        }
     }
     .container_form {
         display: block;
@@ -42,6 +50,7 @@
         @include mobile-only {
             margin-top: 25px;
             text-align: start;
+            
         }
         .title {
             font-family: $font-regular;
@@ -52,6 +61,7 @@
             @include mobile-only {
                 font-size: 24px;
                 line-height: 1.25;
+                margin-left: 10px;
             }
         }
         .form_checked {

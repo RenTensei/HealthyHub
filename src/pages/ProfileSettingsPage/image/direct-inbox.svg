@@ -1,0 +1,6 @@
+<symbol id="icon-direct-inbox" viewBox="0 0 32 32">
+<path fill="none" stroke="#e3ffa8" style="stroke: var(--color1, #e3ffa8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M16 2.667v9.333l2.667-2.667"></path>
+<path fill="none" stroke="#e3ffa8" style="stroke: var(--color1, #e3ffa8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M16.001 12l-2.667-2.667"></path>
+<path fill="none" stroke="#e3ffa8" style="stroke: var(--color1, #e3ffa8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M2.641 17.333h5.88c0.507 0 0.96 0.28 1.187 0.733l1.56 3.12c0.453 0.907 1.373 1.48 2.387 1.48h4.707c1.013 0 1.933-0.573 2.387-1.48l1.56-3.12c0.227-0.453 0.693-0.733 1.187-0.733h5.813"></path>
+<path fill="none" stroke="#e3ffa8" style="stroke: var(--color1, #e3ffa8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M9.333 5.507c-4.72 0.693-6.667 3.467-6.667 9.16v5.333c0 6.667 2.667 9.333 9.333 9.333h8c6.667 0 9.333-2.667 9.333-9.333v-5.333c0-5.693-1.947-8.467-6.667-9.16"></path>
+</symbol>

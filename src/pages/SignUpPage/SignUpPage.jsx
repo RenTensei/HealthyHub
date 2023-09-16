@@ -1,5 +1,12 @@
+import YourGoal from './components/YourGoal';
+
 const SignUpPage = () => {
-  return <>this is signup page</>;
+  return (
+    <>
+      <YourGoal />
+      this is signup page
+    </>
+  );
 };
 
 export default SignUpPage;

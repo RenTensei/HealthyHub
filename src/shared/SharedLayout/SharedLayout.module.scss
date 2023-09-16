@@ -1,0 +1,23 @@
+@import '@/scss/base/variables';
+@import '@/scss//base/mixins';
+
+.temptext {
+  text-align: center;
+  margin: 16px 0;
+}
+
+.temp {
+  display: flex;
+  gap: 16px;
+  max-width: fit-content;
+
+  margin: 0 auto;
+  padding: 16px;
+
+  color: $primary-black;
+  background-color: $primary-green-lite;
+
+  a {
+    color: $primary-black;
+  }
+}

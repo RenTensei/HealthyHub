@@ -1,9 +1,18 @@
+
 import React, { useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { activityLevels } from './activityLevel';
 import ProfileSettingsSchema from './ProfileSettingsSchema';
+import picture from './image/Setting.png'
+import svg from './image/direct-inbox.png'
+import avatar from './image/Avatar.png'
+import style from './ProfileSettingsPage.module.scss'
+
+
 
 function ProfileSettingsPage() {
+ 
+
   const initialValues = {
     name: '',
     age: '',
@@ -24,17 +33,29 @@ function ProfileSettingsPage() {
   };
 
   return (
-    <>
+    <div className={style.container}>
+     <div className={style.containerTitle}>  
       <h2>Profile setting</h2>
-      <button>Cancel</button>
-      <button type="submit">Save</button>
+      <div>
+      <button className={style.cancelBtn}>Cancel</button>
+      <button type="submit" className={style.saveBtn}>Save</button>
+      </div>
+     </div> 
+     <div className={style.containerContent}>
+        <div>
+      <img src={picture} alt="Picture" className={style.mainImg}></img>
+      </div>
+      <div className={style.containerSettings}>
       <Formik
         initialValues={initialValues}
         validationSchema={ProfileSettingsSchema}
         onSubmit={handleSave}
       >
         {({ values, setFieldValue }) => (
+            
           <Form>
+            <div className={style.containerSetting}>
+            <div className={style.containerSettingFirst}>
             <label>
               Your name
               <Field type="text" name="name" />
@@ -52,27 +73,39 @@ function ProfileSettingsPage() {
               <Field type="number" name="height" min="0" />
               <ErrorMessage name="height" component="div" />
             </label>
-
+            </div>
             <div>
-              <label htmlFor="photo">Your photo</label>
+            
+              <label className={style.text}>Your photo</label>
+              <div className={style.containerPhoto}>
               <div>
                 <img
-                  src={values.photo}
+                //   src={values.photo}
+                src={avatar}
                   alt="Profile"
-                  style={{ width: '150px', height: '150px' }}
+                  style={{ width: '36px', height: '36px' }}
+                  className={style.photo}
                 />
               </div>
+               <img
+                  src={svg}
+                  alt="Profile"
+                  className={style.svg}
+                  style={{ width: '16px', height: '16px' }}
+                />
+              <label htmlFor="photo">Download new photo</label>
               <input
+              className={style.inputPhoto}
                 type="file"
                 id="photo"
-                label="Enter your height"
                 accept="image/*"
                 onChange={e => handlePhotoChange(e, setFieldValue)}
               />
             </div>
 
-            <div>
-              <h3>Gender</h3>
+            
+              <label className={style.text}>Gender</label>
+              <div className={style.contairGender}>
               <label>
                 <Field type="radio" name="selectedGender" value="male" />
                 Male
@@ -83,151 +116,50 @@ function ProfileSettingsPage() {
                 Female
               </label>
             </div>
-
+            <label className={style.text}>Weight</label>
+            <div className={style.containerWeight}>
             <label>
-              Weight
+        
               <Field type="number" name="weight" min="0" />
               <ErrorMessage name="weight" component="div" />
             </label>
-
+            </div>
+</div>
+</div>
             <div>
-              <label htmlFor="activityLevel">Your activity</label>
+                <div className={style.containerActivity}>
+              <label htmlFor="activityLevel" className={style.text}>Your activity</label>
               {activityLevels.map(level => (
-                <div key={level.value}>
+                <div key={level.value} >
                   <Field
                     type="radio"
                     id={`activityLevel-${level.value}`}
                     name="activityLevel"
                     value={level.value}
+                    className={style.boxActivity}
                   />
-                  <label htmlFor={`activityLevel-${level.value}`}>
+                  <label className={style.text} htmlFor={`activityLevel-${level.value}`}>
                     {level.value} - {level.label}
                   </label>
                 </div>
               ))}
             </div>
+            </div>
           </Form>
+          
         )}
       </Formik>
-    </>
+      </div>
+      </div>
+<div className={style.mobileBtn}>
+      <button className={style.cancelBtnM}>Cancel</button>
+      <button type="submit" className={style.saveBtnM}>Save</button>
+      </div>
+    </div>
   );
 }
 
-//     <>
-//       <h2>Profile setting</h2>
-//       <button>Cancel</button>
-//       <button onClick={handleSave}>Save</button>
-//       <form>
-//         <label>
-//           Your name
-//           <input
-//             type="text"
-//             value={name}
-//             name="name"
-//             label="Enter your name"
-//             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-//             onChange={e => setName(e.target.value)}
-//             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-//           />
-//         </label>
-//         <label>
-//           Your age
-//           <input
-//             type="number"
-//             id="age"
-//             name="age"
-//             label="Enter your age"
-//             value={age}
-//             onChange={e => setAge(e.target.value)}
-//             min="0"
-//           />
-//         </label>
-//         <label>
-//           Height
-//           <input
-//             type="number"
-//             id="height"
-//             name="height"
-//             label="Enter your height"
-//             value={height}
-//             onChange={e => setHeight(e.target.value)}
-//             min="0"
-//           />
-//         </label>
-//       </form>
-//       <div>
-//         <label htmlFor="photo">Your photo</label>
-//         <div>
-//           <img
-//             src={photo}
-//             alt="Profile"
-//             style={{ width: '150px', height: '150px' }}
-//           />
-//         </div>
-//         <input
-//           type="file"
-//           id="photo"
-//           label="Enter your height"
-//           accept="image/*"
-//           onChange={handlePhotoChange}
-//         />
-//       </div>
-//       <div>
-//         <h3>Gender</h3>
-//         <label>
-//           <input
-//             type="radio"
-//             name="gender"
-//             value="male"
-//             checked={selectedGender === 'male'}
-//             onChange={e => setSelectedGender(e.target.value)}
-//           />
-//           Male
-//         </label>
 
-//         <label>
-//           <input
-//             type="radio"
-//             name="gender"
-//             value="female"
-//             checked={selectedGender === 'female'}
-//             onChange={e => setSelectedGender(e.target.value)}
-//           />
-//           Female
-//         </label>
-//         <label>
-//           Weight
-//           <input
-//             type="number"
-//             id="weight"
-//             name="weight"
-//             label="Enter your weight"
-//             value={weight}
-//             onChange={e => setWeight(e.target.value)}
-//             min="0"
-//           />
-//         </label>
-//       </div>
-//       <div>
-//         <label htmlFor="activityLevel">Your activity</label>
-//         {activityLevels.map(level => (
-//           <div key={level.value}>
-//             <input
-//               type="radio"
-//               id={`activityLevel-${level.value}`}
-//               name="activityLevel"
-//               value={level.value}
-//               checked={activityLevel === level.value}
-//               onChange={e => setActivityLevel(e.target.value)}
-//             />
-//             <label htmlFor={`activityLevel-${level.value}`}>
-//               {level.value} - {level.label}
-//             </label>
-//           </div>
-//         ))}
-//       </div>
-//     </>
-//   );
-// }
+
 
 export default ProfileSettingsPage;

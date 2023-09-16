@@ -8,7 +8,7 @@ const App = () => {
   return (
     <>
       <Router />
-      <ProfileSettingsPage />
+      
     </>
   );
   // return <>{isLoading ? <div>loading...</div> : <Router />}</>;

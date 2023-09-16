@@ -5,7 +5,12 @@ ChartJS.register(ArcElement);
 
 // eslint-disable-next-line react/prop-types
 const BigDoughnutChart = ({ calories }) => {
+  let arcColor = 'rgba(69, 255, 188, 1)';
   const calculateColories = calories => {
+    if (calories >= 1700) {
+      arcColor = 'red';
+      return 100;
+    }
     const prc = (calories / 1700) * 100;
     return prc;
   };
@@ -13,13 +18,14 @@ const BigDoughnutChart = ({ calories }) => {
   let borderRad = [50];
   if (calories >= 1700) {
     borderRad = [0];
+    arcColor = 'red';
   }
 
   const data = {
     datasets: [
       {
         data: [calculateColories(calories), 100 - calculateColories(calories)],
-        backgroundColor: ['rgba(69, 255, 188, 1)', 'rgba(41, 41, 40, 1)'],
+        backgroundColor: [arcColor, 'rgba(41, 41, 40, 1)'],
         borderColor: ['rgba(69, 255, 188, 0)'],
         borderRadius: borderRad,
         cutout: '80%',

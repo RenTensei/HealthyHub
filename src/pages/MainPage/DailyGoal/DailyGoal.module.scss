@@ -1,2 +1,37 @@
 @import '@/scss/base/variables.scss';
 @import '@/scss/base/mixins.scss';
+
+.goal_container {
+  width: 380px;
+  height: 240px;
+  background-color: $primary-black-2;
+  border-radius: 12px;
+  display: flex;
+}
+
+.goal_container > div {
+  padding-top: 24px;
+  padding-left: 40px;
+}
+
+// .goal_wrapper {
+// }
+
+.daily_goal_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.daily_goal_container h3 {
+  color: $primary-grey;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.daily_goal_container p {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 38px;
+}

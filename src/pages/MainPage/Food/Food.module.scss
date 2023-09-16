@@ -1,0 +1,31 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.food_title {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+
+.food_container {
+  display: flex;
+  gap: 40px;
+  background-color: $primary-black-2;
+  padding-top: 36px;
+  padding-bottom: 36px;
+  padding-left: 40px;
+  border-radius: 12px;
+
+  @include tablet-only {
+    width: 780px;
+  }
+
+  @include desktop-only {
+    width: 560px;
+  }
+}
+
+.food_subcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}

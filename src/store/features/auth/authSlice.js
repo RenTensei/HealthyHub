@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { current, signIn, signUp } from './thunks';
+import { current, logOut, signIn, signUp } from './thunks';
 import { APP_STATUS } from '@/constants/appStatus';
 
 const initialState = {
@@ -43,6 +43,9 @@ const authSlice = createSlice({
 
         state.isLoggedIn = true;
         state.status = APP_STATUS.idle;
+      })
+      .addCase(logOut.fulfilled, () => {
+        return { ...initialState };
       });
   },
 });

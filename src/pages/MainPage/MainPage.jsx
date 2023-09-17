@@ -1,6 +1,6 @@
 import Diary from './components/Diary';
-import Water from './Water';
-import Food from './Food';
+import Water from './components/Water';
+import Food from './components/Food';
 import DailyGoal from './DailyGoal';
 
 const MainPage = () => {

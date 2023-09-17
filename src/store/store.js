@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import authReducer from './features/auth/authSlice';
+import foodIntakeReducer from './features/foodIntake/foodIntakeSlice';
 
 const tokenPersistConfig = {
   key: 'auth',
@@ -21,7 +22,7 @@ const tokenPersistConfig = {
 export const store = configureStore({
   reducer: {
     auth: persistReducer(tokenPersistConfig, authReducer),
-    // notices: noticesReducer,
+    foodIntake: foodIntakeReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

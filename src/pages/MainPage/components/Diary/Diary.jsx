@@ -1,8 +1,22 @@
 import { Link } from 'react-router-dom';
 import DiaryBlock from '../DiaryBlock';
 import styles from './Diary.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getMyFoodIntake } from '@/store/features/foodIntake/thunks';
+import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 
 const Diary = () => {
+  const dispatch = useDispatch();
+
+  const foodIntakeNutrientSums = useSelector(selectNutrientSums);
+
+  console.log(foodIntakeNutrientSums);
+
+  useEffect(() => {
+    // dispatch(getMyFoodIntake());
+  }, [dispatch]);
+
   return (
     <section className={styles.sectionDiary}>
       <div className={styles.containerTitle}>
@@ -20,7 +34,9 @@ const Diary = () => {
         Carbonohidrates="55"
         Protein="55"
         Fat="55"
-      />
+      >
+        {}
+      </DiaryBlock>
       <DiaryBlock
         srcImg="/Lunch.png"
         srcSet="/Lunch.png, /Lunch@2x.png"

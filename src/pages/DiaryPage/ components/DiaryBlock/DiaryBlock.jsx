@@ -1,27 +1,32 @@
 import styles from './DiaryBlock.module.scss';
 
-const DiaryBlock = () => {
+const DiaryBlock = ({
+  img,
+  alt,
+  title,
+  Carbonohidrates = '0',
+  Protein = '0',
+  fat = '0',
+  product,
+}) => {
   return (
     <div>
+      <div className={styles.containerBlockHeader}>
       <div className={styles.blockHeader}>
-        <img
-          src="/public/Breakfast.png"
-          height={32}
-          width={32}
-          alt="Breakfast"
-        />
-        <h2 className={styles.titleBlockHeader}>Breakfast</h2>
+        <img src={img} height={32} width={32} alt={alt} />
+        <h2 className={styles.titleBlockHeader}>{title}</h2>
       </div>
       <div className={styles.itemCalories}>
         <p className={styles.item_1}>
-          Carbonohidrates: <span>11.2</span>
+          Carbonohidrates: <span className={styles.caloriesSum}>{Carbonohidrates}</span>
         </p>
         <p className={styles.item_2}>
-          Protein: <span>23.1</span>
+          Protein: <span className={styles.caloriesSum}>{Protein}</span>
         </p>
         <p className={styles.item_3}>
-          Fat: <span>14</span>
+          Fat: <span className={styles.caloriesSum}>{fat}</span>
         </p>
+      </div>
       </div>
       <div className={styles.blocks}>
         <div className={styles.blockItems}>
@@ -33,16 +38,12 @@ const DiaryBlock = () => {
           </ul>
         </div>
         <ul className={styles.listItems}>
-          <li className={styles.listProduct}>s</li>
-          <li className={styles.listProduct}>s</li>
-          <li className={styles.listProduct}>s</li>
-          <li className={styles.listProduct}>s</li>
-          <li className={styles.listProduct}>s</li>
-          <li className={styles.listProduct}>s</li>
-          <li className={styles.listProduct}>s</li>
-          <li className={styles.listProduct}>s</li>
-          <li className={styles.listProduct}>s</li>
-        
+          <li className={styles.listProduct}>
+            {!product && (
+              <button className={styles.button}>+ Record your meal</button>
+            )}
+          </li>
+          <li className={styles.listProduct}>{product}</li>
         </ul>
       </div>
     </div>

@@ -17,9 +17,9 @@ const Diary = () => {
         alt="Breakfast"
         name="Breakfast"
         buttonName="+ Record your meal"
-        Carbonohidrates="55"
-        Protein="55"
-        Fat="55"
+        Carbonohidrates="22"
+        Protein="22"
+        Fat="22"
       />
       <DiaryBlock
         srcImg="/Lunch.png"

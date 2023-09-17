@@ -14,10 +14,18 @@ const DiaryPage = () => {
           />
           Diary
         </Link>
-        <DiaryBlock />
-        <DiaryBlock />
-        <DiaryBlock />
-        <DiaryBlock />
+        <div className={styles.containerBloks}>
+        <DiaryBlock
+        className={styles.containerBloks_1}
+          img="/Breakfast.png"
+          srcSet="/Breakfast.png, /Breakfast@2x.png"
+          title={'Breakfast'}
+          product={'kklklk'}
+        />
+        <DiaryBlock className={styles.containerBloks_2}  img="/Lunch.png" srcSet="/Lunch.png, /Lunch@2x.png" />
+        <DiaryBlock className={styles.containerBloks_3} img="/Dinner.png" srcSet="/Dinner.png, /Dinner@2x.png" />
+        <DiaryBlock className={styles.containerBloks_4} img="/Snack.png" srcSet="/Snack.png, /Snack@2x.png" />
+        </div>
       </div>
     </section>
   );

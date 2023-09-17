@@ -1,10 +1,16 @@
 import Diary from './components/Diary';
+import Water from './components/Water';
+import Food from './components/Food';
+import DailyGoal from './DailyGoal';
+
 const MainPage = () => {
   return (
-    <div>
-      <div>hi main page</div>
+    <>
+      <DailyGoal />
+      <Water />
+      <Food />
       <Diary />
-    </div>
+    </>
   );
 };
 

@@ -1,5 +1,56 @@
 import { useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
+
+export const options = {
+  responsive: true,
+  plugins: {
+    legend: {
+      display: false,
+      position: 'top',
+    },
+    title: {
+      display: false,
+      text: 'Chart.js Line Chart',
+    },
+  },
+};
+
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: 'Dataset 1',
+      data: [10, 25, 2, 8, 41, 20, 2],
+      fill: false,
+      borderColor: '#E3FFA8',
+      tension: 0.1,
+      backgroundColor: '#292928',
+    },
+  ],
+};
 
 const DashboardPage = () => {
   const location = useLocation();
@@ -13,6 +64,7 @@ const DashboardPage = () => {
         <li>
           <h2>Calories</h2>
           <p>Average value: <span>1700 kg</span></p>
+          <Line options={options} data={data} />
         </li>
         <li>
           <h2>Water</h2>

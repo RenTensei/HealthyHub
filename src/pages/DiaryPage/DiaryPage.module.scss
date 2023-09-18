@@ -1,0 +1,44 @@
+@import '@/scss//base/mixins';
+@import '@/scss/base/variables';
+
+.sectionDiary {
+  padding: 16px 10px 40px;
+  @include tablet-only {
+    padding: 24px 27px 40px;
+  }
+
+  @include desktop-only {
+    padding: 26px 34px 52px;
+  }
+}
+.BeckHome {
+  display: flex;
+}
+.arrowBack {
+  margin-right: 4px;
+  width: 16px;
+  height: 16px;
+}
+
+.containerBloks{
+    @include desktop-only {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+    }
+}
+
+.containerBloks_1{
+    grid-area: 1 / 1 / 2 / 2;
+}
+.containerBloks_2{
+    grid-area: 1 / 2 / 2 / 3;
+}
+.containerBloks_3{
+    grid-area: 2 / 2 / 3 / 3;
+}
+.containerBloks_4{
+    grid-area: 2 / 1 / 3 / 2;
+}

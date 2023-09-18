@@ -5,7 +5,7 @@ import UserMenu from '../Header/components/UserMenu';
 import styles from './Header.module.scss';
 import { useModal } from '@/context/ModalContext';
 import { useEffect, useState } from 'react';
-import UserProfile from './components/UserProfile'
+import UserProfile from './components/UserProfile';
 import MenuSvg from './svg components/MenuSvg';
 
 const Header = () => {

@@ -1,0 +1,138 @@
+@import '@/scss//base/mixins';
+@import '@/scss/base/variables';
+.blockHeader {
+  margin-top: 16px;
+  align-items: center;
+  display: flex;
+}
+.titleBlockHeader {
+  margin-left: 12px;
+}
+.itemCalories {
+  display: flex;
+  @include mobile-only {
+    margin-top: 12px;
+    width: 178px;
+    height: 55px;
+    flex-wrap: wrap;
+  }
+@include tablet-and-desktop {
+  margin-top: 16px;
+  align-items: center;
+  margin-left: auto;
+  margin-right: 75px;
+}
+}
+
+.item_1 {
+  color: $primary-white;
+  font-family: $font-regular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  @include tablet-and-desktop {
+margin-right: 20px;
+  }
+}
+
+.item_2 {
+  color: $primary-white;
+  font-family: $font-regular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  @include mobile-only {
+    margin-right: 20px;
+    margin-top: 12px;
+  }
+
+  @include tablet-and-desktop {
+    margin-right: 20px;
+  }
+}
+.item_3 {
+  color: $primary-white;
+  font-family: $font-regular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  @include mobile-only {
+    margin-top: 12px;
+  }
+}
+
+.caloriesSum {
+  color: $primary-grey;
+  font-weight: 500;
+}
+.blocks {
+  min-width: 300px;
+  height: 232px;
+  border-radius: 12px;
+  background-color: $primary-black-2;
+  margin-top: 12px;
+  .blocks:not(:last-child) {
+    margin-bottom: 24px;
+  }
+  padding: 16px 12px;
+
+  display: flex;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    background-color: transparent;
+    width: 1px;
+  }
+
+  @include tablet-only {
+    height: 240px;
+    padding: 32px 14px;
+  }
+}
+.blockItems {
+  height: 100%;
+  width: 16px;
+  display: flex;
+
+  .blockItemsGrup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include tablet-only {
+      justify-content: space-around;
+    }
+  }
+}
+
+.listItems {
+  margin-left: 16px;
+}
+.titleBlockHeader {
+  color: $primary-white;
+  font-family: $font-regular;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.listProduct {
+  @include tablet-only {
+    margin-top: 9px;
+  }
+}
+
+.button {
+  background-color: transparent;
+  color: $primary-green-lite;
+}
+
+.containerBlockHeader{
+  @include tablet-and-desktop{
+    display: flex;
+  }
+}

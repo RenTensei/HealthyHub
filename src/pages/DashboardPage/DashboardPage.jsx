@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Chart as ChartJS,
@@ -11,6 +11,7 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import Modal from "./Modal";
 
 ChartJS.register(
   CategoryScale,
@@ -55,11 +56,39 @@ export const data = {
 const DashboardPage = () => {
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? "")
+  const [showModal, setShowModal] = useState(false);
+  const [showLastMonth, setShowLastMonth] = useState(true);
+
+  const closeModal = () => {
+    if (showModal) {
+      setShowModal(false);
+    }
+  };
+
+  const openModal = () => {
+    if (!showModal) {
+      setShowModal(true)
+    }
+  };
+
+  const handleOnClick = () => {
+    setShowLastMonth(!showLastMonth);
+    closeModal();
+    };
+    
 
   return (
     <section>
       <Link to={backLinkLocationRef.current}>Go back</Link>
-      <button type="button">Last month</button>
+      <button type="button" onClick={openModal}>
+        {showLastMonth ? "Last month" : "Last year"}
+      </button>
+      {showModal &&
+        <Modal onClose={closeModal}>
+          <button type="button" onClick={handleOnClick}>
+            {showLastMonth ? "Last year" : "Last month"}
+          </button>
+        </Modal>}
       <ul>
         <li>
           <h2>Calories</h2>

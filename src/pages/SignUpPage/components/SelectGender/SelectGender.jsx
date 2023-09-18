@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import image1 from '@/pages/SignUpPage/images/SelectGender-disct.png';
 import image2 from '@/pages/SignUpPage/images/SelectGender-diskt@2x.png';
 import image3 from '@/pages/SignUpPage/images/SelectGender-tab.png';
@@ -8,9 +8,25 @@ import image6 from '@/pages/SignUpPage/images/SelectGender-mob@2x.png';
 
 import styles from './selectGender.module.scss';
 import { Formik, Form, Field } from 'formik';
+import { object, number, string } from 'yup';
+
+let userSchema = object({
+  topping: string().required(),
+  age: number().required().positive().integer().max(100),
+});
+
+const initialValues = {
+  topping: '',
+  age: '',
+};
 
 const SelectGender = () => {
-  const handleSubmite = (values, actions) => {};
+
+  const handleSubmite = (values, { resetForm }) => {
+    (JSON.stringify(values, null, 2));
+    console.log(values);
+    resetForm();
+  };
 
   return (
     <div className={styles.container_your_goal}>
@@ -39,47 +55,51 @@ const SelectGender = () => {
       </div>
       <div className={styles.container_form}>
         <h1 className={styles.title}>Select gender, Age</h1>
-        <Formik onSubmit={handleSubmite}>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={userSchema}
+          onSubmit={handleSubmite}
+        >
           <Form className={styles.form_checked}>
             <p className={styles.text}>
               Choose a goal so that we can help you effectively
             </p>
             <p className={styles.desc}>Gender</p>
-            <div className={styles.container_label_list}>
-              <div className={styles.container_label_item}>
-                <div className={styles.container_label}>
-                  <label className={styles.list}>
+            <div  className={styles.container_label_list}>
+              <div id="my-radio-group" className={styles.container_label_item}>
+                <div role="group" aria-labelledby="my-radio-group" className={styles.container_label}>
+                  <label 
+                  className={styles.list}>
                     <Field
                       className={styles.item}
                       type="radio"
-                      name="check"
+                      name="topping"
                       value="Male"
-                      onChange={() => {}}
                     />
                     Male
                   </label>
                 </div>
                 <div className={styles.container_label_center}>
-                  <label className={styles.list}>
+                  <label 
+                  className={styles.list}>
                     <Field
                       className={styles.item}
                       type="radio"
-                      name="check"
+                      name="topping"
                       value="Female"
-                      onChange={() => {}}
                     />
                     Female
                   </label>
                 </div>
               </div>
               <div className={styles.container_label_end}>
-                <p className={styles.your_age}> Your age</p>
-                <label className={styles}>
+                <label className={styles.your_age}>
+                  Your age
                   <Field
                     className={styles.item_input}
-                    name="check"
-                    value="Enter your age"
-                    onChange={() => {}}
+                    type="number"
+                    name="age"
+                    placeholder="Enter your age"
                   />
                 </label>
               </div>

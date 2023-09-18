@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import image1 from '@/pages/SignUpPage/images/YourGoals-diskt.png';
 import image2 from '@/pages/SignUpPage/images/YourGoals-diskt@2x.png';
 import image3 from '@/pages/SignUpPage/images/YourGoals-tab.png';
@@ -8,9 +8,24 @@ import image6 from '@/pages/SignUpPage/images/YourGoals-mob@2x.png';
 
 import styles from './yourGoal.module.scss';
 import { Formik, Form, Field } from 'formik';
+import { object, string } from 'yup';
+
+let userSchema = object({
+  topping: string().required(),
+});
+
+const initialValues = {
+  topping: ''
+};
 
 const YourGoal = () => {
-  const handleSubmite = (values, actions) => {};
+
+  const handleSubmite = (values, {resetForm}) => {
+    (JSON.stringify(values, null, 2));
+    console.log(values);
+    resetForm()
+  };
+
   return (
     <div className={styles.container_your_goal}>
       <div className={styles.container_picture}>
@@ -28,7 +43,6 @@ const YourGoal = () => {
             height={368}
           />
           <img
-            // loading="lazy"
             srcSet={`${image5} 1x, ${image6} 2x`}
             width={300}
             height={290}
@@ -39,53 +53,59 @@ const YourGoal = () => {
       </div>
       <div className={styles.container_form}>
         <h1 className={styles.title}>Your goal</h1>
-        <Formik onSubmit={handleSubmite}>
+        <Formik 
+        initialValues={initialValues}
+        validationSchema={userSchema}
+        onSubmit={handleSubmite}>
+          
           <Form className={styles.form_checked}>
             <p className={styles.text}>
               Choose a goal so that we can help you effectively
             </p>
-            <div className={styles.container_label_list}>
-              <div className={styles.container_label}>
-                <label className={styles.list}>
+            <div id="my-radio-group" className={styles.container_label_list}>
+              <div role="group" aria-labelledby="my-radio-group" className={styles.container_label}>
+                <label 
+                className={styles.list}>
                   <Field
                     className={styles.item}
                     type="radio"
-                    name="check"
-                    value="Lose Fat "
-                    onChange={() => {}}
+                    name="topping"
+                    value="Lose Fat"
                   />
                   Lose Fat
                 </label>
               </div>
               <div className={styles.container_label_ctnter}>
-                <label className={styles.list}>
+                <label 
+                className={styles.list}>
                   <Field
                     className={styles.item}
                     type="radio"
-                    name="check"
-                    value="Maintain "
-                    onChange={() => {}}
+                    name="topping"
+                    value="Maintain"
                   />
                   Maintain
                 </label>
               </div>
               <div className={styles.container_label_end}>
-                <label className={styles.list}>
+                <label 
+                className={styles.list}>
                   <Field
                     className={styles.item}
                     type="radio"
-                    name="check"
-                    value="Gail "
-                    onChange={() => {}}
+                    name="topping"
+                    value="Gail Muscle"
                   />
                   Gail Muscle
                 </label>
               </div>
+             
             </div>
             <button type="submit" className={styles.btn}>
               Next
             </button>
           </Form>
+         
         </Formik>
       </div>
     </div>

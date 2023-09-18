@@ -1,3 +1,4 @@
+import styles from './DashboardPage.module.scss';
 import { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -65,10 +66,8 @@ const DashboardPage = () => {
     }
   };
 
-  const openModal = () => {
-    if (!showModal) {
-      setShowModal(true)
-    }
+  const toggleModal = () => {
+      setShowModal(!showModal)
   };
 
   const handleOnClick = () => {
@@ -79,8 +78,9 @@ const DashboardPage = () => {
 
   return (
     <section>
-      <Link to={backLinkLocationRef.current}>Go back</Link>
-      <button type="button" onClick={openModal}>
+      <div className={styles.lastPeriodField}>
+        <Link to={backLinkLocationRef.current}>Go back</Link>
+        <button type="button" className={styles.lastButton} onClick={toggleModal}>
         {showLastMonth ? "Last month" : "Last year"}
       </button>
       {showModal &&
@@ -89,6 +89,7 @@ const DashboardPage = () => {
             {showLastMonth ? "Last year" : "Last month"}
           </button>
         </Modal>}
+      </div>
       {showLastMonth ?
         <ul>
         <li>

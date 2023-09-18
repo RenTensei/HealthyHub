@@ -16,12 +16,12 @@
     height: 55px;
     flex-wrap: wrap;
   }
-@include tablet-and-desktop {
-  margin-top: 16px;
-  align-items: center;
-  margin-left: auto;
-  margin-right: 75px;
-}
+  @include tablet-and-desktop {
+    margin-top: 16px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 75px;
+  }
 }
 
 .item_1 {
@@ -32,7 +32,7 @@
   font-weight: 400;
   line-height: 20px;
   @include tablet-and-desktop {
-margin-right: 20px;
+    margin-right: 20px;
   }
 }
 
@@ -69,17 +69,22 @@ margin-right: 20px;
   font-weight: 500;
 }
 .blocks {
-  min-width: 300px;
-  height: 232px;
+  @include mobile-only {
+    width: 300px;
+    height: 232px;
+  }
+
   border-radius: 12px;
   background-color: $primary-black-2;
   margin-top: 12px;
+
   .blocks:not(:last-child) {
     margin-bottom: 24px;
   }
   padding: 16px 12px;
 
   display: flex;
+
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -90,11 +95,16 @@ margin-right: 20px;
   @include tablet-only {
     height: 240px;
     padding: 32px 14px;
+    width: 780px;
+  }
+
+  @include desktop-only {
+    height: 240px;
+    padding: 32px 14px;
+    width: 676px;
   }
 }
 .blockItems {
-  height: 100%;
-  width: 16px;
   display: flex;
 
   .blockItemsGrup {
@@ -109,7 +119,7 @@ margin-right: 20px;
 }
 
 .listItems {
-  margin-left: 16px;
+  width: 100%;
 }
 .titleBlockHeader {
   color: $primary-white;
@@ -131,8 +141,38 @@ margin-right: 20px;
   color: $primary-green-lite;
 }
 
-.containerBlockHeader{
-  @include tablet-and-desktop{
+.containerBlockHeader {
+  @include tablet-and-desktop {
     display: flex;
   }
 }
+
+.caloriesProduct {
+  display: flex;
+}
+
+.foodName {
+  color: $primary-white;
+  font-family: $font-regular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  display: flex;
+}
+.containerFoodName {
+  display: flex;
+}
+
+.bettonEdit {
+  margin-left: auto;
+}
+
+.productName {
+  display: flex;
+}
+
+.caloriesItem {
+  display: flex;
+}
+

@@ -2,7 +2,7 @@
 @import '@/scss/base/mixins.scss';
 
 .header {
-   background-color: $primary-black-2;
+  background-color: $primary-black-2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -11,7 +11,19 @@
 
   @include mobile-only {
     height: 60px;
-     padding: 0 10px;
+    padding: 0 10px;
+  }
+}
+
+.header_container {
+  max-width: $breakpoint-mobile;
+
+  @include tablet-and-desktop {
+    max-width: $breakpoint-tablet;
+  }
+
+  @include desktop-only {
+    max-width: $breakpoint-desktop;
   }
 }
 
@@ -28,11 +40,11 @@
   }
 }
 
-.header_tablet_menu{
+.header_tablet_menu {
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 8px;
-  padding:0;
+  padding: 0;
 }

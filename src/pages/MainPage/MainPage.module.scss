@@ -8,6 +8,7 @@
 
 .components_container {
   display: flex;
+  flex-wrap: wrap;
   gap: 12px;
   justify-content: space-between;
 }

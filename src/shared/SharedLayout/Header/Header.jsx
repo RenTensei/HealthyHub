@@ -6,7 +6,10 @@ import styles from './Header.module.scss';
 import { useModal } from '@/context/ModalContext';
 import { useEffect, useState } from 'react';
 import UserProfile from './components/UserProfile';
-import MenuSvg from './svg components/MenuSvg';
+
+import arrowDownSvg from '@/assets/svg/arrow-down.svg';
+import menuSvg from '@/assets/svg/menu.svg';
+import ModalMenuTablet from './modals/ModalMenuTablet';
 
 const Header = () => {
   const { openModal } = useModal();
@@ -17,6 +20,9 @@ const Header = () => {
 
   // console.log(width);
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const toggleMenu = () => setIsMenuOpen(s => !s);
+
   const handleResize = () => {
     setWidth({
       width: window.innerWidth,
@@ -25,6 +31,9 @@ const Header = () => {
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
+    document.addEventListener('keydown', e =>
+      e.key === 'o' ? toggleMenu() : null
+    );
 
     return () => {
       window.removeEventListener('resize', handleResize);
@@ -32,6 +41,7 @@ const Header = () => {
   }, [setWidth]);
 
   if (width.width > breakpoint) {
+    console.log('bla');
     return (
       <header className={styles.header}>
         <Link to={ROUTES.Home}>
@@ -47,15 +57,16 @@ const Header = () => {
         <Link to={ROUTES.Home}>
           <p className={styles.header_logo}> HealthyHub</p>
         </Link>
-        {!isLoggedin && (
+        {/* {!isLoggedin && (
           <button
             className={styles.header_tablet_menu}
             onClick={() => openModal('ModalMenuTablet')}
             type="button"
           >
-            <MenuSvg />
+            <img src={menuSvg} alt="arrow down" />
           </button>
-        )}
+        )} */}
+        {isMenuOpen && <ModalMenuTablet />}
       </div>
       {isLoggedin ? <AuthNavigation /> : <UserProfile />}
     </header>

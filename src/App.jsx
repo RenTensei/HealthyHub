@@ -1,9 +1,21 @@
-import Router from '@/routes/Router';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import './scss/main.scss';
-import ProfileSettingsPage from './pages/ProfileSettingsPage/ProfileSettingsPage';
+import Router from '@/routes/Router';
+import { refresh } from '@/store/features/auth/thunks';
+import { selectToken } from '@/store/features/auth/selectors';
+import { getMyFoodIntake } from './store/features/foodIntake/thunks';
+>>>>>>> 850f4aa1db3f873614e1125c5cc400090df670fc
 
 const App = () => {
-  console.log('app');
+  const dispatch = useDispatch();
+
+  const token = useSelector(selectToken);
+
+  useEffect(() => {
+    if (token) dispatch(refresh(token)).then(() => dispatch(getMyFoodIntake()));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>

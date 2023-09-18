@@ -2,300 +2,278 @@
 @import '@/scss//base/mixins';
 
 .container {
-    @include desktop-only {
-        margin-top: 20px;
-        margin-left: 34px;
-        margin-right: 32px;
-    }
+  @include desktop-only {
+    margin-top: 20px;
+    margin-left: 34px;
+    margin-right: 32px;
+  }
 
-    @include tablet-only {
-        margin: 24px 27px;
-    }
+  @include tablet-only {
+    margin: 24px 27px;
+  }
 
-    @include mobile-only {
-        margin: 16px 10px;
-    }
+  @include mobile-only {
+    margin: 16px 10px;
+  }
 }
 
 .containerTitle {
-button {
-font-size: 14px;
-}
-h2 {
+  button {
+    font-size: 14px;
+  }
+  h2 {
     font-size: 30px;
     font-weight: 500;
-}
-    @include tablet-and-desktop {
-display: flex;
- justify-content: space-between;
-    }
- 
+  }
+  @include tablet-and-desktop {
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 .cancelBtn {
-    color: $primary-white;
-    background-color: $primary-black;
-    
+  color: $primary-white;
+  background-color: $primary-black;
 
-     @include tablet-and-desktop {
-        padding: 8px 10px 8px 10px;
-        width: 212px;
-        height: 36px;
-        border-radius: 12px;
-    }
+  @include tablet-and-desktop {
+    padding: 8px 10px 8px 10px;
+    width: 212px;
+    height: 36px;
+    border-radius: 12px;
+  }
 }
 
 .saveBtn {
-    @include tablet-and-desktop {
-        margin-left: 12px;
-        padding: 8px 10px 8px 10px;
-        width: 212px;
-        height: 36px;
-        border-radius: 12px;
-    }
+  @include tablet-and-desktop {
+    margin-left: 12px;
+    padding: 8px 10px 8px 10px;
+    width: 212px;
+    height: 36px;
+    border-radius: 12px;
+  }
 }
 
 .containerContent {
-    @include desktop-only {
+  @include desktop-only {
     display: flex;
-    }
-
+  }
 }
 
 .mainImg {
-    @include desktop-only {
+  @include desktop-only {
     margin-top: 24px;
     margin-left: 150px;
     margin-right: 160px;
     width: 536px;
     height: 538px;
-}
+  }
 
-@include tablet-only {
-margin: 20px auto 24px;
-width: 380px;
+  @include tablet-only {
+    margin: 20px auto 24px;
+    width: 380px;
     height: 374px;
-}
-    
-@include mobile-only {
+  }
+
+  @include mobile-only {
     margin: 16px auto 24px;
     width: 300px;
     height: 296px;
-}
-
+  }
 }
 .containerSettings {
-   margin: 16px auto;
-
- 
-   
+  margin: 16px auto;
 }
 
-
 .containerSetting {
+  @include tablet-and-desktop {
+    display: flex;
+    width: 491px;
+    //   justify-content: space-between;
+  }
 
-
-    @include tablet-and-desktop {
-display: flex;
-width: 491px;
-//   justify-content: space-between; /* Розміщення в просторі між контейнерами */
-    }
-
-
-   
   @include tablet-only {
     margin: auto;
   }
 
-@include mobile-only {
-   width: 50%; /* або інша відповідна ширина */
-  margin: auto;
-}
-
+  @include mobile-only {
+    width: 50%;
+    margin: auto;
+  }
 }
 
 @include tablet-and-desktop {
-.containerSetting > div:first-child {
-  margin-right: 60px; /* Додатковий відступ між колонками (можна регулювати) */
+  .containerSetting > div:first-child {
+    margin-right: 60px;
+  }
+
+  // @include mobile-only {
+  //    width: 50%; /* або інша відповідна ширина */
+  //   margin: auto;
+  // }
 }
-
-// @include mobile-only {
-//    width: 50%; /* або інша відповідна ширина */
-//   margin: auto;
-// }
-
-}
-
-
 
 .containerSettingFirst {
-    
-label {
-  display: grid;
-  margin-bottom: 40px;
-  font-weight: 500;
-  font-size: 14px;
- border-radius: 12px;
- color: $primary-white;
+  label {
+    display: grid;
+    margin-bottom: 40px;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 12px;
+    color: $primary-white;
+  }
 
-}
+  label input {
+    width: 212px;
+    height: 36px;
+    border: 1px solid #000;
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-top: 12px;
+    box-sizing: border-box;
+    color: $primary-white;
+    border-color: $primary-grey;
+    background-color: $primary-black;
 
-label input {
-  width: 212px;
-  height: 36px;
-  border: 1px solid #000;
-  border-radius: 12px;
-  padding: 8px 10px;
-  margin-top: 12px;
-  box-sizing: border-box;
-  color: $primary-white;
-  border-color: $primary-grey;
-  background-color: $primary-black;
-}
-
-@include mobile-only {
-    label input {
-        width: 300px;
+    &:focus {
+      border: 1px solid $primary-green-lite;
     }
-}
+  }
 
+  @include mobile-only {
+    label input {
+      width: 300px;
+    }
+  }
 }
 
 .containerPhoto {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
-    margin-top: 12px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  margin-top: 12px;
 
-    label {
-         font-weight: 400;
-  font-size: 14px;
-    }
+  label {
+    font-weight: 400;
+    font-size: 14px;
+  }
 }
 
 .inputPhoto {
-    visibility: hidden;
+  visibility: hidden;
   pointer-events: none;
   display: none;
 }
 
 .photo {
-    margin-right: 12px;
-    border-radius: 50%;
+  margin-right: 12px;
+  border-radius: 50%;
 }
 
 .svg {
-    margin-right: 6px;
+  margin-right: 6px;
 }
 
 .contairGender {
-    margin-bottom: 40px;
-    margin-top: 12px;
-
-    label {
-        margin-right: 16px;
-    }
-
-    label input {
-        margin-right: 10px;
-    }
-}
-
-.containerWeight{
-   label {
-    margin-bottom: 40px;
- border-radius: 12px;
-}
-
-label input {
-  width: 212px;
-  height: 36px;
-  border: 1px solid #000;
-  border-radius: 12px;
-  padding: 8px 10px;
+  margin-bottom: 40px;
   margin-top: 12px;
-  box-sizing: border-box;
-  border-color: $primary-grey;
-  background-color: $primary-black;
+
+  label {
+    margin-right: 16px;
+  }
+
+  label input {
+    margin-right: 10px;
+  }
 }
 
-@include mobile-only {
+.containerWeight {
+  label {
+    margin-bottom: 40px;
+    border-radius: 12px;
+  }
+
+  label input {
+    width: 212px;
+    height: 36px;
+    border: 1px solid #000;
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-top: 12px;
+    box-sizing: border-box;
+    color: $primary-white;
+    border-color: $primary-grey;
+    background-color: $primary-black;
+  }
+
+  @include mobile-only {
     label input {
-        width: 300px;
+      width: 300px;
     }
-}
+  }
 }
 
 .containerActivity {
-    width: 550px;
-     
-     @include tablet-only {
-            margin: auto;
-            padding-left: 35px;
-        }
+  width: 550px;
 
-@include mobile-only {
-   width: 50%; /* або інша відповідна ширина */
-  margin: auto;
-  margin-top: 40px;
-}
+  @include tablet-only {
+    margin: auto;
+    padding-left: 35px;
+  }
+
+  @include mobile-only {
+    width: 50%; /* або інша відповідна ширина */
+    margin: auto;
+    margin-top: 40px;
+  }
 }
 
 .text {
-    font-weight: 400;
+  font-weight: 400;
   font-size: 14px;
-  
 }
 
 .boxActivity {
-text-indent: 20px;
-        margin-right: 10px;
-        margin-top: 24px;
-    
-
-        
+  text-indent: 20px;
+  margin-right: 10px;
+  margin-top: 24px;
 }
 
 @include mobile-only {
-      .cancelBtn, .saveBtn {
+  .cancelBtn,
+  .saveBtn {
     visibility: hidden;
-  pointer-events: none;
-  display: none;
+    pointer-events: none;
+    display: none;
   }
 
   .mobileBtn {
-    margin: auto;
+    display: grid;
+    justify-content: center;
+    margin-top: 40px;
   }
   .cancelBtnM {
     color: $primary-white;
     background-color: $primary-black;
-    
 
-     
-        padding: 8px 10px 8px 10px;
-        width: 300px;
-        height: 36px;
-        border-radius: 12px;
-    
-}
+    padding: 8px 10px 8px 10px;
+    width: 300px;
+    height: 36px;
+    border-radius: 12px;
+  }
 
-.saveBtnM {
-    
-        
-        padding: 8px 10px 8px 10px;
-        width: 300px;
-        height: 36px;
-        border-radius: 12px;
-   
-}
-
-
+  .saveBtnM {
+    padding: 8px 10px 8px 10px;
+    width: 300px;
+    height: 36px;
+    border-radius: 12px;
+  }
 }
 
 @include tablet-and-desktop {
-    .cancelBtnM, .saveBtnM {
+  .cancelBtnM,
+  .saveBtnM {
     visibility: hidden;
-  pointer-events: none;
-  display: none;
+    pointer-events: none;
+    display: none;
   }
 }

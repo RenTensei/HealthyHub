@@ -5,7 +5,7 @@ import Router from '@/routes/Router';
 import { refresh } from '@/store/features/auth/thunks';
 import { selectToken } from '@/store/features/auth/selectors';
 import { getMyFoodIntake } from './store/features/foodIntake/thunks';
->>>>>>> 850f4aa1db3f873614e1125c5cc400090df670fc
+
 
 const App = () => {
   const dispatch = useDispatch();

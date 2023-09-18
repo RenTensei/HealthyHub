@@ -1,0 +1,13 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.container {
+  padding-left: 34px;
+  padding-right: 34px;
+}
+
+.components_container {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}

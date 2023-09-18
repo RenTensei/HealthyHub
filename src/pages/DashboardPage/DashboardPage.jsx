@@ -89,7 +89,8 @@ const DashboardPage = () => {
             {showLastMonth ? "Last year" : "Last month"}
           </button>
         </Modal>}
-      <ul>
+      {showLastMonth ?
+        <ul>
         <li>
           <h2>Calories</h2>
           <p>Average value: <span>1700 kg</span></p>
@@ -103,7 +104,7 @@ const DashboardPage = () => {
           <h2>Weight</h2>
           <p>Average value: <span>68 kg</span></p>
         </li>
-      </ul>
+      </ul> : <p>Last year</p>}
     </section>
   );
 };

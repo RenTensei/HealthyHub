@@ -4,7 +4,7 @@ import Food from './components/Food';
 import DailyGoal from './DailyGoal';
 // import ModalWaterIntake from './Modals/ModalWaterIntake/ModalWaterIntake';
 // import ModalRecordMeal from './Modals/ModalRecordMeal/ModalRecordMeal';
-import styles from './MainPAge.module.scss';
+import styles from './MainPage.module.scss';
 
 const MainPage = () => {
   return (

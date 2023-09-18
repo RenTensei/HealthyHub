@@ -93,11 +93,14 @@
         line-height: 1.43;
         margin-bottom: 12px;
         text-align: start;
-        width: 380px;
-        margin-left: auto;
-        margin-right: auto;
-        text-align: start;
-        justify-content: center;
+        @include tablet-only {
+          width: 380px;
+          margin-left: auto;
+          margin-right: auto;
+          align-items: start;
+          justify-content: center;
+        }
+
         @include mobile-only {
           margin-left: 0;
         }
@@ -146,6 +149,8 @@
         }
       }
       .container_label_end {
+        display: block;
+        width: 212px;
         margin-bottom: 24px;
         @include tablet-only {
           margin-right: 24px;
@@ -166,12 +171,55 @@
         background-color: $primary-black-2;
         border: $primary-grey;
       }
+      input[type='radio'],
+      label {
+        cursor: pointer;
+      }
+
+      input[type='radio'] {
+        position: relative;
+        height: 12px;
+        width: 12px;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        outline: none;
+      }
+
+      input[type='radio']::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        background-color: $primary-black-2;
+        border: 1px solid $primary-grey;
+      }
+
+      input[type='radio']:checked::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: $primary-grey;
+        border: 1px solid $primary-black-2;
+        transform: translate(-50%, -50%);
+        visibility: visible;
+      }
       .your_age {
+        // display: block;
+        // min-width: 212px;
         font-family: $font-regular;
         font-weight: 500;
         font-size: 14px;
         line-height: 1.43;
-        margin-bottom: 12px;
+        // margin-bottom: 12px;
         @include tablet-only {
           text-align: start;
         }
@@ -190,6 +238,7 @@
         font-weight: 400px;
         font-size: 14px;
         line-height: 1.43;
+        margin-top: 12px;
         @include tablet-only {
           width: 380px;
           height: 36px;

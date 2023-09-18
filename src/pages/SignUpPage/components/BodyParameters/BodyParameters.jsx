@@ -8,9 +8,25 @@ import image6 from '@/pages/SignUpPage/images/BodyParameters-mob@2x.jpg';
 
 import styles from './bodyParameters.module.scss';
 import { Formik, Form, Field } from 'formik';
+import { object, number, } from 'yup';
+
+let userSchema = object({
+  height: number().required(),
+  weight: number().required(),
+});
+
+const initialValues = {
+  height: '',
+  weight: '',
+}
 
 const BodyParameters = () => {
-  const handleSubmite = (values, actions) => {};
+  
+  const handleSubmite = (values, {resetForm}) => {
+    (JSON.stringify(values, null, 2));
+    console.log(values);
+    resetForm()
+  };
 
   return (
     <div className={styles.container_your_goal}>
@@ -39,20 +55,24 @@ const BodyParameters = () => {
       </div>
       <div className={styles.container_form}>
         <h1 className={styles.title}>Body parameters</h1>
-        <Formik onSubmit={handleSubmite}>
-          <Form className={styles.form_checked}>
+        <Formik 
+        initialValues={initialValues}
+        validationSchema={userSchema}
+        onSubmit={handleSubmite}>
+          <Form 
+          autoComplete='off'
+          className={styles.form_checked}>
             <p className={styles.text}>
               Enter your parameters for correct performance tracking
             </p>
             <div className={styles.container_label}>
               <label className={styles.label}>
-                {' '}
                 Height
                 <Field
                   className={styles.item_input}
-                  name="check"
-                  value="Enter your height"
-                  onChange={() => {}}
+                  type="number"
+                  name="height"
+                  placeholder="Enter your height"
                 />
               </label>
 
@@ -60,9 +80,9 @@ const BodyParameters = () => {
                 Weight
                 <Field
                   className={styles.item_input}
-                  name="check"
-                  value="Enter your weight"
-                  onChange={() => {}}
+                  type="number"
+                  name="weight"
+                  placeholder="Enter your weight"
                 />
               </label>
             </div>

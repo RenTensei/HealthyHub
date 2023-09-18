@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import AuthNavigation from '../Header/components/AuthNavigation';
 import UserMenu from '../Header/components/UserMenu';
 import styles from './Header.module.scss';
+
 import { useModal } from '@/context/ModalContext';
 import { useEffect, useState } from 'react';
 import UserProfile from './components/UserProfile'
@@ -58,6 +59,7 @@ const Header = () => {
         )}
       </div>
       {isLoggedin ? <AuthNavigation /> : <UserProfile />}
+
     </header>
   );
 };

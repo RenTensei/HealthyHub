@@ -140,6 +140,8 @@
 .button {
   background-color: transparent;
   color: $primary-green-lite;
+  padding: 0px;
+ 
 }
 
 .containerBlockHeader {
@@ -197,5 +199,28 @@ line-height: 18px; /* 150% */
   @include tablet-and-desktop {
     display: flex;
     justify-content: space-between;
+  }
+}
+.foodContainer:not(:first-child) {
+  @include mobile-only {
+    margin-top: 22px;
+  }
+  margin-top: 25px;
+
+  @include desktop-only {
+    margin-top: 33px;
+  }
+}
+
+.buttonLast{
+  background-color: transparent;
+  margin-top: 23px;
+  padding: 0px;
+  color: $primary-green-lite;
+  @include tablet-only {
+    margin-top: 26px;
+  }
+  @include desktop-only {
+    margin-top: 35px;
   }
 }

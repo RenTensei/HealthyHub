@@ -3,7 +3,7 @@ import DiaryBlock from './ components/DiaryBlock';
 import styles from './DiaryPage.module.scss';
 import { useSelector } from 'react-redux';
 import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
-
+import { ReactComponent as ArrowRight } from '@/assets/svg/arrow-right.svg';
 const DiaryPage = () => {
   const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
 
@@ -14,56 +14,12 @@ const DiaryPage = () => {
     Snack: 'public/Snack.png 1x, public/Snack@2x.png 2x',
   };
 
-  const breakfast = [
-    {
-      mealName: 'spaghetti',
-      carbonohidrates: 54,
-      protein: 30,
-      fat: 14,
-    },
-  ];
-
-  const dinner = [
-    {
-      mealName: 'spaghetti',
-      carbonohidrates: 54,
-      protein: 30,
-      fat: 14,
-    },
-  ];
-  const lunch = [
-    {
-      mealName: 'spaghetti',
-      carbonohidrates: 54,
-      protein: 30,
-      fat: 14,
-    },
-  ];
-  const snack = [
-    {
-      mealName: 'spaghetti',
-      carbonohidrates: 54,
-      protein: 30,
-      fat: 14,
-    },
-  ];
-
-  const mealTypes = [
-    { data: breakfast },
-    { data: dinner },
-    { data: lunch },
-    { data: snack },
-  ];
-
-  const data = mealTypes.map(el => el.data);
 
   return (
     <section className={styles.sectionDiary}>
       <div className={styles.containerDiary}>
         <Link to={'/'} className={styles.BeckHome}>
-          <img
-            src="/public/arrow-right.svg"
-            alt="arrow right"
+          <ArrowRight
             className={styles.arrowBack}
           />
           Diary
@@ -71,8 +27,7 @@ const DiaryPage = () => {
         <div className={styles.containerBloks}>
           {FoodIntakeNutrientsTotal.map(item => (
             <DiaryBlock
-              mealFood={data}
-              product={'fff'}
+              product={'555'}
               key={item.mealType}
               data={FoodIntakeNutrientsTotal}
               title={item.mealType}

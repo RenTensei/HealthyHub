@@ -1,0 +1,42 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.header_user_profile_cont {
+  display: flex;
+  justify-content: flex-end;
+  align-self: center;
+}
+
+.header_user_profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  padding: 0;
+}
+
+.header_user_profile_name {
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.42;
+  margin-right: 6px;
+  color: $primary-white;
+
+  @include mobile-only {
+    font-size: 12px;
+    line-height: 1.33;
+  }
+}
+
+.header_user_profile_img {
+  width: 28px;
+  margin-right: 4px;
+  height: 28px;
+  border-radius: 50px;
+
+  @include mobile-only {
+    width: 24px;
+    height: 24px;
+  }
+}

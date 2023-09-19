@@ -1,4 +1,7 @@
 import styles from './Bar.module.scss';
+
+import { ReactComponent as AddSvg } from '@/assets/svg/add.svg';
+
 const Bar = ({ waterConsumption }) => {
   let percentageColor = '#B6C3FF';
   if (waterConsumption > 1110) {
@@ -23,6 +26,7 @@ const Bar = ({ waterConsumption }) => {
     }
     return left;
   };
+
   return (
     <div className={styles.bar_container}>
       <div className={styles.outer_bar}>
@@ -47,40 +51,23 @@ const Bar = ({ waterConsumption }) => {
         <div>
           <div className={styles.statistic_container}>
             <h3 className={styles.statistic_title}>Water consumption</h3>
+
             <div className={styles.consumption_statistic}>
               <div>
-                <span className={styles.white_text}>{waterConsumption}</span>
-                <p className={styles.grey_text}> ml</p>
+                <p className={styles.water_consumption}>{waterConsumption}</p>
+                <span>ml</span>
               </div>
-              <p>
-                <span className={styles.white_text}> left:</span>
-                {calculateLeft(waterConsumption)} ml
-              </p>
+              <div>
+                <p>left:</p>
+                <span style={{ fontWeight: 500 }}>
+                  {calculateLeft(waterConsumption)}
+                </span>
+                <span>ml</span>
+              </div>
             </div>
           </div>
           <button className={styles.intake_button}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
-              fill="none"
-            >
-              <path
-                d="M4 8H12"
-                stroke="#0F0F0F"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-              <path
-                d="M8 12V4"
-                stroke="#0F0F0F"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+            <AddSvg width={16} strokeWidth={3} />
             Add water intake
           </button>
         </div>

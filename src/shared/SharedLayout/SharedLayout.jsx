@@ -15,21 +15,23 @@ const SharedLayout = () => {
     <>
       <Header />
       <main>
-        <Suspense fallback={null}>
-          <div className={styles.temptext}>
-            временная навигация, для удобства
-          </div>
-          <div className={styles.temp}>
-            <Link to={ROUTES.HomePage}>Home</Link>
-            <Link to={ROUTES.MainPage}>Main</Link>
-            <Link to={ROUTES.SignUpPage}>Signup</Link>
-            <Link to={ROUTES.SignInPage}>Signin</Link>
-            <Link to={ROUTES.DiaryPage}>Diary</Link>
-            <Link to={ROUTES.DashboardPage}>Dashboard</Link>
-            <Link to={ROUTES.ProfileSettingsPage}>Settings</Link>
-          </div>
-          <Outlet />
-        </Suspense>
+        <div className={styles.container}>
+          <Suspense fallback={null}>
+            {/* <div className={styles.temptext}>
+              временная навигация, для удобства
+            </div>
+            <div className={styles.temp}>
+              <Link to={ROUTES.HomePage}>Home</Link>
+              <Link to={ROUTES.MainPage}>Main</Link>
+              <Link to={ROUTES.SignUpPage}>Signup</Link>
+              <Link to={ROUTES.SignInPage}>Signin</Link>
+              <Link to={ROUTES.DiaryPage}>Diary</Link>
+              <Link to={ROUTES.DashboardPage}>Dashboard</Link>
+              <Link to={ROUTES.ProfileSettingsPage}>Settings</Link>
+            </div> */}
+            <Outlet />
+          </Suspense>
+        </div>
       </main>
       <button className="button-default" onClick={toggle}>
         Show Modal

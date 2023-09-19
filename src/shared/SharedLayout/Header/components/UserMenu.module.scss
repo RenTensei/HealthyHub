@@ -1,0 +1,73 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.header_user {
+  display: flex;
+  gap: 40px;
+
+  margin-right: 72px;
+
+  @include mobile-only {
+    display: none;
+  }
+
+  @include desktop-only {
+    gap: 80px;
+    margin-right: 124px;
+  }
+}
+
+.header_user_bnt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+
+.header_user_frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid $primary-grey;
+  border-radius: 12px;
+  margin-right: 12px;
+}
+
+.header_user_img {
+  width: 28px;
+}
+
+.header_user_discr {
+  color: $primary-white;
+}
+
+.header_user_discr_choose {
+  display: flex;
+  gap: 12px;
+}
+
+.header_user_text {
+  font-family: $font-regular;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.42;
+  text-align: left;
+}
+
+.header_user_weight_descr {
+  display: flex;
+}
+
+.header_user_measure {
+  color: $primary-grey;
+  margin-left: 4px;
+}
+
+.header_user_arrow {
+  width: 14px;
+  height: 14px;
+  object-fit: cover;
+  background-color: aqua;
+}

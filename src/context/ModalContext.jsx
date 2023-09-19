@@ -18,4 +18,4 @@ export const ModalProvider = ({ children }) => {
   );
 };
 
-export const useModal = () => useContext(ModalContext);
+export const useModalContext = () => useContext(ModalContext);

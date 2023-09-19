@@ -3,14 +3,8 @@ import { Link, Outlet } from 'react-router-dom';
 import Header from './Header';
 import styles from './SharedLayout.module.scss';
 import { ROUTES } from '@/constants/routes';
-import Modal from '@/pages/MainPage/components/Modal/ModalCreator';
-import useModal from '@/pages/MainPage/components/Modal/useModal';
-import ModalRecordMeal from '@/pages/MainPage/Modals/ModalRecordMeal/ModalRecordMeal';
-import ModalWaterIntake from '@/pages/MainPage/Modals/ModalWaterIntake/ModalWaterIntake';
 
 const SharedLayout = () => {
-  const { isShowing, toggle } = useModal();
-
   return (
     <>
       <Header />
@@ -33,15 +27,6 @@ const SharedLayout = () => {
           </Suspense>
         </div>
       </main>
-      <button className="button-default" onClick={toggle}>
-        Show Modal
-      </button>
-      <Modal isShowing={isShowing} hide={toggle}>
-        <ModalRecordMeal />
-      </Modal>
-      <Modal isShowing={isShowing} hide={toggle}>
-        <ModalWaterIntake />
-      </Modal>
     </>
   );
 };

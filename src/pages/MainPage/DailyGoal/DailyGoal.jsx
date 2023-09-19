@@ -1,7 +1,7 @@
 import styles from './DailyGoal.module.scss';
 
-import CaloriesSVG from './svgImages/caloriesSVG';
-import WaterSVG from './svgImages/waterSVG';
+import { ReactComponent as WaterSvg } from '@/assets/svg/water.svg';
+import { ReactComponent as CaloriesSvg } from '@/assets/svg/calories.svg';
 
 const DailyGoal = () => {
   return (
@@ -10,7 +10,7 @@ const DailyGoal = () => {
 
       <div className={styles.goal_container}>
         <div className={styles.daily_goal_container}>
-          <CaloriesSVG />
+          <CaloriesSvg />
           <div>
             <h4>Calories</h4>
             <p>1700</p>
@@ -18,7 +18,7 @@ const DailyGoal = () => {
         </div>
 
         <div className={styles.daily_goal_container}>
-          <WaterSVG />
+          <WaterSvg />
           <div>
             <h4>Water</h4>
             <div className={styles.water_container}>

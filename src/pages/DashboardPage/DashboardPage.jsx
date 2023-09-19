@@ -15,6 +15,7 @@ import { Line } from 'react-chartjs-2';
 import Modal from "./Modal";
 import { ReactComponent as GoBackBtn } from '@/assets/svg/arrow-right-liqht.svg';
 import { ReactComponent as ToggleBtn } from '@/assets/svg/arrow-down.svg';
+import { ReactComponent as CloseCircle } from '@/assets/svg/close-circle.svg';
 
 ChartJS.register(
   CategoryScale,
@@ -25,6 +26,18 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+const GraphTooltip = () => {
+  return (
+    <div className={styles.graphTooltip}>
+      <button className={styles.closeBtn}>
+        <CloseCircle width={16} height={16} stroke={'#B6B6B6'} />
+      </button>
+      <p>1750</p>
+      <p>calories</p>
+    </div>
+  );
+};
 
 export const options = {
   responsive: true,
@@ -37,11 +50,40 @@ export const options = {
       display: false,
       text: 'Chart.js Line Chart',
     },
+    // tooltip: {
+    //     enabled: false,
+    //     external: customTooltip,
+    //   },
   },
   indexAxis: 'x',
   scales: {
     x: {
-      beginAtZero: false
+      ticks: {
+        padding: 6,
+      },
+      beginAtZero: false,
+      grid: {
+        color: '#292928',
+        offset: true,
+        tickLength: 0,
+      },
+      border: {
+        color: '#292928',
+      }
+    },
+    y: {
+      ticks: {
+        stepSize: 1000,
+        padding: 8,
+      },
+      beginAtZero: true,
+      grid: {
+        color: '#292928',
+        tickLength: 0,
+      },
+      border: {
+        color: '#292928',
+      }
     },
   },
 };
@@ -58,13 +100,13 @@ export const data = {
       data: [1500, 1450, 1300, 1210, 1560, 1700, 1000, 2000, 1500, 1120, 2000, 1200, 1600, 1500, 1510, 1200, 1800, 2000, 1200, 1200, 1400, 2000, 1300, 2500, 1000, 3000, 2500, 1200, 1500, 3000, 2100],
       fill: 'origin',
       borderColor: '#E3FFA8',
-      tension: 0.2,
+      tension: 0.4,
       backgroundColor: '#292928',
-      // pointBackgroundColor: '#E3FFA8',
-      // pointWidth: '14',
-      pointRadius: '0',
+      borderWidth: 1,
+      pointRadius: 0,
       pointHoverBackgroundColor: '#E3FFA8',
-      pointHoverRadius: '5'
+      hitRadius: 5,
+      pointHoverRadius: 5,
     },
   ],
 };
@@ -114,6 +156,7 @@ const DashboardPage = () => {
         <ul>
           <li>
             <div className={styles.chartTitleField}>
+              <GraphTooltip/>
               <h4 className={styles.chartTitle}>Calories</h4>
               <p className={styles.average}>Average value: <span className={styles.averageValue}>1700 kg</span></p>
             </div>

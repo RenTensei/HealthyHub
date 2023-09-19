@@ -120,6 +120,7 @@
 
 .listItems {
   width: 100%;
+  margin-left: 16px;
 }
 .titleBlockHeader {
   color: $primary-white;
@@ -149,6 +150,10 @@
 
 .caloriesProduct {
   display: flex;
+  gap: 12px;
+  @include tablet-and-desktop {
+    gap: 32px;
+  }
 }
 
 .foodName {
@@ -166,13 +171,31 @@
 
 .bettonEdit {
   margin-left: auto;
-}
-
-.productName {
+  background-color: transparent;
+  padding: 0px;
+  color: $primary-grey;
   display: flex;
 }
 
-.caloriesItem {
-  display: flex;
+// .productName {
+//   display: flex;
+// }
+
+// .caloriesItem {
+//   display: flex;
+// }
+.calorieas{
+  color:  $primary-grey;;
+font-family: $font-regular;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 18px; /* 150% */
 }
 
+.foodContainer{
+  @include tablet-and-desktop {
+    display: flex;
+    justify-content: space-between;
+  }
+}

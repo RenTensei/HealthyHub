@@ -6,13 +6,56 @@ import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 
 const DiaryPage = () => {
   const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
- 
+
   const mealTypeSrcSets = {
     Breakfast: 'public/Breakfast.png 1x, public/Breakfast@2x.png 2x',
     Lunch: 'public/Lunch.png 1x, public/Lunch@2x.png 2x',
     Dinner: 'public/Dinner.png 1x, public/Dinner@2x.png 2x ',
     Snack: 'public/Snack.png 1x, public/Snack@2x.png 2x',
   };
+
+  const breakfast = [
+    {
+      mealName: 'spaghetti',
+      carbonohidrates: 54,
+      protein: 30,
+      fat: 14,
+    },
+  ];
+
+  const dinner = [
+    {
+      mealName: 'spaghetti',
+      carbonohidrates: 54,
+      protein: 30,
+      fat: 14,
+    },
+  ];
+  const lunch = [
+    {
+      mealName: 'spaghetti',
+      carbonohidrates: 54,
+      protein: 30,
+      fat: 14,
+    },
+  ];
+  const snack = [
+    {
+      mealName: 'spaghetti',
+      carbonohidrates: 54,
+      protein: 30,
+      fat: 14,
+    },
+  ];
+
+  const mealTypes = [
+    { data: breakfast },
+    { data: dinner },
+    { data: lunch },
+    { data: snack },
+  ];
+
+  const data = mealTypes.map(el => el.data);
 
   return (
     <section className={styles.sectionDiary}>
@@ -28,7 +71,8 @@ const DiaryPage = () => {
         <div className={styles.containerBloks}>
           {FoodIntakeNutrientsTotal.map(item => (
             <DiaryBlock
-            product={"llll"}
+              mealFood={data}
+              product={'fff'}
               key={item.mealType}
               data={FoodIntakeNutrientsTotal}
               title={item.mealType}

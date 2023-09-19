@@ -5,6 +5,11 @@ import { useCallback, useEffect } from 'react';
 
 const ModalPortal = ({ isShowing, hide, children }) => {
   document.body.style.overflow = 'hidden';
+  const handleBackdropClick = event => {
+    if (event.target === event.currentTarget) {
+      hide();
+    }
+  };
 
   const handleKeydown = useCallback(
     e => {
@@ -33,7 +38,7 @@ const ModalPortal = ({ isShowing, hide, children }) => {
   }
 
   return ReactDOM.createPortal(
-    <div className={styles.modal_overlay}>
+    <div className={styles.modal_overlay} onClick={handleBackdropClick}>
       <div className={styles.modal_portal} />
       <div
         className="modal-wrapper"
@@ -44,7 +49,6 @@ const ModalPortal = ({ isShowing, hide, children }) => {
       >
         <div className="modal">
           <div className="modal-header"></div>
-          <p>Hello, I`m a modal.</p>
           {children}
         </div>
       </div>

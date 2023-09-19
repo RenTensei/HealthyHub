@@ -16,19 +16,20 @@ import { ReactComponent as ArrowRightSvg } from '@/assets/svg/arrow-right.svg';
 import useModal from './components/Modal/useModal';
 
 const MainPage = () => {
-  const { isShowing, toggle } = useModal();
+  const { isRecordMealShowing, mealModalToggle } = useModal();
+  const { isWaterIntakeShowing, waterModalToggle } = useModal();
 
   return (
     <>
-      <button className="button-default" onClick={toggle}>
+      <button className="button-default" onClick={mealModalToggle}>
         Show Modal
       </button>
-      <ModalPortal isShowing={isShowing} hide={toggle}>
-        <ModalRecordMeal hide={toggle} />
+      <ModalPortal isShowing={isRecordMealShowing} hide={mealModalToggle}>
+        <ModalRecordMeal hide={mealModalToggle} />
       </ModalPortal>
-      {/* <ModalPortal isShowing={isShowing} hide={toggle}>
-        <ModalWaterIntake />
-      </ModalPortal> */}
+      <ModalPortal isShowing={isWaterIntakeShowing} hide={waterModalToggle}>
+        <ModalWaterIntake hide={waterModalToggle} />
+      </ModalPortal>
       {/* <ModalRecordMeal
         meal="Breakfast"
         srcImg="/Breakfast.png"
@@ -53,11 +54,11 @@ const MainPage = () => {
       <div className={styles.today_wrapper}>
         <div className={styles.daily_goal_container}>
           <DailyGoal />
-          <Water />
+          <Water openModal={waterModalToggle} />
         </div>
         <Food />
       </div>
-      <Diary openModal={toggle} />
+      <Diary openModal={mealModalToggle} />
     </>
   );
 };

@@ -1,8 +1,21 @@
 import { Link } from 'react-router-dom';
 import DiaryBlock from '../DiaryBlock';
 import styles from './Diary.module.scss';
+import { useSelector } from 'react-redux';
+// import { useEffect } from 'react';
+// import { getMyFoodIntake } from '@/store/features/foodIntake/thunks';
+import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 
 const Diary = () => {
+  const foodIntakeNutrientsTotal = useSelector(selectNutrientSums);
+
+  const mealTypeSrcSets = {
+    Breakfast: 'public/Breakfast.png 1x, public/Breakfast@2x.png 2x',
+    Lunch: 'public/Lunch.png 1x, public/Lunch@2x.png 2x',
+    Dinner: 'public/Dinner.png 1x, public/Dinner@2x.png 2x ',
+    Snack: 'public/Snack.png 1x, public/Snack@2x.png 2x',
+  };
+
   return (
     <section className={styles.sectionDiary}>
       <div className={styles.containerTitle}>
@@ -11,15 +24,24 @@ const Diary = () => {
           See more
         </Link>
       </div>
-      <DiaryBlock
+
+      {foodIntakeNutrientsTotal.map(item => (
+        <DiaryBlock
+          key={item.mealType}
+          intakeInfo={item}
+          srcSet={mealTypeSrcSets[item.mealType]}
+        />
+      ))}
+
+      {/* <DiaryBlock
         srcImg="/Breakfast.png"
         srcSet="/Breakfast.png, /Breakfast@2x.png"
         alt="Breakfast"
         name="Breakfast"
         buttonName="+ Record your meal"
-        Carbonohidrates="55"
-        Protein="55"
-        Fat="55"
+        Carbonohidrates="22"
+        Protein="22"
+        Fat="22"
       />
       <DiaryBlock
         srcImg="/Lunch.png"
@@ -50,7 +72,7 @@ const Diary = () => {
         Carbonohidrates=""
         Protein=""
         Fat=""
-      />
+      /> */}
     </section>
   );
 };

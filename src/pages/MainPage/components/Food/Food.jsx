@@ -6,9 +6,9 @@ const content = ['Carbonohidrates', 'Protein', 'Fat'];
 const Food = () => {
   return (
     <div className={styles.food_wrapper}>
-      <h2 className={styles.food_title}>Food</h2>
+      <h3 className={styles.food_title}>Food</h3>
       <div className={styles.food_container}>
-        <BigDoughnutChart calories={2200} />
+        <BigDoughnutChart calories={1500} />
         <div className={styles.food_subcontainer}>
           <SmallDoughnutChart
             nutritionValue={21}

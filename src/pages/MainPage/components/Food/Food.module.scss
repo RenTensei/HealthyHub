@@ -2,26 +2,32 @@
 @import '@/scss/base/mixins.scss';
 
 .food_title {
-  font-size: 22px;
+  font-size: 18px;
+  line-height: 24px;
   margin-bottom: 6px;
   font-weight: 400;
+
+  @include tablet-and-desktop {
+    font-size: 22px;
+    line-height: 32px;
+  }
 }
 
 .food_container {
   display: flex;
-  gap: 40px;
+  flex-direction: column;
+  gap: 20px;
   background-color: $primary-black-2;
-  padding-top: 36px;
-  padding-bottom: 36px;
-  padding-left: 40px;
+
+  padding: 16px 12px;
+
   border-radius: 12px;
 
-  @include tablet-only {
-    width: 780px;
-  }
+  @include tablet-and-desktop {
+    flex-direction: row;
+    gap: 40px;
 
-  @include desktop-only {
-    width: 560px;
+    padding: 36px 40px;
   }
 }
 

@@ -2,7 +2,13 @@
 @import '@/scss/base/mixins.scss';
 
 .title {
-  font-size: 22px;
-  line-height: 32px;
+  font-size: 18px;
+  line-height: 24px;
   font-weight: 400;
+  margin-bottom: 6px;
+
+  @include tablet-and-desktop {
+    font-size: 22px;
+    line-height: 32px;
+  }
 }

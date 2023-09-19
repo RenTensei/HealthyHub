@@ -1,2 +1,70 @@
 @import '@/scss/base/variables.scss';
 @import '@/scss/base/mixins.scss';
+
+.daily_goal_block {
+  width: 100%;
+}
+
+.daily_goal_title {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  margin-bottom: 6px;
+
+  @include tablet-and-desktop {
+    font-size: 22px;
+    line-height: 32px;
+  }
+}
+
+.goal_container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  padding: 16px 12px;
+
+  background-color: $primary-black-2;
+  border-radius: 12px;
+
+  @include tablet-and-desktop {
+    padding: 24px 40px;
+  }
+}
+
+.daily_goal_container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.daily_goal_container h4 {
+  color: $primary-grey;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.daily_goal_container p {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 38px;
+}
+.water_container {
+  font-size: 34px;
+  font-weight: 600;
+  line-height: 38px;
+}
+
+.ml {
+  font-size: 14px;
+  line-height: 20px;
+  color: $primary-grey;
+  margin-left: 4px;
+  font-weight: 400;
+}
+
+.water_container {
+  display: flex;
+  align-items: center;
+}

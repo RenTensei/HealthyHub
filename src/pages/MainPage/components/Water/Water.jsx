@@ -4,10 +4,10 @@ import Bar from '../Bar';
 
 const Water = () => {
   return (
-    <>
-      <h2 className={styles.title}>Water</h2>
-      <Bar waterConsumption={11110} />
-    </>
+    <div>
+      <h3 className={styles.title}>Water</h3>
+      <Bar waterConsumption={1150} />
+    </div>
   );
 };
 

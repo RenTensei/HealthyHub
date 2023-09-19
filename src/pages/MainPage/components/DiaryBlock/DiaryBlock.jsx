@@ -1,40 +1,36 @@
 import styles from './DiaryBlock.module.scss';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-const DiaryMainComponnent = ({
-  name,
-  srcImg,
-  alt,
-  buttonName,
-  Carbonohidrates,
-  Protein,
-  Fat,
+const DiaryBlock = ({
+  intakeInfo: { mealType, carbonohidrates, protein, fat },
   srcSet,
 }) => {
+  const imgSrc = srcSet.split(' ')[0];
+
   return (
     <div className={styles.ContainerDiary}>
       <div className={styles.title}>
         <img
           className={styles.imgTitle}
-          src={srcImg}
+          src={imgSrc}
           srcSet={srcSet}
-          alt={alt}
+          alt={mealType}
         />
-        <h3 className={styles.titleName}>{name}</h3>
+        <p className={styles.titleName}>{mealType}</p>
       </div>
-      {!Carbonohidrates && !Protein && !Fat ? (
-        <button className={styles.button}>{buttonName}</button>
+      {!carbonohidrates && !protein && !fat ? (
+        <button className={styles.button}>+ Record your meal</button>
       ) : (
         <div className={styles.Calorie}>
           <p className={styles.itetemsCalories}>
-            Carbonohidrates:{' '}
-            <span className={styles.totalCalorie}>{Carbonohidrates}</span>
+            carbonohidrates:{' '}
+            <span className={styles.totalCalorie}>{carbonohidrates}</span>
           </p>
           <p className={styles.itetemsCalories}>
-            Protein: <span className={styles.totalCalorie}>{Protein}</span>
+            protein: <span className={styles.totalCalorie}>{protein}</span>
           </p>
           <p className={styles.itetemsCalories}>
-            Fat: <span className={styles.totalCalorie}>{Fat}</span>
+            fat: <span className={styles.totalCalorie}>{fat}</span>
           </p>
         </div>
       )}
@@ -42,15 +38,15 @@ const DiaryMainComponnent = ({
   );
 };
 
-export default DiaryMainComponnent;
+export default DiaryBlock;
 
-DiaryMainComponnent.propTypes = {
-  name: PropTypes.string,
-  srcImg: PropTypes.string,
-  alt: PropTypes.string,
-  buttonName: PropTypes.string,
-  Carbonohidrates: PropTypes.string,
-  Protein: PropTypes.string,
-  Fat: PropTypes.string,
-  srcSet: PropTypes.string,
-};
+// DiaryBlock.propTypes = {
+//   name: PropTypes.string,
+//   srcImg: PropTypes.string,
+//   alt: PropTypes.string,
+//   buttonName: PropTypes.string,
+//   carbonohidrates: PropTypes.string,
+//   protein: PropTypes.string,
+//   fat: PropTypes.string,
+//   srcSet: PropTypes.string,
+// };

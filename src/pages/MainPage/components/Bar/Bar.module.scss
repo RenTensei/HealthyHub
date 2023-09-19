@@ -15,14 +15,21 @@
     transform: translatey(0);
   }
 }
+
 .bar_container {
-  height: 240px;
-  width: 380px;
   display: flex;
-  gap: 40px;
+  gap: 20px;
   background-color: $primary-black-2;
-  padding: 24px 22px;
+  padding: 16px 12px;
   border-radius: 12px;
+
+  @include tablet-and-desktop {
+    padding: 24px 22px;
+  }
+
+  @include desktop-only {
+    padding: 24px 40px;
+  }
 }
 
 .statistic_wrapper {
@@ -67,40 +74,55 @@
   font-weight: 600;
 }
 
+.statistic_title {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
 .consumption_statistic {
   display: flex;
-  align-items: center;
-  gap: 40px;
+
+  flex-direction: column;
+  gap: 8px;
+
   margin-top: 12px;
   margin-bottom: 16px;
-}
 
-.consumption_statistic > p {
-  font-size: 14px;
-  color: $primary-grey;
-}
+  @include tablet-and-desktop {
+    flex-direction: row;
+    gap: 40px;
+  }
 
-.consumption_statistic > div {
-  display: flex;
-  align-items: center;
-}
+  div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
-.consumption_statistic > div span {
-  font-size: 32px;
-}
+    &:last-child {
+      gap: 4px;
+    }
+  }
 
-.statistic_title {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 24px;
-}
+  p,
+  span {
+    font-size: 14px;
+    line-height: 20px;
+    color: $primary-white;
 
-.white_text {
-  color: $primary-white;
-  margin-right: 4px;
-}
-.grey_text {
-  color: $primary-grey;
+    &.grey_text {
+      color: $primary-grey;
+    }
+
+    &.water_consumption {
+      font-size: 28px;
+      line-height: 34px;
+    }
+  }
+
+  span {
+    color: $primary-grey;
+  }
 }
 
 .intake_button {

@@ -1,0 +1,38 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.header_modal_user_overlay {
+  position: absolute;
+  top: 100px;
+  right: 34px;
+  width: 158px;
+  height: 104px;
+  padding-top: 24px;
+  padding-left: 24px;
+  box-shadow: 0px 4px 14px 0px $primary-green-lite;
+  border-radius: $border-default;
+  background-color: $primary-black-2;
+  z-index: 1200;
+
+  @include mobile-only{
+     top: 60px;
+     right: 10px;
+  }
+}
+
+.header_modal_user_item{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header_modal_user_text {
+  font-family: $font-regular;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+ul > li:not(:last-child) {
+  margin-bottom: 16px;
+}

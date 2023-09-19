@@ -1,0 +1,124 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.header_modal_goal_overlay {
+  position: absolute;
+  top: 60px;
+  padding-top: 24px;
+  padding-left: 24px;
+  width: 100%;
+  background-color: $primary-black;
+
+  @include tablet-and-desktop {
+    position: absolute;
+    top: 100px;
+    right: 12%;
+    width: 392px;
+    height: 352px;
+    padding-top: 20px;
+    padding-left: 24px;
+    box-shadow: 0px 4px 14px 0px $primary-green-lite;
+    border-radius: $border-default;
+    background-color: $primary-black-2;
+    z-index: 1200;
+  }
+}
+
+.header_modal_goal_title {
+  font-family: $font-regular;
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+  color: $primary-white;
+}
+
+.header_modal_goal_text {
+  font-family: $font-regular;
+  width: 284px;
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.42;
+  color: $primary-grey;
+}
+
+.header_modal_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  // gap: 16px;
+}
+
+.header_modal_list_item {
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  gap: 12px;
+}
+
+.header_modal_frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $secondary-grey-1;
+  border-radius: $border-default;
+}
+
+.header_modal_img {
+  width: 20px;
+}
+.header_modal_text {
+  font-family: $font-regular;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.42;
+}
+
+.header_modal_text:hover {
+  color: $primary-violet;
+}
+
+.header_modal_bnt {
+  font-family: $font-regular;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-top: 16px;
+  width: 166px;
+  height: auto;
+  border-radius: $border-default;
+
+  @include mobile-only {
+    width: 300px;
+  }
+}
+.header_modal_bnt_close {
+  position: absolute;
+  width: 16px;
+  background-color: transparent;
+  top: 18px;
+  left: 345px;
+}
+
+.header_modal_bnt_cancel {
+  font-family: $font-regular;
+  text-align: center;
+  background-color: transparent;
+  color: white;
+}
+
+.header_modal_bnt_group {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  @include mobile-only {
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+}
+

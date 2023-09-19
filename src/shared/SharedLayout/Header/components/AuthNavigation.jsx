@@ -11,7 +11,7 @@ const AuthNavigation = () => {
         </Link>
         <span className={styles.header_span}>/</span>
         <Link to={ROUTES.SignInPage} className={styles.header_text}>
-          Sing up
+          Sign up
         </Link>
       </div>
       <svg
@@ -37,6 +37,6 @@ const AuthNavigation = () => {
       </svg>
     </div>
   );
-}
+};
 
 export default AuthNavigation;

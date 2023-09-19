@@ -1,11 +1,11 @@
-import UserProfile from './UserProfile';
+// import UserProfile from './UserProfile';
 import styles from './UserMenu.module.scss';
 import goal from '../images/header/goal.png';
 import weight from '../images/header/weight.png';
-import { useModal } from '@/context/ModalContext';
+import { useModalContext } from '@/context/ModalContext';
 
 const UserMenu = () => {
-  const { openModal } = useModal();
+  const { openModal } = useModalContext();
 
   return (
     <div className={styles.header_user}>
@@ -81,8 +81,6 @@ const UserMenu = () => {
           </div>
         </div>
       </button>
-
-      <UserProfile />
     </div>
   );
 };

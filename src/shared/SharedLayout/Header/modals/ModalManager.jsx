@@ -1,8 +1,8 @@
-import { useModal } from '../../../../context/ModalContext';
 import ModalGoal from './ModalGoal';
 import ModalWeight from './ModalWeight';
 import ModalUser from './ModalUser';
 import ModalMenuTablet from './ModalMenuTablet';
+import { useModalContext } from '@/context/ModalContext';
 
 const ModalList = {
   ModalGoal,
@@ -12,7 +12,7 @@ const ModalList = {
 };
 
 const ModalManager = () => {
-  const { modal, closeModal } = useModal();
+  const { modal, closeModal } = useModalContext();
 
   if (!modal) {
     return null;

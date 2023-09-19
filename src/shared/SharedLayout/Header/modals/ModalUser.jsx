@@ -4,6 +4,7 @@ import { ROUTES } from '@/constants/routes';
 import { useEffect } from 'react';
 import SettingsSvg from '../svg components/SettingsSvg';
 import LogOutSvg from '../svg components/LogOutSvg';
+import OutsideClickHandler from 'react-outside-click-handler';
 
 const ModalUser = ({ onClose }) => {
   useEffect(() => {
@@ -19,27 +20,33 @@ const ModalUser = ({ onClose }) => {
   }, [onClose]);
 
   return (
-    <div className={styles.header_modal_user_overlay} onClick={onClose}>
-      <ul>
-        <li className={styles.header_modal_user_item}>
-          {' '}
-          <Link to={ROUTES.Home}>
-            <div className={styles.header_modal_user_item}>
-              <SettingsSvg />
-              <p className={styles.header_modal_user_text}>Setting</p>
-            </div>
-          </Link>
-        </li>
-        <li>
-          <Link to={ROUTES.Home}>
-            <div className={styles.header_modal_user_item}>
-              <LogOutSvg />
-              <p className={styles.header_modal_user_text}>Log out</p>
-            </div>
-          </Link>
-        </li>
-      </ul>
-    </div>
+    <OutsideClickHandler
+      onOutsideClick={() => {
+        onClose();
+      }}
+    >
+      <div className={styles.header_modal_user_overlay} onClick={onClose}>
+        <ul>
+          <li className={styles.header_modal_user_item}>
+            {' '}
+            <Link to={ROUTES.Home}>
+              <div className={styles.header_modal_user_item}>
+                <SettingsSvg />
+                <p className={styles.header_modal_user_text}>Setting</p>
+              </div>
+            </Link>
+          </li>
+          <li>
+            <Link to={ROUTES.Home}>
+              <div className={styles.header_modal_user_item}>
+                <LogOutSvg />
+                <p className={styles.header_modal_user_text}>Log out</p>
+              </div>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </OutsideClickHandler>
   );
 };
 

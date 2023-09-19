@@ -1,6 +1,7 @@
 import CloseSvg from '../svg components/CloseSvg';
 import styles from './ModalWeight.module.scss';
 import { useEffect, useState } from 'react';
+import OutsideClickHandler from 'react-outside-click-handler';
 
 const ModalWeight = ({ onClose }) => {
   const today = '14.09.2022';
@@ -36,6 +37,53 @@ const ModalWeight = ({ onClose }) => {
 
   if (width.width > breakpoint) {
     return (
+      <OutsideClickHandler
+        onOutsideClick={() => {
+          onClose();
+        }}
+      >
+        <div className={styles.header_modal_weight_overlay}>
+          <h2 className={styles.header_modal_weight_title}>
+            Enter your current weight
+          </h2>
+          <p className={styles.header_modal_weight_text}>
+            You can record your weight once a day
+          </p>
+          <p className={styles.header_modal_date_text}>
+            Today <span className={styles.header_modal_date}>{today}</span>{' '}
+          </p>
+          <form className={styles.header_weight_form}>
+            <input
+              placeholder="Enter your weight"
+              className={styles.header_modal_input}
+            />
+            <button
+              type="submit"
+              className={styles.header_modal_bnt}
+              onClick={onClose}
+            >
+              {' '}
+              Confirm
+            </button>
+          </form>
+          <button
+            className={styles.header_modal_bnt_close}
+            type="submit"
+            onClick={onClose}
+          >
+            <CloseSvg />
+          </button>
+        </div>
+      </OutsideClickHandler>
+    );
+  }
+
+  return (
+     <OutsideClickHandler
+        onOutsideClick={() => {
+          onClose();
+        }}
+      >
       <div className={styles.header_modal_weight_overlay}>
         <h2 className={styles.header_modal_weight_title}>
           Enter your current weight
@@ -46,65 +94,31 @@ const ModalWeight = ({ onClose }) => {
         <p className={styles.header_modal_date_text}>
           Today <span className={styles.header_modal_date}>{today}</span>{' '}
         </p>
-        <form className={styles.header_weight_form}>
-          <input
-            placeholder="Enter your weight"
-            className={styles.header_modal_input}
-          />
+        <div className={styles.header_modal_bnt_group}>
+          <form className={styles.header_weight_form}>
+            <input
+              placeholder="Enter your weight"
+              className={styles.header_modal_input}
+            />
+            <button
+              type="submit"
+              className={styles.header_modal_bnt}
+              onClick={onClose}
+            >
+              {' '}
+              Confirm
+            </button>
+          </form>
           <button
+            className={styles.header_modal_bnt_cancel}
             type="submit"
-            className={styles.header_modal_bnt}
             onClick={onClose}
           >
-            {' '}
-            Confirm
+            <p>Cancel</p>
           </button>
-        </form>
-        <button
-          className={styles.header_modal_bnt_close}
-          type="submit"
-          onClick={onClose}
-        >
-          <CloseSvg />
-        </button>
+        </div>
       </div>
-    );
-  }
-  return (
-    <div className={styles.header_modal_weight_overlay}>
-      <h2 className={styles.header_modal_weight_title}>
-        Enter your current weight
-      </h2>
-      <p className={styles.header_modal_weight_text}>
-        You can record your weight once a day
-      </p>
-      <p className={styles.header_modal_date_text}>
-        Today <span className={styles.header_modal_date}>{today}</span>{' '}
-      </p>
-      <div className={styles.header_modal_bnt_group}>
-        <form className={styles.header_weight_form}>
-          <input
-            placeholder="Enter your weight"
-            className={styles.header_modal_input}
-          />
-          <button
-            type="submit"
-            className={styles.header_modal_bnt}
-            onClick={onClose}
-          >
-            {' '}
-            Confirm
-          </button>
-        </form>
-        <button
-          className={styles.header_modal_bnt_cancel}
-          type="submit"
-          onClick={onClose}
-        >
-          <p>Cancel</p>
-        </button>
-      </div>
-    </div>
+    </OutsideClickHandler>
   );
 };
 

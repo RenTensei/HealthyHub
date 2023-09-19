@@ -1,21 +1,32 @@
 const EditSvg = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none">
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 16 16"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
-        stroke="rgba(227, 255, 168, 1)"
+        d="M8.83958 2.39982L3.36624 8.19315C3.15958 8.41315 2.95958 8.84649 2.91958 9.14649L2.67291 11.3065C2.58624 12.0865 3.14624 12.6198 3.91958 12.4865L6.06624 12.1198C6.36624 12.0665 6.78624 11.8465 6.99291 11.6198L12.4662 5.82649C13.4129 4.82649 13.8396 3.68649 12.3662 2.29315C10.8996 0.913152 9.78624 1.39982 8.83958 2.39982Z"
+        stroke="#E3FFA8"
+        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeMiterlimit="10"
-        strokeWidth="1.5"
-        d="m13.26 3.6-8.21 8.69c-.31.33-.61.98-.67 1.43l-.37 3.24c-.13 1.17.71 1.97 1.87 1.77l3.22-.55c.45-.08 1.08-.41 1.39-.75l8.21-8.69c1.42-1.5 2.06-3.21-.15-5.3-2.2-2.07-3.87-1.34-5.29.16Z"
       />
       <path
-        stroke="rgba(227, 255, 168, 1)"
+        d="M7.92676 3.3667C8.21342 5.2067 9.70676 6.61337 11.5601 6.80003"
+        stroke="#E3FFA8"
+        strokeMiterlimit="10"
         strokeLinecap="round"
         strokeLinejoin="round"
+      />
+      <path
+        d="M2 14.6665H14"
+        stroke="#E3FFA8"
         strokeMiterlimit="10"
-        strokeWidth="1.5"
-        d="M11.89 5.05a6.126 6.126 0 0 0 5.45 5.15M3 22h18"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );

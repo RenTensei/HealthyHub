@@ -5,6 +5,7 @@ import { useModal } from '@/context/ModalContext';
 const UserProfile = () => {
 
   const { openModal } = useModal();
+  
   return (
     <div className={styles.header_user_profile_cont}>
       <button

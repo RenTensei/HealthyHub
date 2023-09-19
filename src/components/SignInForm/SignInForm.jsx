@@ -5,6 +5,7 @@ import {
   EyeInvisibleOutlined,
   EyeOutlined,
   CloseCircleOutlined,
+  CheckCircleOutlined,
 } from '@ant-design/icons';
 import { useState } from 'react';
 
@@ -16,10 +17,17 @@ const initialValues = {
 const SignInForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
-    resetForm();
+     setTimeout(() => {
+       setSuccess(true);
+       resetForm();
+       setTimeout(() => {
+         setSuccess(false);
+       }, 3000);
+     }, 1000);
   };
 
   const [visible, setVisible] = useState(true);
+  const [success, setSuccess] = useState(false);
 
   return (
     <Formik
@@ -35,8 +43,9 @@ const SignInForm = () => {
               type="email"
               name="email"
               placeholder="E-mail"
-              className={`${styles.Input} ${errors.email && touched.email ? styles.Input__error : null
-                }`}
+              className={`${styles.Input} ${
+                errors.email && touched.email ? styles.Input__error : null
+              }`}
             />
             <ErrorMessage
               className={`${styles.Message} ${styles.Message__error}`}
@@ -52,35 +61,35 @@ const SignInForm = () => {
               type={visible ? 'text' : 'password'}
               name="password"
               placeholder="Password"
-              className={`${styles.Input} ${errors.password && touched.password ? styles.Input__error : null
-
-                // TODO change this line
-                // add handler for success state
-                // styles.Input__success
-                }`}
+              className={`${styles.Input} ${
+                errors.password && touched.password
+                  ? styles.Input__error
+                  : success
+                  ? styles.Input__success
+                  : null
+              }`}
             />
-            {/* TODO Change errors handler */}
             <ErrorMessage
               className={`${styles.Message} ${styles.Message__error}`}
               name="password"
               component="div"
             />
-            {
-              errors.password && touched.password ? (
-                <div
-                  className={`${styles.Icon} ${styles.Icon__right} ${styles.Icon__error} ${styles.Icon__right_secondary}`}
-                >
-                  <CloseCircleOutlined />
-                </div>
-              ) : null
-              //   (
-              //   <div
-              //     className={`${styles.Icon} ${styles.Icon__right} ${styles.Icon__success} ${styles.Icon__right_secondary}`}
-              //   >
-              //     <CheckCircleOutlined />
-              //   </div>
-              // )
-            }
+            {errors.password && touched.password ? (
+              <div
+                className={`${styles.Icon} 
+                  ${styles.Icon__right} 
+                  ${styles.Icon__error} 
+                  ${styles.Icon__right_secondary}`}
+              >
+                <CloseCircleOutlined />
+              </div>
+            ) : success ? (
+              <div
+                className={`${styles.Icon} ${styles.Icon__right} ${styles.Icon__success} ${styles.Icon__right_secondary}`}
+              >
+                <CheckCircleOutlined />
+              </div>
+            ) : null}
             <div
               className={`${styles.Icon} ${styles.Icon__right}`}
               onClick={() => setVisible(!visible)}

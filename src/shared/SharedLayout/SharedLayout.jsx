@@ -17,7 +17,7 @@ const SharedLayout = () => {
       <main>
         <div className={styles.container}>
           <Suspense fallback={null}>
-            {/* <div className={styles.temptext}>
+            <div className={styles.temptext}>
               временная навигация, для удобства
             </div>
             <div className={styles.temp}>
@@ -28,7 +28,7 @@ const SharedLayout = () => {
               <Link to={ROUTES.DiaryPage}>Diary</Link>
               <Link to={ROUTES.DashboardPage}>Dashboard</Link>
               <Link to={ROUTES.ProfileSettingsPage}>Settings</Link>
-            </div> */}
+            </div>
             <Outlet />
           </Suspense>
         </div>

@@ -1,0 +1,22 @@
+@import '@/scss/base/variables';
+@import '@/scss/base/mixins';
+
+.lastPeriodField {
+  position: relative;
+};
+
+.modal {
+  position: absolute;
+  bottom: 0;
+  left: 36px;
+  right: auto;
+  bottom: auto;
+};
+
+.lastButton {
+  color: #FFF;
+  background-color: #050505;
+  font-size: 24px;
+    font-weight: 500;
+    line-height: 1.25;
+};

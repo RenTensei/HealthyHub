@@ -3,7 +3,18 @@
 
 .header_user {
   display: flex;
-  gap: 80px;
+  gap: 40px;
+
+  margin-right: 72px;
+
+  @include mobile-only {
+    display: none;
+  }
+
+  @include desktop-only {
+    gap: 80px;
+    margin-right: 124px;
+  }
 }
 
 .header_user_bnt {
@@ -56,10 +67,10 @@
   margin-left: 4px;
 }
 
-.header_user_arrow{
+.header_user_arrow {
   width: 14px;
   height: 14px;
-object-fit: cover;
+  object-fit: cover;
   background-color: aqua;
 }
 

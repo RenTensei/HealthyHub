@@ -2,10 +2,10 @@ import styles from './ModalMenuTablet.module.scss';
 import goal from '../images/header/goal.png';
 import weight from '../images/header/weight.png';
 import { useEffect } from 'react';
-import { useModal } from '@/context/ModalContext';
+import { useModalContext } from '@/context/ModalContext';
 
 const ModalMenuTablet = ({ onClose }) => {
-    const { openModal } = useModal();
+  const { openModal } = useModalContext();
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {

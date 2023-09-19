@@ -1,11 +1,10 @@
 import ArrowDownSvg from '../svg components/ArrowDownSvg';
 import styles from './UserProfile.module.scss';
-import { useModal } from '@/context/ModalContext';
+import { useModalContext } from '@/context/ModalContext';
 
 const UserProfile = () => {
+  const { openModal } = useModalContext();
 
-  const { openModal } = useModal();
-  
   return (
     <div className={styles.header_user_profile_cont}>
       <button

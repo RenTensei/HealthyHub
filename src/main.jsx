@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
@@ -9,16 +8,16 @@ import ModalManager from './shared/SharedLayout/Header/modals/ModalManager';
 import { ModalProvider } from './context/ModalContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-   <Provider store={store}>
+  // <React.StrictMode>
+  <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter basename="/HealthyHub">
-       <ModalProvider>
-        <ModalManager />
-           <App />
-      </ModalProvider>
-  </BrowserRouter>
+        <ModalProvider>
+          <ModalManager />
+          <App />
+        </ModalProvider>
+      </BrowserRouter>
     </PersistGate>
   </Provider>
-    </React.StrictMode>
+  // </React.StrictMode>
 );

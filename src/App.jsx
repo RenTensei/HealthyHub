@@ -6,6 +6,7 @@ import { refresh } from '@/store/features/auth/thunks';
 import { selectToken } from '@/store/features/auth/selectors';
 import { getMyFoodIntake } from './store/features/foodIntake/thunks';
 
+
 const App = () => {
   const dispatch = useDispatch();
 
@@ -19,6 +20,7 @@ const App = () => {
   return (
     <>
       <Router />
+      
     </>
   );
   // return <>{isLoading ? <div>loading...</div> : <Router />}</>;

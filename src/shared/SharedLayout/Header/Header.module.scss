@@ -2,16 +2,45 @@
 @import '@/scss/base/mixins.scss';
 
 .header {
-   background-color: $primary-black-2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   height: 100px;
-  padding: 0 34px;
+
+  background-color: $primary-black-2;
 
   @include mobile-only {
     height: 60px;
-     padding: 0 10px;
+    padding: 0 10px;
+  }
+}
+
+.menuBtn {
+  transition: $transition-default;
+
+  &:hover,
+  &:active {
+    transform: $transform-default;
+  }
+}
+
+.header_container {
+  position: relative;
+
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  margin: 0 auto;
+  padding: 0 10px;
+
+  max-width: $breakpoint-mobile;
+
+  @include tablet-and-desktop {
+    padding: 0 27px;
+    max-width: $breakpoint-tablet;
+  }
+
+  @include desktop-only {
+    padding: 0 36px;
+    max-width: $breakpoint-desktop;
   }
 }
 
@@ -20,7 +49,7 @@
   font-weight: 700;
   font-size: 22px;
   line-height: 1.45;
-  color: $primary-grey;
+  color: $primary-grey !important;
 
   @include mobile-only {
     font-size: 16px;
@@ -28,11 +57,21 @@
   }
 }
 
-.header_tablet_menu{
+.logo_wrapper {
+  display: flex;
+  align-items: end;
+  margin-right: auto;
+}
+
+.header_tablet_menu {
   background-color: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: 8px;
-  padding:0;
+  padding: 0;
+
+  @include tablet-and-desktop {
+    display: none;
+  }
 }

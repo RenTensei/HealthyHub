@@ -29,7 +29,7 @@ const ModalUser = ({ onClose }) => {
         <ul>
           <li className={styles.header_modal_user_item}>
             {' '}
-            <Link to={ROUTES.Home}>
+            <Link to={ROUTES.ProfileSettingsPage}>
               <div className={styles.header_modal_user_item}>
                 <SettingsSvg />
                 <p className={styles.header_modal_user_text}>Setting</p>

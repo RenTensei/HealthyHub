@@ -37,9 +37,15 @@ const SignUpForm = () => {
               type="text"
               name="name"
               placeholder="Name"
-              className={styles.Input}
+              className={`${styles.Input} ${
+                errors.name && touched.name ? styles.Input__error : null
+              }`}
             />
-            <ErrorMessage name="name" />
+            <ErrorMessage
+              className={`${styles.Message} ${styles.Message__error}`}
+              name="name"
+              component="div"
+            />
           </div>
 
           <label htmlFor="email" className={styles.Label}></label>
@@ -48,9 +54,15 @@ const SignUpForm = () => {
               type="email"
               name="email"
               placeholder="E-mail"
-              className={styles.Input}
+              className={`${styles.Input} ${
+                errors.email && touched.email ? styles.Input__error : null
+              }`}
             />
-            <ErrorMessage name="email" />
+            <ErrorMessage
+              className={`${styles.Message} ${styles.Message__error}`}
+              name="email"
+              component="div"
+            />
           </div>
 
           <label htmlFor="password" className={styles.Label}></label>
@@ -61,11 +73,11 @@ const SignUpForm = () => {
               name="password"
               placeholder="Password"
               className={`${styles.Input} ${
-                errors.password && touched.password
-                  ? styles.Input__error
-                  : // TODO change this line
-                    // add handler for success state
-                    styles.Input__success
+                errors.password && touched.password ? styles.Input__error : null
+
+                // TODO change this line
+                // add handler for success state
+                // styles.Input__success
               }`}
             />
             {/* TODO Change errors handler */}
@@ -74,19 +86,22 @@ const SignUpForm = () => {
               name="password"
               component="div"
             />
-            {errors.password && touched.password ? (
-              <div
-                className={`${styles.Icon} ${styles.Icon__right} ${styles.Icon__error} ${styles.Icon__right_secondary}`}
-              >
-                <CloseCircleOutlined />
-              </div>
-            ) : (
-              <div
-                className={`${styles.Icon} ${styles.Icon__right} ${styles.Icon__success} ${styles.Icon__right_secondary}`}
-              >
-                <CheckCircleOutlined />
-              </div>
-            )}
+            {
+              errors.password && touched.password ? (
+                <div
+                  className={`${styles.Icon} ${styles.Icon__right} ${styles.Icon__error} ${styles.Icon__right_secondary}`}
+                >
+                  <CloseCircleOutlined />
+                </div>
+              ) : null
+              //   (
+              //   <div
+              //     className={`${styles.Icon} ${styles.Icon__right} ${styles.Icon__success} ${styles.Icon__right_secondary}`}
+              //   >
+              //     <CheckCircleOutlined />
+              //   </div>
+              // )
+            }
             <div
               className={`${styles.Icon} ${styles.Icon__right}`}
               onClick={() => setVisible(!visible)}

@@ -2,10 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import './scss/main.scss';
 import Router from '@/routes/Router';
-import { refresh } from '@/store/features/auth/thunks';
+import { refresh, signIn } from '@/store/features/auth/thunks';
 import { selectToken } from '@/store/features/auth/selectors';
 import { getMyFoodIntake } from './store/features/foodIntake/thunks';
-
 
 const App = () => {
   const dispatch = useDispatch();
@@ -20,7 +19,18 @@ const App = () => {
   return (
     <>
       <Router />
-      
+      <button
+        onClick={() =>
+          dispatch(
+            signIn({
+              email: 'admin234@admin.com',
+              password: 'admin23',
+            })
+          )
+        }
+      >
+        sign in!
+      </button>
     </>
   );
   // return <>{isLoading ? <div>loading...</div> : <Router />}</>;

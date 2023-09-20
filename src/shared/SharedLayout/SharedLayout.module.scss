@@ -3,15 +3,19 @@
 
 .temptext {
   text-align: center;
-  margin: 16px 0;
+  margin-bottom: 16px;
 }
 
 .temp {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
   max-width: fit-content;
 
   margin: 0 auto;
+
+  margin-bottom: 16px;
+
   padding: 16px;
 
   color: $primary-black;
@@ -19,5 +23,22 @@
 
   a {
     color: $primary-black;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  padding: 16px 10px;
+
+  max-width: $breakpoint-mobile;
+
+  @include tablet-and-desktop {
+    padding: 24px 27px;
+    max-width: $breakpoint-tablet;
+  }
+
+  @include desktop-only {
+    padding: 20px 34px;
+    max-width: $breakpoint-desktop;
   }
 }

@@ -36,20 +36,32 @@ export const options = {
       text: 'Chart.js Line Chart',
     },
   },
+  indexAxis: 'x',
+    scales: {
+      x: {
+        beginAtZero: false
+      }
+    }
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+// const labelsMonthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+const labelsDays = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
+const weightTest = ['61', '61', '61', '61', '61', '64', '64', '64', '64', '64', '64', '64', '64', '64', '65', '65', '65', '65', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
 
 export const data = {
-  labels,
+  labels: labelsDays,
   datasets: [
     {
       label: 'Dataset 1',
-      data: [10, 25, 2, 8, 41, 20, 2],
-      fill: false,
+      data: [1500, 1450, 1300, 1210, 1560, 1700, 1000, 2000, 1500, 1120, 2000, 1200, 1600, 1500, 1510, 1200, 1800, 2000, 1200, 1200, 1400, 2000, 1300, 2500, 1000, 3000, 2500, 1200, 1500, 3000, 2100],
+      fill: 'origin',
       borderColor: '#E3FFA8',
-      tension: 0.1,
+      tension: 0.2,
       backgroundColor: '#292928',
+      pointBackgroundColor: '#E3FFA8',
+      pointRadius: '5',
+      spanGaps: true,
+      cubicInterpolationMode: 'default'
     },
   ],
 };
@@ -85,7 +97,7 @@ const DashboardPage = () => {
       </button>
       {showModal &&
         <Modal onClose={closeModal}>
-          <button type="button" onClick={handleOnClick}>
+          <button type="button" className={styles.lastButton} onClick={handleOnClick}>
             {showLastMonth ? "Last year" : "Last month"}
           </button>
         </Modal>}
@@ -94,8 +106,9 @@ const DashboardPage = () => {
         <ul>
         <li>
           <h2>Calories</h2>
-          <p>Average value: <span>1700 kg</span></p>
-          <Line options={options} data={data} />
+            <p>Average value: <span>1700 kg</span></p>
+            <div className={styles.chart}><Line options={options} data={data} /></div>
+          
         </li>
         <li>
           <h2>Water</h2>
@@ -103,7 +116,11 @@ const DashboardPage = () => {
         </li>
         <li>
           <h2>Weight</h2>
-          <p>Average value: <span>68 kg</span></p>
+            <p>Average value: <span>68 kg</span></p>
+            <ul>
+              {labelsDays.map(day => <li key={day}>{day}</li>)}
+              {weightTest.map(weight => <li key={weight}>{weight}</li>)}
+            </ul>
         </li>
       </ul> : <p>Last year</p>}
     </section>

@@ -1,0 +1,33 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.header_nav_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_span {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.header_text {
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.42;
+@include mobile-only{
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+}
+
+.header_text:hover {
+  color: $primary-green-lite;
+}
+
+.header_links {
+  margin-right: 6px;
+}

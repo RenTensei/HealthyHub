@@ -8,8 +8,8 @@ import style from './ProfileSettingsPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectIsLoggedIn, selectToken } from '@/store/features/auth/selectors';
 import { useNavigate } from 'react-router-dom';
-
-import defaultPhoto from './image/defaultPhoto.jpg';
+import { ReactComponent as AddPhotoSvg } from '@/assets/svg/direct-inbox.svg';
+import defaultPhoto from './image/photo-user.jpg';
 
 function ProfileSettingsPage() {
   const dispatch = useDispatch();
@@ -93,20 +93,24 @@ function ProfileSettingsPage() {
                     <div className={style.containerPhoto}>
                       <div>
                         <img
-                          src={values.photo}
+                          src={values.photo || defaultPhoto}
                           // src={avatar}
                           alt="Profile"
                           style={{ width: '36px', height: '36px' }}
                           className={style.photo}
                         />
                       </div>
-                      <img
+                      {/* <img
                         src={svg}
                         alt="Profile"
                         className={style.svg}
                         style={{ width: '16px', height: '16px' }}
+                      /> */}
+                      <AddPhotoSvg
+                        className={style.svg}
+                        width={16}
+                        height={16}
                       />
-
                       <label htmlFor="photo">Download new photo</label>
                       <input
                         className={style.inputPhoto}

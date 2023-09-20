@@ -1,0 +1,101 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.Form {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include desktop-only {
+        width: 212px;
+        margin: 0;
+    }
+}
+
+.Label {
+    display: flex;
+    justify-self: center;
+    
+}
+
+.Input_wrapper {
+    position: relative;
+
+    & .Input {
+        display: block;
+        margin-top: 16px;
+        width: 100%;
+        height: 36px;
+        border-radius: 12px;
+        border: 1px solid $primary-green-lite;
+        // border-width: 1px;
+        // border-color: $primary-green-lite;
+        background-color: $primary-black-2;
+        padding: 8px 10px;
+        font-family: $font-regular;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.43;
+        color: $primary-grey;
+        transition: $transition-default;
+
+        &__success {
+            border-color: $secondary-green;
+        }
+
+        &__error {
+            border-color: $secondary-red;
+        }
+
+        &:focus {
+          outline: none;
+          transform: scale(1.02);
+        }
+    }
+
+    & .Icon {
+        position: absolute;
+        display: inline-block;
+
+        &__error {
+            color: $secondary-red;
+        }
+
+        &__success {
+           color: $secondary-green;
+        }
+
+        &__right {
+            right: 10px;
+            top: 6px;
+            
+            &_secondary {
+                right: 32px;
+            }
+        }
+    }
+
+    & .Message {
+        &__error {
+            color: $secondary-red;
+        }
+        
+        &__success {
+            color: $secondary-green;
+        }
+    }
+}
+
+.Button {
+    width: 100%;
+    height: 36px;
+    border-radius: 12px;
+    background-color: $primary-green-lite;
+    font-family: $font-regular;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.43;
+    color: $primary-black-2;
+    margin-bottom: 200px;
+    margin-top: 24px;
+}

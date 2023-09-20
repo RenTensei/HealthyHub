@@ -3,9 +3,13 @@ import goal from '../images/header/goal.png';
 import weight from '../images/header/weight.png';
 import { useEffect } from 'react';
 import { useModalContext } from '@/context/ModalContext';
+import { useSelector } from 'react-redux';
 
 const ModalMenuTablet = ({ onClose }) => {
   const { openModal } = useModalContext();
+
+  const userData = useSelector(state => state.auth.user);
+
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -29,8 +33,8 @@ const ModalMenuTablet = ({ onClose }) => {
           <img src={goal} alt="your goal" className={styles.header_user_img} />
         </div>
         <div className={styles.header_user_discr}>
-          <p className={styles.header_user_text}> Goal</p>
-          <p className={styles.header_user_text}>Lose fat</p>
+          <p className={styles.header_user_text}>Goal</p>
+          <p className={styles.header_user_text}>{userData.goal}</p>
         </div>
       </button>
 
@@ -43,9 +47,9 @@ const ModalMenuTablet = ({ onClose }) => {
           <img src={weight} alt="weight" className={styles.header_user_img} />
         </div>
         <div className={styles.header_user_discr}>
-          <p className={styles.header_user_text}> Weight</p>
+          <p className={styles.header_user_text}>Weight</p>
           <div className={styles.header_user_weight_descr}>
-            <p className={styles.header_user_text}>65</p>
+            <p className={styles.header_user_text}>{userData.weight}</p>
             <p className={styles.header_user_measure}>kg</p>
           </div>
         </div>

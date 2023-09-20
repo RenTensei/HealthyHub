@@ -7,16 +7,33 @@
 
 .modal {
   position: absolute;
-  bottom: 0;
+  top: 36px;
   left: 36px;
-  right: auto;
-  bottom: auto;
+
 };
 
 .lastButton {
   color: #FFF;
   background-color: #050505;
   font-size: 24px;
-    font-weight: 500;
-    line-height: 1.25;
+  font-weight: 500;
+  line-height: 1.25;
+
+  width: 212px;
+  height: 64px;
+  border-radius: 12px;
+  background: #0F0F0F;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
+
 };
+
+.dashboardTitle {
+  font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.chart {
+  width: 676px
+}

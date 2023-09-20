@@ -1,0 +1,15 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.Img {
+    width: 300px;
+
+    @include tablet-only {
+        width: 380px;
+    }
+
+    @include desktop-only {
+        width: 592px;
+        margin-right: 104px;
+    }
+}

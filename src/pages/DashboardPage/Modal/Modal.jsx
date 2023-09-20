@@ -1,9 +1,6 @@
 import styles from '../DashboardPage.module.scss';
 import PropTypes from 'prop-types';
 import { useEffect } from "react";
-// import { createPortal } from "react-dom";
-
-// const modalRoot = document.querySelector('#modal-root')
 
 const Modal = ({onClose, children}) => {
   useEffect(() => {

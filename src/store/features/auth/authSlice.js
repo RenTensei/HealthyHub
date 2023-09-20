@@ -33,7 +33,9 @@ const authSlice = createSlice({
     builder
       .addCase(signUp.fulfilled, (state, { payload }) => {
         state.user = payload.user;
+        state.token = payload.token;
 
+        state.isLoggedIn = true;
         state.appStatus = APP_STATUS.idle;
       })
       .addCase(signIn.fulfilled, (state, { payload }) => {

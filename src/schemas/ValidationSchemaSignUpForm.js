@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 
 const validationSchemaSignUp = Yup.object().shape({
-  name: Yup.string().required('Name is a required field'),
+  name: Yup.string().min(3).required('Name is a required field'),
   email: Yup.string().email().required('Email is a required field'),
   password: Yup.string()
     .min(6, 'Password must be at least 6 characters')
@@ -12,7 +12,4 @@ const validationSchemaSignUp = Yup.object().shape({
     .required('Password is required'),
 });
 
-
-export default
-  validationSchemaSignUp;
- 
+export default validationSchemaSignUp;

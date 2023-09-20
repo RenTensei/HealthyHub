@@ -60,19 +60,7 @@ function ProfileSettingsPage() {
         <div>
           <img src={picture} alt="Picture" className={style.mainImg}></img>
         </div>
-        {/* <div>
-          <button className={style.cancelBtn} onClick={handleCancel}>
-            Cancel
-          </button>
-          <button type="submit" className={style.saveBtn} onClick={handleSave}>
-            Save
-          </button>
-        </div> */}
       </div>
-      {/* <div className={style.containerContent}> */}
-      {/* <div>
-          <img src={picture} alt="Picture" className={style.mainImg}></img>
-        </div> */}
       <div className={style.containerSettings}>
         <Formik
           initialValues={userInfo}
@@ -143,7 +131,7 @@ function ProfileSettingsPage() {
                       <Field
                         type="radio"
                         name="gender"
-                        value="Female"
+                        value="Male"
                         checked={values.gender === 'Male'}
                       />
                       Male
@@ -196,7 +184,6 @@ function ProfileSettingsPage() {
             </Form>
           )}
         </Formik>
-        {/* </div> */}
       </div>
     </div>
   );

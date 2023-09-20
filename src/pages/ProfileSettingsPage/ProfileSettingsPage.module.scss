@@ -129,17 +129,14 @@
   @include tablet-and-desktop {
     display: flex;
     width: 491px;
-    //   justify-content: space-between;
+    
   }
 
   @include tablet-only {
     margin: auto;
   }
 
-  // @include mobile-only {
-  //   width: 50%;
-  //   margin: auto;
-  // }
+  
 }
 
 @include tablet-and-desktop {
@@ -147,10 +144,7 @@
     margin-right: 60px;
   }
 
-  // @include mobile-only {
-  //    width: 50%; /* або інша відповідна ширина */
-  //   margin: auto;
-  // }
+
 }
 
 .containerSettingFirst {
@@ -231,6 +225,8 @@
   label {
     margin-bottom: 40px;
     border-radius: 12px;
+    font-weight: 500;
+    font-size: 14px;
   }
 
   label input {

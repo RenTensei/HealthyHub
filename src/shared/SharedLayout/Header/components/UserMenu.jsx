@@ -5,9 +5,11 @@ import weight from '../images/header/weight.png';
 import { useModalContext } from '@/context/ModalContext';
 import EditSvg from '../svg components/EditSvg';
 import ArrowDownSvg from '../svg components/ArrowDownSvg';
+import { useSelector } from 'react-redux';
 
 const UserMenu = () => {
   const { openModal } = useModalContext();
+  const userData = useSelector(state => state.auth.user);
 
   return (
     <div className={styles.header_user}>
@@ -22,7 +24,7 @@ const UserMenu = () => {
         <div className={styles.header_user_discr}>
           <p className={styles.header_user_text}> Goal</p>
           <div className={styles.header_user_discr_choose}>
-            <p className={styles.header_user_text}>Lose fat</p>
+            <p className={styles.header_user_text}>{userData.goal}</p>
             <ArrowDownSvg />
           </div>
         </div>
@@ -39,7 +41,7 @@ const UserMenu = () => {
         <div className={styles.header_user_discr}>
           <p className={styles.header_user_text}> Weight</p>
           <div className={styles.header_user_weight_descr}>
-            <p className={styles.header_user_text}>65</p>
+            <p className={styles.header_user_text}>{userData.weight}</p>
             <div className={styles.header_user_discr_choose}>
               <p className={styles.header_user_measure}>kg</p>
               <EditSvg />

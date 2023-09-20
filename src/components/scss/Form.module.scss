@@ -2,92 +2,91 @@
 @import '@/scss/base/mixins.scss';
 
 .Form {
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 
-    @include desktop-only {
-        width: 212px;
-        margin: 0;
-    }
+  @include desktop-only {
+    width: 212px;
+    margin: 0;
+  }
 }
 
 .Label {
-    display: flex;
-    justify-self: center;
-    
+  display: flex;
+  justify-self: center;
 }
 
 .Input_wrapper {
-    position: relative;
+  position: relative;
 
-    & .Input {
-        display: block;
-        margin-bottom: 16px;
-        width: 100%;
-        height: 36px;
-        border-radius: 12px;
-        border-width: 1px;
-        border-color: $primary-green-lite;
-        background-color: $primary-black-2;
-        padding: 8px 10px;
-        font-family: $font-regular;
-        font-weight: 400;
-        font-size: 14px;
-        line-height: 1.43;
-        color: $primary-grey;
-
-        &__success {
-            border-color: green;
-        }
-
-        &__error {
-            border-color: red;
-        }
-    }
-
-    & .Icon {
-        position: absolute;
-        display: inline-block;
-
-        &__error {
-            color: red;
-        }
-
-        &__success {
-           color: green;
-        }
-
-        &__right {
-            right: 10px;
-            top: 6px;
-            
-            &_secondary {
-                right: 32px;
-            }
-        }
-    }
-
-    & .Message {
-        &__error {
-            color: red;
-        }
-        
-        &__success {
-            color: green;
-        }
-    }
-}
-
-.Button {
+  & .Input {
+    display: block;
+    margin-bottom: 16px;
     width: 100%;
     height: 36px;
     border-radius: 12px;
-    background-color: $primary-green-lite;
+    border-width: 1px;
+    border-color: $primary-green-lite;
+    background-color: $primary-black-2;
+    padding: 8px 10px;
     font-family: $font-regular;
     font-weight: 400;
     font-size: 14px;
     line-height: 1.43;
-    color: $primary-black-2;
-    margin-bottom: 200px;
+    color: $primary-grey;
+
+    &__success {
+      border-color: #3CBC81;
+    }
+
+    &__error {
+      border-color: #E74A3B;
+    }
+  }
+
+  & .Icon {
+    position: absolute;
+    display: inline-block;
+
+    &__error {
+      color: #E74A3B;
+    }
+
+    &__success {
+      color: #3CBC81;
+    }
+
+    &__right {
+      right: 10px;
+      top: 10px;
+
+      &_secondary {
+        right: 30px;
+      }
+    }
+  }
+
+  & .Message {
+    &__error {
+      color: #E74A3B;
+    }
+
+    &__success {
+      color: #3CBC81;
+    }
+  }
+}
+
+.Button {
+  width: 100%;
+  height: 36px;
+  border-radius: 12px;
+  background-color: $primary-green-lite;
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  color: $primary-black-2;
+  margin-bottom: 200px;
 }

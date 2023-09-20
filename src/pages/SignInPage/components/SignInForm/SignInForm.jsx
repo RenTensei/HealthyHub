@@ -1,12 +1,11 @@
 import styles from '../../../../components/scss/Form.module.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import validationSchemaSignIn from '../../../../schemas/ValidationSchemaSignInForm';
+import { ReactComponent as EyeOpenSvg } from '@/assets/svg/eye-open.svg';
 import {
-  EyeInvisibleOutlined,
-  EyeOutlined,
-  CloseCircleOutlined,
-  CheckCircleOutlined,
-} from '@ant-design/icons';
+  ReactComponent as EyeCloseSvg } from '@/assets/svg/eye-close.svg';
+import { ReactComponent as ErrorLogoSvg } from '@/assets/svg/error-logo.svg';
+import { ReactComponent as SuccessLogoSvg } from '@/assets/svg/success-logo.svg';
 import { useState } from 'react';
 
 const initialValues = {
@@ -81,20 +80,24 @@ const SignInForm = () => {
                   ${styles.Icon__error} 
                   ${styles.Icon__right_secondary}`}
               >
-                <CloseCircleOutlined />
+                <ErrorLogoSvg width={24} height={24} />
               </div>
             ) : success ? (
               <div
                 className={`${styles.Icon} ${styles.Icon__right} ${styles.Icon__success} ${styles.Icon__right_secondary}`}
               >
-                <CheckCircleOutlined />
+                <SuccessLogoSvg width={24} height={24} />
               </div>
             ) : null}
             <div
               className={`${styles.Icon} ${styles.Icon__right}`}
               onClick={() => setVisible(!visible)}
             >
-              {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
+              {visible ? (
+                <EyeOpenSvg width={24} height={24} />
+              ) : (
+                <EyeCloseSvg width={24} height={24} />
+              )}
             </div>
           </div>
 

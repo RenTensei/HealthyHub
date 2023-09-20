@@ -45,6 +45,8 @@
 
 .header_user_discr_choose {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 12px;
 }
 
@@ -71,3 +73,5 @@
   object-fit: cover;
   background-color: aqua;
 }
+
+

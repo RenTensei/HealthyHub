@@ -1,5 +1,5 @@
 import { ROUTES } from '@/constants/routes';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AuthNavigation from '../Header/components/AuthNavigation';
 import UserMenu from '../Header/components/UserMenu';
 import styles from './Header.module.scss';
@@ -7,17 +7,18 @@ import { useModalContext } from '@/context/ModalContext';
 import { useEffect, useState } from 'react';
 import UserProfile from './components/UserProfile';
 
-import arrowDownSvg from '@/assets/svg/arrow-down.svg';
 import { ReactComponent as MenuSvg } from '@/assets/svg/menu.svg';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from '@/store/features/auth/selectors';
 
 const Header = () => {
   const { openModal } = useModalContext();
-  const isLoggedIn = true;
+  const isLoggedIn = useSelector(selectIsLoggedIn);
+  // const userData = useSelector(state => state.auth.user)
+  // const navigate = useNavigate()
 
   // const [width, setWidth] = useState({ width: window.innerWidth });
   // const breakpoint = 834;
-
-  // console.log(width);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // const toggleMenu = () => setIsMenuOpen(s => !s);
@@ -42,7 +43,7 @@ const Header = () => {
         <div className={styles.logo_wrapper}>
           <Link
             className={styles.header_logo}
-            to={`/${ROUTES.HomePage}`}
+            to={ROUTES.HomePage}
             relative="path"
           >
             HealthyHub
@@ -70,8 +71,6 @@ const Header = () => {
         <div className={styles.header_user_info}>
           {isLoggedIn ? <UserProfile /> : <AuthNavigation />}
         </div>
-
-        {/* {isLoggedIn && isMenuOpen && <ModalMenuTablet />} */}
       </div>
     </header>
   );

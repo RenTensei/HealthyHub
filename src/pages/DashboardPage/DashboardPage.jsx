@@ -172,8 +172,8 @@ const DashboardPage = () => {
             <h4>Weight</h4>
             <p>Average value: <span>68 kg</span></p>
             <ul>
-              {labelsDays.map(day => <li key={day}>{day}</li>)}
-              {weightTest.map(weight => <li key={weight}>{weight}</li>)}
+              {labelsDays.map((day, index) => <li key={index}>{day}</li>)}
+              {weightTest.map((weight, index) => <li key={index}>{weight}</li>)}
             </ul>
           </li>
         </ul> : <p>Last year</p>}

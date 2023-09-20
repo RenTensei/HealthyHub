@@ -9,21 +9,26 @@ import image6 from '@/pages/SignUpPage/images/YourGoals-mob@2x.png';
 import styles from './yourGoal.module.scss';
 import { Formik, Form, Field } from 'formik';
 import { object, string } from 'yup';
+import { useSignUpContext } from '@/hooks/useSignUpContext';
 
 let userSchema = object({
-  topping: string().required(),
+  goal: string().required(),
 });
 
 const initialValues = {
-  topping: ''
+  goal: '',
 };
 
 const YourGoal = () => {
+  const { prevStage, nextStage, addSignUpData } = useSignUpContext();
 
-  const handleSubmite = (values, {resetForm}) => {
-    (JSON.stringify(values, null, 2));
-    console.log(values);
-    resetForm()
+  const handleSubmit = (values, { resetForm }) => {
+    addSignUpData(values);
+    nextStage();
+
+    // (JSON.stringify(values, null, 2));
+    // console.log(values);
+    // resetForm()
   };
 
   return (
@@ -53,59 +58,58 @@ const YourGoal = () => {
       </div>
       <div className={styles.container_form}>
         <h1 className={styles.title}>Your goal</h1>
-        <Formik 
-        initialValues={initialValues}
-        validationSchema={userSchema}
-        onSubmit={handleSubmite}>
-          
+        <Formik
+          initialValues={initialValues}
+          validationSchema={userSchema}
+          onSubmit={handleSubmit}
+        >
           <Form className={styles.form_checked}>
             <p className={styles.text}>
               Choose a goal so that we can help you effectively
             </p>
             <div id="my-radio-group" className={styles.container_label_list}>
-              <div role="group" aria-labelledby="my-radio-group" className={styles.container_label}>
-                <label 
-                className={styles.list}>
+              <div
+                role="group"
+                aria-labelledby="my-radio-group"
+                className={styles.container_label}
+              >
+                <label className={styles.list}>
                   <Field
                     className={styles.item}
                     type="radio"
-                    name="topping"
-                    value="Lose Fat"
+                    name="goal"
+                    value="Lose fat"
                   />
                   Lose Fat
                 </label>
               </div>
               <div className={styles.container_label_ctnter}>
-                <label 
-                className={styles.list}>
+                <label className={styles.list}>
                   <Field
                     className={styles.item}
                     type="radio"
-                    name="topping"
+                    name="goal"
                     value="Maintain"
                   />
                   Maintain
                 </label>
               </div>
               <div className={styles.container_label_end}>
-                <label 
-                className={styles.list}>
+                <label className={styles.list}>
                   <Field
                     className={styles.item}
                     type="radio"
-                    name="topping"
-                    value="Gail Muscle"
+                    name="goal"
+                    value="Gain Muscle"
                   />
-                  Gail Muscle
+                  Gain Muscle
                 </label>
               </div>
-             
             </div>
             <button type="submit" className={styles.btn}>
               Next
             </button>
           </Form>
-         
         </Formik>
       </div>
     </div>

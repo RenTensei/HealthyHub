@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux';
 import styles from './DailyGoal.module.scss';
 
 import CaloriesSVG from './svgImages/caloriesSVG';
 import WaterSVG from './svgImages/waterSVG';
 
 const DailyGoal = () => {
+  const userData = useSelector(state => state.auth.user);
+
   return (
     <div className={styles.daily_goal_block}>
       <h3 className={styles.daily_goal_title}>Daily goal</h3>
@@ -13,7 +16,7 @@ const DailyGoal = () => {
           <CaloriesSVG />
           <div>
             <h4>Calories</h4>
-            <p>1700</p>
+            <p>{Math.round(userData.BMR)}</p>
           </div>
         </div>
 

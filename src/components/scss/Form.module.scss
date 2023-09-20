@@ -23,12 +23,13 @@
 
     & .Input {
         display: block;
-        margin-bottom: 16px;
+        margin-top: 16px;
         width: 100%;
         height: 36px;
         border-radius: 12px;
-        border-width: 1px;
-        border-color: $primary-green-lite;
+        border: 1px solid $primary-green-lite;
+        // border-width: 1px;
+        // border-color: $primary-green-lite;
         background-color: $primary-black-2;
         padding: 8px 10px;
         font-family: $font-regular;
@@ -36,13 +37,19 @@
         font-size: 14px;
         line-height: 1.43;
         color: $primary-grey;
+        transition: $transition-default;
 
         &__success {
-            border-color: green;
+            border-color: $secondary-green;
         }
 
         &__error {
-            border-color: red;
+            border-color: $secondary-red;
+        }
+
+        &:focus {
+          outline: none;
+          transform: scale(1.02);
         }
     }
 
@@ -51,11 +58,11 @@
         display: inline-block;
 
         &__error {
-            color: red;
+            color: $secondary-red;
         }
 
         &__success {
-           color: green;
+           color: $secondary-green;
         }
 
         &__right {
@@ -70,11 +77,11 @@
 
     & .Message {
         &__error {
-            color: red;
+            color: $secondary-red;
         }
         
         &__success {
-            color: green;
+            color: $secondary-green;
         }
     }
 }
@@ -90,4 +97,5 @@
     line-height: 1.43;
     color: $primary-black-2;
     margin-bottom: 200px;
+    margin-top: 24px;
 }

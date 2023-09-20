@@ -9,10 +9,9 @@ const SignUpPage = () => {
     <>
       <SignUpFormPage />
       <YourGoal />
-      <SelectGender/>
+      <SelectGender />
       <BodyParameters />
       <YourActivityPage />
-      this is signup page
     </>
   );
 };

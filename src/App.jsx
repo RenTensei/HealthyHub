@@ -24,7 +24,7 @@ const App = () => {
   return (
     <>
       <Router />
-      <button
+      {/* <button
         onClick={() =>
           dispatch(
             signIn({
@@ -35,10 +35,9 @@ const App = () => {
         }
       >
         sign in!
-      </button>
+      </button> */}
     </>
   );
-  // return <>{isLoading ? <div>loading...</div> : <Router />}</>;
 };
 
 export default App;

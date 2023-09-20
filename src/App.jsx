@@ -18,21 +18,22 @@ const App = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return appStatus === APP_STATUS.initialLoading ? null : (
+  return appStatus === APP_STATUS.initialLoading ? (
+    <button
+      onClick={() =>
+        dispatch(
+          signIn({
+            email: 'admin23@admin.com',
+            password: 'admin23',
+          })
+        )
+      }
+    >
+      sign in!
+    </button>
+  ) : (
     <>
       <Router />
-      <button
-        onClick={() =>
-          dispatch(
-            signIn({
-              email: 'admin23@admin.com',
-              password: 'admin23',
-            })
-          )
-        }
-      >
-        sign in!
-      </button>
     </>
   );
   // return <>{isLoading ? <div>loading...</div> : <Router />}</>;

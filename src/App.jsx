@@ -5,6 +5,8 @@ import Router from '@/routes/Router';
 import { refresh, signIn } from '@/store/features/auth/thunks';
 import { selectToken } from '@/store/features/auth/selectors';
 import { getMyFoodIntake } from './store/features/foodIntake/thunks';
+import { authActions } from './store/features/auth/authSlice';
+import { APP_STATUS } from './constants/appStatus';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -12,14 +14,17 @@ const App = () => {
   const token = useSelector(selectToken);
 
   useEffect(() => {
-    if (token) dispatch(refresh(token)).then(() => dispatch(getMyFoodIntake()));
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (token) {
+      dispatch(refresh(token)).then(() => dispatch(getMyFoodIntake()));
+    } else {
+      dispatch(authActions.updateAppStatus(APP_STATUS.idle));
+    }
+  }, [dispatch, token]);
 
   return (
     <>
       <Router />
-      <button
+      {/* <button
         onClick={() =>
           dispatch(
             signIn({
@@ -30,10 +35,9 @@ const App = () => {
         }
       >
         sign in!
-      </button>
+      </button> */}
     </>
   );
-  // return <>{isLoading ? <div>loading...</div> : <Router />}</>;
 };
 
 export default App;

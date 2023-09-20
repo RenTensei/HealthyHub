@@ -1,11 +1,12 @@
-import styles from '../../../../../../components/scss/Form.module.scss';
+import styles from '@/components/scss/Form.module.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { useState } from 'react';
 import { ReactComponent as EyeOpenSvg } from '@/assets/svg/eye-open.svg';
 import { ReactComponent as EyeCloseSvg } from '@/assets/svg/eye-close.svg';
 import { ReactComponent as ErrorLogoSvg } from '@/assets/svg/error-logo.svg';
 import { ReactComponent as SuccessLogoSvg } from '@/assets/svg/success-logo.svg';
-import validationSchemaSignUp from '../../../../../../schemas/ValidationSchemaSignUpForm';
+import validationSchemaSignUp from '@/schemas/ValidationSchemaSignUpForm';
+import { useSignUpContext } from '@/hooks/useSignUpContext';
 
 const initialValues = {
   name: '',
@@ -14,19 +15,25 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    setTimeout(() => {
-      setSuccess(true);
-      resetForm();
-      setTimeout(() => {
-        setSuccess(false);
-      }, 3000);
-    }, 1000);
-  };
-
   const [visible, setVisible] = useState(true);
   const [success, setSuccess] = useState(false);
+
+  const { nextStage, addSignUpData } = useSignUpContext();
+
+  const handleSubmit = (values, { resetForm }) => {
+    // console.log(values);
+
+    addSignUpData(values);
+    nextStage();
+
+    // setTimeout(() => {
+    //   setSuccess(true);
+    //   resetForm();
+    //   setTimeout(() => {
+    //     setSuccess(false);
+    //   }, 3000);
+    // }, 1000);
+  };
 
   return (
     <Formik

@@ -3,6 +3,7 @@ export const ROUTES = {
   MainPage: 'main',
   SignUpPage: 'signup',
   SignInPage: 'signin',
+  ForgotYourPasswordPage: 'forgotyourpassword',
   DiaryPage: 'diary',
   DashboardPage: 'dashboard',
   RecommendedFoodPage: 'recommended-food',

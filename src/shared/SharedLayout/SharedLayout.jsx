@@ -24,6 +24,7 @@ const SharedLayout = () => {
             <Link to={ROUTES.MainPage}>Main</Link>
             <Link to={ROUTES.SignUpPage}>Signup</Link>
             <Link to={ROUTES.SignInPage}>Signin</Link>
+            <Link to={ROUTES.ForgotYourPasswordPage}>Forgot your password</Link>
             <Link to={ROUTES.DiaryPage}>Diary</Link>
             <Link to={ROUTES.DashboardPage}>Dashboard</Link>
             <Link to={ROUTES.ProfileSettingsPage}>Settings</Link>

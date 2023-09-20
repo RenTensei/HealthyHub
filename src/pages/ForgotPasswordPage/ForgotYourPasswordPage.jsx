@@ -1,6 +1,6 @@
-import ForgotYourPasswordForm from '@/component/ForgotYourPasswordForm/ForgotYourPasswordForm';
-import styles from '../../component/scss/AuthPageTextStyles.module.scss';
-import RenderImagesAuthPages from '@/component/RenderImages/RenderImagesAuthPages';
+import ForgotYourPasswordForm from './componets/ForgotYourPassword/ForgotYourPassword';
+import styles from '../../components/scss/AuthPageTextStyles.module.scss';
+import RenderImagesAuthPages from '@/components/RenderImages/RenderImagesAuthPages';
 
 const ForgotYourPasswordPage = () => {
   

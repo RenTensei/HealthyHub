@@ -1,6 +1,6 @@
-import validationSchemaForgotPassword from '../Schemas/ValidationSchemaForgotPassword';
+import validationSchemaForgotPassword from '../../../../schemas/ValidationSchemaForgotPassword';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import styles from '../scss/Form.module.scss';
+import styles from '../../../../components/scss/Form.module.scss';
 
 const initialValues = {
   email: '',

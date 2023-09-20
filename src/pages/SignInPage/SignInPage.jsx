@@ -1,7 +1,7 @@
-import RenderImagesAuthPages from '@/components/RenderImages/RenderImagesAuthPages';
+import RenderImagesAuthPages from '@/components/RenderImages';
 import styles from '../../components/scss/AuthPageTextStyles.module.scss';
 
-import SignInForm from '@/components/SignInForm/SignInForm';
+import SignInForm from './components/SignInForm';
 
 const SignInPage = () => {
   return (

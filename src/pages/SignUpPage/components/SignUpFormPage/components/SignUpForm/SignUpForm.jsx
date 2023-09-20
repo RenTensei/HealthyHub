@@ -1,29 +1,30 @@
-import styles from '../scss/Form.module.scss';
+import styles from '../../../../../../components/scss/Form.module.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import validationSchemaSignIn from '../Schemas/ValidationSchemaSignInForm';
+import { useState } from 'react';
 import {
   EyeInvisibleOutlined,
   EyeOutlined,
   CloseCircleOutlined,
   CheckCircleOutlined,
 } from '@ant-design/icons';
-import { useState } from 'react';
+import validationSchemaSignUp from '../../../../../../schemas/ValidationSchemaSignUpForm';
 
 const initialValues = {
+  name: '',
   email: '',
   password: '',
 };
 
-const SignInForm = () => {
+const SignUpForm = () => {
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
-     setTimeout(() => {
-       setSuccess(true);
-       resetForm();
-       setTimeout(() => {
-         setSuccess(false);
-       }, 3000);
-     }, 1000);
+    setTimeout(() => {
+      setSuccess(true);
+      resetForm();
+      setTimeout(() => {
+        setSuccess(false);
+      }, 3000);
+    }, 1000);
   };
 
   const [visible, setVisible] = useState(true);
@@ -32,11 +33,28 @@ const SignInForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchemaSignIn}
+      validationSchema={validationSchemaSignUp}
       onSubmit={handleSubmit}
     >
       {({ errors, touched }) => (
         <Form autoComplete="off" className={styles.Form}>
+          <label htmlFor="name" className={styles.Label}></label>
+          <div className={styles.Input_wrapper}>
+            <Field
+              type="text"
+              name="name"
+              placeholder="Name"
+              className={`${styles.Input} ${
+                errors.name && touched.name ? styles.Input__error : null
+              }`}
+            />
+            <ErrorMessage
+              className={`${styles.Message} ${styles.Message__error}`}
+              name="name"
+              component="div"
+            />
+          </div>
+
           <label htmlFor="email" className={styles.Label}></label>
           <div className={styles.Input_wrapper}>
             <Field
@@ -97,9 +115,8 @@ const SignInForm = () => {
               {visible ? <EyeOutlined /> : <EyeInvisibleOutlined />}
             </div>
           </div>
-
           <button type="submit" className={styles.Button}>
-            Sign in
+            Sign up
           </button>
         </Form>
       )}
@@ -107,4 +124,4 @@ const SignInForm = () => {
   );
 };
 
-export default SignInForm;
+export default SignUpForm;

@@ -16,7 +16,7 @@ const DailyGoal = () => {
           <CaloriesSVG />
           <div>
             <h4>Calories</h4>
-            <p>{userData.BMR}</p>
+            <p>{Math.round(userData.BMR)}</p>
           </div>
         </div>
 

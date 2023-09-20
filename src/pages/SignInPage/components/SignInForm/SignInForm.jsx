@@ -8,6 +8,8 @@ import {
   CheckCircleOutlined,
 } from '@ant-design/icons';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { signIn } from '@/store/features/auth/thunks';
 
 const initialValues = {
   email: '',
@@ -15,15 +17,20 @@ const initialValues = {
 };
 
 const SignInForm = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    setTimeout(() => {
-      setSuccess(true);
-      resetForm();
-      setTimeout(() => {
-        setSuccess(false);
-      }, 3000);
-    }, 1000);
+    // console.log(values);
+
+    dispatch(signIn(values));
+
+    // setTimeout(() => {
+    //   setSuccess(true);
+    //   resetForm();
+    //   setTimeout(() => {
+    //     setSuccess(false);
+    //   }, 3000);
+    // }, 1000);
   };
 
   const [visible, setVisible] = useState(true);

@@ -1,6 +1,7 @@
 import RenderImagesAuthPages from '@/components/RenderImages/RenderImagesAuthPages';
 import styles from '../../../../components/scss/AuthPageTextStyles.module.scss';
 import SignUpForm from '@/pages/SignUpPage/components/SignUpFormPage/components/SignUpForm/SignUpForm';
+import { Link } from 'react-router-dom';
 
 const SignUpFormPage = () => {
   return (
@@ -12,9 +13,9 @@ const SignUpFormPage = () => {
         <SignUpForm />
         <div className={styles.Container_logn_in}>
           <p className={styles.Paragraph}>Do you already have an account?</p>
-          <a href="#" className={styles.Link}>
+          <Link to={'/signin'} className={styles.Link}>
             Sign in
-          </a>
+          </Link>
         </div>
       </div>
     </div>

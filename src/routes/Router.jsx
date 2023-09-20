@@ -27,7 +27,6 @@ const Router = () => {
             <PublicRoute component={WelcomePage} redirect={ROUTES.MainPage} />
           }
         />
-
         <Route
           path={ROUTES.SignUpPage}
           element={

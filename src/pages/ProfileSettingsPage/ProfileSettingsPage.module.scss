@@ -3,6 +3,7 @@
 
 .container {
   @include desktop-only {
+    display: flex;
     margin-top: 20px;
     margin-left: 34px;
     margin-right: 32px;
@@ -18,16 +19,27 @@
 }
 
 .containerTitle {
-  button {
-    font-size: 14px;
-  }
   h2 {
     font-size: 30px;
     font-weight: 500;
   }
-  @include tablet-and-desktop {
-    display: flex;
-    justify-content: space-between;
+  @include desktop-only {
+    width: 50%;
+  }
+}
+
+.photoBox {
+  @include desktop-only {
+    margin-right: 160px;
+  }
+}
+
+.button {
+  font-size: 14px;
+  position: relative;
+  @include desktop-only {
+    margin-bottom: 16px;
+    text-align: right;
   }
 }
 
@@ -41,6 +53,21 @@
     height: 36px;
     border-radius: 12px;
   }
+
+  @include tablet-only {
+    position: absolute;
+    bottom: 425px;
+    left: 340px;
+  }
+
+  @include mobile-only {
+    position: absolute;
+    top: 1110px;
+
+    width: 300px;
+    height: 36px;
+    border-radius: 12px;
+  }
 }
 
 .saveBtn {
@@ -48,6 +75,21 @@
     margin-left: 12px;
     padding: 8px 10px 8px 10px;
     width: 212px;
+    height: 36px;
+    border-radius: 12px;
+  }
+
+  @include tablet-only {
+    position: absolute;
+    bottom: 425px;
+    left: 550px;
+  }
+
+  @include mobile-only {
+    position: absolute;
+    top: 1070px;
+
+    width: 300px;
     height: 36px;
     border-radius: 12px;
   }
@@ -62,7 +104,6 @@
 .mainImg {
   @include desktop-only {
     margin-top: 24px;
-    margin-left: 150px;
     margin-right: 160px;
     width: 536px;
     height: 538px;
@@ -81,7 +122,7 @@
   }
 }
 .containerSettings {
-  margin: 16px auto;
+  margin: auto;
 }
 
 .containerSetting {
@@ -236,37 +277,6 @@
   text-indent: 20px;
   margin-right: 10px;
   margin-top: 24px;
-}
-
-@include mobile-only {
-  .cancelBtn,
-  .saveBtn {
-    visibility: hidden;
-    pointer-events: none;
-    display: none;
-  }
-
-  .mobileBtn {
-    display: grid;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  .cancelBtnM {
-    color: $primary-white;
-    background-color: $primary-black;
-
-    padding: 8px 10px 8px 10px;
-    width: 300px;
-    height: 36px;
-    border-radius: 12px;
-  }
-
-  .saveBtnM {
-    padding: 8px 10px 8px 10px;
-    width: 300px;
-    height: 36px;
-    border-radius: 12px;
-  }
 }
 
 @include tablet-and-desktop {

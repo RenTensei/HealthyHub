@@ -3,14 +3,13 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { activityLevels } from './activityLevel';
 import ProfileSettingsSchema from './ProfileSettingsSchema';
 import picture from './image/Setting.png';
-import svg from './image/direct-inbox.png';
+
 import style from './ProfileSettingsPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoggedIn } from '@/store/features/auth/selectors';
+import { selectUserInfo } from '@/store/features/auth/selectors';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as AddPhotoSvg } from '@/assets/svg/direct-inbox.svg';
 import defaultPhoto from './image/photo-user.jpg';
-import { ROUTES } from '@/constants/routes';
 
 function ProfileSettingsPage() {
   const dispatch = useDispatch();
@@ -33,7 +32,7 @@ function ProfileSettingsPage() {
 
   // const [values, setValues] = useState({ ...initialValues });
 
-  const userInfo = useSelector(state => state.auth.user);
+  const userInfo = useSelector(selectUserInfo);
 
   console.log(userInfo);
 

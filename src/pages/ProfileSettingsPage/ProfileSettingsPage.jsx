@@ -6,36 +6,44 @@ import picture from './image/Setting.png';
 import svg from './image/direct-inbox.png';
 import style from './ProfileSettingsPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectIsLoggedIn, selectToken } from '@/store/features/auth/selectors';
+import { selectIsLoggedIn } from '@/store/features/auth/selectors';
 import { useNavigate } from 'react-router-dom';
 import { ReactComponent as AddPhotoSvg } from '@/assets/svg/direct-inbox.svg';
 import defaultPhoto from './image/photo-user.jpg';
+import { ROUTES } from '@/constants/routes';
 
 function ProfileSettingsPage() {
   const dispatch = useDispatch();
-  const token = useSelector(selectToken);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
   const navigate = useNavigate();
 
-  const [initialValues, setInitialValues] = useState({
-    name: '',
-    age: '',
-    height: '',
-    gender: '',
-    weight: '',
-    activityLevel: '',
-    photo: null,
-  });
+  // const isLoggedIn = useSelector(selectIsLoggedIn);
 
-  const [values, setValues] = useState({ ...initialValues });
+  // const { name, age, height, gender, weight, height, physicalActivityRatio } =
+  //   useSelector(state => state.auth.user);
+
+  // const [initialValues, setInitialValues] = useState({
+  //   name: '',
+  //   age: '',
+  //   height: '',
+  //   gender: '',
+  //   weight: '',
+  //   activityLevel: '',
+  //   photo: null,
+  // });
+
+  // const [values, setValues] = useState({ ...initialValues });
+
+  const userInfo = useSelector(state => state.auth.user);
+
+  console.log(userInfo);
 
   const handleSave = values => {
-    navigate('/main');
+    console.log(values);
   };
 
   const handleCancel = () => {
     navigate('/main');
-    setValues({ ...initialValues });
+    // setValues({ ...initialValues });
   };
 
   const handlePhotoChange = (e, setFieldValue) => {
@@ -62,7 +70,7 @@ function ProfileSettingsPage() {
         </div>
         <div className={style.containerSettings}>
           <Formik
-            initialValues={initialValues}
+            initialValues={userInfo}
             validationSchema={ProfileSettingsSchema}
             onSubmit={handleSave}
           >
@@ -100,12 +108,7 @@ function ProfileSettingsPage() {
                           className={style.photo}
                         />
                       </div>
-                      {/* <img
-                        src={svg}
-                        alt="Profile"
-                        className={style.svg}
-                        style={{ width: '16px', height: '16px' }}
-                      /> */}
+
                       <AddPhotoSvg
                         className={style.svg}
                         width={16}

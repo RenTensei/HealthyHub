@@ -29,9 +29,11 @@ const YourActivityPage = () => {
         ...signUpData,
         physicalActivityRatio: Number(e.target.physicalActivityRatio.value),
       })
-    ).then(() => {
-      navigate('/main');
-    });
+    )
+      .then(() => {
+        navigate('/main');
+      })
+      .catch();
 
     // console.log(signUpData);
   };

@@ -1,8 +1,8 @@
 import axios from 'axios';
 
 export const axiosAuth = axios.create({
-  // baseURL: 'https://healthyhub.onrender.com/api/',
-  baseURL: 'http://localhost:3000/api/',
+  baseURL: 'https://healthyhub.onrender.com/api/',
+  // baseURL: 'http://localhost:3000/api/',
   timeout: 3000,
 });
 

@@ -2,6 +2,7 @@ import Diary from './components/Diary';
 import Water from './components/Water';
 import Food from './components/Food';
 import DailyGoal from './DailyGoal';
+import RecommendedFood from './components/RecommendedFood';
 // import ModalWaterIntake from './Modals/ModalWaterIntake/ModalWaterIntake';
 // import ModalRecordMeal from './Modals/ModalRecordMeal/ModalRecordMeal';
 import styles from './MainPage.module.scss';
@@ -42,7 +43,10 @@ const MainPage = () => {
         </div>
         <Food />
       </div>
-      <Diary />
+      <div className={styles.diary_recfood_container}>
+        <Diary />
+        <RecommendedFood />
+      </div>
     </>
   );
 };

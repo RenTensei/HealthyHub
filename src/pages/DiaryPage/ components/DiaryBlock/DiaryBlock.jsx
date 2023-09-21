@@ -1,8 +1,9 @@
 import styles from './DiaryBlock.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { ReactComponent as Edit } from '@/assets/svg/Edit.svg';
-// import { nanoid } from 'nanoid';
-import { useSelector } from 'react-redux';
+import { nanoid } from 'nanoid';
+// import { useSelector } from 'react-redux';
+// import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 
 const DiaryBlock = ({
   alt,
@@ -10,13 +11,98 @@ const DiaryBlock = ({
   Carbonohidrates = '0',
   Protein = '0',
   fat = '0',
-  product,
   srcSet,
 }) => {
-const items = useSelector(state => state.foodIntake.items);
-console.log("items", items)
+  const meal = [
+    {
+      _id: '650744a45349ba95e795e4eb',
+      mealName: 'toast',
+      mealType: 'Dinner',
+      carbonohidrates: 45,
+      protein: 10,
+      fat: 110,
+      calories: 460,
+      consumer: '6506e67b65a5957c6d9cbd33',
+      createdAt: '2023-09-17T18:25:40.001Z',
+      updatedAt: '2023-09-17T18:25:40.001Z',
+    },
+    {
+      _id: '650744a45349ba95e795e4eb',
+      mealName: 'toast',
+      mealType: 'Dinner',
+      carbonohidrates: 45,
+      protein: 10,
+      fat: 110,
+      calories: 460,
+      consumer: '6506e67b65a5957c6d9cbd33',
+      createdAt: '2023-09-17T18:25:40.001Z',
+      updatedAt: '2023-09-17T18:25:40.001Z',
+    },
+    {
+      _id: '650744a75349ba95e795e4ee',
+      mealName: 'toast',
+      mealType: 'Dinner',
+      carbonohidrates: 45,
+      protein: 10,
+      fat: 110,
+      calories: 460,
+      consumer: '6506e67b65a5957c6d9cbd33',
+      createdAt: '2023-09-17T18:25:43.236Z',
+      updatedAt: '2023-09-17T18:25:43.236Z',
+    },
+    {
+      _id: '650744ac5349ba95e795e4f1',
+      mealName: 'toast',
+      mealType: 'Lunch',
+      carbonohidrates: 45,
+      protein: 10,
+      fat: 110,
+      calories: 460,
+      consumer: '6506e67b65a5957c6d9cbd33',
+      createdAt: '2023-09-17T18:25:48.349Z',
+      updatedAt: '2023-09-17T18:25:48.349Z',
+    },
+    {
+      _id: '650744ad5349ba95e795e4f4',
+      mealName: 'toast',
+      mealType: 'Lunch',
+      carbonohidrates: 45,
+      protein: 10,
+      fat: 110,
+      calories: 460,
+      consumer: '6506e67b65a5957c6d9cbd33',
+      createdAt: '2023-09-17T18:25:49.729Z',
+      updatedAt: '2023-09-17T18:25:49.729Z',
+    },
+  ];
+  // const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
+  // const items = useSelector(state => state.foodIntake.items);
+  function newFood(foodArray) {
+    const newArray =
+      foodArray.length <= 3
+        ? [
+            ...foodArray,
+            ...Array(1).fill({
+              showButton: true,
+            }),
+            ...Array(3 - foodArray.length).fill({
+              mealName: '',
+              carbonohidrates: '',
+              protein: '',
+              fat: '',
+            }),
+          ]
+        : [
+            ...foodArray,
+            ...Array(1).fill({
+              showButton: true,
+            }),
+          ];
+    return newArray;
+  }
   const imgSrc = srcSet.split(' ')[0];
   const isMobile = useMediaQuery({ maxWidth: 833 });
+
   return (
     <div>
       <div className={styles.containerBlockHeader}>
@@ -37,139 +123,74 @@ console.log("items", items)
           </p>
         </div>
       </div>
-      <div className={styles.blocks}>
-        <div className={styles.blockItems}>
-          <ul className={styles.blockItemsGrup}>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-          </ul>
-        </div>
-        <div className={styles.listItems}>
-          <div className={styles.listProduct}>
-          {!product ? (
-              <button className={styles.button}>+ Record your meal</button>
-            ) : (
+      <ol className={`${styles.blocks}`}>
+        {newFood(meal).map(el => {
+          return !el.showButton ? (
+            <li key={nanoid()} className={styles.listProduct}>
               <div className={styles.foodContainer}>
                 <div className={styles.containerFoodName}>
-                  <h2 className={styles.foodName}>{product}</h2>
-                  {product && isMobile && (
+                  <h2 className={styles.foodName}>{el.mealName}</h2>
+                  {el.mealName && isMobile && (
                     <button className={styles.bettonEdit}>
-                      <Edit
-                        style={{ marginRight: '6px' }}
-                      />
+                      <Edit style={{ marginRight: '6px' }} />
                       Edit
                     </button>
                   )}
                 </div>
                 <div className={styles.caloriesProduct}>
-                  {product && isMobile ? (
+                  {el.mealName && isMobile ? (
                     <>
                       <p className={styles.calorieas}>
                         Carb:{' '}
                         <span style={{ color: '#ffffff' }}>
-                          {Carbonohidrates}
+                          {el.carbonohidrates}
                         </span>
                       </p>
                       <p className={styles.calorieas}>
                         Prot:{' '}
-                        <span style={{ color: '#ffffff' }}>{Protein}</span>
+                        <span style={{ color: '#ffffff' }}>{el.protein}</span>
                       </p>
                       <p className={styles.calorieas}>
-                        Fat: <span style={{ color: '#ffffff' }}>{fat}</span>
+                        Fat: <span style={{ color: '#ffffff' }}>{el.fat}</span>
                       </p>
                     </>
                   ) : (
                     <>
                       <p className={styles.calorieas}>
                         <span style={{ color: '#ffffff' }}>
-                          {Carbonohidrates}
+                          {el.carbonohidrates}
                         </span>
                       </p>
                       <p className={styles.calorieas}>
-                        <span style={{ color: '#ffffff' }}>{Protein}</span>
+                        <span style={{ color: '#ffffff' }}>{el.protein}</span>
                       </p>
                       <p className={styles.calorieas}>
-                        <span style={{ color: '#ffffff' }}>{fat}</span>
+                        <span style={{ color: '#ffffff' }}>{el.fat}</span>
                       </p>
                     </>
                   )}
-
-                  {product && !isMobile && (
+                  {el.mealName && !isMobile && (
                     <button className={styles.bettonEdit}>
-                      <Edit
-                        style={{ marginRight: '6px' }}
-                      />
+                      <Edit style={{ marginRight: '6px' }} />
                       Edit
                     </button>
                   )}
                 </div>
               </div>
-            )}
-             {/* {!product ? (
-              <button className={styles.button}>+ Record your meal</button>
-            ) : (
-              <div className={styles.foodContainer}>
-                <div className={styles.containerFoodName}>
-                  <h2 className={styles.foodName}>{product}</h2>
-                  {product && isMobile && (
-                    <button className={styles.bettonEdit}>
-                      <Edit
-                        style={{ marginRight: '6px' }}
-                      />
-                      Edit
-                    </button>
-                  )}
-                </div>
-                <div className={styles.caloriesProduct}>
-                  {product && isMobile ? (
-                    <>
-                      <p className={styles.calorieas}>
-                        Carb:{' '}
-                        <span style={{ color: '#ffffff' }}>
-                          {Carbonohidrates}
-                        </span>
-                      </p>
-                      <p className={styles.calorieas}>
-                        Prot:{' '}
-                        <span style={{ color: '#ffffff' }}>{Protein}</span>
-                      </p>
-                      <p className={styles.calorieas}>
-                        Fat: <span style={{ color: '#ffffff' }}>{fat}</span>
-                      </p>
-                    </>
-                  ) : (
-                    <>
-                      <p className={styles.calorieas}>
-                        <span style={{ color: '#ffffff' }}>
-                          {Carbonohidrates}
-                        </span>
-                      </p>
-                      <p className={styles.calorieas}>
-                        <span style={{ color: '#ffffff' }}>{Protein}</span>
-                      </p>
-                      <p className={styles.calorieas}>
-                        <span style={{ color: '#ffffff' }}>{fat}</span>
-                      </p>
-                    </>
-                  )}
-
-                  {product && !isMobile && (
-                    <button className={styles.bettonEdit}>
-                      <Edit
-                        style={{ marginRight: '6px' }}
-                      />
-                      Edit
-                    </button>
-                  )}
-                </div>
-              </div>
-            )} */}
-            {product && <button className={styles.buttonLast}>+ Record your meal</button>}
-          </div>
-        </div>
-      </div>
+            </li>
+          ) : (
+            <li key={nanoid()} className={styles.listProduct}>
+              <button
+                key={nanoid()}
+                name={el.mealType}
+                className={styles.button}
+              >
+                + Record your meal
+              </button>
+            </li>
+          );
+        })}
+      </ol>
     </div>
   );
 };

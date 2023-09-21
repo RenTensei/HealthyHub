@@ -1,5 +1,19 @@
 @import '@/scss//base/mixins';
 @import '@/scss/base/variables';
+
+ol {
+  counter-reset: ol-numbers;
+}
+ol li{
+  position: relative;
+}
+
+ol li::before {
+  counter-increment: ol-numbers;
+  content: counter(ol-numbers);
+
+}
+
 .blockHeader {
   margin-top: 16px;
   align-items: center;
@@ -69,21 +83,21 @@
   font-weight: 500;
 }
 .blocks {
+  display: flex;
+  flex-direction: column;
+ 
   @include mobile-only {
     width: 300px;
     height: 232px;
+    gap: 20px;
+
   }
 
   border-radius: 12px;
   background-color: $primary-black-2;
   margin-top: 12px;
 
-  .blocks:not(:last-child) {
-    margin-bottom: 24px;
-  }
   padding: 16px 12px;
-
-  display: flex;
 
   overflow-y: scroll;
 
@@ -96,12 +110,14 @@
     height: 240px;
     padding: 32px 14px;
     width: 780px;
+    gap: 15px;
   }
 
   @include desktop-only {
     height: 240px;
     padding: 32px 14px;
     width: 676px;
+    gap: 25px;
   }
 }
 .blockItems {
@@ -132,6 +148,7 @@
 }
 
 .listProduct {
+  display: flex;
   @include tablet-only {
     margin-top: 9px;
   }
@@ -141,7 +158,8 @@
   background-color: transparent;
   color: $primary-green-lite;
   padding: 0px;
- 
+  margin-left: 25px;
+  margin-top: 2px;
 }
 
 .containerBlockHeader {
@@ -186,33 +204,37 @@
 // .caloriesItem {
 //   display: flex;
 // }
-.calorieas{
-  color:  $primary-grey;;
-font-family: $font-regular;
-font-size: 12px;
-font-style: normal;
-font-weight: 400;
-line-height: 18px; /* 150% */
+.calorieas {
+  color: $primary-grey;
+  font-family: $font-regular;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 150% */
 }
 
-.foodContainer{
+.foodContainer {
+  margin-top: 2px;
+  margin-left: 20px;
+  width: 100%;
   @include tablet-and-desktop {
     display: flex;
     justify-content: space-between;
   }
-}
-.foodContainer:not(:first-child) {
-  @include mobile-only {
-    margin-top: 22px;
+  .foodContainer:not(:first-child) {
+  
+    @include mobile-only {
+      margin-top: 22px;
+    }
+    margin-top: 25px;
+  
+    @include desktop-only {
+      margin-top: 33px;
+    }
   }
-  margin-top: 25px;
-
-  @include desktop-only {
-    margin-top: 33px;
-  }
 }
 
-.buttonLast{
+.buttonLast {
   background-color: transparent;
   margin-top: 23px;
   padding: 0px;
@@ -224,3 +246,5 @@ line-height: 18px; /* 150% */
     margin-top: 35px;
   }
 }
+
+

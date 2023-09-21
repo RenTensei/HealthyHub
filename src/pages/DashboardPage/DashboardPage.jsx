@@ -13,6 +13,9 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import Modal from "./Modal";
+import { ReactComponent as GoBackBtn } from '@/assets/svg/arrow-right-liqht.svg';
+import { ReactComponent as ToggleBtn } from '@/assets/svg/arrow-down.svg';
+import { ReactComponent as CloseCircle } from '@/assets/svg/close-circle.svg';
 
 ChartJS.register(
   CategoryScale,
@@ -23,6 +26,18 @@ ChartJS.register(
   Tooltip,
   Legend
 );
+
+const GraphTooltip = () => {
+  return (
+    <div className={styles.graphTooltip}>
+      <button className={styles.closeBtn}>
+        <CloseCircle width={16} height={16} stroke={'#B6B6B6'} />
+      </button>
+      <p>1750</p>
+      <p>calories</p>
+    </div>
+  );
+};
 
 export const options = {
   responsive: true,
@@ -35,13 +50,42 @@ export const options = {
       display: false,
       text: 'Chart.js Line Chart',
     },
+    // tooltip: {
+    //     enabled: false,
+    //     external: customTooltip,
+    //   },
   },
   indexAxis: 'x',
-    scales: {
-      x: {
-        beginAtZero: false
+  scales: {
+    x: {
+      ticks: {
+        padding: 6,
+      },
+      beginAtZero: false,
+      grid: {
+        color: '#292928',
+        offset: true,
+        tickLength: 0,
+      },
+      border: {
+        color: '#292928',
       }
-    }
+    },
+    y: {
+      ticks: {
+        stepSize: 1000,
+        padding: 8,
+      },
+      beginAtZero: true,
+      grid: {
+        color: '#292928',
+        tickLength: 0,
+      },
+      border: {
+        color: '#292928',
+      }
+    },
+  },
 };
 
 // const labelsMonthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
@@ -53,22 +97,24 @@ export const data = {
   datasets: [
     {
       label: 'Dataset 1',
-      data: [1500, 1450, 1300, 1210, 1560, 1700, 1000, 2000, 1500, 1120, 2000, 1200, 1600, 1500, 1510, 1200, 1800, 2000, 1200, 1200, 1400, 2000, 1300, 2500, 1000, 3000, 2500, 1200, 1500, 3000, 2100],
+      data: [1500, 1450, 1300, 1210, 1560, 1700, 1000, 0, 1500, 1120, 2000, 1200, 1600, 1500, 1510, 1200, 1800, 2000, 1200, 1200, 1400, 2000, 1300, 2500, 1000, 3000, 2500, 1200, 1500, 3000, 2100],
       fill: 'origin',
       borderColor: '#E3FFA8',
-      tension: 0.2,
+      tension: 0.4,
       backgroundColor: '#292928',
-      pointBackgroundColor: '#E3FFA8',
-      pointRadius: '5',
-      spanGaps: true,
-      cubicInterpolationMode: 'default'
+      borderWidth: 1,
+      pointRadius: 0,
+      pointHoverBackgroundColor: '#E3FFA8',
+      hitRadius: 5,
+      pointHoverRadius: 5,
     },
   ],
 };
 
 const DashboardPage = () => {
   const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? "")
+  const backLinkLocationRef = useRef(location.state?.from ?? "");
+
   const [showModal, setShowModal] = useState(false);
   const [showLastMonth, setShowLastMonth] = useState(true);
 
@@ -90,39 +136,47 @@ const DashboardPage = () => {
 
   return (
     <section>
-      <div className={styles.lastPeriodField}>
-        <Link to={backLinkLocationRef.current}>Go back</Link>
-        <button type="button" className={styles.lastButton} onClick={toggleModal}>
-        {showLastMonth ? "Last month" : "Last year"}
-      </button>
-      {showModal &&
-        <Modal onClose={closeModal}>
-          <button type="button" className={styles.lastButton} onClick={handleOnClick}>
-            {showLastMonth ? "Last year" : "Last month"}
+      <div className={styles.titleField}>
+        <div className={styles.lastPeriodField}>
+          <Link to={backLinkLocationRef.current} className={styles.dashboardLink}><GoBackBtn width={16} height={16} className={styles.goBackBtn} /></Link>
+          <h2 className={styles.dashboardTitle}>{showLastMonth ? "Last month" : "Last year"}</h2>
+          <button type="button" className={styles.toggleBtn} onClick={toggleModal}>
+            <ToggleBtn width={16} height={16} stroke={'#E3FFA8'} />
           </button>
-        </Modal>}
+          {showModal &&
+            <Modal onClose={closeModal}>
+              <button type="button" className={styles.lastButton} onClick={handleOnClick}>
+                {showLastMonth ? "Last year" : "Last month"}
+              </button>
+            </Modal>}
+        </div>
+        <h3 className={styles.monthTitle}>November</h3>
       </div>
       {showLastMonth ?
         <ul>
-        <li>
-          <h2>Calories</h2>
-            <p>Average value: <span>1700 kg</span></p>
-            <div className={styles.chart}><Line options={options} data={data} /></div>
-          
-        </li>
-        <li>
-          <h2>Water</h2>
-          <p>Average value: <span>1700 ml</span></p>
-        </li>
-        <li>
-          <h2>Weight</h2>
+          <li>
+            <div className={styles.chartTitleField}>
+              <GraphTooltip/>
+              <h4 className={styles.chartTitle}>Calories</h4>
+              <p className={styles.average}>Average value: <span className={styles.averageValue}>1700 kg</span></p>
+            </div>
+            <div className={styles.chart}>
+              <Line options={options} data={data} />
+            </div>
+          </li>
+          <li>
+            <h4>Water</h4>
+            <p>Average value: <span>1700 ml</span></p>
+          </li>
+          <li>
+            <h4>Weight</h4>
             <p>Average value: <span>68 kg</span></p>
             <ul>
-              {labelsDays.map(day => <li key={day}>{day}</li>)}
-              {weightTest.map(weight => <li key={weight}>{weight}</li>)}
+              {labelsDays.map((day, index) => <li key={index}>{day}</li>)}
+              {weightTest.map((weight, index) => <li key={index}>{weight}</li>)}
             </ul>
-        </li>
-      </ul> : <p>Last year</p>}
+          </li>
+        </ul> : <p>Last year</p>}
     </section>
   );
 };

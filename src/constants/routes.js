@@ -1,8 +1,9 @@
 export const ROUTES = {
   HomePage: '/',
-  MainPage: 'main',
-  SignUpPage: 'signup',
-  SignInPage: 'signin',
+  MainPage: '/main',
+  SignUpPage: '/signup',
+  SignInPage: '/signin',
+  ForgotYourPasswordPage: '/forgotyourpassword',
   DiaryPage: 'diary',
   DashboardPage: 'dashboard',
   RecommendedFoodPage: 'recommended-food',

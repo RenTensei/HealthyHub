@@ -8,23 +8,77 @@ const WelcomePage = lazy(() => import('@/pages/WelcomePage'));
 const MainPage = lazy(() => import('@/pages/MainPage'));
 const SignUpPage = lazy(() => import('@/pages/SignUpPage'));
 const SignInPage = lazy(() => import('@/pages/SignInPage'));
+const ForgotYourPasswordPage = lazy(() => import('@/pages/ForgotPasswordPage'));
 const DiaryPage = lazy(() => import('@/pages/DiaryPage'));
 const DashboardPage = lazy(() => import('@/pages/DashboardPage'));
 const ProfileSettingsPage = lazy(() => import('@/pages/ProfileSettingsPage'));
+
+import { PublicRoute } from './PublicRoute';
+import { PrivateRoute } from './PrivateRoute';
 
 const Router = () => {
   return (
     <Routes>
       <Route path={ROUTES.HomePage} element={<SharedLayout />}>
-        <Route index element={<WelcomePage />} />
-        <Route path={ROUTES.MainPage} element={<MainPage />} />
-        <Route path={ROUTES.SignUpPage} element={<SignUpPage />} />
-        <Route path={ROUTES.SignInPage} element={<SignInPage />} />
-        <Route path={ROUTES.DiaryPage} element={<DiaryPage />} />
-        <Route path={ROUTES.DashboardPage} element={<DashboardPage />} />
+        {/* public routes */}
+        <Route
+          index
+          element={
+            <PublicRoute component={WelcomePage} redirect={ROUTES.MainPage} />
+          }
+        />
+        <Route
+          path={ROUTES.SignUpPage}
+          element={
+            <PublicRoute component={SignUpPage} redirect={ROUTES.MainPage} />
+          }
+        />
+        <Route
+          path={ROUTES.SignInPage}
+          element={
+            <PublicRoute component={SignInPage} redirect={ROUTES.MainPage} />
+          }
+        />
+
+        {/* private routes */}
+        <Route
+          path={ROUTES.MainPage}
+          element={
+            <PrivateRoute component={MainPage} redirect={ROUTES.SignInPage} />
+          }
+        />
+        <Route
+          path={ROUTES.ForgotYourPasswordPage}
+          element={
+            <PrivateRoute
+              component={ForgotYourPasswordPage}
+              redirect={ROUTES.SignInPage}
+            />
+          }
+        />
+        <Route
+          path={ROUTES.DiaryPage}
+          element={
+            <PrivateRoute component={DiaryPage} redirect={ROUTES.SignInPage} />
+          }
+        />
+        <Route
+          path={ROUTES.DashboardPage}
+          element={
+            <PrivateRoute
+              component={DashboardPage}
+              redirect={ROUTES.SignInPage}
+            />
+          }
+        />
         <Route
           path={ROUTES.ProfileSettingsPage}
-          element={<ProfileSettingsPage />}
+          element={
+            <PrivateRoute
+              component={ProfileSettingsPage}
+              redirect={ROUTES.SignInPage}
+            />
+          }
         />
       </Route>
     </Routes>

@@ -25,10 +25,8 @@ const Modal = ({onClose, children}) => {
   };
 
   return (
-    <div  onClick={(e) => handleBackdropClick(e)}>
-      <div className={styles.modal}>
-        {children}
-      </div>
+    <div onClick={(e) => handleBackdropClick(e)} className={styles.modal}>
+      {children}
     </div>
   );
 };

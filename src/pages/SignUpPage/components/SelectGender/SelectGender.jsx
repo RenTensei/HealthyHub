@@ -9,23 +9,28 @@ import image6 from '@/pages/SignUpPage/images/SelectGender-mob@2x.png';
 import styles from './selectGender.module.scss';
 import { Formik, Form, Field } from 'formik';
 import { object, number, string } from 'yup';
+import { useSignUpContext } from '@/hooks/useSignUpContext';
 
 let userSchema = object({
-  topping: string().required(),
+  gender: string().required(),
   age: number().required().positive().integer().max(100),
 });
 
 const initialValues = {
-  topping: '',
+  gender: '',
   age: '',
 };
 
 const SelectGender = () => {
+  const { prevStage, nextStage, addSignUpData } = useSignUpContext();
 
-  const handleSubmite = (values, { resetForm }) => {
-    (JSON.stringify(values, null, 2));
-    console.log(values);
-    resetForm();
+  const handleSubmit = (values, { resetForm }) => {
+    addSignUpData(values);
+    nextStage();
+
+    // (JSON.stringify(values, null, 2));
+    // console.log(values);
+    // resetForm();
   };
 
   return (
@@ -58,34 +63,36 @@ const SelectGender = () => {
         <Formik
           initialValues={initialValues}
           validationSchema={userSchema}
-          onSubmit={handleSubmite}
+          onSubmit={handleSubmit}
         >
           <Form className={styles.form_checked}>
             <p className={styles.text}>
               Choose a goal so that we can help you effectively
             </p>
             <p className={styles.desc}>Gender</p>
-            <div  className={styles.container_label_list}>
+            <div className={styles.container_label_list}>
               <div id="my-radio-group" className={styles.container_label_item}>
-                <div role="group" aria-labelledby="my-radio-group" className={styles.container_label}>
-                  <label 
-                  className={styles.list}>
+                <div
+                  role="group"
+                  aria-labelledby="my-radio-group"
+                  className={styles.container_label}
+                >
+                  <label className={styles.list}>
                     <Field
                       className={styles.item}
                       type="radio"
-                      name="topping"
+                      name="gender"
                       value="Male"
                     />
                     Male
                   </label>
                 </div>
                 <div className={styles.container_label_center}>
-                  <label 
-                  className={styles.list}>
+                  <label className={styles.list}>
                     <Field
                       className={styles.item}
                       type="radio"
-                      name="topping"
+                      name="gender"
                       value="Female"
                     />
                     Female
@@ -108,7 +115,11 @@ const SelectGender = () => {
             <button type="submit" className={styles.btn}>
               Next
             </button>
-            <button type="submit" className={styles.btn_back}>
+            <button
+              type="button"
+              className={styles.btn_back}
+              onClick={prevStage}
+            >
               Back
             </button>
           </Form>

@@ -87,13 +87,7 @@
   overflow: auto;
 
   &::-webkit-scrollbar {
-    width: 8px;
-    opacity: 0;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 12px;
-    background-color: $primary-white;
+    width: 0;
   }
 
   @include tablet-only {

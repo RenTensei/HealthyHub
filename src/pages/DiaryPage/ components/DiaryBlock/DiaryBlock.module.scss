@@ -197,20 +197,13 @@ ol li::before {
   display: flex;
 }
 
-// .productName {
-//   display: flex;
-// }
-
-// .caloriesItem {
-//   display: flex;
-// }
 .calorieas {
   color: $primary-grey;
   font-family: $font-regular;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
-  line-height: 18px; /* 150% */
+  line-height: 18px;
 }
 
 .foodContainer {

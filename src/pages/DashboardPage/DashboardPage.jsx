@@ -1,5 +1,5 @@
 import styles from './DashboardPage.module.scss';
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   Chart as ChartJS,

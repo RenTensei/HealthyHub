@@ -116,19 +116,19 @@
 .item__page {
   display: flex;
   width: 300px;
-  margin-bottom: 20px;
+  margin-bottom: 20px !important;
   color: $primary-white;
   background-color: $primary-black-2;
   border-radius: 12px;
 
   @include tablet-only {
     width: 380px;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
   }
 
   @include desktop-only {
     width: 328px;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
   }
 }
 

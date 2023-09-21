@@ -3,8 +3,8 @@
 
 .header_modal_user_tablet {
   position: absolute;
-  top: 13.5%;
-  left: 8%;
+  top: 60px;
+  left: 5px;
   width: 300px;
   height: 184px;
   padding-top: 24px;
@@ -13,6 +13,9 @@
   border-radius: $border-default;
   background-color: $primary-black-2;
   z-index: 1200;
+  @include tablet-and-desktop {
+    display: none;
+  }
 }
 
 .header_user_bnt:not(:last-child) {
@@ -26,13 +29,12 @@
   background-color: transparent;
 }
 
-.header_modal_bnt_close{
+.header_modal_bnt_close {
   position: absolute;
   width: 16px;
   background-color: transparent;
-  top:15px;
+  top: 15px;
   left: 250px;
-  
 }
 
 .header_user_bnt {
@@ -77,6 +79,6 @@
   color: $primary-grey;
   margin-left: 4px;
 }
-.header_modal_bnt{
+.header_modal_bnt {
   position: absolute;
 }

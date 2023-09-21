@@ -5,8 +5,12 @@ import { useEffect } from 'react';
 import SettingsSvg from '../svg components/SettingsSvg';
 import LogOutSvg from '../svg components/LogOutSvg';
 import OutsideClickHandler from 'react-outside-click-handler';
+import { useDispatch } from 'react-redux';
+import { logOut } from '@/store/features/auth/thunks';
 
 const ModalUser = ({ onClose }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -37,12 +41,17 @@ const ModalUser = ({ onClose }) => {
             </Link>
           </li>
           <li>
-            <Link to={ROUTES.Home}>
-              <div className={styles.header_modal_user_item}>
+            <div>
+              <a
+                onClick={() => {
+                  dispatch(logOut());
+                }}
+                className={styles.header_modal_user_item}
+              >
                 <LogOutSvg />
                 <p className={styles.header_modal_user_text}>Log out</p>
-              </div>
-            </Link>
+              </a>
+            </div>
           </li>
         </ul>
       </div>

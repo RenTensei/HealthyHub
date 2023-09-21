@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 // import { getMyFoodIntake } from '@/store/features/foodIntake/thunks';
 import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 
-const Diary = () => {
+const Diary = ({ openModal }) => {
   const foodIntakeNutrientsTotal = useSelector(selectNutrientSums);
 
   const mealTypeSrcSets = {
@@ -30,6 +30,7 @@ const Diary = () => {
           key={item.mealType}
           intakeInfo={item}
           srcSet={mealTypeSrcSets[item.mealType]}
+          openModal={openModal}
         />
       ))}
 

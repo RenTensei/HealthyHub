@@ -1,22 +1,121 @@
 @import '@/scss/base/variables';
 @import '@/scss/base/mixins';
 
+.titleField {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 19px;
+};
+
 .lastPeriodField {
   position: relative;
+  display: flex;
+  align-items: center;
+};
+
+.dashboardLink {
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+};
+
+.dashboardTitle {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-right: 6px;
+};
+
+.toggleBtn {
+  display: block;
+  width: 16px;
+  height: 16px;
+  padding: 0px;
+  background-color: transparent;
 };
 
 .modal {
   position: absolute;
-  bottom: 0;
-  left: 36px;
-  right: auto;
-  bottom: auto;
+  top: 36px;
+  left: 24px;
+
 };
 
 .lastButton {
   color: #FFF;
   background-color: #050505;
-  font-size: 24px;
+  text-align: start;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1.45;
+
+  width: 212px;
+  padding: 16px 12px;
+  border-radius: 12px;
+  background: #0F0F0F;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
+};
+
+.monthTitle {
+  text-align: right;
+    font-size: 16px;
     font-weight: 500;
-    line-height: 1.25;
+    line-height: 1.375;
+};
+
+.chartTitle {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.44;
+};
+
+.chartTitleField {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+};
+
+.average {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.43;
+};
+
+.averageValue {
+  color: $primary-grey;
+  font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 1.43;
+}
+
+.chart {
+  width: 676px;
+  background-color: #0F0F0F;
+  padding: 25px 20px;
+  border-radius: 12px;
+  // overflow-x: scroll;
+};
+
+.graphTooltip {
+  width: 104px;
+  padding: 6px;
+  background-color: $primary-black-2;
+  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
+};
+
+.closeBtn {
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  margin-left: 76px;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
 };

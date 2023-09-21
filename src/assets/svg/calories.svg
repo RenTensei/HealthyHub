@@ -1,6 +1,4 @@
-const CaloriesSVG = () => {
-  return (
-    <svg
+<svg
       xmlns="http://www.w3.org/2000/svg"
       width="80"
       height="80"
@@ -26,7 +24,3 @@ const CaloriesSVG = () => {
         strokeMiterlimit="10"
       />
     </svg>
-  );
-};
-
-export default CaloriesSVG;

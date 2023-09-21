@@ -1,6 +1,6 @@
 import styles from './ModalWaterIntake.module.scss';
 
-const ModalWaterIntake = () => {
+const ModalWaterIntake = ({ hide }) => {
   return (
     <div className={styles.modal_container}>
       <h2 className={styles.title}>Add water intake</h2>
@@ -12,7 +12,9 @@ const ModalWaterIntake = () => {
           placeholder="Enter milliliters"
         />
         <button className={styles.button_confirm}>Confirm</button>
-        <button className={styles.button_cancel}>Cancel</button>
+        <button className={styles.button_cancel} onClick={hide}>
+          Cancel
+        </button>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import styles from './DiaryBlock.module.scss';
 // import PropTypes from 'prop-types';
 
 const DiaryBlock = ({
+  openModal,
   intakeInfo: { mealType, carbonohidrates, protein, fat },
   srcSet,
 }) => {
@@ -19,7 +20,9 @@ const DiaryBlock = ({
         <p className={styles.titleName}>{mealType}</p>
       </div>
       {!carbonohidrates && !protein && !fat ? (
-        <button className={styles.button}>+ Record your meal</button>
+        <button className={styles.button} onClick={openModal}>
+          + Record your meal
+        </button>
       ) : (
         <div className={styles.Calorie}>
           <p className={styles.itetemsCalories}>

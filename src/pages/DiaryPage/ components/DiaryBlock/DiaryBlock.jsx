@@ -12,6 +12,7 @@ const DiaryBlock = ({
   Protein = '0',
   fat = '0',
   srcSet,
+  typeName,
 }) => {
   const meal = [
     {
@@ -50,30 +51,19 @@ const DiaryBlock = ({
       createdAt: '2023-09-17T18:25:43.236Z',
       updatedAt: '2023-09-17T18:25:43.236Z',
     },
-    {
-      _id: '650744ac5349ba95e795e4f1',
-      mealName: 'toast',
-      mealType: 'Lunch',
-      carbonohidrates: 45,
-      protein: 10,
-      fat: 110,
-      calories: 460,
-      consumer: '6506e67b65a5957c6d9cbd33',
-      createdAt: '2023-09-17T18:25:48.349Z',
-      updatedAt: '2023-09-17T18:25:48.349Z',
-    },
-    {
-      _id: '650744ad5349ba95e795e4f4',
-      mealName: 'toast',
-      mealType: 'Lunch',
-      carbonohidrates: 45,
-      protein: 10,
-      fat: 110,
-      calories: 460,
-      consumer: '6506e67b65a5957c6d9cbd33',
-      createdAt: '2023-09-17T18:25:49.729Z',
-      updatedAt: '2023-09-17T18:25:49.729Z',
-    },
+   
+    // {
+    //   _id: '650744ad5349ba95e795e4f4',
+    //   mealName: 'toast',
+    //   mealType: 'Lunch',
+    //   carbonohidrates: 45,
+    //   protein: 10,
+    //   fat: 110,
+    //   calories: 460,
+    //   consumer: '6506e67b65a5957c6d9cbd33',
+    //   createdAt: '2023-09-17T18:25:49.729Z',
+    //   updatedAt: '2023-09-17T18:25:49.729Z',
+    // },
   ];
   // const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
   // const items = useSelector(state => state.foodIntake.items);
@@ -180,11 +170,7 @@ const DiaryBlock = ({
             </li>
           ) : (
             <li key={nanoid()} className={styles.listProduct}>
-              <button
-                key={nanoid()}
-                name={el.mealType}
-                className={styles.button}
-              >
+              <button name={typeName} className={styles.button}>
                 + Record your meal
               </button>
             </li>

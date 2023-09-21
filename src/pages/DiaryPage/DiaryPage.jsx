@@ -6,7 +6,7 @@ import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 import { ReactComponent as ArrowRight } from '@/assets/svg/arrow-right.svg';
 const DiaryPage = () => {
   const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
-
+console.log(FoodIntakeNutrientsTotal)
   const mealTypeSrcSets = {
     Breakfast: 'public/Breakfast.png 1x, public/Breakfast@2x.png 2x',
     Lunch: 'public/Lunch.png 1x, public/Lunch@2x.png 2x',
@@ -19,15 +19,14 @@ const DiaryPage = () => {
     <section className={styles.sectionDiary}>
       <div className={styles.containerDiary}>
         <Link to={'/'} className={styles.BeckHome}>
-          <ArrowRight
-            className={styles.arrowBack}
-          />
+          <ArrowRight className={styles.arrowBack} />
           Diary
         </Link>
         <div className={styles.containerBloks}>
           {FoodIntakeNutrientsTotal.map(item => (
             <DiaryBlock
               product={'555'}
+              typeName={item.mealType}
               key={item.mealType}
               data={FoodIntakeNutrientsTotal}
               title={item.mealType}

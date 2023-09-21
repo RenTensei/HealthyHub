@@ -8,24 +8,29 @@ import image6 from '@/pages/SignUpPage/images/BodyParameters-mob@2x.jpg';
 
 import styles from './bodyParameters.module.scss';
 import { Formik, Form, Field } from 'formik';
-import { object, number, } from 'yup';
+import { object, number } from 'yup';
+import { useSignUpContext } from '@/hooks/useSignUpContext';
 
 let userSchema = object({
-  height: number().required(),
-  weight: number().required(),
+  height: number().required().min(140).max(230),
+  weight: number().required().min(40).max(170),
 });
 
 const initialValues = {
   height: '',
   weight: '',
-}
+};
 
 const BodyParameters = () => {
-  
-  const handleSubmite = (values, {resetForm}) => {
-    (JSON.stringify(values, null, 2));
-    console.log(values);
-    resetForm()
+  const { prevStage, nextStage, addSignUpData } = useSignUpContext();
+
+  const handleSubmit = (values, { resetForm }) => {
+    addSignUpData(values);
+    nextStage();
+
+    // (JSON.stringify(values, null, 2));
+    // console.log(values);
+    // resetForm()
   };
 
   return (
@@ -55,13 +60,12 @@ const BodyParameters = () => {
       </div>
       <div className={styles.container_form}>
         <h1 className={styles.title}>Body parameters</h1>
-        <Formik 
-        initialValues={initialValues}
-        validationSchema={userSchema}
-        onSubmit={handleSubmite}>
-          <Form 
-          autoComplete='off'
-          className={styles.form_checked}>
+        <Formik
+          initialValues={initialValues}
+          validationSchema={userSchema}
+          onSubmit={handleSubmit}
+        >
+          <Form autoComplete="off" className={styles.form_checked}>
             <p className={styles.text}>
               Enter your parameters for correct performance tracking
             </p>
@@ -90,7 +94,11 @@ const BodyParameters = () => {
               <button type="submit" className={styles.btn}>
                 Next
               </button>
-              <button type="submit" className={styles.btn_back}>
+              <button
+                type="button"
+                className={styles.btn_back}
+                onClick={prevStage}
+              >
                 Back
               </button>
             </div>

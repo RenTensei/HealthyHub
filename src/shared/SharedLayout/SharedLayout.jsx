@@ -14,26 +14,31 @@ const SharedLayout = () => {
   return (
     <>
       <Header />
+
       <main>
-        <div className={styles.container}>
-          <Suspense fallback={null}>
+        <Suspense fallback={null}>
+          <div className={styles.container}>
+            {/* delete later */}
             <div className={styles.temptext}>
-              временная навигация, для удобства
+              ** delete dev navigation later **
             </div>
             <div className={styles.temp}>
               <Link to={ROUTES.HomePage}>Home</Link>
               <Link to={ROUTES.MainPage}>Main</Link>
               <Link to={ROUTES.SignUpPage}>Signup</Link>
               <Link to={ROUTES.SignInPage}>Signin</Link>
+              <Link to={ROUTES.ForgotYourPasswordPage}>Forgot password</Link>
               <Link to={ROUTES.DiaryPage}>Diary</Link>
               <Link to={ROUTES.DashboardPage}>Dashboard</Link>
               <Link to={ROUTES.ProfileSettingsPage}>Settings</Link>
             </div>
+            {/* delete later */}
             <Outlet />
-          </Suspense>
-        </div>
+          </div>
+        </Suspense>
       </main>
-      <button className="button-default" onClick={toggle}>
+
+      {/* <button className="button-default" onClick={toggle}>
         Show Modal
       </button>
       <Modal isShowing={isShowing} hide={toggle}>
@@ -41,7 +46,7 @@ const SharedLayout = () => {
       </Modal>
       <Modal isShowing={isShowing} hide={toggle}>
         <ModalWaterIntake />
-      </Modal>
+      </Modal> */}
     </>
   );
 };

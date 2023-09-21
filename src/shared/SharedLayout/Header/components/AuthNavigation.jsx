@@ -7,11 +7,11 @@ const AuthNavigation = () => {
   return (
     <div className={styles.header_nav_block}>
       <div className={styles.header_links}>
-        <Link to={ROUTES.SignUpPage} className={styles.header_text}>
+        <Link to={ROUTES.SignInPage} className={styles.header_text}>
           Sign in
         </Link>
         <span className={styles.header_span}>/</span>
-        <Link to={ROUTES.SignInPage} className={styles.header_text}>
+        <Link to={ROUTES.SignUpPage} className={styles.header_text}>
           Sign up
         </Link>
       </div>

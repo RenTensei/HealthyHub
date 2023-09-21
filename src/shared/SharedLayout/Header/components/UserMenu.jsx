@@ -12,6 +12,8 @@ import { ReactComponent as EditSvg } from '@/assets/svg/edit-2.svg';
 
 const UserMenu = () => {
   const { openModal } = useModalContext();
+  const userData = useSelector(state => state.auth.user);
+
   return (
     <div className={styles.header_user}>
       <button
@@ -56,7 +58,7 @@ const UserMenu = () => {
         <div className={styles.header_user_discr}>
           <p className={styles.header_user_text}> Weight</p>
           <div className={styles.header_user_weight_descr}>
-            <p className={styles.header_user_text}> Weigth</p>
+            <p className={styles.header_user_text}>{userData.weight}</p>
             <div className={styles.header_user_discr_choose}>
               <p className={styles.header_user_measure}>kg</p>
               <EditSvg

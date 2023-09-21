@@ -6,9 +6,11 @@ import { useEffect } from 'react';
 import { useModalContext } from '@/context/ModalContext';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSelector } from 'react-redux';
 
 const ModalMenuTablet = ({ open, onClose }) => {
   const { openModal } = useModalContext();
+  const userData = useSelector(state => state.auth.user);
 
   useEffect(() => {
     const handleKeyDown = event => {
@@ -128,7 +130,7 @@ const ModalMenuTablet = ({ open, onClose }) => {
                     <div className={styles.header_user_discr}>
                       <p className={styles.header_user_text}> Weight</p>
                       <div className={styles.header_user_weight_descr}>
-                        <p className={styles.header_user_text}>65</p>
+                        <p className={styles.header_user_text}>{userData.weight}</p>
                         <p className={styles.header_user_measure}>kg</p>
                       </div>
                     </div>

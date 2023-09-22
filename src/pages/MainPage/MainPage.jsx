@@ -53,7 +53,7 @@ const MainPage = () => {
           width={16}
           height={16}
           stroke="#B6B6B6"
-          stroke-width="2px"
+          strokeWidth="2px"
           style={{ transform: 'scale(-1, 1)' }}
         />
       </div>

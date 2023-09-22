@@ -1,4 +1,4 @@
-import styles from './recommendedFoodPage.module.scss';
+import styles from './RecommendedFoodPage.module.scss';
 import imageMobile1 from '../images/recfood-mobile1x.jpg';
 import imageMobile2 from '../images/recfood-mobile2x.jpg';
 import imageTab1 from '../images/recfood-tab1x.jpg';

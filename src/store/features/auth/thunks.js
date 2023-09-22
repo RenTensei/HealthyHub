@@ -61,3 +61,18 @@ export const logOut = createAsyncThunk(
     }
   }
 );
+
+
+export const resetPassword = createAsyncThunk(
+  'auth/resetPassword',
+  async (resetData, { rejectWithValue }) => {
+    try {
+      const res = await axiosAuth.post('auth/reset-password', resetData);
+      return res.data;
+    } catch (error) {
+      return rejectWithValue(
+        error.message || 'An error occurred during password reset.'
+      );
+    }
+  }
+)

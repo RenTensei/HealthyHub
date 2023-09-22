@@ -108,7 +108,7 @@ const SignInForm = () => {
             </div>
           </div>
 
-          <button type="submit" className={styles.Button}>
+          <button type="submit" className={styles.Button_SignIn}>
             Sign in
           </button>
         </Form>

@@ -95,6 +95,28 @@
   font-size: 14px;
   line-height: 1.43;
   color: $primary-black-2;
-  margin-bottom: 200px;
+  margin-bottom: 80px;
+  margin-top: 24px;
+
+  @include tablet-only {
+    margin-bottom: 238px;
+  }
+
+  @include desktop-only {
+    margin-bottom: 200px;
+  }
+}
+
+.Button_SignIn {
+  width: 100%;
+  height: 36px;
+  border-radius: 12px;
+  background-color: $primary-green-lite;
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  color: $primary-black-2;
+  margin-bottom: 20px;
   margin-top: 24px;
 }

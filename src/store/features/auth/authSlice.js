@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { refresh, logOut, signIn, signUp} from './thunks';
+import { refresh, logOut, signIn, signUp } from './thunks';
 import { APP_STATUS } from '@/constants/appStatus';
 
 const initialState = {
@@ -30,6 +30,16 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      .addCase(refresh.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+
+        state.isLoggedIn = true;
+        state.appStatus = APP_STATUS.idle;
+      })
+      .addCase(refresh.rejected, (state, { payload }) => {
+        state.appStatus = APP_STATUS.idle;
+      })
+
       .addCase(signUp.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
@@ -37,6 +47,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.appStatus = APP_STATUS.idle;
       })
+
       .addCase(signIn.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
@@ -45,12 +56,6 @@ const authSlice = createSlice({
         state.appStatus = APP_STATUS.idle;
       })
 
-      .addCase(refresh.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-
-        state.isLoggedIn = true;
-        state.appStatus = APP_STATUS.idle;
-      })
       .addCase(logOut.fulfilled, () => {
         return { ...initialState };
       });

@@ -48,7 +48,13 @@ const MainPage = () => {
           On the way to the goal
         </a>
 
-        <ArrowRightSvg width={16} height={16} stroke="#B6B6B6" />
+        <ArrowRightSvg
+          width={16}
+          height={16}
+          stroke="#B6B6B6"
+          stroke-width="2px"
+          style={{ transform: 'scale(-1, 1)' }}
+        />
       </div>
 
       <div className={styles.today_wrapper}>

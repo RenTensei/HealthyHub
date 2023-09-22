@@ -1,6 +1,6 @@
 import styles from './ModalRecordMeal.module.scss';
 
-const ModalRecordMeal = ({ meal, srcImg, alt, srcSet }) => {
+const ModalRecordMeal = ({ meal, srcImg, alt, srcSet, hide }) => {
   return (
     <div className={styles.modal_container}>
       <div className={styles.content_container}>
@@ -54,7 +54,9 @@ const ModalRecordMeal = ({ meal, srcImg, alt, srcSet }) => {
         </div>
       </div>
       <div className={styles.buttons_container}>
-        <button className={styles.button_cancel}>Cancel</button>
+        <button onClick={hide} className={styles.button_cancel}>
+          Cancel
+        </button>
         <button className={styles.button_confirm}>Confirm</button>
       </div>
     </div>

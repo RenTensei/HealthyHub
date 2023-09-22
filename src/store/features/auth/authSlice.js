@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { refresh, logOut, signIn, signUp } from './thunks';
+import { refresh, logOut, signIn, signUp} from './thunks';
 import { APP_STATUS } from '@/constants/appStatus';
 
 const initialState = {
@@ -15,9 +15,8 @@ const initialState = {
     BMR: null,
   },
   token: null,
-
   isLoggedIn: false,
-  appStatus: APP_STATUS.idle,
+  appStatus: APP_STATUS.initialLoading,
   error: null,
 };
 

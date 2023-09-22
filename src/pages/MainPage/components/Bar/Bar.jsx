@@ -2,7 +2,7 @@ import styles from './Bar.module.scss';
 
 import { ReactComponent as AddSvg } from '@/assets/svg/add.svg';
 
-const Bar = ({ waterConsumption }) => {
+const Bar = ({ waterConsumption, openModal }) => {
   let percentageColor = '#B6C3FF';
   if (waterConsumption > 1110) {
     percentageColor = '#ffff';
@@ -66,7 +66,7 @@ const Bar = ({ waterConsumption }) => {
               </div>
             </div>
           </div>
-          <button className={styles.intake_button}>
+          <button onClick={openModal} className={styles.intake_button}>
             <AddSvg width={16} strokeWidth={3} />
             Add water intake
           </button>

@@ -1,4 +1,4 @@
-import styles from '../DashboardPage.module.scss';
+import styles from './Modal.module.scss'
 import PropTypes from 'prop-types';
 import { useEffect } from "react";
 
@@ -18,17 +18,9 @@ const Modal = ({onClose, children}) => {
     
   }, [onClose]);
 
-  const handleBackdropClick = e => {
-    if (e.currentTarget === e.target) {
-      onClose();
-    }
-  };
-
   return (
-    <div  onClick={(e) => handleBackdropClick(e)}>
-      <div className={styles.modal}>
-        {children}
-      </div>
+    <div className={styles.modal}>
+      {children}
     </div>
   );
 };

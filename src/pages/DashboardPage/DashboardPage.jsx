@@ -1,74 +1,19 @@
 import styles from './DashboardPage.module.scss';
 import { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend,
-} from 'chart.js';
-import { Line } from 'react-chartjs-2';
 import Modal from "./Modal";
+import Chart from './Chart';
+import { ReactComponent as GoBackBtn } from '@/assets/svg/arrow-right-liqht.svg';
+import { ReactComponent as ToggleBtn } from '@/assets/svg/arrow-down.svg';
+import { labelsDays } from './Chart/Chart';
+import { ROUTES } from '@/constants/routes';
 
-ChartJS.register(
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-  Title,
-  Tooltip,
-  Legend
-);
-
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      display: false,
-      position: 'top',
-    },
-    title: {
-      display: false,
-      text: 'Chart.js Line Chart',
-    },
-  },
-  indexAxis: 'x',
-    scales: {
-      x: {
-        beginAtZero: false
-      }
-    }
-};
-
-// const labelsMonthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-const labelsDays = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
 const weightTest = ['61', '61', '61', '61', '61', '64', '64', '64', '64', '64', '64', '64', '64', '64', '65', '65', '65', '65', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
-
-export const data = {
-  labels: labelsDays,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [1500, 1450, 1300, 1210, 1560, 1700, 1000, 2000, 1500, 1120, 2000, 1200, 1600, 1500, 1510, 1200, 1800, 2000, 1200, 1200, 1400, 2000, 1300, 2500, 1000, 3000, 2500, 1200, 1500, 3000, 2100],
-      fill: 'origin',
-      borderColor: '#E3FFA8',
-      tension: 0.2,
-      backgroundColor: '#292928',
-      pointBackgroundColor: '#E3FFA8',
-      pointRadius: '5',
-      spanGaps: true,
-      cubicInterpolationMode: 'default'
-    },
-  ],
-};
 
 const DashboardPage = () => {
   const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? "")
+  const backLinkLocationRef = useRef(location.state?.from ?? ROUTES.MainPage);
+
   const [showModal, setShowModal] = useState(false);
   const [showLastMonth, setShowLastMonth] = useState(true);
 
@@ -90,39 +35,48 @@ const DashboardPage = () => {
 
   return (
     <section>
-      <div className={styles.lastPeriodField}>
-        <Link to={backLinkLocationRef.current}>Go back</Link>
-        <button type="button" className={styles.lastButton} onClick={toggleModal}>
-        {showLastMonth ? "Last month" : "Last year"}
-      </button>
-      {showModal &&
-        <Modal onClose={closeModal}>
-          <button type="button" className={styles.lastButton} onClick={handleOnClick}>
-            {showLastMonth ? "Last year" : "Last month"}
+      <div className={styles.titleField}>
+        <div className={styles.lastPeriodField}>
+          <Link to={backLinkLocationRef.current} className={styles.dashboardLink}><GoBackBtn width={16} height={16} className={styles.goBackBtn} /></Link>
+          <h2 className={styles.dashboardTitle}>{showLastMonth ? "Last month" : "Last year"}</h2>
+          <button type="button" className={styles.toggleBtn} onClick={toggleModal}>
+            <ToggleBtn width={16} height={16} stroke={'#E3FFA8'} />
           </button>
-        </Modal>}
+          {showModal &&
+            <Modal onClose={closeModal}>
+              <button type="button" className={styles.lastButton} onClick={handleOnClick}>
+                {showLastMonth ? "Last year" : "Last month"}
+              </button>
+            </Modal>}
+        </div>
+        <h3 className={styles.monthTitle}>November</h3>
       </div>
       {showLastMonth ?
         <ul>
-        <li>
-          <h2>Calories</h2>
-            <p>Average value: <span>1700 kg</span></p>
-            <div className={styles.chart}><Line options={options} data={data} /></div>
-          
-        </li>
-        <li>
-          <h2>Water</h2>
-          <p>Average value: <span>1700 ml</span></p>
-        </li>
-        <li>
-          <h2>Weight</h2>
+          <li>
+            <div className={styles.chartTitleField}>
+              <h4 className={styles.chartTitle}>Calories</h4>
+              <p className={styles.average}>Average value: <span className={styles.averageValue}>1700 kg</span></p>
+            </div>
+            <div className={styles.chartCont}>
+              <div className={styles.chart}>
+                <Chart />
+              </div>
+            </div>
+          </li>
+          <li>
+            <h4>Water</h4>
+            <p>Average value: <span>1700 ml</span></p>
+          </li>
+          <li>
+            <h4>Weight</h4>
             <p>Average value: <span>68 kg</span></p>
             <ul>
-              {labelsDays.map(day => <li key={day}>{day}</li>)}
-              {weightTest.map(weight => <li key={weight}>{weight}</li>)}
+              {labelsDays.map((day, index) => <li key={index}>{day}</li>)}
+              {weightTest.map((weight, index) => <li key={index}>{weight}</li>)}
             </ul>
-        </li>
-      </ul> : <p>Last year</p>}
+          </li>
+        </ul> : <p>Last year</p>}
     </section>
   );
 };

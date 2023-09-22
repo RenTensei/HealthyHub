@@ -1,0 +1,27 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.modal_portal {
+  position: absolute;
+  margin: 0 auto;
+  left: 50%;
+  top: 50vh;
+  overflow-y: hidden;
+}
+.modal_portal > div {
+  position: relative;
+  transform: translate(-50%, -50%);
+}
+
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1200;
+}

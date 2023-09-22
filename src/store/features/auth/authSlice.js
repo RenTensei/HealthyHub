@@ -24,11 +24,18 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    updateAppStatus: (state, action) => {
+      state.appStatus = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(signUp.fulfilled, (state, { payload }) => {
         state.user = payload.user;
+        state.token = payload.token;
 
+        state.isLoggedIn = true;
         state.appStatus = APP_STATUS.idle;
       })
       .addCase(signIn.fulfilled, (state, { payload }) => {
@@ -50,5 +57,7 @@ const authSlice = createSlice({
       });
   },
 });
+
+export const authActions = authSlice.actions;
 
 export default authSlice.reducer;

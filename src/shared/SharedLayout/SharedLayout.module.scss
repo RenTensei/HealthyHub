@@ -3,7 +3,6 @@
 
 .temptext {
   text-align: center;
-  margin-bottom: 16px;
 }
 
 .temp {
@@ -14,9 +13,9 @@
 
   margin: 0 auto;
 
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 
-  padding: 16px;
+  padding: 4px;
 
   color: $primary-black;
   background-color: $primary-green-lite;
@@ -27,7 +26,7 @@
 }
 
 .container {
-  margin: 0 auto;
+  margin: auto;
   padding: 16px 10px;
 
   max-width: $breakpoint-mobile;

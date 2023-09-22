@@ -1,19 +1,35 @@
+import RenderSvg from '@/components/RenderSvg';
 import styles from './ModalRecordMeal.module.scss';
+import { useContext } from 'react';
+import { MealContext } from '@/context/MealContext';
 
 const ModalRecordMeal = ({ meal, srcImg, alt, srcSet, hide }) => {
+  const { typeOfMeal } = useContext(MealContext);
+  let imageSrc = '';
+  switch (typeOfMeal) {
+    case 'breakfast':
+      imageSrc = 'breakfast';
+      break;
+    case 'lunch':
+      imageSrc = 'lunch';
+      break;
+    case 'dinner':
+      imageSrc = 'dinner';
+      break;
+    case 'snack':
+      // eslint-disable-next-line no-unused-vars
+      imageSrc = 'snack';
+      break;
+    default:
+      null;
+  }
   return (
     <div className={styles.modal_container}>
       <div className={styles.content_container}>
         <h2 className={styles.title}>Record your meal</h2>
         <div className={styles.meal_container}>
-          <img
-            className={styles.meal_img}
-            src={srcImg}
-            srcSet={srcSet}
-            alt={alt}
-            width="32px"
-            height="32px"
-          />
+          <RenderSvg imageSrc={imageSrc} />
+
           <h3 className={styles.subtitle}>{meal}</h3>
         </div>
         <div>

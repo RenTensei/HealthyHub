@@ -1,4 +1,6 @@
+import { useContext } from 'react';
 import styles from './DiaryBlock.module.scss';
+import { MealContext } from '@/context/MealContext';
 // import PropTypes from 'prop-types';
 
 const DiaryBlock = ({
@@ -6,6 +8,8 @@ const DiaryBlock = ({
   intakeInfo: { mealType, carbonohidrates, protein, fat },
   srcSet,
 }) => {
+  const { setTypeOfMeal } = useContext(MealContext);
+
   return (
     <div className={styles.ContainerDiary}>
       <div className={styles.title}>
@@ -18,9 +22,11 @@ const DiaryBlock = ({
         <p className={styles.titleName}>{mealType}</p>
       </div>
       {!carbonohidrates && !protein && !fat ? (
-        <button className={styles.button} onClick={openModal}>
-          + Record your meal
-        </button>
+        <div onClick={() => setTypeOfMeal(mealType.toLowerCase())}>
+          <button className={styles.button} onClick={openModal}>
+            + Record your meal
+          </button>
+        </div>
       ) : (
         <div className={styles.Calorie}>
           <p className={styles.itetemsCalories}>

@@ -1,12 +1,12 @@
 import { axiosAuth } from '@/utils/network';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-export const getMyFoodIntake = createAsyncThunk(
-  'foodIntake/get',
+export const getMyWaterIntake = createAsyncThunk(
+  'waterIntake/get',
   async (_, { rejectWithValue }) => {
     try {
-      const res = await axiosAuth.get('user/food-intake');
-      // console.log(res);
+      const res = await axiosAuth.get('user/water-intake');
+      console.log(res);
 
       return res.data;
     } catch (error) {
@@ -15,8 +15,8 @@ export const getMyFoodIntake = createAsyncThunk(
   }
 );
 
-export const postMyFoodIntake = createAsyncThunk(
-  'waterintake/post',
+export const postMyWaterIntake = createAsyncThunk(
+  'waterIntake/post',
   async (waterIntake, { rejectWithValue }) => {
     try {
       const res = await axiosAuth.post('user/water-intake', waterIntake);

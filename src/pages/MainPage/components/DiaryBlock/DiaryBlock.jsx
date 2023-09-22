@@ -22,7 +22,7 @@ const DiaryBlock = ({
         <p className={styles.titleName}>{mealType}</p>
       </div>
       {!carbonohidrates && !protein && !fat ? (
-        <div onClick={() => setTypeOfMeal(mealType.toLowerCase())}>
+        <div onClick={() => setTypeOfMeal(mealType)}>
           <button className={styles.button} onClick={openModal}>
             + Record your meal
           </button>

@@ -1,9 +1,6 @@
-import { ReactComponent as Breakfast } from '@/assets/svg/breakfast.svg';
-import { ReactComponent as Lunch } from '@/assets/svg/lunch.svg';
-import { ReactComponent as Dinner } from '@/assets/svg/dinner.svg';
-import { ReactComponent as Snack } from '@/assets/svg/snack.svg';
-
+import { modalSvg } from '@/utils/renderSvgSet';
 const RenderSvg = ({ imageSrc }) => {
+  const { Breakfast, Lunch, Dinner, Snack } = modalSvg;
   switch (imageSrc) {
     case 'breakfast':
       return <Breakfast />;

@@ -3,10 +3,10 @@ import styles from './ModalRecordMeal.module.scss';
 import { useContext } from 'react';
 import { MealContext } from '@/context/MealContext';
 
-const ModalRecordMeal = ({ meal, srcImg, alt, srcSet, hide }) => {
+const ModalRecordMeal = ({ hide }) => {
   const { typeOfMeal } = useContext(MealContext);
   let imageSrc = '';
-  switch (typeOfMeal) {
+  switch (typeOfMeal.toLowerCase()) {
     case 'breakfast':
       imageSrc = 'breakfast';
       break;
@@ -30,7 +30,7 @@ const ModalRecordMeal = ({ meal, srcImg, alt, srcSet, hide }) => {
         <div className={styles.meal_container}>
           <RenderSvg imageSrc={imageSrc} />
 
-          <h3 className={styles.subtitle}>{meal}</h3>
+          <h3 className={styles.subtitle}>{typeOfMeal}</h3>
         </div>
         <div>
           <ul className={styles.list}>

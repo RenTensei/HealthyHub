@@ -82,7 +82,7 @@
 }
 
 .diary_recfood_container {
-  margin-top: 20px;
+  gap: 20px;
 
   @include desktop-only {
     display: flex;

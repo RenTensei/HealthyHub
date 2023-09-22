@@ -65,10 +65,10 @@ const MainPage = () => {
         </div>
         <Food />
       </div>
-      {/* <div className={styles.diary_recfood_container}> */}
-      <RecommendedFood />
-      {/* </div> */}
-      <Diary openModal={mealModalToggle} />
+      <div className={styles.diary_recfood_container}>
+        <Diary openModal={mealModalToggle} />
+        <RecommendedFood />
+      </div>
     </>
   );
 };

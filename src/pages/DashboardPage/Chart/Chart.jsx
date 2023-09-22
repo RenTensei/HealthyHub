@@ -1,4 +1,5 @@
 import styles from './Chart.module.scss'
+import { useRef, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,10 +11,8 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-
-import { ReactComponent as CloseCircle } from '@/assets/svg/close-circle.svg';
-import { useRef, useState } from 'react';
 import isEqual from 'lodash.isequal';
+import { ReactComponent as CloseCircle } from '@/assets/svg/close-circle.svg';
 
 ChartJS.register(
   CategoryScale,

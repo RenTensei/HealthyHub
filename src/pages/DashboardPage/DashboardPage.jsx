@@ -1,18 +1,18 @@
 import styles from './DashboardPage.module.scss';
 import { useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-
 import Modal from "./Modal";
+import Chart from './Chart';
 import { ReactComponent as GoBackBtn } from '@/assets/svg/arrow-right-liqht.svg';
 import { ReactComponent as ToggleBtn } from '@/assets/svg/arrow-down.svg';
-import Chart from './Chart';
 import { labelsDays } from './Chart/Chart';
+import { ROUTES } from '@/constants/routes';
 
 const weightTest = ['61', '61', '61', '61', '61', '64', '64', '64', '64', '64', '64', '64', '64', '64', '65', '65', '65', '65', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
 
 const DashboardPage = () => {
   const location = useLocation();
-  const backLinkLocationRef = useRef(location.state?.from ?? "");
+  const backLinkLocationRef = useRef(location.state?.from ?? ROUTES.MainPage);
 
   const [showModal, setShowModal] = useState(false);
   const [showLastMonth, setShowLastMonth] = useState(true);

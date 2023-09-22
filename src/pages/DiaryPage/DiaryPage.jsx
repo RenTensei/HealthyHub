@@ -4,17 +4,30 @@ import styles from './DiaryPage.module.scss';
 import { useSelector } from 'react-redux';
 import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 import { ReactComponent as ArrowRight } from '@/assets/svg/arrow-right.svg';
-const DiaryPage = () => {
-  const location = useLocation()
-  const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
-console.log(FoodIntakeNutrientsTotal)
-  const mealTypeSrcSets = {
-    Breakfast: 'public/Breakfast.png 1x, public/Breakfast@2x.png 2x',
-    Lunch: 'public/Lunch.png 1x, public/Lunch@2x.png 2x',
-    Dinner: 'public/Dinner.png 1x, public/Dinner@2x.png 2x ',
-    Snack: 'public/Snack.png 1x, public/Snack@2x.png 2x',
-  };
 
+import breakfastSrc1x from './images/Breakfast.png';
+import breakfastSrc2x from './images/Breakfast@2x.png';
+
+import lunchSrc1x from './images/Lunch.png';
+import lunchSrc2x from './images/Lunch@2x.png';
+
+import dinnerSrc1x from './images/Dinner.png';
+import dinnerSrc2x from './images/Dinner@2x.png';
+
+import snackSrc1x from './images/Snack.png';
+import snackSrc2x from './images/Snack@2x.png';
+
+const mealTypeSrcSets = {
+  Breakfast: [breakfastSrc1x, breakfastSrc2x],
+  Lunch: [lunchSrc1x, lunchSrc2x],
+  Dinner: [dinnerSrc1x, dinnerSrc2x],
+  Snack: [snackSrc1x, snackSrc2x],
+};
+
+const DiaryPage = () => {
+  const location = useLocation();
+  const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
+  console.log(FoodIntakeNutrientsTotal);
 
   return (
     <section className={styles.sectionDiary}>

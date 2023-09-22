@@ -51,7 +51,7 @@ const DiaryBlock = ({
       createdAt: '2023-09-17T18:25:43.236Z',
       updatedAt: '2023-09-17T18:25:43.236Z',
     },
-   
+
     // {
     //   _id: '650744ad5349ba95e795e4f4',
     //   mealName: 'toast',
@@ -89,14 +89,20 @@ const DiaryBlock = ({
           ];
     return newArray;
   }
-  const imgSrc = srcSet.split(' ')[0];
+
   const isMobile = useMediaQuery({ maxWidth: 833 });
 
   return (
     <div>
       <div className={styles.containerBlockHeader}>
         <div className={styles.blockHeader}>
-          <img src={imgSrc} srcSet={srcSet} height={32} width={32} alt={alt} />
+          <img
+            src={srcSet[0]}
+            srcSet={`${srcSet[0]} 1x, ${srcSet[1]} 2x`}
+            height={32}
+            width={32}
+            alt={alt}
+          />
           <h2 className={styles.titleBlockHeader}>{title}</h2>
         </div>
         <div className={styles.itemCalories}>

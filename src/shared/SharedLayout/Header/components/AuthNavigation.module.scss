@@ -17,11 +17,10 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.42;
-@include mobile-only{
-  font-size: 12px;
-  line-height: 1.33;
-}
-
+  @include mobile-only {
+    font-size: 12px;
+    line-height: 1.33;
+  }
 }
 
 .header_text:hover {

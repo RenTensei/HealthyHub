@@ -67,11 +67,7 @@
   margin-left: 4px;
 }
 
-.header_user_arrow {
-  width: 14px;
-  height: 14px;
-  object-fit: cover;
-  background-color: aqua;
+.header_user_svg {
+  fill: $primary-green-lite;
+  stroke: $primary-green-lite;
 }
-
-

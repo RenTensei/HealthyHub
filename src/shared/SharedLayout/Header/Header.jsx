@@ -4,9 +4,8 @@ import AuthNavigation from '../Header/components/AuthNavigation';
 import UserMenu from '../Header/components/UserMenu';
 import styles from './Header.module.scss';
 import { useModalContext } from '@/context/ModalContext';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import UserProfile from './components/UserProfile';
-
 import { ReactComponent as MenuSvg } from '@/assets/svg/menu.svg';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '@/store/features/auth/selectors';
@@ -16,6 +15,7 @@ const Header = () => {
   const isLoggedIn = useSelector(selectIsLoggedIn);
   // const userData = useSelector(state => state.auth.user)
   // const navigate = useNavigate()
+
 
   // const [width, setWidth] = useState({ width: window.innerWidth });
   // const breakpoint = 834;

@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import DiaryBlock from './ components/DiaryBlock';
 import styles from './DiaryPage.module.scss';
 import { useSelector } from 'react-redux';
 import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 import { ReactComponent as ArrowRight } from '@/assets/svg/arrow-right.svg';
 const DiaryPage = () => {
+  const location = useLocation()
   const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
 console.log(FoodIntakeNutrientsTotal)
   const mealTypeSrcSets = {
@@ -18,7 +19,7 @@ console.log(FoodIntakeNutrientsTotal)
   return (
     <section className={styles.sectionDiary}>
       <div className={styles.containerDiary}>
-        <Link to={'/'} className={styles.BeckHome}>
+        <Link state={{ from: location }} to={'/'} className={styles.BeckHome}>
           <ArrowRight className={styles.arrowBack} />
           Diary
         </Link>

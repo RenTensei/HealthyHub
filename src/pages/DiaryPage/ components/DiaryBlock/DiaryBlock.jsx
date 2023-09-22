@@ -65,7 +65,6 @@ const DiaryBlock = ({
     //   updatedAt: '2023-09-17T18:25:49.729Z',
     // },
   ];
-  // const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
   // const items = useSelector(state => state.foodIntake.items);
   function newFood(foodArray) {
     const newArray =

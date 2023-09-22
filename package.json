@@ -18,6 +18,7 @@
     "esbuild": "^0.19.3",
     "formik": "^2.4.4",
     "framer-motion": "^10.16.4",
+    "lodash.isequal": "^4.5.0",
     "modern-normalize": "^2.0.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -43,4 +44,3 @@
     "vite": "^4.4.5"
   }
 }
-

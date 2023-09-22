@@ -42,11 +42,7 @@ const ModalWeight = ({ open, onClose }) => {
       <AnimatePresence>
         {open && (
           <>
-            <OutsideClickHandler
-              onOutsideClick={() => {
-                onClose();
-              }}
-            >
+            <OutsideClickHandler onOutsideClick={onClose}>
               <motion.div
                 initial={{
                   opacity: 0,
@@ -56,14 +52,14 @@ const ModalWeight = ({ open, onClose }) => {
                   opacity: 1,
                   y: 0,
                   transition: {
-                    duration: 0.2,
+                    duration: 0.4,
                   },
                 }}
                 exit={{
                   opacity: 0,
                   y: -100,
                   transition: {
-                    delay: 0.6,
+                    delay: 0.3,
                   },
                 }}
                 className={styles.header_modal_weight_overlay}
@@ -113,11 +109,7 @@ const ModalWeight = ({ open, onClose }) => {
     <AnimatePresence>
       {open && (
         <>
-          <OutsideClickHandler
-            onOutsideClick={() => {
-              onClose();
-            }}
-          >
+          <OutsideClickHandler onOutsideClick={onClose}>
             <motion.div
               initial={{
                 opacity: 0,

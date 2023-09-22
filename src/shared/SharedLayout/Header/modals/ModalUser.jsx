@@ -24,11 +24,7 @@ const ModalUser = ({ open, onClose }) => {
     <AnimatePresence>
       {open && (
         <>
-          <OutsideClickHandler
-            onOutsideClick={() => {
-              onClose();
-            }}
-          >
+          <OutsideClickHandler onOutsideClick={onClose}>
             <motion.div
               initial={{
                 opacity: 0,
@@ -40,7 +36,7 @@ const ModalUser = ({ open, onClose }) => {
                 // scale: 1,
                 y: 0,
                 transition: {
-                  duration: 0.2,
+                  duration: 0.4,
                 },
               }}
               exit={{
@@ -80,10 +76,11 @@ const ModalUser = ({ open, onClose }) => {
                   {' '}
                   <Link to={ROUTES.ProfileSettingsPage}>
                     <div className={styles.header_modal_user_item}>
-                      <SettingsSvg  
+                      <SettingsSvg
                         width={16}
                         height={16}
-                        stroke={'rgba(255, 255, 255, 1)'} />
+                        stroke={'rgba(255, 255, 255, 1)'}
+                      />
                       <p className={styles.header_modal_user_text}>Setting</p>
                     </div>
                   </Link>

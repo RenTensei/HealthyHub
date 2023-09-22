@@ -1,0 +1,8 @@
+@import '@/scss/base/variables';
+@import '@/scss/base/mixins';
+
+.modal {
+  position: absolute;
+  top: 36px;
+  left: 24px;
+}

@@ -16,7 +16,7 @@ const initialState = {
   },
   token: null,
   isLoggedIn: false,
-  appStatus: APP_STATUS.idle,
+  appStatus: APP_STATUS.initialLoading,
   error: null,
 };
 

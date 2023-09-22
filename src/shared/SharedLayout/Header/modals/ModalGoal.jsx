@@ -106,7 +106,7 @@ const ModalGoal = ({ open, onClose }) => {
                       <img
                         className={styles.header_modal_img}
                         src={goalM}
-                        srcSet={`${goalM}, ${goalM2}`}
+                        srcSet={`${goalM} 1x, ${goalM2} 2x`}
                       />
                     </div>
                     <p className={styles.header_modal_text}> Lose fat</p>

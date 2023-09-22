@@ -25,7 +25,7 @@ const UserMenu = () => {
         <div className={styles.header_user_frame}>
           <img
             src={goalM}
-            srcSet={`${goalM}, ${goalM2}`}
+            srcSet={`${goalM} 1x, ${goalM2} 2x`}
             alt="your goal"
             className={styles.header_user_img}
           />

@@ -6,15 +6,13 @@ const DiaryBlock = ({
   intakeInfo: { mealType, carbonohidrates, protein, fat },
   srcSet,
 }) => {
-  const imgSrc = srcSet.split(' ')[0];
-
   return (
     <div className={styles.ContainerDiary}>
       <div className={styles.title}>
         <img
           className={styles.imgTitle}
-          src={imgSrc}
-          srcSet={srcSet}
+          src={srcSet[0]}
+          srcSet={`${srcSet[0]} 1x, ${srcSet[1]} 2x`}
           alt={mealType}
         />
         <p className={styles.titleName}>{mealType}</p>

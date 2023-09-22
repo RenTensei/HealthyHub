@@ -5,4 +5,5 @@ export const APP_STATUS = {
   sleep: 'sleep',
   submitting: 'submitting',
   unauthorized: 'unauthorized',
+  initialLoading: 'initialLoading',
 };

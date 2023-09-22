@@ -38,13 +38,6 @@
   background-color: transparent;
 };
 
-.modal {
-  position: absolute;
-  top: 36px;
-  left: 24px;
-
-};
-
 .lastButton {
   color: #FFF;
   background-color: #050505;
@@ -103,8 +96,6 @@
   margin-bottom: 8px;
 };
 
-
-
 .chartCont {
   @include mobile-only {
     overflow-x: scroll;
@@ -136,41 +127,4 @@
     height: 94px;
     background: rgba(255, 255, 255, 0.10);
   }
-}
-
-.graphTooltip {
-  width: 104px;
-  padding: 6px;
-  background-color: $primary-black-2;
-  box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
-};
-
-.closeBtn {
-  padding: 0px;
-  display: flex;
-  align-items: center;
-  margin-left: 76px;
-  width: 16px;
-  height: 16px;
-  background-color: transparent;
-};
-
-.tooltipValue {
-  font-size: 32px;
-  font-weight: 500;
-  line-height: 1.19;
-}
-
-.tooltipTitle {
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 20px;
-  color: $primary-grey;
-  width: 100%;
-  text-align: center;
-};
-
-.tooltipField {
-  display: inline-flex;
-  flex-direction: column;
 }

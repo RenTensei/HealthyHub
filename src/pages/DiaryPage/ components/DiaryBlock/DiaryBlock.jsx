@@ -8,9 +8,6 @@ import { nanoid } from 'nanoid';
 const DiaryBlock = ({
   alt,
   title,
-  Carbonohidrates = '0',
-  Protein = '0',
-  fat = '0',
   srcSet,
   typeName,
 }) => {
@@ -66,6 +63,22 @@ const DiaryBlock = ({
     // },
   ];
   // const items = useSelector(state => state.foodIntake.items);
+
+  let totalCarbonohidrates = 0;
+  let totalProtein = 0;
+  let toralFat = 0;
+
+  function sumTotal(meal) {
+    for (let i = 0; i < meal.length; i++) {
+      totalCarbonohidrates += meal[i].carbonohidrates;
+      totalProtein += meal[i].protein;
+      toralFat += meal[i].fat;
+    }
+    return totalCarbonohidrates, totalProtein, toralFat;
+  }
+  sumTotal(meal);
+
+
   function newFood(foodArray) {
     const newArray =
       foodArray.length <= 3
@@ -108,13 +121,13 @@ const DiaryBlock = ({
         <div className={styles.itemCalories}>
           <p className={styles.item_1}>
             Carbonohidrates:{' '}
-            <span className={styles.caloriesSum}>{Carbonohidrates}</span>
+            <span className={styles.caloriesSum}>{totalCarbonohidrates}</span>
           </p>
           <p className={styles.item_2}>
-            Protein: <span className={styles.caloriesSum}>{Protein}</span>
+            Protein: <span className={styles.caloriesSum}>{totalProtein}</span>
           </p>
           <p className={styles.item_3}>
-            Fat: <span className={styles.caloriesSum}>{fat}</span>
+            Fat: <span className={styles.caloriesSum}>{toralFat}</span>
           </p>
         </div>
       </div>

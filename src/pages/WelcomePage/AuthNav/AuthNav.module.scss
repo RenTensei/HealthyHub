@@ -10,7 +10,7 @@
 
   @include tablet-only {
     width: 834px;
-    padding: 40px 195px 286px;
+    padding: 40px 195px;
     text-align: center;
   }
 
@@ -94,7 +94,6 @@ a.Button_sign_in {
   text-align: center;
   color: black;
   padding-top: 8px;
-
 
   @include tablet-and-desktop {
     margin-bottom: 80px;

@@ -2,87 +2,122 @@
 @import '@/scss/base/mixins.scss';
 
 .Container {
-    width: 320px;
-    padding: 24px 10px 40px;
-    background-color: $primary-black;
-    margin-left: auto;
-    margin-right: auto;
+  text-align: center;
+  // width: 320px;
+  // padding: 24px 10px 40px;
+  // background-color: $primary-black;
+  // margin-left: auto;
+  // margin-right: auto;
 
-    @include tablet-only {
-        width: 834px;
-        padding: 40px 195px 60px;
-        text-align: center;
-    }
+  @include tablet-only {
+    padding-top: 16px;
+    padding-left: 168px;
+    padding-right: 168px;
+    // width: 834px;
+    // padding: 40px 195px 60px;
+    // text-align: center;
+  }
 
-    @include desktop-only {
-        width: 1440px;
-        padding: 40px 150px 72px;
-        display: flex;
-    }
+  @include desktop-only {
+    // width: 1440px;
+    // padding: 40px 150px 72px;
+    text-align: start;
+    padding-left: 116px;
+    padding-right: 116px;
+    display: flex;
+    gap: 104px;
+  }
 }
 
 .Text_container {
-    @include desktop-only {
-        padding-top: 120px;
-    }
+  @include desktop-only {
+    padding-top: 120px;
+  }
 }
 
 .Title {
-    font-family: $font-regular;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 1.25;
-    color: $primary-white;
-    margin-top: 24px;
-    margin-bottom: 16px;
+  font-family: $font-regular;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.25;
+  color: $primary-white;
+  margin-top: 24px;
+  margin-bottom: 16px;
 
-    @include tablet-only {
-        margin-top: 60px;
-        font-size: 30px;
-        line-height: 1.2;
-    }
+  @include tablet-only {
+    margin-top: 60px;
+    font-size: 30px;
+    line-height: 1.2;
+  }
 
-    @include desktop-only {
-        margin-top: 0;
-        font-size: 30px;
-        line-height: 1.2;
-    }
+  @include desktop-only {
+    margin-top: 0;
+    font-size: 30px;
+    line-height: 1.2;
+  }
 }
 
 .Text {
-    font-family: $font-regular;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.33;
-    color: $primary-grey;
-    margin-bottom: 8px;
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  color: $primary-grey;
+  margin-bottom: 8px;
 
-    @include tablet-and-desktop {
-        font-size: 22px;
-        line-height: 1.45;
-    }
+  @include tablet-and-desktop {
+    font-size: 22px;
+    line-height: 1.45;
+  }
+}
+
+.Form_container {
+  text-align: center;
+}
+
+.Text_about_password {
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  color: $primary-grey;
+  margin-bottom: 80px;
+
+  @include tablet-only {
+    // margin-bottom: 238px;
+  }
+
+  @include desktop-only {
+    width: 212px;
+    margin-bottom: 200px;
+  }
 }
 
 .Paragraph {
-    font-family: $font-regular;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.43;
-    color: $primary-grey;
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  color: $primary-grey;
 }
 
 .Link {
-    font-family: $font-regular;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.43;
-    color: $primary-white;
+  font-family: $font-regular;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.43;
+  color: $primary-white;
 }
 
 .Container_logn_in {
-    @include tablet-and-desktop {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 16px;
-    }
+  @include tablet-and-desktop {
+    padding-left: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  @include desktop-only {
+    padding-left: 0;
+  }
 }

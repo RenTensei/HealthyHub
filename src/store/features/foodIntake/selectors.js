@@ -23,7 +23,7 @@ export const selectNutrientSums = createSelector(
         mealSumsArray[index].fat += fat;
       }
     });
-
+    // console.log(mealSumsArray);
     return mealSumsArray;
   }
 );
@@ -51,7 +51,7 @@ export const selectFoodStatistics = createSelector(
       userGoal
     );
 
-    console.log('foodStatistics calculation');
+    // console.log('foodStatistics calculation');
     return {
       Calories: {
         fact: caloriesFact,
@@ -70,5 +70,29 @@ export const selectFoodStatistics = createSelector(
         goal: fatGoal,
       },
     };
+  }
+);
+
+export const selectFoodIntakeByCategory = createSelector(
+  state => state.foodIntake.items,
+  items => {
+    const categorizedItems = {
+      Breakfast: [],
+      Lunch: [],
+      Dinner: [],
+      Snack: [],
+    };
+
+    items.forEach(item => {
+      const mealType = item.mealType;
+      if (categorizedItems[mealType]) {
+        categorizedItems[mealType].push(item);
+      }
+    });
+
+    return Object.keys(categorizedItems).map(type => ({
+      type,
+      data: categorizedItems[type],
+    }));
   }
 );

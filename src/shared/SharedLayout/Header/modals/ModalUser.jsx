@@ -6,8 +6,12 @@ import { ReactComponent as SettingsSvg } from '@/assets/svg/setting-2.svg';
 import { ReactComponent as LogOutSvg } from '@/assets/svg/logout.svg';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useDispatch } from 'react-redux';
+import { logOut } from '@/store/features/auth/thunks';
 
 const ModalUser = ({ open, onClose }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const handleKeyDown = event => {
       if (event.code === 'Escape') {
@@ -106,7 +110,7 @@ const ModalUser = ({ open, onClose }) => {
                     },
                   }}
                 >
-                  <Link to={ROUTES.HomePage}>
+                  <a onClick={() => dispatch(logOut())}>
                     <div className={styles.header_modal_user_item}>
                       <LogOutSvg
                         width={16}
@@ -115,7 +119,7 @@ const ModalUser = ({ open, onClose }) => {
                       />
                       <p className={styles.header_modal_user_text}>Log out</p>
                     </div>
-                  </Link>
+                  </a>
                 </motion.li>
               </ul>
             </motion.div>

@@ -1,36 +1,25 @@
 @import '@/scss//base/mixins';
 @import '@/scss/base/variables';
 
-.sectionDiary {
-  margin: 0 auto;
-  @include mobile-only {
-    // padding: 0 10px;
-    min-width: 320px;
-    width: 320px;
-  }
-
-  @include tablet-only {
-    // padding: 24px 27px 40px;
-    // padding-top: 40px;
-    width: 834px;
-  }
-
-  @include desktop-only {
-    // padding: 26px 34px 52px;
-    // padding-top: 52px;
-    width: 1440px;
-  }
-}
 .BeckHome {
   display: flex;
   align-items: center;
 }
-.arrowBack {
-  margin-right: 4px;
-  width: 16px;
-  height: 16px;
+
+.DiaryArrow{
+  color: $primary-white;
+font-family:$font-regular;
+font-size: 30px;
+font-style: normal;
+font-weight: 500;
+line-height: 36px;
 }
+
 .containerDiary {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
   @include mobile-only {
     padding-top: 16px;
     padding-bottom: 40px;
@@ -39,6 +28,7 @@
     flex-direction: column;
   }
 }
+
 .containerBloks {
   @include desktop-only {
     display: grid;

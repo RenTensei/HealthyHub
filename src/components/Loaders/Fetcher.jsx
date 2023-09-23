@@ -1,4 +1,4 @@
-import { InfinitySpin } from 'react-loader-spinner';
+import { RotatingLines } from 'react-loader-spinner';
 
 export const Fetcher = () => {
   return (
@@ -15,9 +15,12 @@ export const Fetcher = () => {
         position: 'absolute',
       }}
     >
-      <div style={{ transform: 'scale(1.5)' }}>
-        <InfinitySpin color="#45FFBC" ariaLabel="fetching" />
-      </div>
+      <RotatingLines
+        strokeColor="#B6C3FF"
+        strokeWidth="3"
+        animationDuration="0.75"
+        width="120"
+      />
     </div>
   );
 };

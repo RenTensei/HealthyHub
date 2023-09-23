@@ -34,7 +34,10 @@ export const signIn = createAsyncThunk(
 
       return res.data;
     } catch (error) {
-      return rejectWithValue(error);
+      if (error instanceof AxiosError && error.response.data.message) {
+        toast.error(error.response.data.message);
+      }
+      return rejectWithValue();
     }
   }
 );
@@ -55,6 +58,7 @@ export const refresh = createAsyncThunk(
       if (error instanceof AxiosError && error.response.status === 401) {
         await sleep(500);
         toast.error('Your session has expired. Please log in again.');
+        return rejectWithValue(401);
       }
       return rejectWithValue();
     }
@@ -70,7 +74,8 @@ export const logOut = createAsyncThunk(
 
       return res.status;
     } catch (error) {
-      rejectWithValue(error);
+      toast.error('Something went wrong!');
+      return rejectWithValue();
     }
   }
 );

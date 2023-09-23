@@ -6,7 +6,7 @@ import RecommendedFood from './components/RecommendedFood';
 // import ModalWaterIntake from './Modals/ModalWaterIntake/ModalWaterIntake';
 // import ModalRecordMeal from './Modals/ModalRecordMeal/ModalRecordMeal';
 import styles from './MainPage.module.scss';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ROUTES } from '@/constants/routes';
 
 import ModalPortal from '@/pages/MainPage/components/Modal/ModaPortalCreator';
@@ -17,7 +17,6 @@ import { ReactComponent as ArrowRightSvg } from '@/assets/svg/arrow-right.svg';
 import useModal from './components/Modal/useModal';
 
 const MainPage = () => {
-  const navigate = useNavigate();
   const { isRecordMealShowing, mealModalToggle } = useModal();
   const { isWaterIntakeShowing, waterModalToggle } = useModal();
 
@@ -42,12 +41,9 @@ const MainPage = () => {
       <div className={styles.today_container}>
         <p className={styles.today_title}>Today</p>
 
-        <a
-          className={styles.goal_link}
-          onClick={() => navigate(ROUTES.DashboardPage)}
-        >
+        <Link className={styles.goal_link} to={ROUTES.DashboardPage}>
           On the way to the goal
-        </a>
+        </Link>
 
         <ArrowRightSvg
           width={16}

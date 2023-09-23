@@ -2,22 +2,30 @@
 @import '@/scss/base/mixins.scss';
 
 .Container {
-    width: 320px;
-    padding: 24px 10px 40px;
-    background-color: $primary-black;
-    margin-left: auto;
-    margin-right: auto;
+  text-align: center;
+    // width: 320px;
+    // padding: 24px 10px 40px;
+    // background-color: $primary-black;
+    // margin-left: auto;
+    // margin-right: auto;
 
     @include tablet-only {
-        width: 834px;
-        padding: 40px 195px 60px;
-        text-align: center;
+      padding-top: 16px;
+      padding-left: 168px;
+      padding-right: 168px;
+        // width: 834px;
+        // padding: 40px 195px 60px;
+        // text-align: center;
     }
 
     @include desktop-only {
-        width: 1440px;
-        padding: 40px 150px 72px;
+        // width: 1440px;
+        // padding: 40px 150px 72px;
+        text-align: start;
+        padding-left: 116px;
+        padding-right: 116px;
         display: flex;
+        gap: 104px;
     }
 }
 
@@ -81,8 +89,13 @@
 
 .Container_logn_in {
     @include tablet-and-desktop {
+      padding-left: 32px;
         display: flex;
         flex-wrap: wrap;
         gap: 16px;
+    }
+
+    @include desktop-only {
+      padding-left: 0;
     }
 }

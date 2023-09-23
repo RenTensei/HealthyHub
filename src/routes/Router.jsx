@@ -40,6 +40,15 @@ const Router = () => {
             <PublicRoute component={SignInPage} redirect={ROUTES.MainPage} />
           }
         />
+        <Route
+          path={ROUTES.ForgotYourPasswordPage}
+          element={
+            <PublicRoute
+              component={ForgotYourPasswordPage}
+              redirect={ROUTES.SignInPage}
+            />
+          }
+        />
 
         {/* private routes */}
         <Route
@@ -48,15 +57,7 @@ const Router = () => {
             <PrivateRoute component={MainPage} redirect={ROUTES.SignInPage} />
           }
         />
-        <Route
-          path={ROUTES.ForgotYourPasswordPage}
-          element={
-            <PrivateRoute
-              component={ForgotYourPasswordPage}
-              redirect={ROUTES.SignInPage}
-            />
-          }
-        />
+
         <Route
           path={ROUTES.DiaryPage}
           element={

@@ -53,7 +53,7 @@
 .inputs_container {
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 110px;
+  max-height: 110px;
   &::-webkit-scrollbar {
     background-color: $primary-black-2;
     width: 8px;

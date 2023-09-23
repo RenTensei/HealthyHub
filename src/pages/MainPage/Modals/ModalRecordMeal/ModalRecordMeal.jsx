@@ -1,21 +1,56 @@
-import { createElement } from 'react';
+import { nanoid } from 'nanoid';
 
 import RenderSvg from '@/components/RenderSvg';
 import styles from './ModalRecordMeal.module.scss';
 import { useContext, useState } from 'react';
 import { MealContext } from '@/context/MealContext';
 import RecordMealInput from './RecordMealInput/RecordMealInput';
+import { useDispatch } from 'react-redux';
+import { postMyFoodIntake } from '@/store/features/foodIntake/thunks';
 
 const ModalRecordMeal = ({ hide }) => {
-  const [isInputShown, setIsInputShown] = useState(false);
-  // {isInputShown ? <RecordMealInput /> : null}
+  const [mealName, setMealName] = useState('');
+  const [carbonohidrates, setCarbonohidrates] = useState(0);
+  const [protein, setProtein] = useState(0);
+  const [fat, setFat] = useState(0);
+  const [calories, setCalories] = useState(0);
+
+  const dispatch = useDispatch();
   const [customComponents, setCustomComponents] = useState([]);
 
+  const mealHandler = value => {
+    setMealName(value);
+  };
+
+  const carbHandler = value => {
+    setCarbonohidrates(value);
+  };
+
+  const proteinHandler = value => {
+    setProtein(value);
+  };
+
+  const fatHandler = value => {
+    setFat(value);
+  };
+
+  const caloriesHandler = value => {
+    setCalories(value);
+  };
+
   const addCustomComponent = () => {
-    // Create a new instance of CustomComponent and add it to the array
     setCustomComponents([
       ...customComponents,
-      <RecordMealInput key={Date.now()} />,
+      <RecordMealInput
+        key={nanoid()}
+        stateHandlres={[
+          mealHandler,
+          carbHandler,
+          proteinHandler,
+          fatHandler,
+          caloriesHandler,
+        ]}
+      />,
     ]);
   };
 
@@ -38,6 +73,19 @@ const ModalRecordMeal = ({ hide }) => {
     default:
       null;
   }
+
+  const onConfirmHandler = () => {
+    const stateObject = {
+      mealName,
+      mealType: typeOfMeal,
+      carbonohidrates: Number(carbonohidrates),
+      protein: Number(protein),
+      fat: Number(fat),
+      calories: Number(calories),
+    };
+    console.log(stateObject);
+    dispatch(postMyFoodIntake(stateObject));
+  };
   return (
     <div className={styles.modal_container}>
       <div className={styles.content_container}>
@@ -96,7 +144,9 @@ const ModalRecordMeal = ({ hide }) => {
         <button onClick={hide} className={styles.button_cancel}>
           Cancel
         </button>
-        <button className={styles.button_confirm}>Confirm</button>
+        <button className={styles.button_confirm} onClick={onConfirmHandler}>
+          Confirm
+        </button>
       </div>
     </div>
   );

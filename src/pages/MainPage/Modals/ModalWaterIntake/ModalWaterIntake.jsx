@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { postMyWaterIntake } from '@/store/features/waterIntake/thunks';
 
 const ModalWaterIntake = ({ hide }) => {
-  const [waterIntake, setWaterIntake] = useState(0);
+  const [waterIntake, setWaterIntake] = useState('');
   const dispatch = useDispatch();
 
   const onChangeHandler = e => {

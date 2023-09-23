@@ -3,6 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 import Header from './Header';
 import styles from './SharedLayout.module.scss';
 import { ROUTES } from '@/constants/routes';
+import { Fetcher } from '@/components/Loaders/Fetcher';
 
 const SharedLayout = () => {
   return (
@@ -10,10 +11,10 @@ const SharedLayout = () => {
       <Header />
 
       <main>
-        <Suspense fallback={null}>
+        <Suspense fallback={<Fetcher />}>
           <div className={styles.container}>
             {/* delete later */}
-            <div className={styles.temptext}>
+            {/* <div className={styles.temptext}>
               ** delete dev navigation later **
             </div>
             <div className={styles.temp}>
@@ -25,8 +26,9 @@ const SharedLayout = () => {
               <Link to={ROUTES.DiaryPage}>Diary</Link>
               <Link to={ROUTES.DashboardPage}>Dashboard</Link>
               <Link to={ROUTES.ProfileSettingsPage}>Settings</Link>
-            </div>
+            </div> */}
             {/* delete later */}
+
             <Outlet />
           </div>
         </Suspense>

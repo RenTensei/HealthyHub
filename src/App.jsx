@@ -7,7 +7,8 @@ import { selectAppStatus, selectToken } from '@/store/features/auth/selectors';
 
 import { authActions } from './store/features/auth/authSlice';
 import { APP_STATUS } from './constants/appStatus';
-import { InfinitySpin, Triangle } from 'react-loader-spinner';
+import { Triangle } from 'react-loader-spinner';
+import { Fetcher } from './components/Loaders/Fetcher';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const App = () => {
           wrapperStyle={{
             width: '100vw',
             height: '100vh',
-            zIndex: '555',
+            zIndex: '999',
             backgroundColor: '#050505',
             display: 'flex',
             justifyContent: 'center',
@@ -56,29 +57,7 @@ const App = () => {
         />
       )}
 
-      {appStatus === APP_STATUS.fetching && (
-        <div
-          style={{
-            width: '100vw',
-            height: '100vh',
-            zIndex: '555',
-            backgroundColor: 'rgba(5, 5, 5, 0.6)',
-            // opacity: '60%',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            position: 'absolute',
-          }}
-        >
-          <div style={{ transform: 'scale(1.5)' }}>
-            <InfinitySpin
-              style={{ color: 'red' }}
-              color="#45FFBC"
-              ariaLabel="fetching"
-            />
-          </div>
-        </div>
-      )}
+      {appStatus === APP_STATUS.fetching && <Fetcher />}
 
       <Router />
 

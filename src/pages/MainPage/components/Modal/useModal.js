@@ -1,15 +1,15 @@
 import { useState } from 'react';
 
 const useModal = () => {
-  const [isRecordMealShowing, setisRecordMealShowing] = useState(false);
-  const [isWaterIntakeShowing, setisWaterIntakeShowing] = useState(false);
+  const [isRecordMealShowing, setIsRecordMealShowing] = useState(false);
+  const [isWaterIntakeShowing, setIsWaterIntakeShowing] = useState(false);
 
   function mealModalToggle() {
-    setisRecordMealShowing(!isRecordMealShowing);
+    setIsRecordMealShowing(!isRecordMealShowing);
   }
 
   function waterModalToggle() {
-    setisWaterIntakeShowing(!isWaterIntakeShowing);
+    setIsWaterIntakeShowing(!isWaterIntakeShowing);
   }
 
   return {

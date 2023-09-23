@@ -85,6 +85,7 @@ const ModalRecordMeal = ({ hide }) => {
     };
     console.log(stateObject);
     dispatch(postMyFoodIntake(stateObject));
+    hide();
   };
   return (
     <div className={styles.modal_container}>

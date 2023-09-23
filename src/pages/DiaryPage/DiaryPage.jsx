@@ -2,14 +2,22 @@ import { useNavigate } from 'react-router-dom';
 import DiaryBlock from './ components/DiaryBlock';
 import styles from './DiaryPage.module.scss';
 import { useSelector } from 'react-redux';
-import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
+import {
+  selectFoodIntakeByCategory,
+  selectNutrientSums,
+} from '@/store/features/foodIntake/selectors';
 import { ReactComponent as ArrowRight } from '@/assets/svg/arrow-right.svg';
 import { mealTypeSrcSets } from '@/utils/mealTypeSrcSets';
 import { ROUTES } from '@/constants/routes';
 
 const DiaryPage = () => {
   const navigate = useNavigate();
+
   const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
+
+  const foodIntakeByCategory = useSelector(selectFoodIntakeByCategory);
+  const { breakfastList, lunchList, dinnerList, snackList } =
+    foodIntakeByCategory;
 
   return (
     <section className={styles.sectionDiary}>
@@ -18,7 +26,7 @@ const DiaryPage = () => {
           onClick={() => navigate(ROUTES.HomePage)}
           className={styles.BeckHome}
         >
-          <ArrowRight className={styles.arrowBack} />
+          <ArrowRight width={24} height={24} />
           Diary
         </a>
         <div className={styles.containerBloks}>

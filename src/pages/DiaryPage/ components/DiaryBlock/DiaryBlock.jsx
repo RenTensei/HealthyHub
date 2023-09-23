@@ -2,6 +2,7 @@ import styles from './DiaryBlock.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { ReactComponent as Edit } from '@/assets/svg/Edit.svg';
 import { nanoid } from 'nanoid';
+import { useSelector } from 'react-redux';
 // import { useSelector } from 'react-redux';
 // import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 
@@ -11,11 +12,13 @@ const DiaryBlock = ({
   srcSet,
   typeName,
 }) => {
+
+  
   const meal = [
     {
       _id: '650744a45349ba95e795e4eb',
       mealName: 'toast',
-      mealType: 'Dinner',
+      mealType: 'Breakfast',
       carbonohidrates: 45,
       protein: 10,
       fat: 110,
@@ -39,7 +42,7 @@ const DiaryBlock = ({
     {
       _id: '650744a75349ba95e795e4ee',
       mealName: 'toast',
-      mealType: 'Dinner',
+      mealType: 'Lunch',
       carbonohidrates: 45,
       protein: 10,
       fat: 110,
@@ -48,36 +51,53 @@ const DiaryBlock = ({
       createdAt: '2023-09-17T18:25:43.236Z',
       updatedAt: '2023-09-17T18:25:43.236Z',
     },
-
-    // {
-    //   _id: '650744ad5349ba95e795e4f4',
-    //   mealName: 'toast',
-    //   mealType: 'Lunch',
-    //   carbonohidrates: 45,
-    //   protein: 10,
-    //   fat: 110,
-    //   calories: 460,
-    //   consumer: '6506e67b65a5957c6d9cbd33',
-    //   createdAt: '2023-09-17T18:25:49.729Z',
-    //   updatedAt: '2023-09-17T18:25:49.729Z',
-    // },
+    {
+      _id: '650744a75349ba95e795e4ee',
+      mealName: 'toast',
+      mealType: 'Snack',
+      carbonohidrates: 45,
+      protein: 10,
+      fat: 110,
+      calories: 460,
+      consumer: '6506e67b65a5957c6d9cbd33',
+      createdAt: '2023-09-17T18:25:43.236Z',
+      updatedAt: '2023-09-17T18:25:43.236Z',
+    },
   ];
-  // const items = useSelector(state => state.foodIntake.items);
 
-  let totalCarbonohidrates = 0;
-  let totalProtein = 0;
-  let toralFat = 0;
+  // const Breakfast = [
+  //   {
+  //     _id: '650744a45349ba95e795e4eb',
+  //     mealName: 'toast',
+  //     mealType: 'Breakfast',
+  //     carbonohidrates: 45,
+  //     protein: 10,
+  //     fat: 110,
+  //     calories: 460,
+  //     consumer: '6506e67b65a5957c6d9cbd33',
+  //     createdAt: '2023-09-17T18:25:40.001Z',
+  //     updatedAt: '2023-09-17T18:25:40.001Z',
+  //   },
+  // ];
 
-  function sumTotal(meal) {
-    for (let i = 0; i < meal.length; i++) {
-      totalCarbonohidrates += meal[i].carbonohidrates;
-      totalProtein += meal[i].protein;
-      toralFat += meal[i].fat;
-    }
-    return totalCarbonohidrates, totalProtein, toralFat;
-  }
-  sumTotal(meal);
+   const items = useSelector(state => state.foodIntake.items);
+  console.log(items);
+  
 
+  
+ let toralCarbonohidrates = 0;
+ let totalProtein = 0;
+ let totalFat = 0;
+
+ function sumTotal(meal) {
+   for (let i = 0; i < meal.length; i++) {
+     toralCarbonohidrates += meal[i].carbonohidrates;
+     totalProtein += meal[i].protein;
+     totalFat += meal[i].fat;
+   }
+   return toralCarbonohidrates, totalProtein, totalFat;
+ }
+ sumTotal(meal);
 
   function newFood(foodArray) {
     const newArray =
@@ -121,13 +141,13 @@ const DiaryBlock = ({
         <div className={styles.itemCalories}>
           <p className={styles.item_1}>
             Carbonohidrates:{' '}
-            <span className={styles.caloriesSum}>{totalCarbonohidrates}</span>
+            <span className={styles.caloriesSum}>{toralCarbonohidrates}</span>
           </p>
           <p className={styles.item_2}>
             Protein: <span className={styles.caloriesSum}>{totalProtein}</span>
           </p>
           <p className={styles.item_3}>
-            Fat: <span className={styles.caloriesSum}>{toralFat}</span>
+            Fat: <span className={styles.caloriesSum}>{totalFat}</span>
           </p>
         </div>
       </div>

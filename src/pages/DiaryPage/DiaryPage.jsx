@@ -10,6 +10,7 @@ import { ROUTES } from '@/constants/routes';
 const DiaryPage = () => {
   const navigate = useNavigate();
   const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
+  
 
   return (
     <section className={styles.sectionDiary}>

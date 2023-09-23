@@ -1,9 +1,24 @@
+import { createElement } from 'react';
+
 import RenderSvg from '@/components/RenderSvg';
 import styles from './ModalRecordMeal.module.scss';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { MealContext } from '@/context/MealContext';
+import RecordMealInput from './RecordMealInput/RecordMealInput';
 
 const ModalRecordMeal = ({ hide }) => {
+  const [isInputShown, setIsInputShown] = useState(false);
+  // {isInputShown ? <RecordMealInput /> : null}
+  const [customComponents, setCustomComponents] = useState([]);
+
+  const addCustomComponent = () => {
+    // Create a new instance of CustomComponent and add it to the array
+    setCustomComponents([
+      ...customComponents,
+      <RecordMealInput key={Date.now()} />,
+    ]);
+  };
+
   const { typeOfMeal } = useContext(MealContext);
   let imageSrc = '';
   switch (typeOfMeal.toLowerCase()) {
@@ -42,6 +57,11 @@ const ModalRecordMeal = ({ hide }) => {
             <li className={styles.list_item}>Fat </li>
             <li className={styles.list_item}>Calories </li>
           </ul>
+          <div className={styles.inputs_container}>
+            {customComponents?.map((component, index) => (
+              <div key={index}>{component}</div>
+            ))}
+          </div>
         </div>
         <div className={styles.button_container}>
           <svg
@@ -66,7 +86,10 @@ const ModalRecordMeal = ({ hide }) => {
               strokeLinejoin="round"
             />
           </svg>
-          <button className={styles.button_add}>Add more</button>
+
+          <button className={styles.button_add} onClick={addCustomComponent}>
+            Add more
+          </button>
         </div>
       </div>
       <div className={styles.buttons_container}>

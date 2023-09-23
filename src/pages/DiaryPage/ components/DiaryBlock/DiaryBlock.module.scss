@@ -4,7 +4,8 @@
 ol {
   counter-reset: ol-numbers;
 }
-ol li{
+
+ol li {
   position: relative;
 }
 
@@ -12,7 +13,6 @@ ol li::before {
   counter-increment: ol-numbers;
   content: counter(ol-numbers);
 
-  
 }
 
 .blockHeader {
@@ -20,62 +20,44 @@ ol li::before {
   align-items: center;
   display: flex;
 }
+
 .titleBlockHeader {
   margin-left: 12px;
 }
+
 .itemCalories {
   display: flex;
+
   @include mobile-only {
-    margin-top: 12px;
-    width: 178px;
-    height: 55px;
+    display: flex;
     flex-wrap: wrap;
+    width: 175px;
+    gap: 12px;
+    margin-top: 12px;
   }
+
   @include tablet-and-desktop {
     margin-top: 16px;
     align-items: center;
     margin-left: auto;
-    margin-right: 75px;
+    margin-right: 35px;
   }
+
+  @include tablet-only {
+  margin-right: 80px;
+}
 }
 
-.item_1 {
+.item {
   color: $primary-white;
   font-family: $font-regular;
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
-  @include tablet-and-desktop {
-    margin-right: 20px;
-  }
-}
-
-.item_2 {
-  color: $primary-white;
-  font-family: $font-regular;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-  @include mobile-only {
-    margin-right: 20px;
-    margin-top: 12px;
-  }
 
   @include tablet-and-desktop {
     margin-right: 20px;
-  }
-}
-.item_3 {
-  color: $primary-white;
-  font-family: $font-regular;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 20px;
-  @include mobile-only {
-    margin-top: 12px;
   }
 }
 
@@ -83,22 +65,24 @@ ol li::before {
   color: $primary-grey;
   font-weight: 500;
 }
+
 .blocks {
   display: flex;
   flex-direction: column;
- 
+
   @include mobile-only {
     width: 300px;
     height: 232px;
-    gap: 20px;
-
+   gap: 16px;
+padding: 16px 12px;
+justify-content: space-between;
   }
 
   border-radius: 12px;
   background-color: $primary-black-2;
   margin-top: 12px;
 
-  padding: 16px 12px;
+  
 
   overflow-y: scroll;
 
@@ -111,16 +95,20 @@ ol li::before {
     height: 240px;
     padding: 32px 14px;
     width: 780px;
-    gap: 15px;
+    gap: 30px;
+    justify-content: space-around;
   }
 
   @include desktop-only {
     height: 240px;
-    padding: 32px 14px;
+    padding-top: 32px;
+    padding-left: 14px;
+    padding-right: 14px;
     width: 676px;
     gap: 25px;
   }
 }
+
 .blockItems {
   display: flex;
 
@@ -139,6 +127,7 @@ ol li::before {
   width: 100%;
   margin-left: 16px;
 }
+
 .titleBlockHeader {
   color: $primary-white;
   font-family: $font-regular;
@@ -150,8 +139,9 @@ ol li::before {
 
 .listProduct {
   display: flex;
+
   @include tablet-only {
-    margin-top: 9px;
+    align-items: center;
   }
 }
 
@@ -160,7 +150,7 @@ ol li::before {
   color: $primary-green-lite;
   padding: 0px;
   margin-left: 25px;
-  margin-top: 2px;
+ 
 }
 
 .containerBlockHeader {
@@ -172,8 +162,12 @@ ol li::before {
 .caloriesProduct {
   display: flex;
   gap: 12px;
-  @include tablet-and-desktop {
-    gap: 32px;
+
+  @include tablet-only {
+    gap: 70px;
+  }
+  @include desktop-only{
+    gap: 40px;
   }
 }
 
@@ -186,6 +180,7 @@ ol li::before {
   line-height: 20px;
   display: flex;
 }
+
 .containerFoodName {
   display: flex;
 }
@@ -208,37 +203,40 @@ ol li::before {
 }
 
 .foodContainer {
-  margin-top: 2px;
   margin-left: 20px;
   width: 100%;
+
   @include tablet-and-desktop {
     display: flex;
     justify-content: space-between;
   }
+
   .foodContainer:not(:first-child) {
-  
+
     @include mobile-only {
       margin-top: 22px;
     }
+
     margin-top: 25px;
-  
+
     @include desktop-only {
       margin-top: 33px;
     }
   }
 }
 
-.buttonLast {
-  background-color: transparent;
-  margin-top: 23px;
-  padding: 0px;
-  color: $primary-green-lite;
-  @include tablet-only {
-    margin-top: 26px;
+.totalCalories{
+  display: flex;
+
+  @include mobile-only{
+    gap: 12px;
   }
-  @include desktop-only {
-    margin-top: 35px;
+
+  @include tablet-only {
+    gap: 70px;
+  }
+
+  @include desktop-only{
+     gap: 70px;
   }
 }
-
-

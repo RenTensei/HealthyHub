@@ -14,29 +14,24 @@ const DiaryPage = () => {
   const foodIntakeByCategory = useSelector(selectFoodIntakeByCategory);
 
   return (
-    <section className={styles.sectionDiary}>
-      <div className={styles.containerDiary}>
-        <a
-          onClick={() => navigate(ROUTES.HomePage)}
-          className={styles.BeckHome}
-        >
-          <ArrowRight width={24} height={24} />
-          Diary
-        </a>
-        <div className={styles.containerBloks}>
-          {foodIntakeByCategory.map(({ type, data }) => (
-            <DiaryBlock
-              mealType={data}
-              typeName={type}
-              key={type}
-              data={foodIntakeByCategory}
-              title={type}
-              srcSet={mealTypeSrcSets[type]}
-            />
-          ))}
-        </div>
+    <div className={styles.containerDiary}>
+      <a onClick={() => navigate(ROUTES.HomePage)} className={styles.BeckHome}>
+        <ArrowRight width={24} height={24} style={{ marginRight: '12px' }} />
+        <span className={styles.DiaryArrow}> Diary</span>
+      </a>
+      <div className={styles.containerBloks}>
+        {foodIntakeByCategory.map(({ type, data }) => (
+          <DiaryBlock
+            mealType={data}
+            typeName={type}
+            key={type}
+            data={foodIntakeByCategory}
+            title={type}
+            srcSet={mealTypeSrcSets[type]}
+          />
+        ))}
       </div>
-    </section>
+    </div>
   );
 };
 export default DiaryPage;

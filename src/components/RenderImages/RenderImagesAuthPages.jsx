@@ -8,7 +8,7 @@ import styles from './RenderImagesAuthPages.module.scss';
 
 const RenderImagesAuthPages = () => {
     return (
- <picture>
+ <picture style={{display: 'inline-block'}}>
     <source
       className={styles.Img}
       media="(max-width: 833px)"

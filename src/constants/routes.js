@@ -4,8 +4,8 @@ export const ROUTES = {
   SignUpPage: '/signup',
   SignInPage: '/signin',
   ForgotYourPasswordPage: '/forgotyourpassword',
-  DiaryPage: 'diary',
-  DashboardPage: 'dashboard',
-  RecommendedFoodPage: 'recommended-food',
-  ProfileSettingsPage: 'settings',
+  DiaryPage: '/diary',
+  DashboardPage: '/dashboard',
+  RecommendedFoodPage: '/recommended-food',
+  ProfileSettingsPage: '/settings',
 };

@@ -6,6 +6,10 @@
   margin-left: auto;
   margin-right: auto;
 
+  @include tablet-only {
+    padding: 0 32px;
+  }
+
   @include desktop-only {
     width: 212px;
     margin: 0;
@@ -65,6 +69,7 @@
     }
 
     &__right {
+      cursor: pointer;
       right: 10px;
       top: 10px;
 
@@ -99,7 +104,7 @@
   margin-top: 24px;
 
   @include tablet-only {
-    margin-bottom: 238px;
+    // margin-bottom: 238px;
   }
 
   @include desktop-only {
@@ -119,4 +124,8 @@
   color: $primary-black-2;
   margin-bottom: 20px;
   margin-top: 24px;
+
+  @include desktop-only {
+    margin-bottom: 180px;
+  }
 }

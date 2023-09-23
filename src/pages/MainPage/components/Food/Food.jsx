@@ -8,7 +8,7 @@ const content = ['Carbonohidrates', 'Protein', 'Fat'];
 
 const Food = () => {
   const foodStatistics = useSelector(selectFoodStatistics);
-  console.log(foodStatistics);
+  // console.log(foodStatistics);
 
   return (
     <div className={styles.food_wrapper}>

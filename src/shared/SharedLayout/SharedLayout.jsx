@@ -3,23 +3,18 @@ import { Link, Outlet } from 'react-router-dom';
 import Header from './Header';
 import styles from './SharedLayout.module.scss';
 import { ROUTES } from '@/constants/routes';
-import Modal from '@/pages/MainPage/components/Modal/ModalCreator';
-import useModal from '@/pages/MainPage/components/Modal/useModal';
-import ModalRecordMeal from '@/pages/MainPage/Modals/ModalRecordMeal/ModalRecordMeal';
-import ModalWaterIntake from '@/pages/MainPage/Modals/ModalWaterIntake/ModalWaterIntake';
+import { Fetcher } from '@/components/Loaders/Fetcher';
 
 const SharedLayout = () => {
-  const { isShowing, toggle } = useModal();
-
   return (
     <>
       <Header />
 
       <main>
-        <Suspense fallback={null}>
+        <Suspense fallback={<Fetcher />}>
           <div className={styles.container}>
             {/* delete later */}
-            <div className={styles.temptext}>
+            {/* <div className={styles.temptext}>
               ** delete dev navigation later **
             </div>
             <div className={styles.temp}>
@@ -31,22 +26,13 @@ const SharedLayout = () => {
               <Link to={ROUTES.DiaryPage}>Diary</Link>
               <Link to={ROUTES.DashboardPage}>Dashboard</Link>
               <Link to={ROUTES.ProfileSettingsPage}>Settings</Link>
-            </div>
+            </div> */}
             {/* delete later */}
+
             <Outlet />
           </div>
         </Suspense>
       </main>
-
-      {/* <button className="button-default" onClick={toggle}>
-        Show Modal
-      </button>
-      <Modal isShowing={isShowing} hide={toggle}>
-        <ModalRecordMeal />
-      </Modal>
-      <Modal isShowing={isShowing} hide={toggle}>
-        <ModalWaterIntake />
-      </Modal> */}
     </>
   );
 };

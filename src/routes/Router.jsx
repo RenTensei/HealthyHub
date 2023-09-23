@@ -10,6 +10,7 @@ const SignUpPage = lazy(() => import('@/pages/SignUpPage'));
 const SignInPage = lazy(() => import('@/pages/SignInPage'));
 const ForgotYourPasswordPage = lazy(() => import('@/pages/ForgotPasswordPage'));
 const DiaryPage = lazy(() => import('@/pages/DiaryPage'));
+const RecommendedFoodPage = lazy(() => import('@/pages/RecommendedFoodPage'));
 const DashboardPage = lazy(() => import('@/pages/DashboardPage'));
 const ProfileSettingsPage = lazy(() => import('@/pages/ProfileSettingsPage'));
 
@@ -62,6 +63,10 @@ const Router = () => {
           element={
             <PrivateRoute component={DiaryPage} redirect={ROUTES.SignInPage} />
           }
+        />
+         <Route
+          path={ROUTES.RecommendedFoodPage}
+          element={<PrivateRoute component={RecommendedFoodPage} redirect={ROUTES.SignInPage} />}
         />
         <Route
           path={ROUTES.DashboardPage}

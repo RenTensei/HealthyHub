@@ -1,5 +1,19 @@
 @import '@/scss//base/mixins';
 @import '@/scss/base/variables';
+
+ol {
+  counter-reset: ol-numbers;
+}
+ol li{
+  position: relative;
+}
+
+ol li::before {
+  counter-increment: ol-numbers;
+  content: counter(ol-numbers);
+
+}
+
 .blockHeader {
   margin-top: 16px;
   align-items: center;
@@ -16,12 +30,12 @@
     height: 55px;
     flex-wrap: wrap;
   }
-@include tablet-and-desktop {
-  margin-top: 16px;
-  align-items: center;
-  margin-left: auto;
-  margin-right: 75px;
-}
+  @include tablet-and-desktop {
+    margin-top: 16px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 75px;
+  }
 }
 
 .item_1 {
@@ -32,7 +46,7 @@
   font-weight: 400;
   line-height: 20px;
   @include tablet-and-desktop {
-margin-right: 20px;
+    margin-right: 20px;
   }
 }
 
@@ -69,17 +83,22 @@ margin-right: 20px;
   font-weight: 500;
 }
 .blocks {
-  min-width: 300px;
-  height: 232px;
+  display: flex;
+  flex-direction: column;
+ 
+  @include mobile-only {
+    width: 300px;
+    height: 232px;
+    gap: 20px;
+
+  }
+
   border-radius: 12px;
   background-color: $primary-black-2;
   margin-top: 12px;
-  .blocks:not(:last-child) {
-    margin-bottom: 24px;
-  }
+
   padding: 16px 12px;
 
-  display: flex;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -90,11 +109,18 @@ margin-right: 20px;
   @include tablet-only {
     height: 240px;
     padding: 32px 14px;
+    width: 780px;
+    gap: 15px;
+  }
+
+  @include desktop-only {
+    height: 240px;
+    padding: 32px 14px;
+    width: 676px;
+    gap: 25px;
   }
 }
 .blockItems {
-  height: 100%;
-  width: 16px;
   display: flex;
 
   .blockItemsGrup {
@@ -109,6 +135,7 @@ margin-right: 20px;
 }
 
 .listItems {
+  width: 100%;
   margin-left: 16px;
 }
 .titleBlockHeader {
@@ -121,6 +148,7 @@ margin-right: 20px;
 }
 
 .listProduct {
+  display: flex;
   @include tablet-only {
     margin-top: 9px;
   }
@@ -129,10 +157,87 @@ margin-right: 20px;
 .button {
   background-color: transparent;
   color: $primary-green-lite;
+  padding: 0px;
+  margin-left: 25px;
+  margin-top: 2px;
 }
 
-.containerBlockHeader{
-  @include tablet-and-desktop{
+.containerBlockHeader {
+  @include tablet-and-desktop {
     display: flex;
   }
 }
+
+.caloriesProduct {
+  display: flex;
+  gap: 12px;
+  @include tablet-and-desktop {
+    gap: 32px;
+  }
+}
+
+.foodName {
+  color: $primary-white;
+  font-family: $font-regular;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  display: flex;
+}
+.containerFoodName {
+  display: flex;
+}
+
+.bettonEdit {
+  margin-left: auto;
+  background-color: transparent;
+  padding: 0px;
+  color: $primary-grey;
+  display: flex;
+}
+
+.calorieas {
+  color: $primary-grey;
+  font-family: $font-regular;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+.foodContainer {
+  margin-top: 2px;
+  margin-left: 20px;
+  width: 100%;
+  @include tablet-and-desktop {
+    display: flex;
+    justify-content: space-between;
+  }
+  .foodContainer:not(:first-child) {
+  
+    @include mobile-only {
+      margin-top: 22px;
+    }
+    margin-top: 25px;
+  
+    @include desktop-only {
+      margin-top: 33px;
+    }
+  }
+}
+
+.buttonLast {
+  background-color: transparent;
+  margin-top: 23px;
+  padding: 0px;
+  color: $primary-green-lite;
+  @include tablet-only {
+    margin-top: 26px;
+  }
+  @include desktop-only {
+    margin-top: 35px;
+  }
+}
+
+

@@ -52,7 +52,7 @@ const UserMenu = () => {
           <img
             src={weight}
             alt="weight"
-            srcSet={`${weight}, ${weight2}`}
+            srcSet={`${weight} 1x, ${weight2} 2x`}
             className={styles.header_user_img}
           />
         </div>

@@ -16,7 +16,6 @@ const Header = () => {
   // const userData = useSelector(state => state.auth.user)
   // const navigate = useNavigate()
 
-
   // const [width, setWidth] = useState({ width: window.innerWidth });
   // const breakpoint = 834;
 
@@ -41,11 +40,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.header_container}>
         <div className={styles.logo_wrapper}>
-          <Link
-            className={styles.header_logo}
-            to={ROUTES.HomePage}
-            relative="path"
-          >
+          <Link className={styles.header_logo} to={ROUTES.HomePage}>
             HealthyHub
           </Link>
 

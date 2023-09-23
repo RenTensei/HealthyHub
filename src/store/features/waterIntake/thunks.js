@@ -6,7 +6,6 @@ export const getMyWaterIntake = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const res = await axiosAuth.get('user/water-intake');
-      console.log(res);
 
       return res.data;
     } catch (error) {
@@ -20,8 +19,8 @@ export const postMyWaterIntake = createAsyncThunk(
   async (waterIntake, { rejectWithValue }) => {
     try {
       const res = await axiosAuth.post('user/water-intake', waterIntake);
-
-      return res.data;
+      const result = { volume: res.data.volume };
+      return result;
     } catch (error) {
       return rejectWithValue(error);
     }

@@ -33,8 +33,6 @@ const BigDoughnutChart = ({ calories }) => {
     ],
   };
 
-  // console.log(calculateColories());
-
   const textCenter = {
     id: 'textCenter',
     beforeDatasetsDraw(chart) {
@@ -59,7 +57,6 @@ const BigDoughnutChart = ({ calories }) => {
     beforeDatasetsDraw(chart) {
       const { ctx } = chart;
       ctx.save();
-      // console.log(chart.ctx);
       const xCoor = chart.getDatasetMeta(0).data[0].x;
       const yCoor = chart.getDatasetMeta(0).data[0].y;
       const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;

@@ -4,15 +4,19 @@ import { useState } from 'react';
 import { postMyWaterIntake } from '@/store/features/waterIntake/thunks';
 
 const ModalWaterIntake = ({ hide }) => {
-  const [waterIntake, setWaterIntake] = useState({ volume: 0 });
+  const [waterIntake, setWaterIntake] = useState(0);
   const dispatch = useDispatch();
 
   const onChangeHandler = e => {
     setWaterIntake(e.target.value);
   };
+
   const onConfirmHandler = () => {
-    dispatch(postMyWaterIntake({ volume: Number(waterIntake) }));
-    console.log(waterIntake);
+    if (waterIntake !== 0) {
+      dispatch(postMyWaterIntake({ volume: Number(waterIntake) }));
+      hide();
+    }
+    hide();
   };
   return (
     <div className={styles.modal_container}>

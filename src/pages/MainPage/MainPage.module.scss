@@ -80,3 +80,12 @@
     }
   }
 }
+
+.diary_recfood_container {
+  gap: 20px;
+
+  @include desktop-only {
+    display: flex;
+    justify-content: space-between;
+  }
+}

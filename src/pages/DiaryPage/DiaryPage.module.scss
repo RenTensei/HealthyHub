@@ -2,21 +2,22 @@
 @import '@/scss/base/variables';
 
 .sectionDiary {
-  
-    margin: 0 auto;
+  margin: 0 auto;
   @include mobile-only {
-    padding: 0 10px;
+    // padding: 0 10px;
     min-width: 320px;
     width: 320px;
   }
 
   @include tablet-only {
-    padding: 24px 27px 40px;
+    // padding: 24px 27px 40px;
+    // padding-top: 40px;
     width: 834px;
   }
 
   @include desktop-only {
-    padding: 26px 34px 52px;
+    // padding: 26px 34px 52px;
+    // padding-top: 52px;
     width: 1440px;
   }
 }
@@ -29,23 +30,21 @@
   width: 16px;
   height: 16px;
 }
-.containerDiary{
-@include mobile-only {
-  padding-top: 16px;
+.containerDiary {
+  @include mobile-only {
+    padding-top: 16px;
     padding-bottom: 40px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+  }
 }
-
+.containerBloks {
+  @include desktop-only {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
 }
-.containerBloks{
-    @include desktop-only {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(2, 1fr);
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
-    }
-}
-

@@ -5,16 +5,10 @@ import { useSelector } from 'react-redux';
 // import { useEffect } from 'react';
 // import { getMyFoodIntake } from '@/store/features/foodIntake/thunks';
 import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
+import { mealTypeSrcSets } from '@/utils/mealTypeSrcSets';
 
 const Diary = ({ openModal }) => {
   const foodIntakeNutrientsTotal = useSelector(selectNutrientSums);
-
-  const mealTypeSrcSets = {
-    Breakfast: 'public/Breakfast.png 1x, public/Breakfast@2x.png 2x',
-    Lunch: 'public/Lunch.png 1x, public/Lunch@2x.png 2x',
-    Dinner: 'public/Dinner.png 1x, public/Dinner@2x.png 2x ',
-    Snack: 'public/Snack.png 1x, public/Snack@2x.png 2x',
-  };
 
   return (
     <section className={styles.sectionDiary}>

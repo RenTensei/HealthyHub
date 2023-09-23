@@ -2,10 +2,11 @@ import Diary from './components/Diary';
 import Water from './components/Water';
 import Food from './components/Food';
 import DailyGoal from './DailyGoal';
+import RecommendedFood from './components/RecommendedFood';
 // import ModalWaterIntake from './Modals/ModalWaterIntake/ModalWaterIntake';
 // import ModalRecordMeal from './Modals/ModalRecordMeal/ModalRecordMeal';
 import styles from './MainPage.module.scss';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ROUTES } from '@/constants/routes';
 
 import ModalPortal from '@/pages/MainPage/components/Modal/ModaPortalCreator';
@@ -16,6 +17,7 @@ import { ReactComponent as ArrowRightSvg } from '@/assets/svg/arrow-right.svg';
 import useModal from './components/Modal/useModal';
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const { isRecordMealShowing, mealModalToggle } = useModal();
   const { isWaterIntakeShowing, waterModalToggle } = useModal();
 
@@ -40,15 +42,20 @@ const MainPage = () => {
       <div className={styles.today_container}>
         <p className={styles.today_title}>Today</p>
 
-        <Link
+        <a
           className={styles.goal_link}
-          to={`/${ROUTES.DashboardPage}`}
-          relative="path"
+          onClick={() => navigate(ROUTES.DashboardPage)}
         >
           On the way to the goal
-        </Link>
+        </a>
 
-        <ArrowRightSvg width={16} height={16} stroke="#B6B6B6" />
+        <ArrowRightSvg
+          width={16}
+          height={16}
+          stroke="#B6B6B6"
+          strokeWidth="2px"
+          style={{ transform: 'scale(-1, 1)' }}
+        />
       </div>
 
       <div className={styles.today_wrapper}>
@@ -58,7 +65,10 @@ const MainPage = () => {
         </div>
         <Food />
       </div>
-      <Diary openModal={mealModalToggle} />
+      <div className={styles.diary_recfood_container}>
+        <Diary openModal={mealModalToggle} />
+        <RecommendedFood />
+      </div>
     </>
   );
 };

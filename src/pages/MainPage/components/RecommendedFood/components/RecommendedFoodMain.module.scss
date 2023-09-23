@@ -1,0 +1,135 @@
+@import '@/scss/base/variables.scss';
+@import '@/scss/base/mixins.scss';
+
+.main__container__recfood {
+  display: flex;
+  margin-top: 20px;
+
+  @include tablet-only {
+    display: block;
+    width: 780px;
+    padding-bottom: 40px;
+    margin-top: 20px;
+  }
+
+  @include desktop-only {
+    display: block;
+    width: 676px;
+    padding-bottom: 52px;
+    margin-top: 0;
+  }
+}
+
+.title {
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  color: $primary-white;
+
+  @include tablet-and-desktop {
+    font-size: 22px;
+    line-height: 1.45;
+    margin-bottom: 16px;
+  }
+}
+
+.item__list {
+  display: none;
+
+  @include tablet-and-desktop {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    height: 190px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+}
+
+.item {
+  width: 380px;
+  display: flex;
+  background-color: $primary-black-2;
+  color: $primary-white;
+  border-radius: 12px;
+  margin-bottom: 0 !important;
+
+  @include desktop-only {
+    width: 328px;
+    margin-bottom: 0;
+  }
+}
+
+.product__image {
+  width: 46px;
+  height: 46px;
+  margin: 20px 20px 20px 24px;
+}
+
+.product__info {
+  margin-top: 20px;
+}
+
+.product__name {
+  font-family: $font-regular;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.33;
+}
+
+.product__calories {
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.calories__quantity {
+  color: $primary-grey;
+}
+
+.link__recfood {
+  display: flex;
+  width: max-content;
+  font-weight: 500;
+  line-height: 1.43;
+  margin: 0 0 16px 16px;
+  padding: 0;
+
+  @include tablet-and-desktop {
+    margin-left: 0;
+    margin-bottom: 0;
+  }
+}
+
+.see__more {
+  display: none;
+
+  @include tablet-and-desktop {
+    display: block;
+    font-size: 16px;
+    color: $primary-grey;
+    margin-right: 6px;
+  }
+}
+
+.seemore__arrow {
+  display: none;
+
+  @include tablet-and-desktop {
+    display: block;
+    margin-top: 4px;
+  }
+}
+
+.click__here {
+  font-size: 12px;
+  margin-top: 5px;
+  margin-right: 6px;
+  color: $primary-grey;
+
+  @include tablet-and-desktop {
+    display: none;
+  }
+}

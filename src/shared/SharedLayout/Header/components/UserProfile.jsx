@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux';
-import ArrowDownSvg from '../svg components/ArrowDownSvg';
 import styles from './UserProfile.module.scss';
 import { useModalContext } from '@/context/ModalContext';
+import { ReactComponent as ArrowDownSvg } from '@/assets/svg/arrow-down.svg';
+import { useSelector } from 'react-redux';
 
 const UserProfile = () => {
   const { openModal } = useModalContext();
@@ -20,7 +20,11 @@ const UserProfile = () => {
           alt="user"
           className={styles.header_user_profile_img}
         />
-        <ArrowDownSvg />
+        <ArrowDownSvg
+          width={14}
+          height={14}
+          stroke={'rgba(227, 255, 168, 1)'}
+        />
       </button>
     </div>
   );

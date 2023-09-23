@@ -1,28 +1,26 @@
-import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import DiaryBlock from './ components/DiaryBlock';
 import styles from './DiaryPage.module.scss';
 import { useSelector } from 'react-redux';
 import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 import { ReactComponent as ArrowRight } from '@/assets/svg/arrow-right.svg';
-const DiaryPage = () => {
-  const location = useLocation()
-  const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
-console.log(FoodIntakeNutrientsTotal)
-  const mealTypeSrcSets = {
-    Breakfast: 'public/Breakfast.png 1x, public/Breakfast@2x.png 2x',
-    Lunch: 'public/Lunch.png 1x, public/Lunch@2x.png 2x',
-    Dinner: 'public/Dinner.png 1x, public/Dinner@2x.png 2x ',
-    Snack: 'public/Snack.png 1x, public/Snack@2x.png 2x',
-  };
+import { mealTypeSrcSets } from '@/utils/mealTypeSrcSets';
+import { ROUTES } from '@/constants/routes';
 
+const DiaryPage = () => {
+  const navigate = useNavigate();
+  const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
 
   return (
     <section className={styles.sectionDiary}>
       <div className={styles.containerDiary}>
-        <Link state={{ from: location }} to={'/'} className={styles.BeckHome}>
+        <a
+          onClick={() => navigate(ROUTES.HomePage)}
+          className={styles.BeckHome}
+        >
           <ArrowRight className={styles.arrowBack} />
           Diary
-        </Link>
+        </a>
         <div className={styles.containerBloks}>
           {FoodIntakeNutrientsTotal.map(item => (
             <DiaryBlock

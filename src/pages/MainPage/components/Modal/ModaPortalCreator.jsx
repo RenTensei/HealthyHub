@@ -13,12 +13,11 @@ const ModalPortal = ({ isShowing, hide, children }) => {
 
   const handleKeydown = useCallback(
     e => {
-      console.log(isShowing);
       if (e.code === 'Escape') {
         hide();
       }
     },
-    [hide, isShowing]
+    [hide]
   );
 
   useEffect(() => {

@@ -15,13 +15,14 @@ import ModalWaterIntake from '@/pages/MainPage/Modals/ModalWaterIntake/ModalWate
 
 import { ReactComponent as ArrowRightSvg } from '@/assets/svg/arrow-right.svg';
 import useModal from './components/Modal/useModal';
+import { MealProvider } from '@/context/MealContext';
 
 const MainPage = () => {
   const { isRecordMealShowing, mealModalToggle } = useModal();
   const { isWaterIntakeShowing, waterModalToggle } = useModal();
 
   return (
-    <>
+    <MealProvider>
       <button className="button-default" onClick={mealModalToggle}>
         Show Modal
       </button>
@@ -31,12 +32,6 @@ const MainPage = () => {
       <ModalPortal isShowing={isWaterIntakeShowing} hide={waterModalToggle}>
         <ModalWaterIntake hide={waterModalToggle} />
       </ModalPortal>
-      {/* <ModalRecordMeal
-        meal="Breakfast"
-        srcImg="/Breakfast.png"
-        srcSet="/Breakfast.png, /Breakfast@2x.png"
-        alt="Breakfast"
-      /> */}
 
       <div className={styles.today_container}>
         <p className={styles.today_title}>Today</p>
@@ -65,7 +60,7 @@ const MainPage = () => {
         <Diary openModal={mealModalToggle} />
         <RecommendedFood />
       </div>
-    </>
+    </MealProvider>
   );
 };
 

@@ -1,8 +1,13 @@
 import styles from './Bar.module.scss';
+import { selectWater } from '@/store/features/waterIntake/selectors';
 
 import { ReactComponent as AddSvg } from '@/assets/svg/add.svg';
+import { useSelector } from 'react-redux';
 
-const Bar = ({ waterConsumption, openModal }) => {
+const Bar = ({ openModal }) => {
+  const waterConsumed = useSelector(selectWater);
+  const waterConsumption = waterConsumed.volume;
+
   let percentageColor = '#B6C3FF';
   if (waterConsumption > 1110) {
     percentageColor = '#ffff';

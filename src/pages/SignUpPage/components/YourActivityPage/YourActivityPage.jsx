@@ -116,7 +116,7 @@ const YourActivityPage = () => {
               className={styles.Input}
             />
             <label className={styles.Label} htmlFor="1.725">
-              1,725 ​​- if you train fully 6-7 times a week
+              1,725 if you train fully 6-7 times a week
             </label>
           </div>
 

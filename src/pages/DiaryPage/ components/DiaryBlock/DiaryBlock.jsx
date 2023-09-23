@@ -3,101 +3,77 @@ import { useMediaQuery } from 'react-responsive';
 import { ReactComponent as Edit } from '@/assets/svg/Edit.svg';
 import { nanoid } from 'nanoid';
 import { useSelector } from 'react-redux';
+import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 // import { useSelector } from 'react-redux';
 // import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 
-const DiaryBlock = ({
-  alt,
-  title,
-  srcSet,
-  typeName,
-}) => {
-
-  
+const DiaryBlock = ({ alt, title, srcSet, typeName, mealType }) => {
   const meal = [
-    {
-      _id: '650744a45349ba95e795e4eb',
-      mealName: 'toast',
-      mealType: 'Breakfast',
-      carbonohidrates: 45,
-      protein: 10,
-      fat: 110,
-      calories: 460,
-      consumer: '6506e67b65a5957c6d9cbd33',
-      createdAt: '2023-09-17T18:25:40.001Z',
-      updatedAt: '2023-09-17T18:25:40.001Z',
-    },
-    {
-      _id: '650744a45349ba95e795e4eb',
-      mealName: 'toast',
-      mealType: 'Dinner',
-      carbonohidrates: 45,
-      protein: 10,
-      fat: 110,
-      calories: 460,
-      consumer: '6506e67b65a5957c6d9cbd33',
-      createdAt: '2023-09-17T18:25:40.001Z',
-      updatedAt: '2023-09-17T18:25:40.001Z',
-    },
-    {
-      _id: '650744a75349ba95e795e4ee',
-      mealName: 'toast',
-      mealType: 'Lunch',
-      carbonohidrates: 45,
-      protein: 10,
-      fat: 110,
-      calories: 460,
-      consumer: '6506e67b65a5957c6d9cbd33',
-      createdAt: '2023-09-17T18:25:43.236Z',
-      updatedAt: '2023-09-17T18:25:43.236Z',
-    },
-    {
-      _id: '650744a75349ba95e795e4ee',
-      mealName: 'toast',
-      mealType: 'Snack',
-      carbonohidrates: 45,
-      protein: 10,
-      fat: 110,
-      calories: 460,
-      consumer: '6506e67b65a5957c6d9cbd33',
-      createdAt: '2023-09-17T18:25:43.236Z',
-      updatedAt: '2023-09-17T18:25:43.236Z',
-    },
+    // {
+    //   _id: '650744a45349ba95e795e4eb',
+    //   mealName: 'toast',
+    //   mealType: 'Breakfast',
+    //   carbonohidrates: 45,
+    //   protein: 10,
+    //   fat: 110,
+    //   calories: 460,
+    //   consumer: '6506e67b65a5957c6d9cbd33',
+    //   createdAt: '2023-09-17T18:25:40.001Z',
+    //   updatedAt: '2023-09-17T18:25:40.001Z',
+    // },
+    // {
+    //   _id: '650744a45349ba95e795e4eb',
+    //   mealName: 'toast',
+    //   mealType: 'Dinner',
+    //   carbonohidrates: 45,
+    //   protein: 10,
+    //   fat: 110,
+    //   calories: 460,
+    //   consumer: '6506e67b65a5957c6d9cbd33',
+    //   createdAt: '2023-09-17T18:25:40.001Z',
+    //   updatedAt: '2023-09-17T18:25:40.001Z',
+    // },
+    // {
+    //   _id: '650744a75349ba95e795e4ee',
+    //   mealName: 'toast',
+    //   mealType: 'Lunch',
+    //   carbonohidrates: 45,
+    //   protein: 10,
+    //   fat: 110,
+    //   calories: 460,
+    //   consumer: '6506e67b65a5957c6d9cbd33',
+    //   createdAt: '2023-09-17T18:25:43.236Z',
+    //   updatedAt: '2023-09-17T18:25:43.236Z',
+    // },
+    // {
+    //   _id: '650744a75349ba95e795e4ee',
+    //   mealName: 'toast',
+    //   mealType: 'Snack',
+    //   carbonohidrates: 45,
+    //   protein: 10,
+    //   fat: 110,
+    //   calories: 460,
+    //   consumer: '6506e67b65a5957c6d9cbd33',
+    //   createdAt: '2023-09-17T18:25:43.236Z',
+    //   updatedAt: '2023-09-17T18:25:43.236Z',
+    // },
   ];
+  const items = useSelector(selectNutrientSums);
+  console.log('items,', items);
 
-  // const Breakfast = [
-  //   {
-  //     _id: '650744a45349ba95e795e4eb',
-  //     mealName: 'toast',
-  //     mealType: 'Breakfast',
-  //     carbonohidrates: 45,
-  //     protein: 10,
-  //     fat: 110,
-  //     calories: 460,
-  //     consumer: '6506e67b65a5957c6d9cbd33',
-  //     createdAt: '2023-09-17T18:25:40.001Z',
-  //     updatedAt: '2023-09-17T18:25:40.001Z',
-  //   },
-  // ];
+  let toralCarbonohidrates = 0;
+  let totalProtein = 0;
+  let totalFat = 0;
 
-   const items = useSelector(state => state.foodIntake.items);
-  console.log(items);
-  
-
-  
- let toralCarbonohidrates = 0;
- let totalProtein = 0;
- let totalFat = 0;
-
- function sumTotal(meal) {
-   for (let i = 0; i < meal.length; i++) {
-     toralCarbonohidrates += meal[i].carbonohidrates;
-     totalProtein += meal[i].protein;
-     totalFat += meal[i].fat;
-   }
-   return toralCarbonohidrates, totalProtein, totalFat;
- }
- sumTotal(meal);
+  function sumTotal(meal) {
+    for (let i = 0; i < meal.length; i++) {
+      toralCarbonohidrates += meal[i].carbonohidrates;
+      totalProtein += meal[i].protein;
+      totalFat += meal[i].fat;
+    }
+    return toralCarbonohidrates, totalProtein, totalFat;
+  }
+  sumTotal(meal);
 
   function newFood(foodArray) {
     const newArray =
@@ -152,7 +128,7 @@ const DiaryBlock = ({
         </div>
       </div>
       <ol className={`${styles.blocks}`}>
-        {newFood(meal).map(el => {
+        {newFood(mealType).map(el => {
           return !el.showButton ? (
             <li key={nanoid()} className={styles.listProduct}>
               <div className={styles.foodContainer}>

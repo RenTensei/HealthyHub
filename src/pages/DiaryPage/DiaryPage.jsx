@@ -10,7 +10,84 @@ import { ROUTES } from '@/constants/routes';
 const DiaryPage = () => {
   const navigate = useNavigate();
   const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
+  console.log(FoodIntakeNutrientsTotal);
   
+
+   const breakfast = [
+    //  {
+    //    _id: '650744a45349ba95e795e4eb',
+    //    mealName: 'toast',
+    //    mealType: 'Breakfast',
+    //    carbonohidrates: 45,
+    //    protein: 10,
+    //    fat: 110,
+    //    calories: 460,
+    //    consumer: '6506e67b65a5957c6d9cbd33',
+    //    createdAt: '2023-09-17T18:25:40.001Z',
+    //    updatedAt: '2023-09-17T18:25:40.001Z',
+    //  },
+    //  {
+    //    _id: '650744a45349ba95e795e4eb',
+    //    mealName: 'toast',
+    //    mealType: 'Breakfast',
+    //    carbonohidrates: 45,
+    //    protein: 10,
+    //    fat: 110,
+    //    calories: 460,
+    //    consumer: '6506e67b65a5957c6d9cbd33',
+    //    createdAt: '2023-09-17T18:25:40.001Z',
+    //    updatedAt: '2023-09-17T18:25:40.001Z',
+    //  },
+   ];
+   const dinner = [
+    //  {
+    //    _id: '650744a45349ba95e795e4eb',
+    //    mealName: 'toast',
+    //    mealType: 'Breakfast',
+    //    carbonohidrates: 45,
+    //    protein: 10,
+    //    fat: 110,
+    //    calories: 460,
+    //    consumer: '6506e67b65a5957c6d9cbd33',
+    //    createdAt: '2023-09-17T18:25:40.001Z',
+    //    updatedAt: '2023-09-17T18:25:40.001Z',
+    //  },
+   ];
+   const lunch = [
+     {
+       _id: '650744a45349ba95e795e4eb',
+       mealName: 'toast',
+       mealType: 'Breakfast',
+       carbonohidrates: 45,
+       protein: 10,
+       fat: 110,
+       calories: 460,
+       consumer: '6506e67b65a5957c6d9cbd33',
+       createdAt: '2023-09-17T18:25:40.001Z',
+       updatedAt: '2023-09-17T18:25:40.001Z',
+     },
+   ];
+   const snack = [
+     {
+       _id: '650744a45349ba95e795e4eb',
+       mealName: 'toast',
+       mealType: 'Breakfast',
+       carbonohidrates: 45,
+       protein: 10,
+       fat: 110,
+       calories: 460,
+       consumer: '6506e67b65a5957c6d9cbd33',
+       createdAt: '2023-09-17T18:25:40.001Z',
+       updatedAt: '2023-09-17T18:25:40.001Z',
+     },
+   ];
+
+   const mealTypes = [
+     { type: 'Breakfast', data: breakfast },
+     { type: 'Dinner', data: dinner },
+     { type: 'Lunch', data: lunch },
+     { type: 'Snack', data: snack },
+   ];
 
   return (
     <section className={styles.sectionDiary}>
@@ -23,14 +100,14 @@ const DiaryPage = () => {
           Diary
         </a>
         <div className={styles.containerBloks}>
-          {FoodIntakeNutrientsTotal.map(item => (
+          {mealTypes.map(({ type, data }) => (
             <DiaryBlock
-              product={'555'}
-              typeName={item.mealType}
-              key={item.mealType}
-              data={FoodIntakeNutrientsTotal}
-              title={item.mealType}
-              srcSet={mealTypeSrcSets[item.mealType]}
+              mealType={data}
+              typeName={type}
+              key={type}
+              data={mealTypes}
+              title={type}
+              srcSet={mealTypeSrcSets[type]}
             />
           ))}
         </div>

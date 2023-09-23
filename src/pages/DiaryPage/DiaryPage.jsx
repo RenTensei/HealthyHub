@@ -16,8 +16,6 @@ const DiaryPage = () => {
   const FoodIntakeNutrientsTotal = useSelector(selectNutrientSums);
 
   const foodIntakeByCategory = useSelector(selectFoodIntakeByCategory);
-  const { breakfastList, lunchList, dinnerList, snackList } =
-    foodIntakeByCategory;
 
   console.log(foodIntakeByCategory);
 

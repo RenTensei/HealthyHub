@@ -76,12 +76,23 @@ export const selectFoodStatistics = createSelector(
 export const selectFoodIntakeByCategory = createSelector(
   state => state.foodIntake.items,
   items => {
-    const breakfastList = items.filter(item => item.mealType === 'Breakfast');
-    const lunchList = items.filter(item => item.mealType === 'Lunch');
+    const categorizedItems = {
+      Breakfast: [],
+      Lunch: [],
+      Dinner: [],
+      Snack: [],
+    };
 
-    const dinnerList = items.filter(item => item.mealType === 'Dinner');
-    const snackList = items.filter(item => item.mealType === 'Snack');
+    items.forEach(item => {
+      const mealType = item.mealType;
+      if (categorizedItems[mealType]) {
+        categorizedItems[mealType].push(item);
+      }
+    });
 
-    return { breakfastList, lunchList, dinnerList, snackList };
+    return Object.keys(categorizedItems).map(type => ({
+      type,
+      data: categorizedItems[type],
+    }));
   }
 );

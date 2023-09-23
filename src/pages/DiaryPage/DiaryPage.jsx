@@ -19,6 +19,8 @@ const DiaryPage = () => {
   const { breakfastList, lunchList, dinnerList, snackList } =
     foodIntakeByCategory;
 
+  console.log(foodIntakeByCategory);
+
   return (
     <section className={styles.sectionDiary}>
       <div className={styles.containerDiary}>

@@ -1,16 +1,26 @@
 import validationSchemaForgotPassword from '../../../../schemas/ValidationSchemaForgotPassword';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import styles from '../../../../components/scss/Form.module.scss';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { resetPassword } from '@/store/features/auth/thunks';
 
 const initialValues = {
   email: '',
-};
+}
+
 
 const ForgotYourPasswordForm = () => {
-  const handleSubmit = (values, { resetForm }) => {
-    console.log(values);
-    resetForm();
-  };
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (values, { resetForm }) => {
+  await dispatch(resetPassword(values));
+ navigate('/signin');
+
+  
+  }
+  
 
   return (
     <Formik

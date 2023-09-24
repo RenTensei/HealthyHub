@@ -26,3 +26,16 @@ export const postMyFoodIntake = createAsyncThunk(
     }
   }
 );
+
+export const postMyWaterIntake = createAsyncThunk(
+  'waterIntake/post',
+  async (waterIntake, { rejectWithValue }) => {
+    try {
+      const res = await axiosAuth.post('user/water-intake', waterIntake);
+
+      return res.data.volume;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);

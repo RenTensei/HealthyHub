@@ -78,6 +78,15 @@ img {
   height: auto;
 }
 
-input {
+input:not([type='radio']) {
   font-family: inherit;
+  border: 1px solid $primary-green-lite;
+  transition: $transition-default;
+  color: $primary-grey;
+  background-color: $primary-black-2;
+
+  &:focus {
+    outline: none;
+    transform: scale(1.02);
+  }
 }

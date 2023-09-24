@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import styles from './ModalWaterIntake.module.scss';
 import { useState } from 'react';
-import { postMyWaterIntake } from '@/store/features/waterIntake/thunks';
+import { postMyWaterIntake } from '@/store/features/foodIntake/thunks';
 
 const ModalWaterIntake = ({ hide }) => {
   const [waterIntake, setWaterIntake] = useState('');
@@ -14,7 +14,6 @@ const ModalWaterIntake = ({ hide }) => {
   const onConfirmHandler = () => {
     if (waterIntake !== 0) {
       dispatch(postMyWaterIntake({ volume: Number(waterIntake) }));
-      hide();
     }
     hide();
   };

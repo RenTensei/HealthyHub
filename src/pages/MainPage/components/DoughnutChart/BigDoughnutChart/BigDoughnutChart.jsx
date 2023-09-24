@@ -3,7 +3,6 @@ import { Doughnut } from 'react-chartjs-2';
 // import styles from "./BigDoughnutChart"
 ChartJS.register(ArcElement);
 
-// eslint-disable-next-line react/prop-types
 const BigDoughnutChart = ({ calories }) => {
   let arcColor = 'rgba(69, 255, 188, 1)';
   const calculateColories = calories => {

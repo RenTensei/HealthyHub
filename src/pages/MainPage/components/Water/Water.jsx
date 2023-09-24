@@ -6,7 +6,7 @@ const Water = ({ openModal }) => {
   return (
     <div>
       <h3 className={styles.title}>Water</h3>
-      <Bar openModal={openModal} waterConsumption={1150} />
+      <Bar openModal={openModal} />
     </div>
   );
 };

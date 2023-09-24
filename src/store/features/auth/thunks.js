@@ -54,12 +54,12 @@ export const refresh = createAsyncThunk(
 
       return res.data;
     } catch (error) {
-      console.log(error);
       if (error instanceof AxiosError && error.response.status === 401) {
         await sleep(500);
         toast.error('Your session has expired. Please log in again.');
         return rejectWithValue(401);
       }
+      console.log(error);
       return rejectWithValue();
     }
   }
@@ -80,7 +80,6 @@ export const logOut = createAsyncThunk(
   }
 );
 
-
 export const resetPassword = createAsyncThunk(
   'auth/resetPassword',
   async (resetData, { rejectWithValue }) => {
@@ -93,4 +92,26 @@ export const resetPassword = createAsyncThunk(
       );
     }
   }
-)
+);
+
+export const updateUser = createAsyncThunk(
+  'auth/updateUser',
+  async (fieldsToUpdate, { rejectWithValue }) => {
+    try {
+      const formData = new FormData();
+      for (const field in fieldsToUpdate) {
+        formData.append(field, fieldsToUpdate[field]);
+      }
+
+      const res = await axiosAuth.patch('user/info', formData);
+      toast.success('Profile updated!');
+
+      return res.data;
+    } catch (error) {
+      if (error instanceof AxiosError && error.response.data.message) {
+        toast.error(error.response.data.message);
+      }
+      return rejectWithValue();
+    }
+  }
+);

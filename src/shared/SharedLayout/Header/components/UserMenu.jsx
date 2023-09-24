@@ -3,8 +3,8 @@ import styles from './UserMenu.module.scss';
 import { useModalContext } from '@/context/ModalContext';
 import goalM from '../images/header/goal.png';
 import goalM2 from '../images/header/goal2x.png';
-import goalF from '../images/header/goal_girl.png';
-import goalF2 from '../images/header/goal_girl2x.png';
+// import goalF from '../images/header/goal_girl.png';
+// import goalF2 from '../images/header/goal_girl2x.png';
 import weight from '../images/header/weight.png';
 import weight2 from '../images/header/weight2x.png';
 import { ReactComponent as ArrowDownSvg } from '@/assets/svg/arrow-down.svg';
@@ -33,7 +33,7 @@ const UserMenu = () => {
         <div className={styles.header_user_discr}>
           <p className={styles.header_user_text}> Goal</p>
           <div className={styles.header_user_discr_choose}>
-            <p className={styles.header_user_text}>Loose Weight</p>
+            <p className={styles.header_user_text}>{userData.goal}</p>
             <ArrowDownSvg
               width={16}
               height={16}

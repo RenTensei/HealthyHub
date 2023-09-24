@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { refresh, logOut, signIn, signUp } from './thunks';
+import { refresh, logOut, signIn, signUp, updateUser } from './thunks';
 import { APP_STATUS } from '@/constants/appStatus';
 
 const initialState = {
@@ -12,6 +12,7 @@ const initialState = {
     height: null,
     weight: null,
     physicalActivityRatio: null,
+    avatarURL: null,
     BMR: null,
   },
   token: null,
@@ -74,6 +75,20 @@ const authSlice = createSlice({
         return { ...initialState };
       })
       .addCase(logOut.rejected, state => {
+        state.appStatus = APP_STATUS.idle;
+      })
+
+      // updateUser
+      .addCase(updateUser.pending, state => {
+        state.appStatus = APP_STATUS.fetching;
+      })
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        for (const key in payload) {
+          if (payload.hasOwnProperty(key)) state.user[key] = payload[key];
+        }
+        state.appStatus = APP_STATUS.idle;
+      })
+      .addCase(updateUser.rejected, state => {
         state.appStatus = APP_STATUS.idle;
       });
   },

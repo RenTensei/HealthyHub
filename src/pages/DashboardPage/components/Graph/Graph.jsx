@@ -48,7 +48,6 @@ const Graph = ({labels, graphData}) => {
       },
       title: {
         display: false,
-        text: 'Chart.js Line Chart',
       },
       tooltip: {
         enabled: false,
@@ -67,7 +66,7 @@ const Graph = ({labels, graphData}) => {
             opacity: 1,
             display: "block",
             left: position.left + tooltipModel.caretX,
-            top: position.top + tooltipModel.caretY,
+            top: position.top + tooltipModel.caretY - 94,
             date: tooltipModel.dataPoints[0].label,
             value: tooltipModel.dataPoints[0].formattedValue,
           }
@@ -80,8 +79,11 @@ const Graph = ({labels, graphData}) => {
     indexAxis: 'x',
     scales: {
       x: {
+        alignToPixels: true,
+        offset: true,
         ticks: {
           padding: 6,
+          backdropPadding: 0,
         },
         beginAtZero: false,
         grid: {
@@ -95,8 +97,16 @@ const Graph = ({labels, graphData}) => {
       },
       y: {
         ticks: {
+          alignToPixels: true,
           stepSize: 1000,
           padding: 8,
+          backdropPadding: 0,
+          callback: function (value) {
+            if (value === 0) {
+              return 0
+            }
+            return `${value/1000}K`;
+          }
         },
         beginAtZero: true,
         grid: {

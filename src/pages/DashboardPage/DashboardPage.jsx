@@ -98,7 +98,7 @@ const yearlyStatistics = [
         <h3 className={styles.monthTitle}>{showLastMonth ? "November" : "2023"}</h3>
       </div>
       {showLastMonth ?
-        <DataList statistic={monthlyStatistics} typeData={showLastMonth} /> : <DataList statistic={yearlyStatistics} />}
+        <DataList statistic={monthlyStatistics} lastMonth={showLastMonth} /> : <DataList statistic={yearlyStatistics} />}
     </section>
   );
 };

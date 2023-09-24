@@ -1,7 +1,7 @@
 import styles from './DataList.module.scss';
 import Graph from '../Graph';
 
-const DataList = ({ statistic, typeData }) => {
+const DataList = ({ statistic, lastMonth }) => {
   const graphTitle = statistic.map(item => Object.keys(item));
   const labels = statistic.map(item => Object.values(item)[0]);
   const dataCalories = statistic.map(item => Object.values(item)[1]);
@@ -49,7 +49,7 @@ const DataList = ({ statistic, typeData }) => {
           <div className={styles.weightField}>
             {dataWeight.map((item, index) => (
               <div key={index} className={styles.weightData}>
-                <p className={typeData ? styles.dataWeightItemMonth : styles.dataWeightItemYear}>{item.data}</p>
+                <p className={lastMonth ? styles.dataWeightItemMonth : styles.dataWeightItemYear}>{item.data}</p>
                 <p className={styles.labelWeightItem}>{item.label}</p>
               </div>
             ))}

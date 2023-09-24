@@ -2,7 +2,7 @@
 @import '@/scss/base/mixins';
 
 .graphTooltip {
-  position: absolute;
+  position: fixed;
   width: 104px;
   padding: 6px;
   background-color: $primary-black-2;

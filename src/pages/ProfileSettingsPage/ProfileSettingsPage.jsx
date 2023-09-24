@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { physicalActivityRatio } from './activityLevel';
 import ProfileSettingsSchema from './ProfileSettingsSchema';
@@ -7,7 +7,7 @@ import picture from './image/Setting.png';
 import style from './ProfileSettingsPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserInfo } from '@/store/features/auth/selectors';
-// import { useNavigate } from 'react-router-dom';
+
 import { ReactComponent as AddPhotoSvg } from '@/assets/svg/direct-inbox.svg';
 
 // import defaultPhoto from './image/photo-user.jpg';
@@ -16,31 +16,14 @@ import { extractChangedFields } from '@/utils/extractChangedFields';
 
 const ProfileSettingsPage = () => {
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
-
-  const [avatarBlob, setAvatarBlob] = useState(null);
-  // console.log(avatarBlob);
-
-  // const { name, age, height, gender, weight, height, physicalActivityRatio } =
-  //   useSelector(state => state.auth.user);
-
-  // const [initialValues, setInitialValues] = useState({
-  //   name: '',
-  //   age: '',
-  //   height: '',
-  //   gender: '',
-  //   weight: '',
-  //   physicalActivityRatio: '',
-  //
-  // });
-
-  // const [values, setValues] = useState({ ...initialValues });
 
   const userInfo = useSelector(selectUserInfo);
+  const [avatarPreviewURL, setAvatarPreviewURL] = useState(userInfo.avatarURL);
+  const [avatarBlob, setAvatarBlob] = useState(null);
+
   const initialValues = {
     name: userInfo.name,
     age: userInfo.age,
-    avatarURL: userInfo.avatarURL,
     gender: userInfo.gender,
     weight: userInfo.weight,
     height: userInfo.height,
@@ -48,12 +31,12 @@ const ProfileSettingsPage = () => {
   };
 
   const handleSave = values => {
-    // console.log(values);
-    const changedFields = extractChangedFields(initialValues, values);
+    const changedFields = extractChangedFields(userInfo, values);
     if (avatarBlob) Object.assign(changedFields, { avatarURL: avatarBlob });
-    // console.log(changedFields);
+    console.log(changedFields);
 
     dispatch(updateUser(changedFields));
+    setAvatarBlob(null);
   };
 
   return (
@@ -73,7 +56,17 @@ const ProfileSettingsPage = () => {
           {({ values, setFieldValue }) => (
             <Form>
               <div className={style.button}>
-                <button className={style.cancelBtn} type="reset">
+                <button
+                  type="button"
+                  className={style.cancelBtn}
+                  onClick={() => {
+                    Object.keys(initialValues).forEach(key =>
+                      setFieldValue(key, userInfo[key])
+                    );
+                    setAvatarPreviewURL(userInfo['avatarURL']);
+                    setAvatarBlob(null);
+                  }}
+                >
                   Cancel
                 </button>
                 <button type="submit" className={style.saveBtn}>
@@ -105,7 +98,7 @@ const ProfileSettingsPage = () => {
                   <div className={style.containerPhoto}>
                     <div>
                       <img
-                        src={values.avatarURL}
+                        src={avatarPreviewURL}
                         alt="Profile"
                         style={{ width: '36px', height: '36px' }}
                         className={style.photo}
@@ -115,18 +108,18 @@ const ProfileSettingsPage = () => {
                     <AddPhotoSvg className={style.svg} width={16} height={16} />
                     <label htmlFor="avatarURL" style={{ cursor: 'pointer' }}>
                       Download new photo
+                      <input
+                        className={style.inputPhoto}
+                        type="file"
+                        id="avatarURL"
+                        accept="image/*"
+                        onChange={e => {
+                          const file = e.target.files[0];
+                          setAvatarBlob(file);
+                          setAvatarPreviewURL(URL.createObjectURL(file));
+                        }}
+                      />
                     </label>
-                    <input
-                      className={style.inputPhoto}
-                      type="file"
-                      id="avatarURL"
-                      accept="image/*"
-                      onChange={e => {
-                        const file = e.target.files[0];
-                        setAvatarBlob(file);
-                        setFieldValue('avatarURL', URL.createObjectURL(file));
-                      }}
-                    />
                   </div>
 
                   <label className={style.text}>Gender</label>

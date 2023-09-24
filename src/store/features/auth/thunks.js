@@ -97,7 +97,6 @@ export const resetPassword = createAsyncThunk(
 export const updateUser = createAsyncThunk(
   'auth/updateUser',
   async (fieldsToUpdate, { rejectWithValue }) => {
-    console.log(fieldsToUpdate);
     try {
       const formData = new FormData();
       for (const field in fieldsToUpdate) {

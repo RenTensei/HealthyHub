@@ -83,6 +83,9 @@ const authSlice = createSlice({
         state.appStatus = APP_STATUS.fetching;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
+        for (const key in payload) {
+          if (payload.hasOwnProperty(key)) state.user[key] = payload[key];
+        }
         state.appStatus = APP_STATUS.idle;
       })
       .addCase(updateUser.rejected, state => {

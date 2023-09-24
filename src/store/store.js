@@ -12,7 +12,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import authReducer from './features/auth/authSlice';
 import foodIntakeReducer from './features/foodIntake/foodIntakeSlice';
-
+import waterIntakeReducer from './features/waterIntake/waterIntakeSlice';
 const tokenPersistConfig = {
   key: 'auth',
   storage,
@@ -23,6 +23,7 @@ export const store = configureStore({
   reducer: {
     auth: persistReducer(tokenPersistConfig, authReducer),
     foodIntake: foodIntakeReducer,
+    waterIntake: waterIntakeReducer,
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({

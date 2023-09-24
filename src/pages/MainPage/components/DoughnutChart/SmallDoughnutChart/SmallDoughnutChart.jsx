@@ -66,8 +66,7 @@ const SmallDoughnutChart = ({ nutritionValue, arcColor, content, goal }) => {
     id: 'backgroundCircle',
     beforeDatasetsDraw(chart) {
       const { ctx } = chart;
-      ctx.save();
-      // console.log(chart.ctx);
+      ctx.save(); 
       const xCoor = chart.getDatasetMeta(0).data[0].x;
       const yCoor = chart.getDatasetMeta(0).data[0].y;
       const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { refresh, logOut, signIn, signUp} from './thunks';
+import { refresh, logOut, signIn, signUp } from './thunks';
 import { APP_STATUS } from '@/constants/appStatus';
 
 const initialState = {
@@ -30,12 +30,30 @@ const authSlice = createSlice({
   },
   extraReducers: builder => {
     builder
+      // refresh
+      .addCase(refresh.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+
+        state.isLoggedIn = true;
+        state.appStatus = APP_STATUS.idle;
+      })
+      .addCase(refresh.rejected, (state, { payload }) => {
+        if (payload === 401) state.token = null;
+        state.appStatus = APP_STATUS.idle;
+      })
+
+      // signUp
       .addCase(signUp.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.token = payload.token;
 
         state.isLoggedIn = true;
         state.appStatus = APP_STATUS.idle;
+      })
+
+      // signIn
+      .addCase(signIn.pending, state => {
+        state.appStatus = APP_STATUS.fetching;
       })
       .addCase(signIn.fulfilled, (state, { payload }) => {
         state.user = payload.user;
@@ -44,15 +62,19 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.appStatus = APP_STATUS.idle;
       })
-
-      .addCase(refresh.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
-
-        state.isLoggedIn = true;
+      .addCase(signIn.rejected, state => {
         state.appStatus = APP_STATUS.idle;
+      })
+
+      // logOut
+      .addCase(logOut.pending, state => {
+        state.appStatus = APP_STATUS.fetching;
       })
       .addCase(logOut.fulfilled, () => {
         return { ...initialState };
+      })
+      .addCase(logOut.rejected, state => {
+        state.appStatus = APP_STATUS.idle;
       });
   },
 });

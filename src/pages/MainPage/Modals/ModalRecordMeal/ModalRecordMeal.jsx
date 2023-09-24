@@ -1,20 +1,100 @@
-import styles from './ModalRecordMeal.module.scss';
+import { nanoid } from 'nanoid';
 
-const ModalRecordMeal = ({ meal, srcImg, alt, srcSet, hide }) => {
+import RenderSvg from '@/components/RenderSvg';
+import styles from './ModalRecordMeal.module.scss';
+import { useContext, useState } from 'react';
+import { MealContext } from '@/context/MealContext';
+import RecordMealInput from './RecordMealInput/RecordMealInput';
+import { useDispatch } from 'react-redux';
+import { postMyFoodIntake } from '@/store/features/foodIntake/thunks';
+
+const ModalRecordMeal = ({ hide }) => {
+  const [mealName, setMealName] = useState('');
+  const [carbonohidrates, setCarbonohidrates] = useState(0);
+  const [protein, setProtein] = useState(0);
+  const [fat, setFat] = useState(0);
+  const [calories, setCalories] = useState(0);
+
+  const dispatch = useDispatch();
+  const [customComponents, setCustomComponents] = useState([]);
+
+  const mealHandler = value => {
+    setMealName(value);
+  };
+
+  const carbHandler = value => {
+    setCarbonohidrates(value);
+  };
+
+  const proteinHandler = value => {
+    setProtein(value);
+  };
+
+  const fatHandler = value => {
+    setFat(value);
+  };
+
+  const caloriesHandler = value => {
+    setCalories(value);
+  };
+
+  const addCustomComponent = () => {
+    setCustomComponents([
+      ...customComponents,
+      <RecordMealInput
+        key={nanoid()}
+        stateHandlres={[
+          mealHandler,
+          carbHandler,
+          proteinHandler,
+          fatHandler,
+          caloriesHandler,
+        ]}
+      />,
+    ]);
+  };
+
+  const { typeOfMeal } = useContext(MealContext);
+  let imageSrc = '';
+  switch (typeOfMeal.toLowerCase()) {
+    case 'breakfast':
+      imageSrc = 'breakfast';
+      break;
+    case 'lunch':
+      imageSrc = 'lunch';
+      break;
+    case 'dinner':
+      imageSrc = 'dinner';
+      break;
+    case 'snack':
+      // eslint-disable-next-line no-unused-vars
+      imageSrc = 'snack';
+      break;
+    default:
+      null;
+  }
+
+  const onConfirmHandler = () => {
+    const stateObject = {
+      mealName,
+      mealType: typeOfMeal,
+      carbonohidrates: Number(carbonohidrates),
+      protein: Number(protein),
+      fat: Number(fat),
+      calories: Number(calories),
+    };
+    console.log(stateObject);
+    dispatch(postMyFoodIntake(stateObject));
+    hide();
+  };
   return (
     <div className={styles.modal_container}>
       <div className={styles.content_container}>
         <h2 className={styles.title}>Record your meal</h2>
         <div className={styles.meal_container}>
-          <img
-            className={styles.meal_img}
-            src={srcImg}
-            srcSet={srcSet}
-            alt={alt}
-            width="32px"
-            height="32px"
-          />
-          <h3 className={styles.subtitle}>{meal}</h3>
+          <RenderSvg imageSrc={imageSrc} />
+
+          <h3 className={styles.subtitle}>{typeOfMeal}</h3>
         </div>
         <div>
           <ul className={styles.list}>
@@ -26,6 +106,11 @@ const ModalRecordMeal = ({ meal, srcImg, alt, srcSet, hide }) => {
             <li className={styles.list_item}>Fat </li>
             <li className={styles.list_item}>Calories </li>
           </ul>
+          <div className={styles.inputs_container}>
+            {customComponents?.map((component, index) => (
+              <div key={index}>{component}</div>
+            ))}
+          </div>
         </div>
         <div className={styles.button_container}>
           <svg
@@ -50,14 +135,19 @@ const ModalRecordMeal = ({ meal, srcImg, alt, srcSet, hide }) => {
               strokeLinejoin="round"
             />
           </svg>
-          <button className={styles.button_add}>Add more</button>
+
+          <button className={styles.button_add} onClick={addCustomComponent}>
+            Add more
+          </button>
         </div>
       </div>
       <div className={styles.buttons_container}>
         <button onClick={hide} className={styles.button_cancel}>
           Cancel
         </button>
-        <button className={styles.button_confirm}>Confirm</button>
+        <button className={styles.button_confirm} onClick={onConfirmHandler}>
+          Confirm
+        </button>
       </div>
     </div>
   );

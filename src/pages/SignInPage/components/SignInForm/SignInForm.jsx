@@ -1,9 +1,8 @@
-import styles from '../../../../components/scss/Form.module.scss';
+import styles from '@/components/scss/Form.module.scss';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import validationSchemaSignIn from '../../../../schemas/ValidationSchemaSignInForm';
+import validationSchemaSignIn from '@/schemas/ValidationSchemaSignInForm';
 import { ReactComponent as EyeOpenSvg } from '@/assets/svg/eye-open.svg';
-import {
-  ReactComponent as EyeCloseSvg } from '@/assets/svg/eye-close.svg';
+import { ReactComponent as EyeCloseSvg } from '@/assets/svg/eye-close.svg';
 import { ReactComponent as ErrorLogoSvg } from '@/assets/svg/error-logo.svg';
 import { ReactComponent as SuccessLogoSvg } from '@/assets/svg/success-logo.svg';
 import { useState } from 'react';
@@ -32,7 +31,7 @@ const SignInForm = () => {
     // }, 1000);
   };
 
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [success, setSuccess] = useState(false);
 
   return (
@@ -108,7 +107,7 @@ const SignInForm = () => {
             </div>
           </div>
 
-          <button type="submit" className={styles.Button}>
+          <button type="submit" className={styles.Button_SignIn}>
             Sign in
           </button>
         </Form>

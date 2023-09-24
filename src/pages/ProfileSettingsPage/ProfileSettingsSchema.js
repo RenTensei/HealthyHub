@@ -6,31 +6,35 @@ const ProfileSettingsSchema = Yup.object().shape({
       /^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$/,
       'Name may contain only letters, apostrophe, dash and spaces.'
     )
-    .required('Name is required'),
+    .min(3, 'Name must be at least 3 characters')
+    .nullable()
+    .optional(),
+  avatarURL: Yup.string().url().nullable().optional(),
+  gender: Yup.string().oneOf(['Male', 'Female']).nullable().optional(),
+  goal: Yup.string()
+    .oneOf(['Lose fat', 'Maintain', 'Gain Muscle'])
+    .nullable()
+    .optional(),
   age: Yup.number()
+    .integer('Age must be an integer')
     .min(0, 'Age must be a positive number')
-    .required('Age is required'),
-  height: Yup.number()
-    .min(0, 'Height must be a positive number')
-    .required('Height is required'),
+    .nullable()
+    .optional(),
   weight: Yup.number()
-    .min(0, 'Weight must be a positive number')
-    .required('Weight is required'),
-  // photo: Yup.mixed()
-  //   .test('fileSize', 'File size is too large', value => {
-  //     if (value) {
-  //       return value.size <= 2000000;
-  //     }
-  //     return true;
-  //   })
-  //   .test('fileType', 'Invalid file type', value => {
-  //     if (value) {
-  //       return (
-  //         value && ['image/jpeg', 'image/png', 'image/gif'].includes(value.type)
-  //       );
-  //     }
-  //     return true;
-  //   }),
+    .min(40, 'Weight must be at least 40')
+    .max(170, 'Weight cannot exceed 170')
+    .nullable()
+    .optional(),
+  height: Yup.number()
+    .min(140, 'Height must be at least 140')
+    .max(230, 'Height cannot exceed 230')
+    .nullable()
+    .optional(),
+  physicalActivityRatio: Yup.number()
+    .min(1.2, 'Physical Activity Ratio must be at least 1.2')
+    .max(2.5, 'Physical Activity Ratio cannot exceed 2.5')
+    .nullable()
+    .optional(),
 });
 
 export default ProfileSettingsSchema;

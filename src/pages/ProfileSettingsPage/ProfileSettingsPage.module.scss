@@ -129,22 +129,17 @@
   @include tablet-and-desktop {
     display: flex;
     width: 491px;
-    
   }
 
   @include tablet-only {
     margin: auto;
   }
-
-  
 }
 
 @include tablet-and-desktop {
   .containerSetting > div:first-child {
     margin-right: 60px;
   }
-
-
 }
 
 .containerSettingFirst {

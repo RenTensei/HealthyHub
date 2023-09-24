@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Formik, Field, Form, ErrorMessage, useFormik } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { physicalActivityRatio } from './activityLevel';
 import ProfileSettingsSchema from './ProfileSettingsSchema';
 import picture from './image/Setting.png';
@@ -7,15 +7,19 @@ import picture from './image/Setting.png';
 import style from './ProfileSettingsPage.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserInfo } from '@/store/features/auth/selectors';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { ReactComponent as AddPhotoSvg } from '@/assets/svg/direct-inbox.svg';
-import defaultPhoto from './image/photo-user.jpg';
 
-function ProfileSettingsPage() {
+// import defaultPhoto from './image/photo-user.jpg';
+import { updateUser } from '@/store/features/auth/thunks';
+import { extractChangedFields } from '@/utils/extractChangedFields';
+
+const ProfileSettingsPage = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  // const isLoggedIn = useSelector(selectIsLoggedIn);
+  const [avatarBlob, setAvatarBlob] = useState(null);
+  // console.log(avatarBlob);
 
   // const { name, age, height, gender, weight, height, physicalActivityRatio } =
   //   useSelector(state => state.auth.user);
@@ -33,51 +37,46 @@ function ProfileSettingsPage() {
   // const [values, setValues] = useState({ ...initialValues });
 
   const userInfo = useSelector(selectUserInfo);
-
-  console.log(userInfo);
+  const initialValues = {
+    name: userInfo.name,
+    age: userInfo.age,
+    avatarURL: userInfo.avatarURL,
+    gender: userInfo.gender,
+    weight: userInfo.weight,
+    height: userInfo.height,
+    physicalActivityRatio: userInfo.physicalActivityRatio,
+  };
 
   const handleSave = values => {
-    console.log(values);
-  };
+    // console.log(values);
+    const changedFields = extractChangedFields(initialValues, values);
+    if (avatarBlob) Object.assign(changedFields, { avatarURL: avatarBlob });
+    // console.log(changedFields);
 
-  const handleCancel = () => {
-    navigate('/main');
-    // setValues({ ...initialValues });
-  };
-
-  const handlePhotoChange = (e, setFieldValue) => {
-    const avatarURL = e.target.files[0];
-    setFieldValue(
-      ' avatarURL',
-      avatarURL ? URL.createObjectURL(avatarURL) : defaultPhoto
-    );
+    dispatch(updateUser(changedFields));
   };
 
   return (
     <div className={style.container}>
       <div className={style.containerTitle}>
-        <h2>Profile setting</h2>
+        <h2>Profile settings</h2>
         <div>
           <img src={picture} alt="Picture" className={style.mainImg}></img>
         </div>
       </div>
       <div className={style.containerSettings}>
         <Formik
-          initialValues={userInfo}
+          initialValues={initialValues}
           validationSchema={ProfileSettingsSchema}
           onSubmit={handleSave}
         >
           {({ values, setFieldValue }) => (
             <Form>
               <div className={style.button}>
-                <button className={style.cancelBtn} onClick={handleCancel}>
+                <button className={style.cancelBtn} type="reset">
                   Cancel
                 </button>
-                <button
-                  type="submit"
-                  className={style.saveBtn}
-                  onClick={handleSave}
-                >
+                <button type="submit" className={style.saveBtn}>
                   Save
                 </button>
               </div>
@@ -97,7 +96,7 @@ function ProfileSettingsPage() {
 
                   <label>
                     Height
-                    <Field type="number" name="height" min="0" />
+                    <Field type="number" name="height" min="140" max="230" />
                     <ErrorMessage name="height" component="div" />
                   </label>
                 </div>
@@ -106,8 +105,7 @@ function ProfileSettingsPage() {
                   <div className={style.containerPhoto}>
                     <div>
                       <img
-                        src={values.avatarURL || defaultPhoto}
-                        // src={avatar}
+                        src={values.avatarURL}
                         alt="Profile"
                         style={{ width: '36px', height: '36px' }}
                         className={style.photo}
@@ -115,13 +113,19 @@ function ProfileSettingsPage() {
                     </div>
 
                     <AddPhotoSvg className={style.svg} width={16} height={16} />
-                    <label htmlFor="avatarURL">Download new photo</label>
+                    <label htmlFor="avatarURL" style={{ cursor: 'pointer' }}>
+                      Download new photo
+                    </label>
                     <input
                       className={style.inputPhoto}
                       type="file"
                       id="avatarURL"
                       accept="image/*"
-                      onChange={e => handlePhotoChange(e, setFieldValue)}
+                      onChange={e => {
+                        const file = e.target.files[0];
+                        setAvatarBlob(file);
+                        setFieldValue('avatarURL', URL.createObjectURL(file));
+                      }}
                     />
                   </div>
 
@@ -150,12 +154,13 @@ function ProfileSettingsPage() {
                   <label className={style.text}>Weight</label>
                   <div className={style.containerWeight}>
                     <label>
-                      <Field type="number" name="weight" min="0" />
+                      <Field type="number" name="weight" min="40" max="170" />
                       <ErrorMessage name="weight" component="div" />
                     </label>
                   </div>
                 </div>
               </div>
+
               <div>
                 <div className={style.containerActivity}>
                   <label htmlFor="physicalActivityRatio" className={style.text}>
@@ -187,6 +192,6 @@ function ProfileSettingsPage() {
       </div>
     </div>
   );
-}
+};
 
 export default ProfileSettingsPage;

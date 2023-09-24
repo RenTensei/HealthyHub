@@ -1,4 +1,4 @@
-import styles from './Chart.module.scss'
+import styles from './Graph.module.scss'
 import { useRef, useState } from 'react';
 import {
   Chart as ChartJS,
@@ -24,10 +24,7 @@ ChartJS.register(
   Legend
 );
 
-// const labelsMonthes = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-export const labelsDays = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'];
-
-const Chart = () => {
+const Graph = ({labels, graphData}) => {
   const chartRef = useRef(null) //create reference hook
   const [tooltip, setTooltip] = useState({
     opacity: 0,
@@ -70,7 +67,7 @@ const Chart = () => {
             opacity: 1,
             display: "block",
             left: position.left + tooltipModel.caretX,
-            top: position.top + tooltipModel.caretY - 94,
+            top: position.top + tooltipModel.caretY,
             date: tooltipModel.dataPoints[0].label,
             value: tooltipModel.dataPoints[0].formattedValue,
           }
@@ -114,11 +111,11 @@ const Chart = () => {
   };
 
   const data = {
-    labels: labelsDays,
+    labels: labels,
     datasets: [
       {
         label: 'Dataset 1',
-        data: [1500, 1450, 1300, 1210, 1560, 1700, 1000, 0, 1500, 1120, 2000, 1200, 1600, 1500, 1510, 1200, 1800, 2000, 1200, 1200, 1400, 2000, 1300, 2500, 1000, 3000, 2500, 1200, 1500, 3000, 2100],
+        data: graphData,
         borderColor: '#E3FFA8',
         tension: 0.4,
         backgroundColor: '#292928',
@@ -133,7 +130,7 @@ const Chart = () => {
 
   return (
     <>
-      <Line options={options} ref={chartRef} data={data} />
+      <Line options={options} ref={chartRef} data={data} style={{width: '100%', fontSize: '10px'}} />
         <div className={styles.graphTooltip} style={{ top: tooltip.top, left: tooltip.left, opacity: tooltip.opacity, display: tooltip.display }}>
           <button className={styles.closeBtn}>
             <CloseCircle width={16} height={16} stroke={'#B6B6B6'} />
@@ -147,4 +144,4 @@ const Chart = () => {
   )
 };
 
-export default Chart;
+export default Graph;

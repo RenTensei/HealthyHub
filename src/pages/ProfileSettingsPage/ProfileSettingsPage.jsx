@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import { physicalActivityRatio } from './activityLevel';
 import ProfileSettingsSchema from './ProfileSettingsSchema';
@@ -10,7 +10,6 @@ import { selectUserInfo } from '@/store/features/auth/selectors';
 
 import { ReactComponent as AddPhotoSvg } from '@/assets/svg/direct-inbox.svg';
 
-// import defaultPhoto from './image/photo-user.jpg';
 import { updateUser } from '@/store/features/auth/thunks';
 import { extractChangedFields } from '@/utils/extractChangedFields';
 
@@ -33,7 +32,6 @@ const ProfileSettingsPage = () => {
   const handleSave = values => {
     const changedFields = extractChangedFields(userInfo, values);
     if (avatarBlob) Object.assign(changedFields, { avatarURL: avatarBlob });
-    console.log(changedFields);
 
     dispatch(updateUser(changedFields));
     setAvatarBlob(null);
@@ -167,7 +165,7 @@ const ProfileSettingsPage = () => {
                         name="physicalActivityRatio"
                         value={level.value}
                         className={style.boxActivity}
-                        checked={values.physicalActivityRatio === level.value}
+                        checked={values.physicalActivityRatio == level.value}
                       />
                       <label
                         className={style.text}

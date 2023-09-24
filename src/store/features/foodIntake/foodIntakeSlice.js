@@ -16,7 +16,9 @@ const foodIntakeSlice = createSlice({
         state.items = payload.items;
         state.waterIntake = payload.waterIntake;
       })
-      .addCase(postMyFoodIntake.fulfilled, (state, { payload }) => {})
+      .addCase(postMyFoodIntake.fulfilled, (state, { payload }) => {
+        state.items.push(payload);
+      })
       .addCase(postMyWaterIntake.fulfilled, (state, { payload }) => {
         state.waterIntake += payload;
       });

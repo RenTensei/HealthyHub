@@ -1,5 +1,6 @@
 import { axiosAuth } from '@/utils/network';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 
 export const getMyFoodIntake = createAsyncThunk(
   'foodIntake/get',
@@ -20,9 +21,11 @@ export const postMyFoodIntake = createAsyncThunk(
     try {
       const res = await axiosAuth.post('user/food-intake', foodIntake);
 
+      toast.success('Food intake saved!');
       return res.data;
     } catch (error) {
-      return rejectWithValue(error);
+      toast.error('Something went wrong...');
+      return rejectWithValue();
     }
   }
 );
@@ -33,9 +36,11 @@ export const postMyWaterIntake = createAsyncThunk(
     try {
       const res = await axiosAuth.post('user/water-intake', waterIntake);
 
+      toast.success('Water intake saved!');
       return res.data.volume;
     } catch (error) {
-      return rejectWithValue(error);
+      toast.error('Something went wrong...');
+      return rejectWithValue();
     }
   }
 );

@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { refresh, logOut, signIn, signUp, updateUser } from './thunks';
 import { APP_STATUS } from '@/constants/appStatus';
-import { getMyFoodIntake } from '../foodIntake/thunks';
+import {
+  getMyFoodIntake,
+  postMyFoodIntake,
+  postMyWaterIntake,
+} from '../foodIntake/thunks';
 
 const initialState = {
   user: {
@@ -101,6 +105,28 @@ const authSlice = createSlice({
         state.appStatus = APP_STATUS.idle;
       })
       .addCase(getMyFoodIntake.rejected, state => {
+        state.appStatus = APP_STATUS.idle;
+      })
+
+      // postMyFoodIntake
+      .addCase(postMyFoodIntake.pending, state => {
+        state.appStatus = APP_STATUS.fetching;
+      })
+      .addCase(postMyFoodIntake.fulfilled, state => {
+        state.appStatus = APP_STATUS.idle;
+      })
+      .addCase(postMyFoodIntake.rejected, state => {
+        state.appStatus = APP_STATUS.idle;
+      })
+
+      // postMyWaterIntake
+      .addCase(postMyWaterIntake.pending, state => {
+        state.appStatus = APP_STATUS.fetching;
+      })
+      .addCase(postMyWaterIntake.fulfilled, state => {
+        state.appStatus = APP_STATUS.idle;
+      })
+      .addCase(postMyWaterIntake.rejected, state => {
         state.appStatus = APP_STATUS.idle;
       });
   },

@@ -6,29 +6,43 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 19px;
-};
+}
 
 .lastPeriodField {
   position: relative;
   display: flex;
   align-items: center;
-};
+}
 
 .dashboardLink {
   padding: 0px;
   display: flex;
   align-items: center;
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-};
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  transform: rotate(180deg);
+
+  @include mobile-only {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+  }
+}
 
 .dashboardTitle {
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 500;
-  line-height: 1.25;
-  margin-right: 6px;
-};
+  line-height: 1.2;
+  margin-right: 12px;
+
+  @include mobile-only {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.25;
+    margin-right: 6px;
+  }
+}
 
 .toggleBtn {
   display: block;
@@ -36,11 +50,12 @@
   height: 16px;
   padding: 0px;
   background-color: transparent;
-};
+  transform: rotate(180deg);
+}
 
 .lastButton {
-  color: #FFF;
-  background-color: #050505;
+  color: $primary-white;
+  background-color: $primary-black;
   text-align: start;
   font-size: 22px;
   font-weight: 400;
@@ -48,14 +63,27 @@
 
   width: 212px;
   padding: 16px 12px;
-  border-radius: 12px;
-  background: #0F0F0F;
+  border-radius: $border-default;
+  background: $primary-black-2;
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
-};
+
+  @include mobile-only {
+    font-size: 18px;
+    line-height: 1.45;
+    padding: 12px 8px;
+    width: 158px;
+  }
+}
 
 .monthTitle {
   text-align: right;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33;
+
+  @include mobile-only {
     font-size: 16px;
     font-weight: 500;
     line-height: 1.375;
-};
+  }
+}

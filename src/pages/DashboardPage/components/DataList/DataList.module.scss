@@ -1,23 +1,31 @@
 @import '@/scss/base/variables';
 @import '@/scss/base/mixins';
 
+.chartTitleField {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 6px;
+
+  @include mobile-only {
+    justify-content: space-between;
+  }
+}
+
 .chartTitle {
   font-size: 18px;
   font-weight: 400;
   line-height: 1.44;
   text-transform: capitalize;
-}
 
-.chartTitleField {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
+  @include mobile-only {
+    font-size: 22px;
+    line-height: 1.45;
+  }
 }
 
 .average {
   font-size: 14px;
-  font-style: normal;
   font-weight: 400;
   line-height: 1.43;
 }
@@ -25,18 +33,23 @@
 .averageValue {
   color: $primary-grey;
   font-size: 14px;
-  font-style: normal;
   font-weight: 500;
   line-height: 1.43;
+  margin-left: 8px;
 }
 
 .chart {
   width: 676px;
-  background-color: #0F0F0F;
-  padding: 25px 20px;
-  border-radius: 12px;
+  background-color: $primary-black-2;
+  padding: 24px 14px;
+  border-radius: $border-default;
+
   @include mobile-only {
     margin-bottom: 8px;
+  }
+
+  @include tablet-only {
+    width: 780px;
   }
 }
 
@@ -58,7 +71,19 @@
       background: rgba(255, 255, 255, 0.10);
     }
   }
+
+  @include tablet-only {
+    margin-bottom: 40px;
+  }
 }
+
+.desktopGraphField {
+  @include desktop-only {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+} 
 
 .weightCont {
   @include mobile-only {
@@ -82,32 +107,50 @@
 
 .weightField {
   display: flex;
+  min-width: 1372px;
   border-radius: 12px;
   background-color: $primary-black-2;
   padding: 24px 21px 36px 21px;
+
   @include mobile-only {
     margin-bottom: 8px;
-    gap: 23px;
+  }
+
+  @include tablet-only {
+    min-width: 780px;
+    padding: 24px 22px 44px 22px;
   }
 }
 
 .weightData {
   margin-bottom: 0px;
+  width: 100%
 }
 
-.dataWeightItem {
+.dataWeightItemMonth {
   text-align: center;
-  font-family: Poppins;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.43;
   margin-bottom: 12px;
+
+  @include tablet-only {
+    font-size: 10px;
+    line-height: 1.6;
+  }
+}
+
+.dataWeightItemYear {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
+  margin-bottom: 16px;
 }
 
 .labelWeightItem {
   color: $primary-grey;
   text-align: center;
-  font-family: Poppins;
   font-size: 10px;
   font-weight: 400;
   line-height: 1.4;

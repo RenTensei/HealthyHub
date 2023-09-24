@@ -83,7 +83,7 @@ const yearlyStatistics = [
     <section>
       <div className={styles.titleField}>
         <div className={styles.lastPeriodField}>
-          <Link to={backLinkLocationRef.current} className={styles.dashboardLink}><GoBackBtn width={16} height={16} className={styles.goBackBtn} /></Link>
+          <Link to={backLinkLocationRef.current} className={styles.dashboardLink}><GoBackBtn width={24} height={24} className={styles.goBackBtn} /></Link>
           <h2 className={styles.dashboardTitle}>{showLastMonth ? "Last month" : "Last year"}</h2>
           <button type="button" className={styles.toggleBtn} onClick={toggleModal}>
             <ToggleBtn width={16} height={16} stroke={'#E3FFA8'} />
@@ -95,10 +95,10 @@ const yearlyStatistics = [
               </button>
             </Modal>}
         </div>
-        <h3 className={styles.monthTitle}>November</h3>
+        <h3 className={styles.monthTitle}>{showLastMonth ? "November" : "2023"}</h3>
       </div>
       {showLastMonth ?
-        <DataList statistic={monthlyStatistics} /> : <DataList statistic={yearlyStatistics} />}
+        <DataList statistic={monthlyStatistics} typeData={showLastMonth} /> : <DataList statistic={yearlyStatistics} />}
     </section>
   );
 };

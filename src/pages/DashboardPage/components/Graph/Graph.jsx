@@ -130,7 +130,7 @@ const Graph = ({labels, graphData}) => {
 
   return (
     <>
-      <Line options={options} ref={chartRef} data={data} />
+      <Line options={options} ref={chartRef} data={data} style={{width: '100%', fontSize: '10px'}} />
         <div className={styles.graphTooltip} style={{ top: tooltip.top, left: tooltip.left, opacity: tooltip.opacity, display: tooltip.display }}>
           <button className={styles.closeBtn}>
             <CloseCircle width={16} height={16} stroke={'#B6B6B6'} />

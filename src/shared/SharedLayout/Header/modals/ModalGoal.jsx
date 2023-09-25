@@ -5,18 +5,20 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import { motion, AnimatePresence } from 'framer-motion';
 import goalM from '../images/header/goal.png';
 import goalM2 from '../images/header/goal2x.png';
-import goalF from '../images/header/goal_girl.png';
-import goalF2 from '../images/header/goal_girl2x.png';
+// import goalF from '../images/header/goal_girl.png';
+// import goalF2 from '../images/header/goal_girl2x.png';
 import muscle from '../images/header/muscle.png';
 import muscle2 from '../images/header/muscle2x.png';
 import maintainM from '../images/header/maintain.png';
 import maintainM2 from '../images/header/maitain2x.png';
-import maintainF from '../images/header/maintan_girl.png';
-import maintainF2 from '../images/header/maintan_girl2x.png';
-import { useSelector } from 'react-redux';
+// import maintainF from '../images/header/maintan_girl.png';
+// import maintainF2 from '../images/header/maintan_girl2x.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUser } from '@/store/features/auth/thunks';
 
 const ModalGoal = ({ open, onClose }) => {
   const breakpoint = 834;
+  const dispatch = useDispatch();
   const currentGoal = useSelector(state => state.auth.user.goal);
   const [width, setWidth] = useState({ width: window.innerWidth });
   const [newGoal, setNewGoal] = useState(currentGoal);
@@ -26,6 +28,11 @@ const ModalGoal = ({ open, onClose }) => {
   const setGoalGailMuscle = () => setNewGoal('Gain Muscle');
 
   const handleResize = () => setWidth({ width: window.innerWidth });
+  const handleSubmit = () => {
+    if (newGoal === currentGoal) return onClose();
+    dispatch(updateUser({ goal: newGoal }));
+    onClose();
+  };
 
   useEffect(() => {
     window.addEventListener('resize', handleResize);
@@ -192,14 +199,14 @@ const ModalGoal = ({ open, onClose }) => {
                   <button
                     className={styles.header_modal_bnt}
                     type="submit"
-                    onClick={() => {}}
+                    onClick={handleSubmit}
                   >
                     Confirm
                   </button>
                 </div>
                 <button
                   className={styles.header_modal_bnt_close}
-                  type="submit"
+                  type="button"
                   onClick={onClose}
                 >
                   <CloseSvg width={16} height={16} stroke={'white'} />
@@ -355,7 +362,7 @@ const ModalGoal = ({ open, onClose }) => {
                   <button
                     className={styles.header_modal_bnt}
                     type="submit"
-                    onClick={onClose}
+                    onClick={handleSubmit}
                   >
                     Confirm
                   </button>

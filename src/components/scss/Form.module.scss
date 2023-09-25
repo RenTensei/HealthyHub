@@ -70,7 +70,7 @@
 
     &__right {
       cursor: pointer;
-      right: 10px;
+      right: 5px;
       top: 10px;
 
       &_secondary {
@@ -82,10 +82,22 @@
   & .Message {
     &__error {
       color: $secondary-red;
+      font-family: $font-regular;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.17;
+        margin-top: 4px;
+      
     }
 
     &__success {
       color: $secondary-green;
+      font-family: $font-regular;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.17;
+        margin-top: 4px;
+        
     }
   }
 }
@@ -104,7 +116,7 @@
   margin-top: 24px;
 
   @include tablet-only {
-    // margin-bottom: 238px;
+    margin-bottom: 238px;
   }
 
   @include desktop-only {
@@ -126,6 +138,6 @@
   margin-top: 24px;
 
   @include desktop-only {
-    margin-bottom: 180px;
+    // margin-bottom: 180px;
   }
 }

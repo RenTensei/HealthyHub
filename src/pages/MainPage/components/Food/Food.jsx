@@ -7,32 +7,32 @@ import { selectFoodStatistics } from '@/store/features/foodIntake/selectors';
 const content = ['Carbonohidrates', 'Protein', 'Fat'];
 
 const Food = () => {
-  const foodStatistics = useSelector(selectFoodStatistics);
-  // console.log(foodStatistics);
+  const { Calories, Carbonohidrates, Protein, Fat } =
+    useSelector(selectFoodStatistics);
 
   return (
     <div className={styles.food_wrapper}>
       <h3 className={styles.food_title}>Food</h3>
       <div className={styles.food_container}>
-        <BigDoughnutChart calories={foodStatistics.Calories.fact} />
+        <BigDoughnutChart calories={Calories.fact} />
         <div className={styles.food_subcontainer}>
           <SmallDoughnutChart
-            nutritionValue={foodStatistics.Carbonohidrates.fact}
+            nutritionValue={Carbonohidrates.fact}
             arcColor={'#FFC4F7'}
             content={content[0]}
-            goal={foodStatistics.Carbonohidrates.goal}
+            goal={Carbonohidrates.goal}
           />
           <SmallDoughnutChart
-            nutritionValue={foodStatistics.Protein.fact}
+            nutritionValue={Protein.fact}
             arcColor={'#FFF3B7'}
             content={content[1]}
-            goal={foodStatistics.Protein.goal}
+            goal={Protein.goal}
           />
           <SmallDoughnutChart
-            nutritionValue={foodStatistics.Fat.fact}
+            nutritionValue={Fat.fact}
             arcColor={'#B6B6B6'}
             content={content[2]}
-            goal={foodStatistics.Fat.goal}
+            goal={Fat.goal}
           />
         </div>
       </div>

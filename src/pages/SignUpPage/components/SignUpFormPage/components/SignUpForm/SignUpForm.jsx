@@ -15,7 +15,7 @@ const initialValues = {
 };
 
 const SignUpForm = () => {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
   const [inputState, setInputState] = useState({
     name: '',
     email: '',

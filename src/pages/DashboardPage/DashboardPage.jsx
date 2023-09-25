@@ -1,11 +1,13 @@
 import styles from './DashboardPage.module.scss';
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Modal from "./components/Modal";
 import DataList from './components/DataList';
 import { ReactComponent as GoBackBtn } from '@/assets/svg/arrow-right-liqht.svg';
 import { ReactComponent as ToggleBtn } from '@/assets/svg/arrow-down.svg';
 import { ROUTES } from '@/constants/routes';
+import { getMonthStatistic } from './service/dashboard-service';
+import { useDispatch } from 'react-redux';
 
 const DashboardPage = () => {
   const monthlyStatistics = [
@@ -62,6 +64,17 @@ const yearlyStatistics = [
 
   const [showModal, setShowModal] = useState(false);
   const [showLastMonth, setShowLastMonth] = useState(true);
+  // const [monthStatictic, setMonthStatictic] = useState([]);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    try {
+      dispatch(getMonthStatistic())
+    } catch (error) {
+      console.log(error.message)
+    }
+    dispatch(getMonthStatistic())
+  }, [dispatch]);
 
   const closeModal = () => {
     if (showModal) {
@@ -85,7 +98,7 @@ const yearlyStatistics = [
         <div className={styles.lastPeriodField}>
           <Link to={backLinkLocationRef.current} className={styles.dashboardLink}><GoBackBtn width={24} height={24} className={styles.goBackBtn} /></Link>
           <h2 className={styles.dashboardTitle}>{showLastMonth ? "Last month" : "Last year"}</h2>
-          <button type="button" className={styles.toggleBtn} onClick={toggleModal}>
+          <button type="button" className={`${styles.toggleBtn} ${showModal && styles.toggleIsActive}`} onClick={toggleModal}>
             <ToggleBtn width={16} height={16} stroke={'#E3FFA8'} />
           </button>
           {showModal &&

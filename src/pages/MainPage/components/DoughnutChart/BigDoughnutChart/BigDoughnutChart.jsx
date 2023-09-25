@@ -4,26 +4,15 @@ import { Doughnut } from 'react-chartjs-2';
 ChartJS.register(ArcElement);
 
 const BigDoughnutChart = ({ calories }) => {
-  let arcColor = 'rgba(69, 255, 188, 1)';
-  const calculateColories = calories => {
-    if (calories >= 1700) {
-      arcColor = 'red';
-      return 100;
-    }
-    const prc = (calories / 1700) * 100;
-    return prc;
-  };
-
-  let borderRad = [50];
-  if (calories >= 1700) {
-    borderRad = [0];
-    arcColor = 'red';
-  }
+  const calculatedPercentage = calories >= 1700 ? 100 : (calories / 1700) * 100;
+  const arcColor = calories >= 1700 ? 'red' : 'rgba(69, 255, 188, 1)';
+  const borderRad = calories >= 1700 ? [0] : [50];
+  console.log(calculatedPercentage);
 
   const data = {
     datasets: [
       {
-        data: [calculateColories(calories), 100 - calculateColories(calories)],
+        data: [calculatedPercentage, 100 - calculatedPercentage],
         backgroundColor: [arcColor, 'rgba(41, 41, 40, 1)'],
         borderColor: ['rgba(69, 255, 188, 0)'],
         borderRadius: borderRad,

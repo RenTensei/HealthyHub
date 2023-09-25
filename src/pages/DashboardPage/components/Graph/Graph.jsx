@@ -54,7 +54,6 @@ const Graph = ({labels, graphData}) => {
         position: 'nearest',
         external: context => {
           const tooltipModel = context.tooltip
-
           if (tooltipModel.opacity === 0) {
             if (tooltip.opacity !== 0) {
               setTooltip(prev => ({ ...prev, opacity: 0, display: 'none' }))
@@ -70,9 +69,7 @@ const Graph = ({labels, graphData}) => {
             date: tooltipModel.dataPoints[0].label,
             value: tooltipModel.dataPoints[0].formattedValue,
           }
-
           if (!isEqual(tooltip, newTooltipData)) setTooltip(newTooltipData)
-          
         },
       },
     },

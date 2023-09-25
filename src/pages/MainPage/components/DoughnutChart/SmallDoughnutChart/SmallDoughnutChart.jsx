@@ -13,7 +13,7 @@ const SmallDoughnutChart = ({ nutritionValue, arcColor, content, goal }) => {
     return Math.round((nutritionValue / goal) * 100);
   }, [goal, nutritionValue]);
 
-  console.log(content, ':', calculatedPercentage);
+  // console.log(content, ':', calculatedPercentage);
 
   const borderRad = nutritionValue >= goal ? [0] : [50];
 

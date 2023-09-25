@@ -20,7 +20,9 @@ const Food = () => {
     <div className={styles.food_wrapper}>
       <h3 className={styles.food_title}>Food</h3>
       <div className={styles.food_container}>
-        {shouldRender && <BigDoughnutChart calories={Calories.fact} />}
+        {shouldRender && (
+          <BigDoughnutChart calories={Calories.fact} goal={Calories.goal} />
+        )}
         <div className={styles.food_subcontainer}>
           {shouldRender && (
             <>

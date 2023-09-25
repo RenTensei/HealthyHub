@@ -78,7 +78,7 @@ const ModalGoal = ({ open, onClose }) => {
 
                   y: -100,
                   transition: {
-                    delay: 0.6,
+                    delay: 0.3,
                   },
                 }}
                 className={styles.header_modal_goal_overlay}
@@ -242,7 +242,7 @@ const ModalGoal = ({ open, onClose }) => {
                 exit={{
                   y: -1000,
                   transition: {
-                    delay: 0.5,
+                    delay: 0.3,
                   },
                 }}
                 className={styles.header_modal_goal_overlay}

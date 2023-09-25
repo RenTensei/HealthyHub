@@ -1,29 +1,22 @@
 import { Chart as ChartJS, ArcElement } from 'chart.js';
+import { useMemo } from 'react';
 import { Doughnut } from 'react-chartjs-2';
 // import styles from "./BigDoughnutChart"
 ChartJS.register(ArcElement);
 
-const BigDoughnutChart = ({ calories }) => {
-  let arcColor = 'rgba(69, 255, 188, 1)';
-  const calculateColories = calories => {
-    if (calories >= 1700) {
-      arcColor = 'red';
-      return 100;
-    }
-    const prc = (calories / 1700) * 100;
-    return prc;
-  };
+const BigDoughnutChart = ({ calories, goal }) => {
+  const calculatedPercentage = useMemo(
+    () => (calories >= goal ? 100 : Math.round((calories / goal) * 100)),
+    [calories, goal]
+  );
 
-  let borderRad = [50];
-  if (calories >= 1700) {
-    borderRad = [0];
-    arcColor = 'red';
-  }
+  const arcColor = calories >= goal ? 'red' : 'rgba(69, 255, 188, 1)';
+  const borderRad = calories >= goal ? [0] : [50];
 
   const data = {
     datasets: [
       {
-        data: [calculateColories(calories), 100 - calculateColories(calories)],
+        data: [calculatedPercentage, 100 - calculatedPercentage],
         backgroundColor: [arcColor, 'rgba(41, 41, 40, 1)'],
         borderColor: ['rgba(69, 255, 188, 0)'],
         borderRadius: borderRad,
@@ -39,7 +32,7 @@ const BigDoughnutChart = ({ calories }) => {
       const xCoor = chart.getDatasetMeta(0).data[0].x;
       const yCoor = chart.getDatasetMeta(0).data[0].y;
       ctx.save();
-      ctx.font = '32px sans-serif';
+      ctx.font = '32px Poppins';
       ctx.fillStyle = '#ffffff';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';

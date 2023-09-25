@@ -21,14 +21,6 @@ const App = () => {
     appStatus === APP_STATUS.initialLoading
   );
 
-  // useEffect(() => {
-  //   if (appStatus === APP_STATUS.initialLoading) {
-  //     setTimeout(() => {
-  //       setIsLoadingOverlay(false);
-  //     }, 3000);
-  //   }
-  // }, [appStatus]);
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsLoadingOverlay(false);

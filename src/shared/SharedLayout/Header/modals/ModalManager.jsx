@@ -1,29 +1,43 @@
+/* eslint-disable no-constant-condition */
 import { useModalContext } from '../../../../context/ModalContext';
 import styles from './ModalManager.module.scss';
 import ModalGoal from './ModalGoal';
 import ModalWeight from './ModalWeight';
 import ModalUser from './ModalUser';
 import ModalMenuTablet from './ModalMenuTablet';
+import ModalRecordMeal from '@/pages/MainPage/Modals/ModalRecordMeal/ModalRecordMeal';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const ModalList = {
   ModalGoal,
   ModalWeight,
   ModalUser,
   ModalMenuTablet,
+  ModalRecordMeal,
 };
 
 const ModalManager = () => {
   const { modal, open, closeModal } = useModalContext();
 
-  if (!modal) {
-    return null;
-  }
-  const Modal = ModalList[modal.name];
+  const Modal = modal ? ModalList[modal?.name] : null;
+  const className = modal?.mealType
+    ? styles.header_container_fullscreen
+    : styles.header_container;
 
   return (
-    <div className={styles.header_container}>
-      <Modal open={open} onClose={closeModal} />
-    </div>
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.3 }}
+          className={className}
+        >
+          <Modal open={open} onClose={closeModal} mealType={modal.mealType} />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 

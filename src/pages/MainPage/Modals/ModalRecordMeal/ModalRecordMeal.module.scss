@@ -2,14 +2,21 @@
 @import '@/scss/base/mixins.scss';
 
 .modal_container {
-  width: 676px;
-  height: 408px;
+  // width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  // width: 676px;
+  // height: 408px;
   padding: 24px;
   background-color: $primary-black-2;
+
   border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
 }
 
 .title {
@@ -74,6 +81,11 @@
   margin-top: 24px;
 }
 .button_add {
+  max-width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
   font-size: 14px;
   font-style: normal;
   font-weight: 500;

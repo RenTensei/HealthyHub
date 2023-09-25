@@ -1,19 +1,19 @@
-// import UserProfile from './UserProfile';
 import styles from './UserMenu.module.scss';
 import { useModalContext } from '@/context/ModalContext';
 import goalM from '../images/header/goal.png';
 import goalM2 from '../images/header/goal2x.png';
-// import goalF from '../images/header/goal_girl.png';
-// import goalF2 from '../images/header/goal_girl2x.png';
+import goalF from '../images/header/goal_girl.png';
+import goalF2 from '../images/header/goal_girl2x.png';
 import weight from '../images/header/weight.png';
 import weight2 from '../images/header/weight2x.png';
 import { ReactComponent as ArrowDownSvg } from '@/assets/svg/arrow-down.svg';
 import { ReactComponent as EditSvg } from '@/assets/svg/edit-2.svg';
 import { useSelector } from 'react-redux';
+import { selectUserInfo } from '@/store/features/auth/selectors';
 
 const UserMenu = () => {
   const { openModal } = useModalContext();
-  const userData = useSelector(state => state.auth.user);
+  const userData = useSelector(selectUserInfo);
 
   return (
     <div className={styles.header_user}>
@@ -23,12 +23,21 @@ const UserMenu = () => {
         className={styles.header_user_bnt}
       >
         <div className={styles.header_user_frame}>
-          <img
-            src={goalM}
-            srcSet={`${goalM} 1x, ${goalM2} 2x`}
-            alt="your goal"
-            className={styles.header_user_img}
-          />
+          {userData.gender === 'Male' ? (
+            <img
+              src={goalM}
+              srcSet={`${goalM} 1x, ${goalM2} 2x`}
+              alt="your goal"
+              className={styles.header_user_img}
+            />
+          ) : (
+            <img
+              src={goalF}
+              srcSet={`${goalF} 1x, ${goalF2} 2x`}
+              alt="your goal"
+              className={styles.header_user_img}
+            />
+          )}
         </div>
         <div className={styles.header_user_discr}>
           <p className={styles.header_user_text}> Goal</p>

@@ -161,6 +161,7 @@ const ProfileSettingsPage = () => {
                     <div key={level.value}>
                       <Field
                         type="radio"
+                        
                         id={`physicalActivityRatio-${level.value}`}
                         name="physicalActivityRatio"
                         value={level.value}

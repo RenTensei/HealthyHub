@@ -3,13 +3,26 @@ import styles from './ModalWeight.module.scss';
 import { useEffect, useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUserInfo } from '@/store/features/auth/selectors';
+import { updateUser } from '@/store/features/auth/thunks';
 
 const ModalWeight = ({ open, onClose }) => {
   const today = '14.09.2022';
 
-  // const [weight, setWeight] = useState(user.weight);
+  const dispatch = useDispatch();
+  const user = useSelector(selectUserInfo);
+
+  const [weight, setWeight] = useState(user.weight);
   const [width, setWidth] = useState({ width: window.innerWidth });
   const breakpoint = 834;
+
+  const handleChange = e => {
+    const newWeight = e.target.value;
+    dispatch(updateUser({ weight }));
+    setWeight(newWeight);
+    onClose();
+  };
 
   const handleResize = () => {
     setWidth({
@@ -74,17 +87,22 @@ const ModalWeight = ({ open, onClose }) => {
                   Today{' '}
                   <span className={styles.header_modal_date}>{today}</span>{' '}
                 </p>
-                <form className={styles.header_weight_form}>
+                <form
+                  onSubmit={handleChange}
+                  className={styles.header_weight_form}
+                >
                   <input
-                    // value={weight}
-                    // onChange={event => setWeight(event.target.value)}
+                    // key={weight}
+                    value={weight}
+                    onChange={event => setWeight(event.target.value)}
                     placeholder="Enter your weight"
                     className={styles.header_modal_input}
                   />
                   <button
+                    key={weight}
                     type="submit"
                     className={styles.header_modal_bnt}
-                    onClick={onClose}
+                    onClick={handleChange}
                   >
                     {' '}
                     Confirm
@@ -92,7 +110,6 @@ const ModalWeight = ({ open, onClose }) => {
                 </form>
                 <button
                   className={styles.header_modal_bnt_close}
-                  type="submit"
                   onClick={onClose}
                 >
                   <CloseSvg width={16} height={16} stroke={'white'} />
@@ -143,17 +160,18 @@ const ModalWeight = ({ open, onClose }) => {
               <div className={styles.header_modal_bnt_group}>
                 <form className={styles.header_weight_form}>
                   <input
-                    // value={ weight}
-                    // onChange={event => setWeight(event.target.value)}
+                    value={ weight}
+                    onChange={event => setWeight(event.target.value)}
                     placeholder="Enter your weight"
                     className={styles.header_modal_input}
-                  />
-                  <button
+                  />          
+                     <button
+                    key={weight}
                     type="submit"
                     className={styles.header_modal_bnt}
-                    onClick={onClose}
+                    onClick={handleChange}
                   >
-                    {' '}
+                                    {' '}
                     Confirm
                   </button>
                 </form>

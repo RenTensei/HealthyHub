@@ -13,10 +13,22 @@ import maintainM from '../images/header/maintain.png';
 import maintainM2 from '../images/header/maitain2x.png';
 import maintainF from '../images/header/maintan_girl.png';
 import maintainF2 from '../images/header/maintan_girl2x.png';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUserInfo } from '@/store/features/auth/selectors';
+import { updateUser } from '@/store/features/auth/thunks';
 
 const ModalGoal = ({ open, onClose }) => {
+  const dispatch = useDispatch();
+  const user = useSelector(selectUserInfo);
+  const [goal, setGoal] = useState(user.goal);
   const [width, setWidth] = useState({ width: window.innerWidth });
   const breakpoint = 834;
+
+  const handleChange = e => {
+    const newGoal = e.target.innerText;
+    setGoal(newGoal);
+    dispatch(updateUser({ goal: goal }));
+  };
 
   const handleResize = () => {
     setWidth({
@@ -80,99 +92,148 @@ const ModalGoal = ({ open, onClose }) => {
                 </p>
 
                 <ul className={styles.header_modal_list}>
-                  <motion.li
-                    initial={{
-                      opacity: 0,
-                      x: 100,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                      transition: {
-                        duration: 0.5,
-                      },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0,
-                      x: 100,
-                      transition: {
-                        delay: 0.5,
-                      },
-                    }}
-                    className={styles.header_modal_list_item}
-                  >
-                    <div className={styles.header_modal_frame}>
-                      <img
-                        className={styles.header_modal_img}
-                        src={goalM}
-                        srcSet={`${goalM} 1x, ${goalM2} 2x`}
-                      />
-                    </div>
-                    <p className={styles.header_modal_text}> Lose fat</p>
-                  </motion.li>
-                  <motion.li
-                    initial={{
-                      opacity: 0,
-                      x: 100,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                      transition: {
-                        duration: 0.7,
-                      },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0,
-                      x: 100,
-                      transition: {
-                        delay: 0.2,
-                      },
-                    }}
-                    className={styles.header_modal_list_item}
-                  >
-                    <div className={styles.header_modal_frame}>
-                      <img
-                        className={styles.header_modal_img}
-                        src={maintainM}
-                        srcSet={`${maintainM}, ${maintainM2}`}
-                      />
-                    </div>
-                    <p className={styles.header_modal_text}>Maintain</p>
-                  </motion.li>
-                  <motion.li
-                    initial={{
-                      opacity: 0,
-                      x: 100,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                      transition: {
-                        duration: 0.9,
-                      },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0,
-                      x: 100,
-                      transition: {
-                        delay: 0.1,
-                      },
-                    }}
-                    className={styles.header_modal_list_item}
-                  >
-                    <div className={styles.header_modal_frame}>
-                      <img
-                        className={styles.header_modal_img}
-                        src={muscle}
-                        srcSet={`${muscle}, ${muscle2}`}
-                      />
-                    </div>
-                    <p className={styles.header_modal_text}>Gain Muscle</p>
-                  </motion.li>
+                  <li>
+                    <motion.button
+                      key={goal}
+                      initial={{
+                        opacity: 0,
+                        x: 100,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: {
+                          duration: 0.5,
+                        },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0,
+                        x: 100,
+                        transition: {
+                          delay: 0.5,
+                        },
+                      }}
+                      className={[
+                        user.goal === 'Lose fat'
+                          ? styles.header_modal_list_item_active
+                          : styles.header_modal_list_item,
+                      ]}
+                      value="Lose fat"
+                      type="submit"
+                      onClick={handleChange}
+                    >
+                      {' '}
+                      <div className={styles.header_modal_frame}>
+                        {user.gender === 'Male' ? (
+                          <img
+                            className={styles.header_modal_img}
+                            src={goalM}
+                            srcSet={`${goalM} 1x, ${goalM2} 2x`}
+                          />
+                        ) : (
+                          <img
+                            className={styles.header_modal_img}
+                            src={goalF}
+                            srcSet={`${goalF} 1x, ${goalF2} 2x`}
+                          />
+                        )}
+                      </div>
+                      <p className={styles.header_modal_text}> Lose fat</p>
+                    </motion.button>
+                  </li>
+                  <li>
+                    <motion.button
+                      key={goal}
+                      initial={{
+                        opacity: 0,
+                        x: 100,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: {
+                          duration: 0.7,
+                        },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0,
+                        x: 100,
+                        transition: {
+                          delay: 0.2,
+                        },
+                      }}
+                      className={[
+                        user.goal === 'Maintain'
+                          ? styles.header_modal_list_item_active
+                          : styles.header_modal_list_item,
+                      ]}
+                      value="Maintain"
+                      type="submit"
+                      onClick={handleChange}
+                    >
+                      {' '}
+                      <div className={styles.header_modal_frame}>
+                        {user.gender === 'Male' ? (
+                          <img
+                            className={styles.header_modal_img}
+                            src={maintainM}
+                            srcSet={`${maintainM}, ${maintainM2}`}
+                          />
+                        ) : (
+                          <img
+                            className={styles.header_modal_img}
+                            src={maintainF}
+                            srcSet={`${maintainF}, ${maintainF2}`}
+                          />
+                        )}
+                      </div>
+                      <p className={styles.header_modal_text}>Maintain</p>
+                    </motion.button>
+                  </li>
+                  <li>
+                    <motion.button
+                      key={goal}
+                      type="submit"
+                      onClick={handleChange}
+                      value="Gain Muscle"
+                      name="goal"
+                      initial={{
+                        opacity: 0,
+                        x: 100,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: {
+                          duration: 0.9,
+                        },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0,
+                        x: 100,
+                        transition: {
+                          delay: 0.1,
+                        },
+                      }}
+                      className={[
+                        user.goal === 'Gain Muscle'
+                          ? styles.header_modal_list_item_active
+                          : styles.header_modal_list_item,
+                      ]}
+                    >
+                      <div className={styles.header_modal_frame}>
+                        <img
+                          className={styles.header_modal_img}
+                          src={muscle}
+                          srcSet={`${muscle}, ${muscle2}`}
+                        />
+                      </div>
+                      <p className={styles.header_modal_text}>Gain Muscle</p>
+                    </motion.button>
+                  </li>
                 </ul>
                 <div className={styles.header_modal_bnt_group}>
                   <button
@@ -234,100 +295,149 @@ const ModalGoal = ({ open, onClose }) => {
                   The service will adjust your calorie intake to your goal
                 </p>
 
-                <ul className={styles.header_modal_list}>
-                  <motion.li
-                    initial={{
-                      opacity: 0,
-                      x: 100,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                      transition: {
-                        duration: 0.2,
-                      },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0,
-                      x: 100,
-                      transition: {
-                        delay: 0.3,
-                      },
-                    }}
-                    className={styles.header_modal_list_item}
-                  >
-                    <div className={styles.header_modal_frame}>
-                      <img
-                        className={styles.header_modal_img}
-                        src={goalM}
-                        srcSet={`${goalM}, ${goalM2}`}
-                      />
-                    </div>
-                    <p className={styles.header_modal_text}> Lose fat</p>
-                  </motion.li>
-                  <motion.li
-                    initial={{
-                      opacity: 0,
-                      x: 100,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                      transition: {
-                        duration: 0.2,
-                      },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0,
-                      x: 100,
-                      transition: {
-                        delay: 0.2,
-                      },
-                    }}
-                    className={styles.header_modal_list_item}
-                  >
-                    <div className={styles.header_modal_frame}>
-                      <img
-                        className={styles.header_modal_img}
-                        src={maintainM}
-                        srcSet={`${maintainM}, ${maintainM2}`}
-                      />
-                    </div>
-                    <p className={styles.header_modal_text}>Maintain</p>
-                  </motion.li>
-                  <motion.li
-                    initial={{
-                      opacity: 0,
-                      x: 100,
-                    }}
-                    animate={{
-                      opacity: 1,
-                      x: 0,
-                      transition: {
-                        duration: 0.3,
-                      },
-                    }}
-                    exit={{
-                      opacity: 0,
-                      scale: 0,
-                      x: 100,
-                      transition: {
-                        delay: 0.1,
-                      },
-                    }}
-                    className={styles.header_modal_list_item}
-                  >
-                    <div className={styles.header_modal_frame}>
-                      <img
-                        className={styles.header_modal_img}
-                        src={muscle}
-                        srcSet={`${muscle}, ${muscle2}`}
-                      />
-                    </div>
-                    <p className={styles.header_modal_text}>Gain Muscle</p>
-                  </motion.li>
+                <ul key={goal} className={styles.header_modal_list}>
+                  <li>
+                    {' '}
+                    <motion.button
+                      // key={goal}
+                      type="submit"
+                      onClick={handleChange}
+                      value="Lose fat"
+                      initial={{
+                        opacity: 0,
+                        x: 100,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: {
+                          duration: 0.2,
+                        },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0,
+                        x: 100,
+                        transition: {
+                          delay: 0.3,
+                        },
+                      }}
+                      className={[
+                        user.goal === 'Lose fat'
+                          ? styles.header_modal_list_item_active
+                          : styles.header_modal_list_item,
+                      ]}
+                    >
+                      <div className={styles.header_modal_frame}>
+                        {user.gender === 'Male' ? (
+                          <img
+                            className={styles.header_modal_img}
+                            src={goalM}
+                            srcSet={`${goalM} 1x, ${goalM2} 2x`}
+                          />
+                        ) : (
+                          <img
+                            className={styles.header_modal_img}
+                            src={goalF}
+                            srcSet={`${goalF} 1x, ${goalF2} 2x`}
+                          />
+                        )}
+                      </div>
+                      <p className={styles.header_modal_text}> Lose fat</p>
+                    </motion.button>
+                  </li>
+                  <li>
+                    {' '}
+                    <motion.button
+                      // key={goal}
+                      type="submit"
+                      onClick={handleChange}
+                      value="Maintain"
+                      initial={{
+                        opacity: 0,
+                        x: 100,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: {
+                          duration: 0.2,
+                        },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0,
+                        x: 100,
+                        transition: {
+                          delay: 0.2,
+                        },
+                      }}
+                      className={[
+                        user.goal === 'Maintain'
+                          ? styles.header_modal_list_item_active
+                          : styles.header_modal_list_item,
+                      ]}
+                    >
+                      <div className={styles.header_modal_frame}>
+                        {user.gender === 'Male' ? (
+                          <img
+                            className={styles.header_modal_img}
+                            src={maintainM}
+                            srcSet={`${maintainM}, ${maintainM2}`}
+                          />
+                        ) : (
+                          <img
+                            className={styles.header_modal_img}
+                            src={maintainF}
+                            srcSet={`${maintainF}, ${maintainF2}`}
+                          />
+                        )}
+                      </div>
+                      <p className={styles.header_modal_text}>Maintain</p>
+                    </motion.button>
+                  </li>
+                  <li>
+                    {' '}
+                    <motion.button
+                      // key={goal}
+                      initial={{
+                        opacity: 0,
+                        x: 100,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        x: 0,
+                        transition: {
+                          duration: 0.3,
+                        },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        scale: 0,
+                        x: 100,
+                        transition: {
+                          delay: 0.1,
+                        },
+                      }}
+                      type="submit"
+                      onClick={handleChange}
+                      value="Gain Muscle"
+                      className={[
+                        user.goal === 'Gain Muscle'
+                          ? styles.header_modal_list_item_active
+                          : styles.header_modal_list_item,
+                      ]}
+                    >
+                      <div className={styles.header_modal_frame}>
+                        <img
+                          className={styles.header_modal_img}
+                          src={muscle}
+                          srcSet={`${muscle}, ${muscle2}`}
+                        />
+                      </div>
+                      <p className={styles.header_modal_text}>Gain Muscle</p>
+                    </motion.button>
+                  </li>
                 </ul>
                 <div className={styles.header_modal_bnt_group}>
                   <button

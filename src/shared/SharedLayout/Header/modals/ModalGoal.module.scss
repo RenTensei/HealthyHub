@@ -69,6 +69,8 @@
   align-items: center;
   justify-content: baseline;
   gap: 12px;
+  color: $primary-white;
+  background-color: transparent;
 }
 
 .header_modal_list_item_active {
@@ -76,6 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: baseline;
+  background-color: transparent;
   gap: 12px;
 }
 

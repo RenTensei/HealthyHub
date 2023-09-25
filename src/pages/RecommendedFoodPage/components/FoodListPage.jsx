@@ -1,7 +1,16 @@
-import foodData from './RecommendedFood.json';
+import { useState } from 'react';
+import { fetchFoodData } from './fetchFoodData';
 import styles from './RecommendedFoodPage.module.scss';
 
 export default function FoodList() {
+  const [foodData, setfoodData] = useState([]);
+
+  fetchFoodData()
+    .then(response => {
+      setfoodData(response);
+    })
+    .catch(err => console.error(err));
+
   return (
     <ul className={styles.item__list__page}>
       {foodData.map(foodItem => {

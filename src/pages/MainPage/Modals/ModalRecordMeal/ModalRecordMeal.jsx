@@ -147,7 +147,12 @@ const ModalRecordMeal = ({ onClose, mealType, mealId }) => {
                             : push(foodIntakeTemplate);
                         }}
                       >
-                        <AddMoreSvg strokeWidth={3} width={16} height={16} />
+                        <AddMoreSvg
+                          strokeWidth={3}
+                          width={16}
+                          height={16}
+                          stroke="#e3ffa8"
+                        />
                         Add more
                       </button>
                     )}

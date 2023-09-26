@@ -4,7 +4,10 @@
 .graphTooltip {
   position: fixed;
   width: 104px;
+  
   padding: 6px;
+  padding-left: 12px;
+  border-radius: 12px;
   background-color: $primary-black-2;
   box-shadow: 0px 4px 14px 0px rgba(227, 255, 168, 0.20);
 }

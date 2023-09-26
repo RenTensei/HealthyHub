@@ -13,7 +13,7 @@ const DataList = ({ lastMonth, water, calories, weight }) => {
         <div>
           <div className={styles.chartTitleField}>
             <h4 className={styles.chartTitle}>calories</h4>
-            <p className={styles.average}>Average value:<span className={styles.averageValue}>{`${averageCalories} kg`}</span></p>
+            <p className={styles.average}>Average value:<span className={styles.averageValue}>{`${averageCalories} calories`}</span></p>
           </div>
           <div className={styles.chartCont}>
             <div className={styles.chart}>

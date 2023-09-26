@@ -2,207 +2,206 @@
 @import '@/scss/base/mixins.scss';
 
 .container_your_goal {
-    display: flex;
-    padding-left: 150px;
-    padding-right: 150px;
-    padding-bottom: 66px;
+  display: flex;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-bottom: 66px;
+  padding-top: 40px;
+  @include tablet-only {
+    display: block;
+    padding-left: 195px;
+    padding-right: 195px;
+    padding-bottom: 212px;
     padding-top: 40px;
+  }
+  @include mobile-only {
+    display: block;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 24px;
+    padding-top: 24px;
+    margin: auto;
+  }
+  .container_picture {
+    margin-right: 104px;
     @include tablet-only {
-        display: block;
-        padding-left: 195px;
-        padding-right: 195px;
-        padding-bottom: 212px;
-        padding-top: 40px;
+      margin: 0;
+      width: 100%;
+      img {
+        margin: auto;
+      }
     }
     @include mobile-only {
-        display: block;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-bottom: 24px;
-        padding-top: 24px;
+      margin: 0;
+      width: 100%;
+      img {
         margin: auto;
-       
+      }
     }
-    .container_picture {
-        margin-right: 104px;
-        @include tablet-only {
-            margin: 0;
-            width: 100%;
-            img {
-                margin: auto;
-            }
-        }
-        @include mobile-only {
-            margin: 0;
-            width: 100%;
-            img {
-                margin: auto;
-            }
+  }
+  .container_form {
+    display: block;
+    margin-top: 80px;
+    @include tablet-only {
+      margin-top: 60px;
+      text-align: center;
+    }
+    @include mobile-only {
+      width: 320px;
+      justify-content: center;
+      margin-top: 24px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: start;
+    }
+    .title {
+      font-family: $font-regular;
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      @include mobile-only {
+        font-size: 24px;
+        line-height: 1.25;
+      }
+    }
+    .form_checked {
+      display: block;
 
+      .text {
+        font-family: $font-regular;
+        font-weight: 400;
+        font-size: 22px;
+        line-height: 1.45;
+        color: $primary-grey;
+        margin-bottom: 24px;
+        @include mobile-only {
+          font-size: 18px;
+          line-height: 1.33;
         }
-    }
-    .container_form {
-        display: block;
-        margin-top: 80px;
+      }
+
+      .container_label {
         @include tablet-only {
-            margin-top: 60px;
-            text-align: center;          
+          margin: auto;
         }
         @include mobile-only {
-            width: 320px;
-            justify-content: center;
-            margin-top: 24px;
+          margin-bottom: 24px;
+        }
+        .label {
+          display: block;
+          min-width: 212px;
+          font-family: $font-regular;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 1.43;
+          margin-bottom: 12px;
+          @include tablet-only {
+            width: 380px;
+            text-align: start;
+            margin: auto;
+          }
+          @include mobile-only {
+            width: 300px;
+          }
+        }
+
+        .item_input {
+          display: block;
+
+          width: 212px;
+          height: 36px;
+          border-radius: 12px;
+          border: 1px solid $primary-green-lite;
+          padding-left: 8px;
+          padding: 8px, 10px, 8px, 10px;
+          gap: 10px;
+          background-color: $primary-black-2;
+          color: $primary-grey;
+          margin-top: 12px;
+          margin-bottom: 24px;
+          font-family: $font-regular;
+          font-weight: 400px;
+          font-size: 14px;
+          line-height: 1.43;
+          @include tablet-only {
             margin-left: auto;
             margin-right: auto;
-            text-align: start;
+            min-width: 380px;
+            height: 36px;
+          }
+          @include mobile-only {
+            min-width: 300px;
+            height: 36px;
+          }
         }
-        .title {
-            font-family: $font-regular;
-            font-weight: 500;
-            font-size: 30px;
-            line-height: 1.2;
-            margin-bottom: 16px;
-            @include mobile-only {
-                font-size: 24px;
-                line-height: 1.25;
-               
-            }
-        }
-        .form_checked {
-            display: block;
-           
-            .text {
-                font-family: $font-regular;
-                font-weight: 400;
-                font-size: 22px;
-                line-height: 1.45;
-                color: $primary-grey;
-                margin-bottom: 24px;
-                @include mobile-only {
-                    font-size: 18px;
-                    line-height: 1.33;
-                }               
-            }
-            
-            .container_label {
-                
-                @include tablet-only {
-                    margin: auto;
-                }
-                @include mobile-only{
-                    margin-bottom: 24px;
-                }
-                .label {
-                    display: block; 
-                    min-width: 212px;
-                    font-family: $font-regular;
-                    font-weight: 500;
-                    font-size: 14px;
-                    line-height: 1.43;
-                    margin-bottom: 12px;
-                    @include tablet-only { 
-                        width: 380px;
-                        text-align: start;
-                        margin: auto;
-                    } 
-                    @include mobile-only {
-                        width: 300px;
-                    }
-                    
-                }
+      }
+      input[type='number']::-webkit-outer-spin-button,
+      input[type='number']::-webkit-inner-spin-button {
+        -webkit-appearance: none; // Yeah, yeah everybody write about it
+      }
 
-                .item_input {
-                    display: block;
-                    
-                    width: 212px;
-                    height: 36px;
-                    border-radius: 12px;
-                    border: 1px solid $primary-green-lite;
-                    padding-left: 8px;
-                    padding: 8px, 10px, 8px, 10px;
-                    gap: 10px;
-                    background-color: $primary-black-2;
-                    color: $primary-grey;
-                    margin-top: 12px;
-                    margin-bottom: 24px;
-                    font-family: $font-regular;
-                    font-weight: 400px;
-                    font-size: 14px;
-                    line-height: 1.43;
-                    @include tablet-only {
-                        margin-left: auto;
-                        margin-right: auto;
-                        min-width: 380px;
-                        height: 36px;
-                    }
-                    @include mobile-only {
-                        min-width: 300px;
-                        height: 36px;
-                    
-                    }
-            }
-                
-            }
-            
-            
-             .container_btn {
-                @include tablet-only {
-                    width: 100%;
-                    display: block;
-                    align-items: center;
-                }
-                .btn {
-                    display: block;
-                    min-width: 212px;
-                    height: 36px;
-                    padding: 8px, 10px, 8px, 10px;
-                    border-radius: 12px;
-                    background-color: $primary-green-lite;
-                    font-family: $font-regular;
-                    color: $primary-black-2;
-                    width: 500;
-                    font-size: 14px;
-                    line-height: 1.42;
-                    align-items: center;
-                    margin-bottom: 24px;
-                    @include tablet-only {
-                        margin: 0 auto;
-                        width: 380px;
-                        height: 36px;
-                        margin-bottom: 24px;
-                       
-                    }
-                    @include mobile-only{
-                        width: 300px;
-                        height: 36px;
-                        padding: 8px, 10px, 8px, 10px;
-                       
-                    }
-                }
-                .btn_back {
-                    display: block;
-                    background-color: $primary-black;
-                    color: $primary-grey;
-                    min-width: 212px;
-                    height: 36px;
-                    font-family: $font-regular;
-                    font-weight: 400;
-                    font-size: 14px;
-                    line-height: 1.42;
-                    text-align: center;
-                    @include tablet-only {
-                        margin: 0 auto;
-                        width: 380px;
-                        height: 36px;
-                    }
-                    @include mobile-only {
-                        width: 300px;
-                        height: 36px;
-                    }
-                }
-             }   
+      input[type='number'],
+      input[type='number']:hover,
+      input[type='number']:focus {
+        appearance: none;
+        -moz-appearance: textfield;
+      }
+
+      .container_btn {
+        @include tablet-only {
+          width: 100%;
+          display: block;
+          align-items: center;
         }
-        
+        .btn {
+          display: block;
+          min-width: 212px;
+          height: 36px;
+          padding: 8px, 10px, 8px, 10px;
+          border-radius: 12px;
+          background-color: $primary-green-lite;
+          font-family: $font-regular;
+          color: $primary-black-2;
+          width: 500;
+          font-size: 14px;
+          line-height: 1.42;
+          align-items: center;
+          margin-bottom: 24px;
+          @include tablet-only {
+            margin: 0 auto;
+            width: 380px;
+            height: 36px;
+            margin-bottom: 24px;
+          }
+          @include mobile-only {
+            width: 300px;
+            height: 36px;
+            padding: 8px, 10px, 8px, 10px;
+          }
+        }
+        .btn_back {
+          display: block;
+          background-color: $primary-black;
+          color: $primary-grey;
+          min-width: 212px;
+          height: 36px;
+          font-family: $font-regular;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 1.42;
+          text-align: center;
+          @include tablet-only {
+            margin: 0 auto;
+            width: 380px;
+            height: 36px;
+          }
+          @include mobile-only {
+            width: 300px;
+            height: 36px;
+          }
+        }
+      }
     }
-
+  }
 }

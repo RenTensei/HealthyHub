@@ -6,7 +6,6 @@ import DataList from './components/DataList';
 import { ReactComponent as GoBackBtn } from '@/assets/svg/arrow-right-liqht.svg';
 import { ReactComponent as ToggleBtn } from '@/assets/svg/arrow-down.svg';
 import { ROUTES } from '@/constants/routes';
-import { monthlyStatistics, yearlyStatistics } from './variables';
 import { getMonthStatistic } from './service/dashboard-service';
 
 const DashboardPage = () => {
@@ -87,7 +86,7 @@ const DashboardPage = () => {
         </div>
         <h3 className={styles.monthTitle}>{showLastMonth ? "November" : "2023"}</h3>
       </div>
-      <DataList statistic={monthlyStatistics} water={water} calories={calories} weight={weight} lastMonth={showLastMonth} />
+      <DataList water={water} calories={calories} weight={weight} lastMonth={showLastMonth} />
     </section>
   );
 };

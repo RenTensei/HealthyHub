@@ -21,11 +21,17 @@ const foodIntakeTemplate = {
 
 const ModalRecordMeal = ({ onClose, mealType }) => {
   useEffect(() => {
+    const handleEscClose = e => (e.code === 'Escape' ? onClose() : null);
+
     document.body.style.overflowY = 'hidden';
+    window.addEventListener('keydown', handleEscClose);
+
     return () => {
       document.body.style.overflowY = 'auto';
+      window.removeEventListener('keydown', handleEscClose);
     };
-  }, []);
+  }, [onClose]);
+
   const src1x = mealTypeSrcSets[mealType][0];
   const src2x = mealTypeSrcSets[mealType][1];
 

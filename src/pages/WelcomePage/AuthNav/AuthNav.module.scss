@@ -2,21 +2,22 @@
 @import '@/scss/base/mixins.scss';
 
 .Container_sign_up {
-  width: 320px;
+  // width: 320px;
   padding: 24px 10px 40px;
   background-color: $primary-black;
   margin-left: auto;
   margin-right: auto;
 
   @include tablet-only {
-    width: 834px;
-    padding: 40px 195px;
+    // width: 834px;
+
+    padding: 16px 168px;
     text-align: center;
   }
 
   @include desktop-only {
     width: 1440px;
-    padding: 40px 150px 72px;
+    padding: 16px 150px 72px;
 
     display: flex;
   }
@@ -126,22 +127,38 @@ a.Button_sign_in {
 }
 
 .List_scope_sign_up {
-  list-style: inside;
+  list-style: none;
 
   @include tablet-only {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
     text-align: left;
+    row-gap: 16px;
   }
 }
 
 .List_scope_li_sign_up {
+  position: relative;
   font-family: $font-regular;
   font-size: 14px;
   font-weight: 400;
   line-height: 1.43;
   color: $primary-white;
+  padding-left: 16px;
+
+  &::before {
+    content: ' ';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    border-radius: 50%;
+    background-color: $primary-green-lite;
+  }
 
   @include tablet-only {
     flex-basis: calc((100% - 16px) / 2);

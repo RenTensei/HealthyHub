@@ -7,7 +7,10 @@ import { Field, FieldArray, Form, Formik } from 'formik';
 import { toast } from 'react-toastify';
 
 import { selectFoodIntakeByMealType } from '@/store/features/foodIntake/selectors';
-import { postMyFoodIntake } from '@/store/features/foodIntake/thunks';
+import {
+  postMyFoodIntake,
+  updateMyFoodIntake,
+} from '@/store/features/foodIntake/thunks';
 import { ReactComponent as AddMoreSvg } from '@/assets/svg/add.svg';
 import { mealTypeSrcSets } from '@/utils/mealTypeSrcSets';
 
@@ -19,7 +22,7 @@ const foodIntakeTemplate = {
   calories: '',
 };
 
-const ModalRecordMeal = ({ onClose, mealType }) => {
+const ModalRecordMeal = ({ onClose, mealType, mealId }) => {
   useEffect(() => {
     const handleEscClose = e => (e.code === 'Escape' ? onClose() : null);
 
@@ -32,21 +35,30 @@ const ModalRecordMeal = ({ onClose, mealType }) => {
     };
   }, [onClose]);
 
+  const foodIntake = useSelector(selectFoodIntakeByMealType);
+
+  const isInEditMode = Boolean(mealId);
+  const current = foodIntake[mealType].find(item => item._id === mealId);
+
   const src1x = mealTypeSrcSets[mealType][0];
   const src2x = mealTypeSrcSets[mealType][1];
 
   const dispatch = useDispatch();
 
-  const handleSubmit = values => {
-    // TODO rewrite backend to accept array, so we perform only one network request
+  // TODO rewrite backend to accept array, so we perform only one network request
+  const handleCreate = values => {
     values.foodIntakes.forEach(foodIntake =>
       dispatch(postMyFoodIntake({ mealType, ...foodIntake }))
     );
-
     onClose();
   };
 
-  const foodIntake = useSelector(selectFoodIntakeByMealType);
+  const handleUpdate = values => {
+    values.foodIntakes.forEach(updatedFoodIntake => {
+      dispatch(updateMyFoodIntake({ id: mealId, updatedFoodIntake }));
+    });
+    onClose();
+  };
 
   return (
     <OutsideClickHandler onOutsideClick={onClose}>
@@ -59,16 +71,27 @@ const ModalRecordMeal = ({ onClose, mealType }) => {
 
         <Formik
           initialValues={{
-            foodIntakes: [...foodIntake[mealType], foodIntakeTemplate],
+            foodIntakes: isInEditMode
+              ? [
+                  {
+                    mealType,
+                    mealName: current.mealName,
+                    carbonohidrates: current.carbonohidrates,
+                    protein: current.protein,
+                    fat: current.fat,
+                    calories: current.calories,
+                  },
+                ]
+              : [foodIntakeTemplate],
           }}
-          onSubmit={handleSubmit}
+          onSubmit={isInEditMode ? handleUpdate : handleCreate}
         >
           {({ values }) => (
             <Form>
               <FieldArray name="foodIntakes">
                 {({ push }) => (
                   <div className={styles.fieldArrayWrapper}>
-                    {values?.foodIntakes.map((foodIntake, index) => (
+                    {values?.foodIntakes.map((intake, index) => (
                       <div key={index} className={styles.input_row}>
                         <Field
                           name={`foodIntakes.${index}.mealName`}
@@ -106,23 +129,28 @@ const ModalRecordMeal = ({ onClose, mealType }) => {
                         />
                       </div>
                     ))}
-                    <button
-                      type="button"
-                      className={styles.button_add}
-                      onClick={() => {
-                        const foodIntake =
-                          values.foodIntakes[values.foodIntakes.length - 1];
-                        const fieldMissing = Object.values(foodIntake).some(
-                          value => typeof value === 'string' && !value.trim()
-                        );
-                        fieldMissing
-                          ? toast.warn('Fill empty fields before adding more!')
-                          : push(foodIntakeTemplate);
-                      }}
-                    >
-                      <AddMoreSvg strokeWidth={3} width={16} height={16} />
-                      Add more
-                    </button>
+
+                    {!isInEditMode && (
+                      <button
+                        type="button"
+                        className={styles.button_add}
+                        onClick={() => {
+                          const foodIntake =
+                            values.foodIntakes[values.foodIntakes.length - 1];
+                          const fieldMissing = Object.values(foodIntake).some(
+                            value => typeof value === 'string' && !value.trim()
+                          );
+                          fieldMissing
+                            ? toast.warn(
+                                'Fill empty fields before adding more!'
+                              )
+                            : push(foodIntakeTemplate);
+                        }}
+                      >
+                        <AddMoreSvg strokeWidth={3} width={16} height={16} />
+                        Add more
+                      </button>
+                    )}
                   </div>
                 )}
               </FieldArray>

@@ -82,7 +82,13 @@ const DiaryBlock = ({ alt, title, srcSet, typeName, mealType }) => {
                 <div className={styles.containerFoodName}>
                   <h2 className={styles.foodName}>{el.mealName}</h2>
                   {el.mealName && isMobile && (
-                    <button className={styles.bettonEdit}>
+                    <button
+                      type="button"
+                      className={styles.bettonEdit}
+                      onClick={() =>
+                        openModal('ModalRecordMeal', title, el._id)
+                      }
+                    >
                       <Edit style={{ marginRight: '6px' }} />
                       Edit
                     </button>
@@ -121,7 +127,13 @@ const DiaryBlock = ({ alt, title, srcSet, typeName, mealType }) => {
                     </div>
                   )}
                   {el.mealName && !isMobile && (
-                    <button className={styles.bettonEdit}>
+                    <button
+                      type="button"
+                      className={styles.bettonEdit}
+                      onClick={() =>
+                        openModal('ModalRecordMeal', title, el._id)
+                      }
+                    >
                       <Edit style={{ marginRight: '6px' }} />
                       Edit
                     </button>

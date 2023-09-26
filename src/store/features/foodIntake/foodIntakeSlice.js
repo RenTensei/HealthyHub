@@ -1,5 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getMyFoodIntake, postMyFoodIntake, postMyWaterIntake } from './thunks';
+import {
+  getMyFoodIntake,
+  postMyFoodIntake,
+  postMyWaterIntake,
+  updateMyFoodIntake,
+} from './thunks';
 
 const initialState = {
   items: [],
@@ -18,6 +23,10 @@ const foodIntakeSlice = createSlice({
       })
       .addCase(postMyFoodIntake.fulfilled, (state, { payload }) => {
         state.items.push(payload);
+      })
+      .addCase(updateMyFoodIntake.fulfilled, (state, { payload }) => {
+        const index = state.items.findIndex(it => it._id === payload._id);
+        state.items[index] = payload;
       })
       .addCase(postMyWaterIntake.fulfilled, (state, { payload }) => {
         state.waterIntake += payload;

@@ -3,14 +3,13 @@ import Water from './components/Water';
 import Food from './components/Food';
 import DailyGoal from './DailyGoal';
 import RecommendedFood from './components/RecommendedFood';
-// import ModalWaterIntake from './Modals/ModalWaterIntake/ModalWaterIntake';
-// import ModalRecordMeal from './Modals/ModalRecordMeal/ModalRecordMeal';
+
 import styles from './MainPage.module.scss';
 import { Link } from 'react-router-dom';
 import { ROUTES } from '@/constants/routes';
 
 import ModalPortal from '@/pages/MainPage/components/Modal/ModaPortalCreator';
-import ModalRecordMeal from '@/pages/MainPage/Modals/ModalRecordMeal/ModalRecordMeal';
+
 import ModalWaterIntake from '@/pages/MainPage/Modals/ModalWaterIntake/ModalWaterIntake';
 
 import { ReactComponent as ArrowRightSvg } from '@/assets/svg/arrow-right.svg';
@@ -18,14 +17,10 @@ import useModal from './components/Modal/useModal';
 import { MealProvider } from '@/context/MealContext';
 
 const MainPage = () => {
-  const { isRecordMealShowing, mealModalToggle } = useModal();
   const { isWaterIntakeShowing, waterModalToggle } = useModal();
 
   return (
     <MealProvider>
-      <ModalPortal isShowing={isRecordMealShowing} hide={mealModalToggle}>
-        <ModalRecordMeal hide={mealModalToggle} />
-      </ModalPortal>
       <ModalPortal isShowing={isWaterIntakeShowing} hide={waterModalToggle}>
         <ModalWaterIntake hide={waterModalToggle} />
       </ModalPortal>
@@ -54,7 +49,7 @@ const MainPage = () => {
         <Food />
       </div>
       <div className={styles.diary_recfood_container}>
-        <Diary openModal={mealModalToggle} />
+        <Diary />
         <RecommendedFood />
       </div>
     </MealProvider>

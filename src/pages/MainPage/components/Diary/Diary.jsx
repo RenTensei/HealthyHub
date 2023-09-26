@@ -2,12 +2,11 @@ import { Link } from 'react-router-dom';
 import DiaryBlock from '../DiaryBlock';
 import styles from './Diary.module.scss';
 import { useSelector } from 'react-redux';
-// import { useEffect } from 'react';
-// import { getMyFoodIntake } from '@/store/features/foodIntake/thunks';
+
 import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 import { mealTypeSrcSets } from '@/utils/mealTypeSrcSets';
 
-const Diary = ({ openModal }) => {
+const Diary = () => {
   const foodIntakeNutrientsTotal = useSelector(selectNutrientSums);
 
   return (
@@ -24,7 +23,6 @@ const Diary = ({ openModal }) => {
           key={item.mealType}
           intakeInfo={item}
           srcSet={mealTypeSrcSets[item.mealType]}
-          openModal={openModal}
         />
       ))}
 

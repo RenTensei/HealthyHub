@@ -34,7 +34,12 @@ const ModalManager = () => {
           transition={{ duration: 0.3 }}
           className={className}
         >
-          <Modal open={open} onClose={closeModal} mealType={modal.mealType} />
+          <Modal
+            open={open}
+            onClose={closeModal}
+            mealType={modal.mealType}
+            mealId={modal.mealId}
+          />
         </motion.div>
       )}
     </AnimatePresence>

@@ -6,8 +6,8 @@ export const ModalProvider = ({ children }) => {
   const [modal, setModal] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const openModal = (name, mealType) => {
-    setModal({ name, mealType });
+  const openModal = (name, mealType, mealId) => {
+    setModal({ name, mealType, mealId });
     setOpen(true);
   };
 

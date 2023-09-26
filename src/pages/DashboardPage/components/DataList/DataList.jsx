@@ -1,7 +1,7 @@
 import styles from './DataList.module.scss';
 import Graph from '../Graph';
 
-const DataList = ({ statistic, lastMonth }) => {
+const DataList = ({ statistic, lastMonth, water, calories, weight }) => {
   const graphTitle = statistic.map(item => Object.keys(item));
   const labels = statistic.map(item => Object.values(item)[0]);
   const dataCalories = statistic.map(item => Object.values(item)[1]);
@@ -24,7 +24,7 @@ const DataList = ({ statistic, lastMonth }) => {
           </div>
           <div className={styles.chartCont}>
             <div className={styles.chart}>
-              <Graph labels={labels} graphData={dataCalories} />
+              <Graph labels={labels} graphData={dataCalories} newData={calories} />
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@ const DataList = ({ statistic, lastMonth }) => {
           </div>
           <div className={styles.chartCont}>
             <div className={styles.chart}>
-              <Graph labels={labels} graphData={dataWater} />
+              <Graph labels={labels} graphData={dataWater} newData={water} />
             </div>
           </div>
         </div>

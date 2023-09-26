@@ -24,7 +24,10 @@ ChartJS.register(
   Legend
 );
 
-const Graph = ({labels, graphData}) => {
+const Graph = ({ labels, graphData, newData }) => {
+  const newLabels = newData.map(item => item.period);
+  const newValue = newData.map(item => item.value);
+
   const chartRef = useRef(null) //create reference hook
   const [tooltip, setTooltip] = useState({
     opacity: 0,
@@ -118,11 +121,11 @@ const Graph = ({labels, graphData}) => {
   };
 
   const data = {
-    labels: labels,
+    labels: newLabels.sort((a, b) => a - b),
     datasets: [
       {
         label: 'Dataset 1',
-        data: graphData,
+        data: newValue,
         borderColor: '#E3FFA8',
         tension: 0.4,
         backgroundColor: '#292928',

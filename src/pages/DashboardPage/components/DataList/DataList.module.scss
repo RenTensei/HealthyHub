@@ -88,7 +88,7 @@
 .weightCont {
   @include mobile-only {
     display: flex;
-    overflow-x: scroll;
+    overflow-x: auto;
 
     &::-webkit-scrollbar {
       background-color: $primary-black-2;
@@ -107,18 +107,23 @@
 
 .weightField {
   display: flex;
-  min-width: 1372px;
   border-radius: 12px;
   background-color: $primary-black-2;
   padding: 24px 21px 36px 21px;
 
   @include mobile-only {
+    gap: 23px;
+    min-width: 320px;
     margin-bottom: 8px;
   }
 
   @include tablet-only {
     min-width: 780px;
     padding: 24px 22px 44px 22px;
+  }
+
+  @include desktop-only {
+    min-width: 1372px;
   }
 }
 

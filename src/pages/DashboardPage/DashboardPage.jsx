@@ -99,7 +99,8 @@ const DashboardPage = () => {
             </Modal>}
         </div>
         <h3 className={styles.monthTitle}>
-          {showLastMonth ? `${monthLabelsForWeight[title]}` : `${title}`}
+
+          {showLastMonth && title ? `${monthLabelsForWeight[title]}` ?? title : `${title}`}
         </h3>
       </div>
       <DataList water={water} calories={calories} weight={weight} lastMonth={showLastMonth} />

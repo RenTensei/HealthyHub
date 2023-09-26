@@ -1,4 +1,5 @@
 import styles from './Graph.module.scss'
+import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 import {
   Chart as ChartJS,
@@ -24,9 +25,9 @@ ChartJS.register(
   Legend
 );
 
-const Graph = ({ labels, graphData, newData }) => {
-  const newLabels = newData.map(item => item.period);
-  const newValue = newData.map(item => item.value);
+const Graph = ({ type, graphData }) => {
+  const newLabels = graphData.map(item => item.period);
+  const newValue = graphData.map(item => item.value);
 
   const chartRef = useRef(null) //create reference hook
   const [tooltip, setTooltip] = useState({
@@ -105,7 +106,7 @@ const Graph = ({ labels, graphData, newData }) => {
             if (value === 0) {
               return 0
             }
-            return `${value/1000}K`;
+            return `${value/1000}${type === 'calories' ? 'K' : 'L'}`;
           }
         },
         beginAtZero: true,
@@ -121,10 +122,10 @@ const Graph = ({ labels, graphData, newData }) => {
   };
 
   const data = {
-    labels: newLabels.sort((a, b) => a - b),
+    labels: newLabels,
     datasets: [
       {
-        label: 'Dataset 1',
+        label: 'Statistic',
         data: newValue,
         borderColor: '#E3FFA8',
         tension: 0.4,
@@ -147,11 +148,22 @@ const Graph = ({ labels, graphData, newData }) => {
           </button>
           <div className={styles.tooltipField}>
             <p className={styles.tooltipValue}>{tooltip.value}</p>
-            <p className={styles.tooltipTitle}>calories</p>
+            <p className={styles.tooltipTitle}>{type === 'calories' ? 'calories' : 'milliliters'}</p>
           </div>
         </div>
     </>
   )
+};
+
+Graph.propTypes = {
+  type: PropTypes.string.isRequired,
+  graphData: PropTypes.arrayOf(PropTypes.exact({
+    period: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.number.isRequired,
+    ]),
+    value: PropTypes.number.isRequired,
+  }))
 };
 
 export default Graph;

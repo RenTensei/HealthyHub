@@ -22,6 +22,7 @@ export default function FoodList() {
               src={foodItem.img}
               alt={foodItem.name}
               className={styles.product__image}
+              loading="lazy"
             />
             <div className={styles.product__info}>
               <h3 className={styles.product__name}>{foodItem.name}</h3>

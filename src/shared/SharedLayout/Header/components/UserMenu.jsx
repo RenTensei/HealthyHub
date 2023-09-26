@@ -2,15 +2,13 @@
 import styles from './UserMenu.module.scss';
 
 import { useSelector } from 'react-redux';
-import goalM from '../images/header/goal.png';
-import goalM2 from '../images/header/goal2x.png';
-// import goalF from '../images/header/goal_girl.png';
-// import goalF2 from '../images/header/goal_girl2x.png';
+
 import weight from '../images/header/weight.png';
 import weight2 from '../images/header/weight2x.png';
 import { ReactComponent as ArrowDownSvg } from '@/assets/svg/arrow-down.svg';
 import { ReactComponent as EditSvg } from '@/assets/svg/edit-2.svg';
 import { useModalContext } from '@/hooks/useModalContext';
+import { goalSrcSets } from '@/utils/goalSrcSet';
 
 const UserMenu = () => {
   const { openModal } = useModalContext();
@@ -25,8 +23,10 @@ const UserMenu = () => {
       >
         <div className={styles.header_user_frame}>
           <img
-            src={goalM}
-            srcSet={`${goalM} 1x, ${goalM2} 2x`}
+            src={goalSrcSets[userData.goal][`${userData.gender}`][0]}
+            srcSet={`${
+              goalSrcSets[userData.goal][`${userData.gender}`][0]
+            } 1x, ${goalSrcSets[userData.goal][`${userData.gender}`][1]} 2x`}
             alt="your goal"
             className={styles.header_user_img}
           />

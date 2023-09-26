@@ -62,19 +62,19 @@ const App = () => {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
 
-      {appStatus === APP_STATUS.fetching && !isLoadingOverlay && <Fetcher />}
+        {appStatus === APP_STATUS.fetching && !isLoadingOverlay && <Fetcher />}
 
-      <Router />
-
-      {/* <button
+        {/* <button
         onClick={() =>
           dispatch(signIn({ email: 'admin23@admin.com', password: 'admin23' }))
         }
       >
         fake sign in!
       </button> */}
+      </AnimatePresence>
+
+      <Router />
     </>
   );
 };

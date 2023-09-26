@@ -1,12 +1,12 @@
-/* eslint-disable no-constant-condition */
-import { useModalContext } from '../../../../context/ModalContext';
 import styles from './ModalManager.module.scss';
+
+import { AnimatePresence, motion } from 'framer-motion';
 import ModalGoal from './ModalGoal';
 import ModalWeight from './ModalWeight';
 import ModalUser from './ModalUser';
 import ModalMenuTablet from './ModalMenuTablet';
 import ModalRecordMeal from '@/pages/MainPage/Modals/ModalRecordMeal/ModalRecordMeal';
-import { AnimatePresence, motion } from 'framer-motion';
+import { useModalContext } from '@/hooks/useModalContext';
 
 const ModalList = {
   ModalGoal,

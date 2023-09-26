@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 import AuthNavigation from '../Header/components/AuthNavigation';
 import UserMenu from '../Header/components/UserMenu';
 import styles from './Header.module.scss';
-import { useModalContext } from '@/context/ModalContext';
 import UserProfile from './components/UserProfile';
 import { ReactComponent as MenuSvg } from '@/assets/svg/menu.svg';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '@/store/features/auth/selectors';
+import { useModalContext } from '@/hooks/useModalContext';
 
 const Header = () => {
   const { modal, openModal, open } = useModalContext();

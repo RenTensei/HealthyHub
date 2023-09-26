@@ -1,16 +1,12 @@
-import { useContext } from 'react';
 import styles from './DiaryBlock.module.scss';
-import { MealContext } from '@/context/MealContext';
-import { useModalContext } from '@/context/ModalContext';
-// import PropTypes from 'prop-types';
+
+import { useModalContext } from '@/hooks/useModalContext';
 
 const DiaryBlock = ({
   // openModal,
   intakeInfo: { mealType, carbonohidrates, protein, fat },
   srcSet,
 }) => {
-  const { setTypeOfMeal } = useContext(MealContext);
-
   const { openModal } = useModalContext();
 
   return (
@@ -25,7 +21,7 @@ const DiaryBlock = ({
         <p className={styles.titleName}>{mealType}</p>
       </div>
       {!carbonohidrates && !protein && !fat ? (
-        <div onClick={() => setTypeOfMeal(mealType)}>
+        <div>
           <button
             className={styles.button}
             onClick={() => openModal('ModalRecordMeal', mealType)}
@@ -52,14 +48,3 @@ const DiaryBlock = ({
 };
 
 export default DiaryBlock;
-
-// DiaryBlock.propTypes = {
-//   name: PropTypes.string,
-//   srcImg: PropTypes.string,
-//   alt: PropTypes.string,
-//   buttonName: PropTypes.string,
-//   carbonohidrates: PropTypes.string,
-//   protein: PropTypes.string,
-//   fat: PropTypes.string,
-//   srcSet: PropTypes.string,
-// };

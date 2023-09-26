@@ -1,6 +1,7 @@
 // import UserProfile from './UserProfile';
 import styles from './UserMenu.module.scss';
-import { useModalContext } from '@/context/ModalContext';
+
+import { useSelector } from 'react-redux';
 import goalM from '../images/header/goal.png';
 import goalM2 from '../images/header/goal2x.png';
 // import goalF from '../images/header/goal_girl.png';
@@ -9,7 +10,7 @@ import weight from '../images/header/weight.png';
 import weight2 from '../images/header/weight2x.png';
 import { ReactComponent as ArrowDownSvg } from '@/assets/svg/arrow-down.svg';
 import { ReactComponent as EditSvg } from '@/assets/svg/edit-2.svg';
-import { useSelector } from 'react-redux';
+import { useModalContext } from '@/hooks/useModalContext';
 
 const UserMenu = () => {
   const { openModal } = useModalContext();

@@ -98,6 +98,12 @@
   line-height: 1.42;
   color: $primary-white;
 
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
   @include mobile-only {
     width: 300px;
   }

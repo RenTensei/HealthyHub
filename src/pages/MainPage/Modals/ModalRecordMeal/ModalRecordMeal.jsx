@@ -1,16 +1,23 @@
-import { nanoid } from 'nanoid';
-
-// import RenderSvg from '@/components/RenderSvg';
 import styles from './ModalRecordMeal.module.scss';
-import { useEffect, useState } from 'react';
-// import { MealContext } from '@/context/MealContext';
-import RecordMealInput from './RecordMealInput/RecordMealInput';
-import { useDispatch } from 'react-redux';
+
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import OutsideClickHandler from 'react-outside-click-handler';
+import { Field, FieldArray, Form, Formik } from 'formik';
+import { toast } from 'react-toastify';
+
+import { selectFoodIntakeByMealType } from '@/store/features/foodIntake/selectors';
 import { postMyFoodIntake } from '@/store/features/foodIntake/thunks';
 import { ReactComponent as AddMoreSvg } from '@/assets/svg/add.svg';
-import OutsideClickHandler from 'react-outside-click-handler';
-
 import { mealTypeSrcSets } from '@/utils/mealTypeSrcSets';
+
+const foodIntakeTemplate = {
+  mealName: '',
+  carbonohidrates: '',
+  protein: '',
+  fat: '',
+  calories: '',
+};
 
 const ModalRecordMeal = ({ onClose, mealType }) => {
   useEffect(() => {
@@ -22,66 +29,17 @@ const ModalRecordMeal = ({ onClose, mealType }) => {
   const src1x = mealTypeSrcSets[mealType][0];
   const src2x = mealTypeSrcSets[mealType][1];
 
-  const [mealName, setMealName] = useState('');
-  const [carbonohidrates, setCarbonohidrates] = useState(0);
-  const [protein, setProtein] = useState(0);
-  const [fat, setFat] = useState(0);
-  const [calories, setCalories] = useState(0);
-
   const dispatch = useDispatch();
-  const [customComponents, setCustomComponents] = useState([]);
 
-  const mealHandler = value => {
-    setMealName(value);
-  };
-
-  const carbHandler = value => {
-    setCarbonohidrates(value);
-  };
-
-  const proteinHandler = value => {
-    setProtein(value);
-  };
-
-  const fatHandler = value => {
-    setFat(value);
-  };
-
-  const caloriesHandler = value => {
-    setCalories(value);
-  };
-
-  const addCustomComponent = () => {
-    setCustomComponents([
-      ...customComponents,
-      <RecordMealInput
-        key={nanoid()}
-        stateHandlres={[
-          mealHandler,
-          carbHandler,
-          proteinHandler,
-          fatHandler,
-          caloriesHandler,
-        ]}
-      />,
-    ]);
-  };
-
-  const onConfirmHandler = () => {
-    const stateObject = {
-      mealName,
-      mealType,
-      carbonohidrates: Number(carbonohidrates),
-      protein: Number(protein),
-      fat: Number(fat),
-      calories: Number(calories),
-    };
-    console.log(stateObject);
+  const handleSubmit = values => {
+    console.log(values);
     // eslint-disable-next-line no-constant-condition
-    if (false) dispatch(postMyFoodIntake(stateObject));
+    if (false) dispatch(postMyFoodIntake(values));
 
     onClose();
   };
+
+  const foodIntake = useSelector(selectFoodIntakeByMealType);
 
   return (
     <OutsideClickHandler onOutsideClick={onClose}>
@@ -89,40 +47,94 @@ const ModalRecordMeal = ({ onClose, mealType }) => {
         <h2 className={styles.title}>Record your meal</h2>
         <div className={styles.meal_container}>
           <img src={src1x} srcSet={`${src1x} 1x, ${src2x} 2x`} />
-
           <h3 className={styles.subtitle}>{mealType}</h3>
         </div>
 
-        <div>
-          <ul className={styles.list}>
-            <li className={styles.list_item}>
-              The name of the product or dish
-            </li>
-            <li className={styles.list_item}>Carbonoh </li>
-            <li className={styles.list_item}>Protein </li>
-            <li className={styles.list_item}>Fat </li>
-            <li className={styles.list_item}>Calories </li>
-          </ul>
-          <div className={styles.inputs_container}>
-            {customComponents?.map((component, index) => (
-              <div key={index}>{component}</div>
-            ))}
-          </div>
-        </div>
+        <Formik
+          initialValues={{
+            foodIntakes: [...foodIntake[mealType], foodIntakeTemplate],
+          }}
+          onSubmit={handleSubmit}
+        >
+          {({ values }) => (
+            <Form>
+              <FieldArray name="foodIntakes">
+                {({ push }) => (
+                  <div className={styles.fieldArrayWrapper}>
+                    {values?.foodIntakes.map((foodIntake, index) => (
+                      <div key={index} className={styles.input_row}>
+                        <Field
+                          name={`foodIntakes.${index}.mealName`}
+                          placeholder="The name of the product or dish"
+                          type="text"
+                          required
+                        />
+                        <Field
+                          name={`foodIntakes.${index}.carbonohidrates`}
+                          placeholder="Carbonoh."
+                          type="number"
+                          min={0}
+                          required
+                        />
+                        <Field
+                          name={`foodIntakes.${index}.protein`}
+                          placeholder="Protein"
+                          type="number"
+                          min={0}
+                          required
+                        />
+                        <Field
+                          name={`foodIntakes.${index}.fat`}
+                          placeholder="Fat"
+                          type="number"
+                          min={0}
+                          required
+                        />
+                        <Field
+                          name={`foodIntakes.${index}.calories`}
+                          placeholder="Calories"
+                          type="number"
+                          min={0}
+                          required
+                        />
+                      </div>
+                    ))}
+                    <button
+                      type="button"
+                      className={styles.button_add}
+                      onClick={() => {
+                        const foodIntake =
+                          values.foodIntakes[values.foodIntakes.length - 1];
+                        const fieldMissing = Object.values(foodIntake).some(
+                          value => typeof value === 'string' && !value.trim()
+                        );
+                        fieldMissing
+                          ? toast.warn('Fill empty fields before adding more!')
+                          : push(foodIntakeTemplate);
+                      }}
+                    >
+                      <AddMoreSvg strokeWidth={3} width={16} height={16} />
+                      Add more
+                    </button>
+                  </div>
+                )}
+              </FieldArray>
 
-        <button className={styles.button_add} onClick={addCustomComponent}>
-          <AddMoreSvg strokeWidth={3} width={16} height={16} />
-          Add more
-        </button>
-
-        <div className={styles.buttons_container}>
-          <button onClick={onClose} className={styles.button_cancel}>
-            Cancel
-          </button>
-          <button className={styles.button_confirm} onClick={onConfirmHandler}>
-            Confirm
-          </button>
-        </div>
+              <div className={styles.buttons_container}>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className={styles.button_cancel}
+                >
+                  Cancel
+                </button>
+                <button type="submit" className={styles.button_confirm}>
+                  Confirm
+                </button>
+              </div>
+            </Form>
+          )}
+        </Formik>
       </div>
     </OutsideClickHandler>
   );

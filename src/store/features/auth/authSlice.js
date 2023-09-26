@@ -5,6 +5,7 @@ import {
   getMyFoodIntake,
   postMyFoodIntake,
   postMyWaterIntake,
+  updateMyFoodIntake,
 } from '../foodIntake/thunks';
 
 const initialState = {
@@ -41,7 +42,7 @@ const authSlice = createSlice({
         state.user = payload.user;
 
         state.isLoggedIn = true;
-        state.appStatus = APP_STATUS.idle;
+        // state.appStatus = APP_STATUS.idle;
       })
       .addCase(refresh.rejected, (state, { payload }) => {
         if (payload === 401) state.token = null;
@@ -105,6 +106,17 @@ const authSlice = createSlice({
         state.appStatus = APP_STATUS.idle;
       })
       .addCase(getMyFoodIntake.rejected, state => {
+        state.appStatus = APP_STATUS.idle;
+      })
+
+      // updateMyFoodIntake
+      .addCase(updateMyFoodIntake.pending, state => {
+        state.appStatus = APP_STATUS.fetching;
+      })
+      .addCase(updateMyFoodIntake.fulfilled, state => {
+        state.appStatus = APP_STATUS.idle;
+      })
+      .addCase(updateMyFoodIntake.rejected, state => {
         state.appStatus = APP_STATUS.idle;
       })
 

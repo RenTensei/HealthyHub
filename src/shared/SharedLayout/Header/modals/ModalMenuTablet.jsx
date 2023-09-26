@@ -1,12 +1,13 @@
 import styles from './ModalMenuTablet.module.scss';
 import { ReactComponent as CloseSvg } from '@/assets/svg/close-circle.svg';
-import goal from '../images/header/goal.png';
+
 import weight from '../images/header/weight.png';
 import { useEffect } from 'react';
-import { useModalContext } from '@/context/ModalContext';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSelector } from 'react-redux';
+import { useModalContext } from '@/hooks/useModalContext';
+import { goalSrcSets } from '@/utils/goalSrcSet';
 
 const ModalMenuTablet = ({ open, onClose }) => {
   const { openModal } = useModalContext();
@@ -84,7 +85,14 @@ const ModalMenuTablet = ({ open, onClose }) => {
                   >
                     <div className={styles.header_user_frame}>
                       <img
-                        src={goal}
+                        src={
+                          goalSrcSets[userData.goal][`${userData.gender}`][0]
+                        }
+                        srcSet={`${
+                          goalSrcSets[userData.goal][`${userData.gender}`][0]
+                        } 1x, ${
+                          goalSrcSets[userData.goal][`${userData.gender}`][1]
+                        } 2x`}
                         alt="your goal"
                         className={styles.header_user_img}
                       />
@@ -130,7 +138,9 @@ const ModalMenuTablet = ({ open, onClose }) => {
                     <div className={styles.header_user_discr}>
                       <p className={styles.header_user_text}> Weight</p>
                       <div className={styles.header_user_weight_descr}>
-                        <p className={styles.header_user_text}>{userData.weight}</p>
+                        <p className={styles.header_user_text}>
+                          {userData.weight}
+                        </p>
                         <p className={styles.header_user_measure}>kg</p>
                       </div>
                     </div>

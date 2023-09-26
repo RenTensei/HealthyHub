@@ -1,7 +1,8 @@
 import styles from './UserProfile.module.scss';
-import { useModalContext } from '@/context/ModalContext';
-import { ReactComponent as ArrowDownSvg } from '@/assets/svg/arrow-down.svg';
+
 import { useSelector } from 'react-redux';
+import { ReactComponent as ArrowDownSvg } from '@/assets/svg/arrow-down.svg';
+import { useModalContext } from '@/hooks/useModalContext';
 
 const UserProfile = () => {
   const { openModal } = useModalContext();

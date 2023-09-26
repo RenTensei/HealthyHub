@@ -42,6 +42,10 @@
   flex-direction: column;
   gap: 20px;
 
+  @include mobile-and-tablet {
+    margin-bottom: 20px;
+  }
+
   @include tablet-and-desktop {
     > div {
       width: 50%;

@@ -98,3 +98,24 @@ export const selectFoodIntakeByCategory = createSelector(
     }));
   }
 );
+
+export const selectFoodIntakeByMealType = createSelector(
+  state => state.foodIntake.items,
+  items => {
+    const categorizedItems = {
+      Breakfast: [],
+      Lunch: [],
+      Dinner: [],
+      Snack: [],
+    };
+
+    items.forEach(item => {
+      const mealType = item.mealType;
+      if (categorizedItems[mealType]) {
+        categorizedItems[mealType].push(item);
+      }
+    });
+
+    return categorizedItems;
+  }
+);

@@ -1,7 +1,18 @@
-import foodData from '../../../../RecommendedFoodPage/components/RecommendedFood.json';
+import { useState, useEffect } from 'react';
+import { fetchFoodData } from '@/utils/fetchFoodData';
 import styles from './RecommendedFoodMain.module.scss';
 
 export default function FoodList() {
+  const [foodData, setfoodData] = useState([]);
+
+  useEffect(() => {
+    fetchFoodData()
+      .then(response => {
+        setfoodData(response);
+      })
+      .catch(err => console.error(err));
+  }, []);
+
   return (
     <ul className={styles.item__list}>
       {foodData.map(foodItem => {
@@ -11,6 +22,7 @@ export default function FoodList() {
               src={foodItem.img}
               alt={foodItem.name}
               className={styles.product__image}
+              loading="lazy"
             />
             <div className={styles.product__info}>
               <h3 className={styles.product__name}>{foodItem.name}</h3>

@@ -9,6 +9,7 @@ import { authActions } from './store/features/auth/authSlice';
 import { APP_STATUS } from './constants/appStatus';
 import { Triangle } from 'react-loader-spinner';
 import { Fetcher } from './components/Loaders/Fetcher';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,12 +22,12 @@ const App = () => {
   );
 
   useEffect(() => {
-    if (appStatus === APP_STATUS.initialLoading) {
-      setTimeout(() => {
-        setIsLoadingOverlay(false);
-      }, 1250);
-    }
-  }, [appStatus]);
+    const timeout = setTimeout(() => {
+      setIsLoadingOverlay(false);
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   useEffect(() => {
     if (token) {
@@ -38,36 +39,42 @@ const App = () => {
 
   return (
     <>
-      {isLoadingOverlay && (
-        <Triangle
-          height="140"
-          width="140"
-          color="#FFC4F7"
-          ariaLabel="triangle-loading"
-          wrapperStyle={{
-            width: '100vw',
-            height: '100vh',
-            zIndex: '999',
-            backgroundColor: '#050505',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            position: 'absolute',
-          }}
-        />
-      )}
+      <AnimatePresence>
+        {isLoadingOverlay && (
+          <motion.div exit={{ opacity: 0 }}>
+            <div>
+              <Triangle
+                height="140"
+                width="140"
+                color="#FFC4F7"
+                ariaLabel="triangle-loading"
+                wrapperStyle={{
+                  width: '100vw',
+                  height: '100vh',
+                  zIndex: '999',
+                  backgroundColor: '#050505',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  position: 'absolute',
+                }}
+              />
+            </div>
+          </motion.div>
+        )}
 
-      {appStatus === APP_STATUS.fetching && <Fetcher />}
+        {appStatus === APP_STATUS.fetching && !isLoadingOverlay && <Fetcher />}
 
-      <Router />
-
-      {/* <button
+        {/* <button
         onClick={() =>
           dispatch(signIn({ email: 'admin23@admin.com', password: 'admin23' }))
         }
       >
         fake sign in!
       </button> */}
+      </AnimatePresence>
+
+      <Router />
     </>
   );
 };

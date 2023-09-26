@@ -4,18 +4,16 @@ import AuthNavigation from '../Header/components/AuthNavigation';
 import UserMenu from '../Header/components/UserMenu';
 import styles from './Header.module.scss';
 import { useModalContext } from '@/context/ModalContext';
-import { useState } from 'react';
 import UserProfile from './components/UserProfile';
 import { ReactComponent as MenuSvg } from '@/assets/svg/menu.svg';
 import { useSelector } from 'react-redux';
 import { selectIsLoggedIn } from '@/store/features/auth/selectors';
 
 const Header = () => {
-  const { openModal } = useModalContext();
+  const { modal, openModal, open } = useModalContext();
   const isLoggedIn = useSelector(selectIsLoggedIn);
-  
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+  const isMobileMenuOpen = open && modal.name !== 'ModalUser';
+
   return (
     <header className={styles.header}>
       <div className={styles.header_container}>
@@ -27,7 +25,6 @@ const Header = () => {
           {isLoggedIn && (
             <button
               className={styles.header_tablet_menu}
-              // onClick={() => toggleMenu()}
               onClick={() => openModal('ModalMenuTablet')}
               type="button"
             >
@@ -35,7 +32,7 @@ const Header = () => {
                 className={styles.menuBtn}
                 width={24}
                 height={24}
-                stroke={isMenuOpen ? '#E3FFA8' : '#B6B6B6'}
+                stroke={isMobileMenuOpen ? '#E3FFA8' : '#B6B6B6'}
               />
             </button>
           )}

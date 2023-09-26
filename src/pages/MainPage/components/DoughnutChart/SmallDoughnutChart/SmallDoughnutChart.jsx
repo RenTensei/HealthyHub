@@ -2,39 +2,25 @@
 import { Chart as ChartJS, ArcElement } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 import styles from './SmallDoughnutChart.module.scss';
+import { useMemo } from 'react';
 
 ChartJS.register(ArcElement);
 
 // eslint-disable-next-line react/prop-types
 const SmallDoughnutChart = ({ nutritionValue, arcColor, content, goal }) => {
-  const calculatePercentage = nutritionValue => {
-    if (nutritionValue >= goal) {
-      return 100;
-    }
-    const prc = (nutritionValue / goal) * 100;
-    return prc;
-  };
+  const calculatedPercentage = useMemo(() => {
+    if (nutritionValue >= goal) return 100;
+    return Math.round((nutritionValue / goal) * 100);
+  }, [goal, nutritionValue]);
 
-  const calculateLeft = (nutritionValue, goal) => {
-    if (nutritionValue >= goal) {
-      return 0;
-    }
-    const left = goal - nutritionValue;
-    return left;
-  };
+  // console.log(content, ':', calculatedPercentage);
 
-  let borderRad = [50];
-  if (nutritionValue >= goal) {
-    borderRad = [0];
-  }
+  const borderRad = nutritionValue >= goal ? [0] : [50];
 
   const data = {
     datasets: [
       {
-        data: [
-          calculatePercentage(nutritionValue),
-          100 - calculatePercentage(nutritionValue),
-        ],
+        data: [calculatedPercentage, 100 - calculatedPercentage],
         backgroundColor: [arcColor, 'rgba(41, 41, 40, 1)'],
         borderColor: ['rgba(69, 255, 188, 0)'],
         borderRadius: borderRad,
@@ -50,15 +36,11 @@ const SmallDoughnutChart = ({ nutritionValue, arcColor, content, goal }) => {
       const xCoor = chart.getDatasetMeta(0).data[0].x;
       const yCoor = chart.getDatasetMeta(0).data[0].y;
       ctx.save();
-      ctx.font = ' 14px';
+      ctx.font = '14px';
       ctx.fillStyle = '#B6B6B6';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      ctx.fillText(
-        `${Math.round(calculatePercentage(nutritionValue))}%`,
-        xCoor,
-        yCoor
-      );
+      ctx.fillText(`${calculatedPercentage}%`, xCoor, yCoor);
     },
   };
 
@@ -66,7 +48,7 @@ const SmallDoughnutChart = ({ nutritionValue, arcColor, content, goal }) => {
     id: 'backgroundCircle',
     beforeDatasetsDraw(chart) {
       const { ctx } = chart;
-      ctx.save(); 
+      ctx.save();
       const xCoor = chart.getDatasetMeta(0).data[0].x;
       const yCoor = chart.getDatasetMeta(0).data[0].y;
       const innerRadius = chart.getDatasetMeta(0).data[0].innerRadius;
@@ -101,7 +83,7 @@ const SmallDoughnutChart = ({ nutritionValue, arcColor, content, goal }) => {
           <p className={styles.left}>
             Left:{' '}
             <span className={styles.left_value}>
-              {calculateLeft(nutritionValue, goal)}
+              {nutritionValue >= goal ? 0 : goal - nutritionValue}
             </span>
           </p>
         </div>

@@ -23,9 +23,6 @@ const MainPage = () => {
 
   return (
     <MealProvider>
-      <button className="button-default" onClick={mealModalToggle}>
-        Show Modal
-      </button>
       <ModalPortal isShowing={isRecordMealShowing} hide={mealModalToggle}>
         <ModalRecordMeal hide={mealModalToggle} />
       </ModalPortal>

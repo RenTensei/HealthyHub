@@ -17,6 +17,7 @@
 }
 
 .bar_container {
+  z-index: 10;
   display: flex;
   gap: 20px;
   background-color: $primary-black-2;

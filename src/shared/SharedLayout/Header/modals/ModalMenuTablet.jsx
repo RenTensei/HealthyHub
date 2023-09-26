@@ -3,10 +3,10 @@ import { ReactComponent as CloseSvg } from '@/assets/svg/close-circle.svg';
 import goal from '../images/header/goal.png';
 import weight from '../images/header/weight.png';
 import { useEffect } from 'react';
-import { useModalContext } from '@/context/ModalContext';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSelector } from 'react-redux';
+import { useModalContext } from '@/hooks/useModalContext';
 
 const ModalMenuTablet = ({ open, onClose }) => {
   const { openModal } = useModalContext();
@@ -130,7 +130,9 @@ const ModalMenuTablet = ({ open, onClose }) => {
                     <div className={styles.header_user_discr}>
                       <p className={styles.header_user_text}> Weight</p>
                       <div className={styles.header_user_weight_descr}>
-                        <p className={styles.header_user_text}>{userData.weight}</p>
+                        <p className={styles.header_user_text}>
+                          {userData.weight}
+                        </p>
                         <p className={styles.header_user_measure}>kg</p>
                       </div>
                     </div>

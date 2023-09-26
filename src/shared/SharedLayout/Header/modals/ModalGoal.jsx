@@ -5,14 +5,12 @@ import OutsideClickHandler from 'react-outside-click-handler';
 import { motion, AnimatePresence } from 'framer-motion';
 import goalM from '../images/header/goal.png';
 import goalM2 from '../images/header/goal2x.png';
-// import goalF from '../images/header/goal_girl.png';
-// import goalF2 from '../images/header/goal_girl2x.png';
 import muscle from '../images/header/muscle.png';
 import muscle2 from '../images/header/muscle2x.png';
 import maintainM from '../images/header/maintain.png';
 import maintainM2 from '../images/header/maitain2x.png';
-// import maintainF from '../images/header/maintan_girl.png';
-// import maintainF2 from '../images/header/maintan_girl2x.png';
+import maintainF from '../images/header/maintan_girl.png';
+import maintainF2 from '../images/header/maintan_girl2x.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '@/store/features/auth/thunks';
 
@@ -253,7 +251,6 @@ const ModalGoal = ({ open, onClose }) => {
                 <p className={styles.header_modal_goal_text}>
                   The service will adjust your calorie intake to your goal
                 </p>
-
                 <ul className={styles.header_modal_list}>
                   <motion.li
                     initial={{

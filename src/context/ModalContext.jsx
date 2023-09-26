@@ -1,18 +1,19 @@
-import { createContext, useState, useContext } from 'react';
+import { createContext, useState } from 'react';
 
-const ModalContext = createContext();
+export const ModalContext = createContext();
 
 export const ModalProvider = ({ children }) => {
   const [modal, setModal] = useState(null);
   const [open, setOpen] = useState(false);
 
-  const openModal = name => {
-    setModal({ name });
+  const openModal = (name, mealType, mealId) => {
+    setModal({ name, mealType, mealId });
     setOpen(true);
   };
 
   const closeModal = () => {
     setOpen(false);
+    setModal(null);
   };
 
   return (
@@ -21,5 +22,3 @@ export const ModalProvider = ({ children }) => {
     </ModalContext.Provider>
   );
 };
-
-export const useModalContext = () => useContext(ModalContext);

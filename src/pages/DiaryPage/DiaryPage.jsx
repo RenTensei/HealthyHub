@@ -18,7 +18,7 @@ const DiaryPage = () => {
           width={24}
           height={24}
           style={{ marginRight: '12px' }}
-          strokeWidth={1.5}
+          strokeWidth={2}
         />
         <span className={styles.DiaryArrow}>Diary</span>
       </a>

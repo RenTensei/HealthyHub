@@ -38,9 +38,10 @@ const ModalRecordMeal = ({ onClose, mealType }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = values => {
-    console.log(values);
-    // eslint-disable-next-line no-constant-condition
-    if (false) dispatch(postMyFoodIntake(values));
+    // TODO rewrite backend to accept array, so we perform only one network request
+    values.foodIntakes.forEach(foodIntake =>
+      dispatch(postMyFoodIntake({ mealType, ...foodIntake }))
+    );
 
     onClose();
   };

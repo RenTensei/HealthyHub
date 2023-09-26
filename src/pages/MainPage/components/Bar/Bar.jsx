@@ -73,7 +73,7 @@ const Bar = ({ openModal }) => {
             </div>
           </div>
           <button onClick={openModal} className={styles.intake_button}>
-            <AddSvg width={16} strokeWidth={3} />
+            <AddSvg width={16} strokeWidth={3} stroke="#0F0F0F" />
             Add water intake
           </button>
         </div>

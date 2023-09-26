@@ -3,21 +3,18 @@ import { useEffect, useState } from 'react';
 import { ReactComponent as CloseSvg } from '@/assets/svg/close-circle.svg';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { motion, AnimatePresence } from 'framer-motion';
-import goalM from '../images/header/goal.png';
-import goalM2 from '../images/header/goal2x.png';
-import muscle from '../images/header/muscle.png';
-import muscle2 from '../images/header/muscle2x.png';
-import maintainM from '../images/header/maintain.png';
-import maintainM2 from '../images/header/maitain2x.png';
-import maintainF from '../images/header/maintan_girl.png';
-import maintainF2 from '../images/header/maintan_girl2x.png';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { updateUser } from '@/store/features/auth/thunks';
+import { goalSrcSets } from '@/utils/goalSrcSet';
 
 const ModalGoal = ({ open, onClose }) => {
   const breakpoint = 834;
   const dispatch = useDispatch();
+
   const currentGoal = useSelector(state => state.auth.user.goal);
+  const gender = useSelector(state => state.auth.user.gender);
+
   const [width, setWidth] = useState({ width: window.innerWidth });
   const [newGoal, setNewGoal] = useState(currentGoal);
 
@@ -117,8 +114,10 @@ const ModalGoal = ({ open, onClose }) => {
                     <div className={styles.header_modal_frame}>
                       <img
                         className={styles.header_modal_img}
-                        src={goalM}
-                        srcSet={`${goalM} 1x, ${goalM2} 2x`}
+                        src={goalSrcSets['Lose fat'][`${gender}`][0]}
+                        srcSet={`${
+                          goalSrcSets['Lose fat'][`${gender}`][0]
+                        } 1x, ${goalSrcSets['Lose fat'][`${gender}`][1]} 2x`}
                       />
                     </div>
                     <p className={styles.header_modal_text}>Lose fat</p>
@@ -151,8 +150,10 @@ const ModalGoal = ({ open, onClose }) => {
                     <div className={styles.header_modal_frame}>
                       <img
                         className={styles.header_modal_img}
-                        src={maintainM}
-                        srcSet={`${maintainM} 1x, ${maintainM2} 2x`}
+                        src={goalSrcSets['Maintain'][`${gender}`][0]}
+                        srcSet={`${
+                          goalSrcSets['Maintain'][`${gender}`][0]
+                        } 1x, ${goalSrcSets['Maintain'][`${gender}`][1]} 2x`}
                       />
                     </div>
                     <p className={styles.header_modal_text}>Maintain</p>
@@ -186,8 +187,10 @@ const ModalGoal = ({ open, onClose }) => {
                     <div className={styles.header_modal_frame}>
                       <img
                         className={styles.header_modal_img}
-                        src={muscle}
-                        srcSet={`${muscle} 1x, ${muscle2} 2x`}
+                        src={goalSrcSets['Gain Muscle'][`${gender}`][0]}
+                        srcSet={`${
+                          goalSrcSets['Gain Muscle'][`${gender}`][0]
+                        } 1x, ${goalSrcSets['Gain Muscle'][`${gender}`][1]} 2x`}
                       />
                     </div>
                     <p className={styles.header_modal_text}>Gain Muscle</p>
@@ -280,8 +283,10 @@ const ModalGoal = ({ open, onClose }) => {
                     <div className={styles.header_modal_frame}>
                       <img
                         className={styles.header_modal_img}
-                        src={goalM}
-                        srcSet={`${goalM} 1x, ${goalM2} 2x`}
+                        src={goalSrcSets['Lose fat'][`${gender}`][0]}
+                        srcSet={`${
+                          goalSrcSets['Lose fat'][`${gender}`][0]
+                        } 1x, ${goalSrcSets['Lose fat'][`${gender}`][1]} 2x`}
                       />
                     </div>
                     <p className={styles.header_modal_text}>Lose fat</p>
@@ -314,8 +319,10 @@ const ModalGoal = ({ open, onClose }) => {
                     <div className={styles.header_modal_frame}>
                       <img
                         className={styles.header_modal_img}
-                        src={maintainM}
-                        srcSet={`${maintainM} 1x, ${maintainM2} 2x`}
+                        src={goalSrcSets['Maintain'][`${gender}`][0]}
+                        srcSet={`${
+                          goalSrcSets['Maintain'][`${gender}`][0]
+                        } 1x, ${goalSrcSets['Maintain'][`${gender}`][1]} 2x`}
                       />
                     </div>
                     <p className={styles.header_modal_text}>Maintain</p>
@@ -348,8 +355,10 @@ const ModalGoal = ({ open, onClose }) => {
                     <div className={styles.header_modal_frame}>
                       <img
                         className={styles.header_modal_img}
-                        src={muscle}
-                        srcSet={`${muscle} 1x, ${muscle2} 2x`}
+                        src={goalSrcSets['Gain Muscle'][`${gender}`][0]}
+                        srcSet={`${
+                          goalSrcSets['Gain Muscle'][`${gender}`][0]
+                        } 1x, ${goalSrcSets['Gain Muscle'][`${gender}`][1]} 2x`}
                       />
                     </div>
                     <p className={styles.header_modal_text}>Gain Muscle</p>

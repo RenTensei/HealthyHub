@@ -159,9 +159,7 @@ const ModalWeight = ({ open, onClose }) => {
                 <form className={styles.header_weight_form}>
                   <input
                     type="number"
-                    onChange={event =>
-                      setWeight(Number(event.currentTarget.value))
-                    }
+                    onChange={event => setWeight(Number(event.target.value))}
                     placeholder="Enter your weight"
                     className={styles.header_modal_input}
                   />

@@ -28,9 +28,9 @@ const DataList = ({ lastMonth, water, calories, weight }) => {
             <h4 className={styles.chartTitle}>calories</h4>
             <p className={styles.average}>
               Average value:
-              <span
-                className={styles.averageValue}
-              >{`${averageCalories} calories`}</span>
+              <span className={styles.averageValue}>
+                {!averageCalories ? `0 kg` : `${averageCalories} kg`}
+              </span>
             </p>
           </div>
           <div className={styles.chartCont}>
@@ -44,9 +44,9 @@ const DataList = ({ lastMonth, water, calories, weight }) => {
             <h4 className={styles.chartTitle}>water</h4>
             <p className={styles.average}>
               Average value:
-              <span
-                className={styles.averageValue}
-              >{`${averageWater} ml`}</span>
+              <span className={styles.averageValue}>
+                {!averageWater ? `0 ml` : `${averageWater} ml`}
+              </span>
             </p>
           </div>
           <div className={styles.chartCont}>
@@ -61,7 +61,9 @@ const DataList = ({ lastMonth, water, calories, weight }) => {
           <h4 className={styles.chartTitle}>weight</h4>
           <p className={styles.average}>
             Average value:
-            <span className={styles.averageValue}>{`${averageWeight} kg`}</span>
+            <span className={styles.averageValue}>
+              {!averageWeight ? `0 kg` : `${averageWeight} kg`}
+            </span>
           </p>
         </div>
         <div className={styles.weightCont}>

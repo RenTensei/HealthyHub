@@ -50,7 +50,9 @@ body {
   background-color: $primary-black;
   line-height: 1.5;
 
-  // overflow: hidden;
+  div {
+    transition: $transition-default;
+  }
 
   ::selection {
     background-color: $primary-lite-green;

@@ -10,8 +10,7 @@ import { useState } from 'react';
 
 const initialValues = {
   email: '',
-}
-
+};
 
 const ForgotYourPasswordForm = () => {
   const dispatch = useDispatch();
@@ -22,12 +21,9 @@ const ForgotYourPasswordForm = () => {
   });
 
   const handleSubmit = (values, { resetForm }) => {
-  dispatch(resetPassword(values));
- navigate('/signin');
-
-  
-  }
-  
+    dispatch(resetPassword(values));
+    navigate('/signin');
+  };
 
   return (
     <Formik
@@ -43,12 +39,13 @@ const ForgotYourPasswordForm = () => {
               type="email"
               name="email"
               placeholder="E-mail"
-              className={`${styles.Input} ${errors.email && touched.email
+              className={`${styles.Input} ${
+                errors.email && touched.email
                   ? styles.Input__error
                   : inputState.email && !errors.email
-                    ? styles.Input__success
-                    : null
-                }`}
+                  ? styles.Input__success
+                  : null
+              }`}
               onInput={e => {
                 const value = e.target.value;
                 setInputState(prevState => ({

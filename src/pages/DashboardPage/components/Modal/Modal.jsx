@@ -1,11 +1,11 @@
-import styles from './Modal.module.scss'
+import styles from './Modal.module.scss';
 import PropTypes from 'prop-types';
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-const Modal = ({onClose, children}) => {
+const Modal = ({ onClose, children }) => {
   useEffect(() => {
     const handleOnClose = e => {
-      if (e.code === "Escape") {
+      if (e.code === 'Escape') {
         onClose();
       }
     };
@@ -15,18 +15,13 @@ const Modal = ({onClose, children}) => {
     return () => {
       window.removeEventListener('keydown', handleOnClose);
     };
-    
   }, [onClose]);
 
-  return (
-    <div className={styles.modal}>
-      {children}
-    </div>
-  );
+  return <div className={styles.modal}>{children}</div>;
 };
 
 Modal.propTypes = {
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
 };
 
 export default Modal;

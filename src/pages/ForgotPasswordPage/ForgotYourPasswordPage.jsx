@@ -4,7 +4,6 @@ import RenderImagesAuthPages from '@/components/RenderImages/RenderImagesAuthPag
 import { Link } from 'react-router-dom';
 
 const ForgotYourPasswordPage = () => {
-  
   return (
     <div className={styles.Container}>
       <RenderImagesAuthPages />

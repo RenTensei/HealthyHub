@@ -16,7 +16,7 @@ const initialValues = {
 
 const SignInForm = () => {
   const dispatch = useDispatch();
-   const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [inputState, setInputState] = useState({
     email: '',
     password: '',
@@ -26,8 +26,6 @@ const SignInForm = () => {
     dispatch(signIn(values));
   };
 
- 
- 
   return (
     <Formik
       initialValues={initialValues}

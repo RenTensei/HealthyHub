@@ -64,9 +64,14 @@ const Router = () => {
             <PrivateRoute component={DiaryPage} redirect={ROUTES.SignInPage} />
           }
         />
-         <Route
+        <Route
           path={ROUTES.RecommendedFoodPage}
-          element={<PrivateRoute component={RecommendedFoodPage} redirect={ROUTES.SignInPage} />}
+          element={
+            <PrivateRoute
+              component={RecommendedFoodPage}
+              redirect={ROUTES.SignInPage}
+            />
+          }
         />
         <Route
           path={ROUTES.DashboardPage}

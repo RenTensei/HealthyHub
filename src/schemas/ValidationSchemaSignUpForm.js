@@ -18,5 +18,3 @@ const validationSchemaSignUp = Yup.object().shape({
 });
 
 export default validationSchemaSignUp;
-
-

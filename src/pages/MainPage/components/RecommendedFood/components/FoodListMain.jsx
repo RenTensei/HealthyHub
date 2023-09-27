@@ -15,7 +15,7 @@ export default function FoodList() {
 
   return (
     <ul className={styles.item__list}>
-      {foodData.map(foodItem => {
+      {foodData.slice(0, 4).map(foodItem => {
         return (
           <li className={styles.item} key={foodItem.name}>
             <img
@@ -27,7 +27,7 @@ export default function FoodList() {
             <div className={styles.product__info}>
               <h3 className={styles.product__name}>{foodItem.name}</h3>
               <p className={styles.product__calories}>
-                100 g{' '}
+                {foodItem.amount}{' '}
                 <span className={styles.calories__quantity}>
                   {foodItem.calories} calories
                 </span>

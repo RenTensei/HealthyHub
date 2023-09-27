@@ -1,15 +1,6 @@
-@import '@/scss//base/mixins';
+@import '@/scss/base/mixins';
 @import '@/scss/base/variables';
 
-.sectionDiary {
-  // padding-left: 10px;
-  // @include tablet-only {
-  //   padding-left: 27px;
-  // }
-  // @include desktop-only {
-  //   padding-left: 34px;
-  // }
-}
 .containerTitle {
   display: flex;
   align-items: center;

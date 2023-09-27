@@ -12,7 +12,6 @@
     display: block;
     padding-left: 195px;
     padding-right: 195px;
-    // padding-bottom: 244px;
     padding-top: 16px;
   }
   @include mobile-only {
@@ -214,13 +213,11 @@
         visibility: visible;
       }
       .your_age {
-        // display: block;
-        // min-width: 212px;
         font-family: $font-regular;
         font-weight: 500;
         font-size: 14px;
         line-height: 1.43;
-        // margin-bottom: 12px;
+
         @include tablet-only {
           text-align: start;
         }
@@ -251,7 +248,7 @@
       }
       input[type='number']::-webkit-outer-spin-button,
       input[type='number']::-webkit-inner-spin-button {
-        -webkit-appearance: none; // Yeah, yeah everybody write about it
+        -webkit-appearance: none;
       }
 
       input[type='number'],

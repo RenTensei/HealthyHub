@@ -13,13 +13,10 @@ import styles from './YourActivityPage.module.scss';
 import { useSignUpContext } from '@/hooks/useSignUpContext';
 import { signUp } from '@/store/features/auth/thunks';
 
-// import { useNavigate } from 'react-router-dom';
-
 const YourActivityPage = () => {
   const { prevStage, signUpData } = useSignUpContext();
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   const handleSubmit = async values => {
     const res = await dispatch(
@@ -31,8 +28,6 @@ const YourActivityPage = () => {
 
     if (res?.meta.requestStatus === 'fulfilled') {
       toast.success('Account created successfully!');
-
-      // navigate('/main');
     }
   };
 

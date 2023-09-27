@@ -62,7 +62,7 @@ export const refresh = createAsyncThunk(
         toast.error('Your session has expired. Please log in again.');
         return rejectWithValue(401);
       }
-      console.log(error);
+      console.log('backend might be sleeping');
       return rejectWithValue();
     }
   }

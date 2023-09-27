@@ -29,7 +29,7 @@ const SignUpPage = () => {
     weight: undefined,
     physicalActivityRatio: undefined,
   });
-  console.log(signUpData);
+  // console.log(signUpData);
 
   const prevStage = () => setCurrentStage(s => s - 1);
   const nextStage = () => setCurrentStage(s => s + 1);

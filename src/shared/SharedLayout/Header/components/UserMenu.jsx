@@ -1,4 +1,3 @@
-// import UserProfile from './UserProfile';
 import { useSelector } from 'react-redux';
 
 import styles from './UserMenu.module.scss';

@@ -7,7 +7,6 @@ import styles from './SmallDoughnutChart.module.scss';
 
 ChartJS.register(ArcElement);
 
-// eslint-disable-next-line react/prop-types
 const SmallDoughnutChart = ({ nutritionValue, arcColor, content, goal }) => {
   const calculatedPercentage = useMemo(() => {
     if (nutritionValue >= goal) return 100;

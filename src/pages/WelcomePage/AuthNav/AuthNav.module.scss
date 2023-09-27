@@ -2,15 +2,12 @@
 @import '@/scss/base/mixins.scss';
 
 .Container_sign_up {
-  // width: 320px;
   padding: 24px 10px 40px;
   background-color: $primary-black;
   margin-left: auto;
   margin-right: auto;
 
   @include tablet-only {
-    // width: 834px;
-
     padding: 16px 168px;
     text-align: center;
   }

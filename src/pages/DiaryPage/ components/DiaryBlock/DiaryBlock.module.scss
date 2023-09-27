@@ -12,7 +12,6 @@ ol li {
 ol li::before {
   counter-increment: ol-numbers;
   content: counter(ol-numbers);
-
 }
 
 .blockHeader {
@@ -44,8 +43,8 @@ ol li::before {
   }
 
   @include tablet-only {
-  margin-right: 80px;
-}
+    margin-right: 80px;
+  }
 }
 
 .item {
@@ -67,22 +66,21 @@ ol li::before {
 }
 
 .blocks {
+  padding: 32px 14px;
   display: flex;
   flex-direction: column;
 
   @include mobile-only {
     width: 300px;
     height: 232px;
-   gap: 16px;
-padding: 16px 12px;
-justify-content: space-between;
+    gap: 16px;
+    padding: 16px 12px;
+    justify-content: space-between;
   }
 
   border-radius: 12px;
   background-color: $primary-black-2;
   margin-top: 12px;
-
-  
 
   overflow-y: scroll;
 
@@ -93,17 +91,14 @@ justify-content: space-between;
 
   @include tablet-only {
     height: 240px;
-    padding: 32px 14px;
     width: 780px;
     gap: 30px;
-    justify-content: space-around;
+    // justify-content: space-around;
   }
 
   @include desktop-only {
     height: 240px;
-    padding-top: 32px;
-    padding-left: 14px;
-    padding-right: 14px;
+
     width: 676px;
     gap: 25px;
   }
@@ -139,6 +134,11 @@ justify-content: space-between;
 
 .listProduct {
   display: flex;
+  position: relative;
+
+  &::before {
+    position: absolute;
+  }
 
   @include tablet-only {
     align-items: center;
@@ -150,7 +150,6 @@ justify-content: space-between;
   color: $primary-green-lite;
   padding: 0px;
   margin-left: 25px;
- 
 }
 
 .containerBlockHeader {
@@ -166,7 +165,7 @@ justify-content: space-between;
   @include tablet-only {
     gap: 70px;
   }
-  @include desktop-only{
+  @include desktop-only {
     gap: 40px;
   }
 }
@@ -212,7 +211,6 @@ justify-content: space-between;
   }
 
   .foodContainer:not(:first-child) {
-
     @include mobile-only {
       margin-top: 22px;
     }
@@ -225,10 +223,10 @@ justify-content: space-between;
   }
 }
 
-.totalCalories{
+.totalCalories {
   display: flex;
 
-  @include mobile-only{
+  @include mobile-only {
     gap: 12px;
   }
 
@@ -236,7 +234,7 @@ justify-content: space-between;
     gap: 70px;
   }
 
-  @include desktop-only{
-     gap: 70px;
+  @include desktop-only {
+    gap: 70px;
   }
 }

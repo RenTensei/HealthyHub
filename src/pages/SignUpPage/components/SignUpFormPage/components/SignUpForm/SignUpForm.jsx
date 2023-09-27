@@ -7,12 +7,8 @@ import { ReactComponent as ErrorLogoSvg } from '@/assets/svg/error-logo.svg';
 import { ReactComponent as SuccessLogoSvg } from '@/assets/svg/success-logo.svg';
 import validationSchemaSignUp from '@/schemas/ValidationSchemaSignUpForm';
 import { useSignUpContext } from '@/hooks/useSignUpContext';
-
-const initialValues = {
-  name: '',
-  email: '',
-  password: '',
-};
+import { useDispatch } from 'react-redux';
+import { checkEmail } from '@/store/features/auth/thunks';
 
 const SignUpForm = () => {
   const [visible, setVisible] = useState(false);
@@ -22,11 +18,21 @@ const SignUpForm = () => {
     password: '',
   });
 
-  const { nextStage, addSignUpData } = useSignUpContext();
+  const dispatch = useDispatch();
 
-  const handleSubmit = (values, { resetForm }) => {
+  const { nextStage, addSignUpData, signUpData } = useSignUpContext();
+  const initialValues = {
+    name: signUpData.name || '',
+    email: signUpData.email || '',
+    password: signUpData.password || '',
+  };
+
+  const handleSubmit = async values => {
+    const res = dispatch(checkEmail(values.email));
+    console.log(res);
+
     addSignUpData(values);
-    nextStage();
+    // nextStage();
   };
 
   return (
@@ -157,8 +163,9 @@ const SignUpForm = () => {
             />
 
             {errors.password && touched.password ? (
-              <div className={`${styles.Message} ${styles.Message__error}`}>
-              </div>
+              <div
+                className={`${styles.Message} ${styles.Message__error}`}
+              ></div>
             ) : inputState.password && !errors.password ? (
               <div className={`${styles.Message} ${styles.Message__success}`}>
                 Password is secure

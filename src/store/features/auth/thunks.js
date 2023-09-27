@@ -1,12 +1,14 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
+
+import { getMyFoodIntake } from '../foodIntake/thunks';
+
 import {
   axiosAuth,
   resetGlobalAuthHeader,
   setGlobalAuthHeader,
 } from '@/utils/network';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
-import { AxiosError } from 'axios';
-import { getMyFoodIntake } from '../foodIntake/thunks';
 import { sleep } from '@/utils/sleep';
 
 export const signUp = createAsyncThunk(

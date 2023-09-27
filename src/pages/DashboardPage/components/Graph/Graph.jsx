@@ -1,6 +1,3 @@
-import styles from './Graph.module.scss';
-import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,8 +8,13 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
 import isEqual from 'lodash.isequal';
+import PropTypes from 'prop-types';
+import { useRef, useState } from 'react';
+import { Line } from 'react-chartjs-2';
+
+import styles from './Graph.module.scss';
+
 import { ReactComponent as CloseCircle } from '@/assets/svg/close-circle.svg';
 
 ChartJS.register(

@@ -1,6 +1,7 @@
+import { useSelector } from 'react-redux';
+
 import styles from './Bar.module.scss';
 
-import { useSelector } from 'react-redux';
 import { ReactComponent as AddSvg } from '@/assets/svg/add.svg';
 import { selectWaterIntake } from '@/store/features/foodIntake/selectors';
 

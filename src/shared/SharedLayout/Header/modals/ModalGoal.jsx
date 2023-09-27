@@ -1,10 +1,11 @@
-import styles from './ModalGoal.module.scss';
-import { useEffect, useState } from 'react';
-import { ReactComponent as CloseSvg } from '@/assets/svg/close-circle.svg';
-import OutsideClickHandler from 'react-outside-click-handler';
 import { motion, AnimatePresence } from 'framer-motion';
-
+import { useEffect, useState } from 'react';
+import OutsideClickHandler from 'react-outside-click-handler';
 import { useDispatch, useSelector } from 'react-redux';
+
+import styles from './ModalGoal.module.scss';
+
+import { ReactComponent as CloseSvg } from '@/assets/svg/close-circle.svg';
 import { updateUser } from '@/store/features/auth/thunks';
 import { goalSrcSets } from '@/utils/goalSrcSet';
 

@@ -38,5 +38,6 @@ module.exports = {
     'react-refresh/only-export-components': 'off',
     'no-unused-vars': 'warn',
     'react/no-unescaped-entities': 'off',
+    'no-prototype-builtins': 'off',
   },
 };

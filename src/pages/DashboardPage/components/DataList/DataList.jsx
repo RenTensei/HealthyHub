@@ -1,5 +1,6 @@
-import styles from './DataList.module.scss';
 import PropTypes from 'prop-types';
+
+import styles from './DataList.module.scss';
 import Graph from '../Graph';
 
 const DataList = ({ lastMonth, water, calories, weight }) => {

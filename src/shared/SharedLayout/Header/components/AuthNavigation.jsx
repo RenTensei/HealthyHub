@@ -1,7 +1,9 @@
-import { ROUTES } from '@/constants/routes';
 import { NavLink } from 'react-router-dom';
+
 import styles from './AuthNavigation.module.scss';
+
 import { ReactComponent as ProfileSvg } from '@/assets/svg/profile-circle.svg';
+import { ROUTES } from '@/constants/routes';
 
 const AuthNavigation = () => {
   return (

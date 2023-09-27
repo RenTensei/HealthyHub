@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
+
 import ForgotYourPasswordForm from './componets/ForgotYourPassword/ForgotYourPassword';
 import styles from '../../components/scss/AuthPageTextStyles.module.scss';
+
 import RenderImagesAuthPages from '@/components/RenderImages/RenderImagesAuthPages';
-import { Link } from 'react-router-dom';
 
 const ForgotYourPasswordPage = () => {
   return (

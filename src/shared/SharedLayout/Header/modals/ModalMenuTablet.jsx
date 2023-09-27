@@ -1,11 +1,12 @@
-import styles from './ModalMenuTablet.module.scss';
-import { ReactComponent as CloseSvg } from '@/assets/svg/close-circle.svg';
-
-import weight from '../images/header/weight.png';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useSelector } from 'react-redux';
+
+import styles from './ModalMenuTablet.module.scss';
+import weight from '../images/header/weight.png';
+
+import { ReactComponent as CloseSvg } from '@/assets/svg/close-circle.svg';
 import { useModalContext } from '@/hooks/useModalContext';
 import { goalSrcSets } from '@/utils/goalSrcSet';
 

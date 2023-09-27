@@ -1,12 +1,13 @@
-import styles from './ModalManager.module.scss';
-
 import { AnimatePresence, motion } from 'framer-motion';
+
 import ModalGoal from './ModalGoal';
-import ModalWeight from './ModalWeight';
-import ModalUser from './ModalUser';
+import styles from './ModalManager.module.scss';
 import ModalMenuTablet from './ModalMenuTablet';
-import ModalRecordMeal from '@/pages/MainPage/Modals/ModalRecordMeal/ModalRecordMeal';
+import ModalUser from './ModalUser';
+import ModalWeight from './ModalWeight';
+
 import { useModalContext } from '@/hooks/useModalContext';
+import ModalRecordMeal from '@/pages/MainPage/Modals/ModalRecordMeal/ModalRecordMeal';
 
 const ModalList = {
   ModalGoal,

@@ -1,7 +1,9 @@
-import { ROUTES } from '@/constants/routes';
 import { Link } from 'react-router-dom';
+
 import styles from './AuthNav.module.scss';
+
 import RenderImagesAuthPages from '@/components/RenderImages/RenderImagesAuthPages';
+import { ROUTES } from '@/constants/routes';
 
 const AuthNav = () => {
   return (

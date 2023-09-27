@@ -1,6 +1,8 @@
-import { useDispatch } from 'react-redux';
-import styles from './ModalWaterIntake.module.scss';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import styles from './ModalWaterIntake.module.scss';
+
 import { postMyWaterIntake } from '@/store/features/foodIntake/thunks';
 
 const ModalWaterIntake = ({ hide }) => {

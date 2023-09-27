@@ -1,17 +1,17 @@
-import styles from './ModalRecordMeal.module.scss';
-
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import OutsideClickHandler from 'react-outside-click-handler';
 import { Field, FieldArray, Form, Formik } from 'formik';
+import { useEffect } from 'react';
+import OutsideClickHandler from 'react-outside-click-handler';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
+import styles from './ModalRecordMeal.module.scss';
+
+import { ReactComponent as AddMoreSvg } from '@/assets/svg/add.svg';
 import { selectFoodIntakeByMealType } from '@/store/features/foodIntake/selectors';
 import {
   postMyFoodIntake,
   updateMyFoodIntake,
 } from '@/store/features/foodIntake/thunks';
-import { ReactComponent as AddMoreSvg } from '@/assets/svg/add.svg';
 import { mealTypeSrcSets } from '@/utils/mealTypeSrcSets';
 
 const foodIntakeTemplate = {

@@ -1,7 +1,7 @@
+import { useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 
 import styles from './ModalPortal.module.scss';
-import { useCallback, useEffect } from 'react';
 
 const ModalPortal = ({ isShowing, hide, children }) => {
   document.body.style.overflow = 'hidden';

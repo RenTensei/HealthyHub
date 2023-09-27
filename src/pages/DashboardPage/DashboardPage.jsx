@@ -1,19 +1,21 @@
-import styles from './DashboardPage.module.scss';
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import Modal from './components/Modal';
+import { toast } from 'react-toastify';
+
+import styles from './DashboardPage.module.scss';
 import DataList from './components/DataList';
-import { Fetcher } from '@/components/Loaders/Fetcher';
-import { ReactComponent as GoBackBtn } from '@/assets/svg/arrow-right-liqht.svg';
-import { ReactComponent as ToggleBtn } from '@/assets/svg/arrow-down.svg';
-import { ROUTES } from '@/constants/routes';
+import Modal from './components/Modal';
 import { getMonthStatistic } from './service/dashboard-service';
 import {
   initialValueGraph,
   monthLabelsForGraph,
   monthLabelsForWeight,
 } from './variables';
-import { toast } from 'react-toastify';
+
+import { ReactComponent as ToggleBtn } from '@/assets/svg/arrow-down.svg';
+import { ReactComponent as GoBackBtn } from '@/assets/svg/arrow-right-liqht.svg';
+import { Fetcher } from '@/components/Loaders/Fetcher';
+import { ROUTES } from '@/constants/routes';
 
 const DashboardPage = () => {
   const location = useLocation();

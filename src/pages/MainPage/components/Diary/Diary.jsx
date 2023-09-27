@@ -1,7 +1,8 @@
-import { Link } from 'react-router-dom';
-import DiaryBlock from '../DiaryBlock';
-import styles from './Diary.module.scss';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import styles from './Diary.module.scss';
+import DiaryBlock from '../DiaryBlock';
 
 import { selectNutrientSums } from '@/store/features/foodIntake/selectors';
 import { mealTypeSrcSets } from '@/utils/mealTypeSrcSets';

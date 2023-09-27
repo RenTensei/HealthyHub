@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import { Chart as ChartJS, ArcElement } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-import styles from './SmallDoughnutChart.module.scss';
 import { useMemo } from 'react';
+import { Doughnut } from 'react-chartjs-2';
+
+import styles from './SmallDoughnutChart.module.scss';
 
 ChartJS.register(ArcElement);
 

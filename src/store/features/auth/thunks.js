@@ -1,12 +1,14 @@
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AxiosError } from 'axios';
+import { toast } from 'react-toastify';
+
+import { getMyFoodIntake } from '../foodIntake/thunks';
+
 import {
   axiosAuth,
   resetGlobalAuthHeader,
   setGlobalAuthHeader,
 } from '@/utils/network';
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
-import { AxiosError } from 'axios';
-import { getMyFoodIntake } from '../foodIntake/thunks';
 import { sleep } from '@/utils/sleep';
 
 export const signUp = createAsyncThunk(
@@ -60,7 +62,7 @@ export const refresh = createAsyncThunk(
         toast.error('Your session has expired. Please log in again.');
         return rejectWithValue(401);
       }
-      console.log(error);
+      console.log('backend might be sleeping');
       return rejectWithValue();
     }
   }

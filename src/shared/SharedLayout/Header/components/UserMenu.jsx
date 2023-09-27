@@ -1,10 +1,9 @@
-// import UserProfile from './UserProfile';
-import styles from './UserMenu.module.scss';
-
 import { useSelector } from 'react-redux';
 
+import styles from './UserMenu.module.scss';
 import weight from '../images/header/weight.png';
 import weight2 from '../images/header/weight2x.png';
+
 import { ReactComponent as ArrowDownSvg } from '@/assets/svg/arrow-down.svg';
 import { ReactComponent as EditSvg } from '@/assets/svg/edit-2.svg';
 import { useModalContext } from '@/hooks/useModalContext';

@@ -1,20 +1,18 @@
-import Diary from './components/Diary';
-import Water from './components/Water';
-import Food from './components/Food';
-import DailyGoal from './DailyGoal';
-import RecommendedFood from './components/RecommendedFood';
-
-import styles from './MainPage.module.scss';
 import { Link } from 'react-router-dom';
-import { ROUTES } from '@/constants/routes';
 
-import ModalPortal from '@/pages/MainPage/components/Modal/ModaPortalCreator';
-
-import ModalWaterIntake from '@/pages/MainPage/Modals/ModalWaterIntake/ModalWaterIntake';
+import DailyGoal from './DailyGoal';
+import styles from './MainPage.module.scss';
+import Diary from './components/Diary';
+import Food from './components/Food';
+import useModal from './components/Modal/useModal';
+import RecommendedFood from './components/RecommendedFood';
+import Water from './components/Water';
 
 import { ReactComponent as ArrowRightSvg } from '@/assets/svg/arrow-right.svg';
-import useModal from './components/Modal/useModal';
+import { ROUTES } from '@/constants/routes';
 import { MealProvider } from '@/context/MealContext';
+import ModalWaterIntake from '@/pages/MainPage/Modals/ModalWaterIntake/ModalWaterIntake';
+import ModalPortal from '@/pages/MainPage/components/Modal/ModaPortalCreator';
 
 const MainPage = () => {
   const { isWaterIntakeShowing, waterModalToggle } = useModal();

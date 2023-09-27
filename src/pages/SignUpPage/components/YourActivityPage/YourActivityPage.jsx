@@ -1,22 +1,22 @@
-import ImageLaptop1x from './Images/Workout_fashion@1x_desktop.png';
-import ImageLaptop2x from './Images/Workout_fashion@2x_desktop.png';
-import ImageTablet1x from './Images/Workout_fashion@1x_tablet.png';
-import ImageTablet2x from './Images/Workout_fashion@2x_tablet.png';
-import ImageMobile1x from './Images/Workout_fashion@1x_mobile.png';
-import ImageMobile2x from './Images/Workout_fashion@2x_mobile.png';
-import styles from './YourActivityPage.module.scss';
-import { useSignUpContext } from '@/hooks/useSignUpContext';
-import { useDispatch } from 'react-redux';
-import { signUp } from '@/store/features/auth/thunks';
-// import { useNavigate } from 'react-router-dom';
 import { Field, Form, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+
+import ImageLaptop1x from './Images/Workout_fashion@1x_desktop.png';
+import ImageMobile1x from './Images/Workout_fashion@1x_mobile.png';
+import ImageTablet1x from './Images/Workout_fashion@1x_tablet.png';
+import ImageLaptop2x from './Images/Workout_fashion@2x_desktop.png';
+import ImageMobile2x from './Images/Workout_fashion@2x_mobile.png';
+import ImageTablet2x from './Images/Workout_fashion@2x_tablet.png';
+import styles from './YourActivityPage.module.scss';
+
+import { useSignUpContext } from '@/hooks/useSignUpContext';
+import { signUp } from '@/store/features/auth/thunks';
 
 const YourActivityPage = () => {
   const { prevStage, signUpData } = useSignUpContext();
 
   const dispatch = useDispatch();
-  // const navigate = useNavigate();
 
   const handleSubmit = async values => {
     const res = await dispatch(
@@ -28,8 +28,6 @@ const YourActivityPage = () => {
 
     if (res?.meta.requestStatus === 'fulfilled') {
       toast.success('Account created successfully!');
-
-      // navigate('/main');
     }
   };
 

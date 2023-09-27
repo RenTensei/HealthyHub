@@ -1,10 +1,10 @@
-import ImageLaptop1x from '../../assets/images/Sport_and_fitness-tracker_laptop.jpg';
-import ImageLaptop2x from '../../assets/images/Sport_and_fitness_tracker@2x_laptop.jpg';
-import ImageTablet1x from '../../assets/images/Sport_and_fitness_tracker_tablet.jpg';
-import ImageTablet2x from '../../assets/images/Sport_and_fitness_tracker@2x_tablet.jpg';
-import ImageMobile1x from '../../assets/images/Sport_and_fitness_tracker-mobile.jpg';
-import ImageMobile2x from '../../assets/images/Sport_and_fitness_tracker@2x_mobile.jpg';
 import styles from './RenderImagesAuthPages.module.scss';
+import ImageLaptop1x from '../../assets/images/Sport_and_fitness-tracker_laptop.jpg';
+import ImageMobile1x from '../../assets/images/Sport_and_fitness_tracker-mobile.jpg';
+import ImageLaptop2x from '../../assets/images/Sport_and_fitness_tracker@2x_laptop.jpg';
+import ImageMobile2x from '../../assets/images/Sport_and_fitness_tracker@2x_mobile.jpg';
+import ImageTablet2x from '../../assets/images/Sport_and_fitness_tracker@2x_tablet.jpg';
+import ImageTablet1x from '../../assets/images/Sport_and_fitness_tracker_tablet.jpg';
 
 const RenderImagesAuthPages = () => {
   return (

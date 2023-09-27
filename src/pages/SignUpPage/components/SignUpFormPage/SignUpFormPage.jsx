@@ -1,7 +1,9 @@
-import RenderImagesAuthPages from '@/components/RenderImages/RenderImagesAuthPages';
-import styles from '../../../../components/scss/AuthPageTextStyles.module.scss';
-import SignUpForm from '@/pages/SignUpPage/components/SignUpFormPage/components/SignUpForm/SignUpForm';
 import { Link } from 'react-router-dom';
+
+import styles from '../../../../components/scss/AuthPageTextStyles.module.scss';
+
+import RenderImagesAuthPages from '@/components/RenderImages/RenderImagesAuthPages';
+import SignUpForm from '@/pages/SignUpPage/components/SignUpFormPage/components/SignUpForm/SignUpForm';
 
 const SignUpFormPage = () => {
   return (

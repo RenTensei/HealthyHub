@@ -1,11 +1,12 @@
 import styles from './RecommendedFoodPage.module.scss';
+import FoodList from './components/FoodListPage';
+
+import imageDesktop1 from '@/assets/images/recfood-desktop1x.jpg';
+import imageTabDesktop2 from '@/assets/images/recfood-desktop2x.jpg';
 import imageMobile1 from '@/assets/images/recfood-mobile1x.jpg';
 import imageMobile2 from '@/assets/images/recfood-mobile2x.jpg';
 import imageTab1 from '@/assets/images/recfood-tab1x.jpg';
 import imageTab2 from '@/assets/images/recfood-tab2x.jpg';
-import imageDesktop1 from '@/assets/images/recfood-desktop1x.jpg';
-import imageTabDesktop2 from '@/assets/images/recfood-desktop2x.jpg';
-import FoodList from './components/FoodListPage';
 
 export default function RecommendedFoodPage() {
   return (

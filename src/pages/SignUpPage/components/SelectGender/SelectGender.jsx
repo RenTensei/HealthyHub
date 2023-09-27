@@ -1,13 +1,14 @@
-import image1 from '@/pages/SignUpPage/images/SelectGender-disct.png';
-import image2 from '@/pages/SignUpPage/images/SelectGender-diskt@2x.png';
-import image3 from '@/pages/SignUpPage/images/SelectGender-tab.png';
-import image4 from '@/pages/SignUpPage/images/SelectGender-tab@2x.png';
-import image5 from '@/pages/SignUpPage/images/SelectGender-mob.png';
-import image6 from '@/pages/SignUpPage/images/SelectGender-mob@2x.png';
+import { Formik, Form, Field } from 'formik';
 
 import styles from './selectGender.module.scss';
-import { Formik, Form, Field } from 'formik';
+
 import { useSignUpContext } from '@/hooks/useSignUpContext';
+import image1 from '@/pages/SignUpPage/images/SelectGender-disct.png';
+import image2 from '@/pages/SignUpPage/images/SelectGender-diskt@2x.png';
+import image5 from '@/pages/SignUpPage/images/SelectGender-mob.png';
+import image6 from '@/pages/SignUpPage/images/SelectGender-mob@2x.png';
+import image3 from '@/pages/SignUpPage/images/SelectGender-tab.png';
+import image4 from '@/pages/SignUpPage/images/SelectGender-tab@2x.png';
 
 const SelectGender = () => {
   const { prevStage, nextStage, signUpData, addSignUpData } =

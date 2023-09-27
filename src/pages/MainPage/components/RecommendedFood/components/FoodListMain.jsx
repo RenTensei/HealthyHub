@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import { fetchFoodData } from '@/utils/fetchFoodData';
+
 import styles from '../RecommendedFoodMain.module.scss';
+
+import { fetchFoodData } from '@/utils/fetchFoodData';
 
 export default function FoodList() {
   const [foodData, setFoodData] = useState([]);

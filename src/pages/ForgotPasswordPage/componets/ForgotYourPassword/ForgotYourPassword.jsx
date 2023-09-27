@@ -1,17 +1,18 @@
-import validationSchemaForgotPassword from '../../../../schemas/ValidationSchemaForgotPassword';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import styles from '../../../../components/scss/Form.module.scss';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { resetPassword } from '@/store/features/auth/thunks';
+
+import styles from '../../../../components/scss/Form.module.scss';
+import validationSchemaForgotPassword from '../../../../schemas/ValidationSchemaForgotPassword';
+
 import { ReactComponent as ErrorLogoSvg } from '@/assets/svg/error-logo.svg';
 import { ReactComponent as SuccessLogoSvg } from '@/assets/svg/success-logo.svg';
-import { useState } from 'react';
+import { resetPassword } from '@/store/features/auth/thunks';
 
 const initialValues = {
   email: '',
-}
-
+};
 
 const ForgotYourPasswordForm = () => {
   const dispatch = useDispatch();
@@ -21,13 +22,10 @@ const ForgotYourPasswordForm = () => {
     email: '',
   });
 
-  const handleSubmit = (values, { resetForm }) => {
-  dispatch(resetPassword(values));
- navigate('/signin');
-
-  
-  }
-  
+  const handleSubmit = values => {
+    dispatch(resetPassword(values));
+    navigate('/signin');
+  };
 
   return (
     <Formik
@@ -43,12 +41,13 @@ const ForgotYourPasswordForm = () => {
               type="email"
               name="email"
               placeholder="E-mail"
-              className={`${styles.Input} ${errors.email && touched.email
+              className={`${styles.Input} ${
+                errors.email && touched.email
                   ? styles.Input__error
                   : inputState.email && !errors.email
-                    ? styles.Input__success
-                    : null
-                }`}
+                  ? styles.Input__success
+                  : null
+              }`}
               onInput={e => {
                 const value = e.target.value;
                 setInputState(prevState => ({

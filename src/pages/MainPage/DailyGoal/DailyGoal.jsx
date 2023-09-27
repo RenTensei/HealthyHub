@@ -1,8 +1,9 @@
 import { useSelector } from 'react-redux';
+
 import styles from './DailyGoal.module.scss';
 
-import { ReactComponent as WaterSvg } from '@/assets/svg/water.svg';
 import { ReactComponent as CaloriesSvg } from '@/assets/svg/calories.svg';
+import { ReactComponent as WaterSvg } from '@/assets/svg/water.svg';
 
 const DailyGoal = () => {
   const userData = useSelector(state => state.auth.user);

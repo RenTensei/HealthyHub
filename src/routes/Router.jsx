@@ -1,8 +1,11 @@
-import { ROUTES } from '@/constants/routes';
-
-import SharedLayout from '@/shared/SharedLayout';
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
+
+import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
+
+import { ROUTES } from '@/constants/routes';
+import SharedLayout from '@/shared/SharedLayout';
 
 const WelcomePage = lazy(() => import('@/pages/WelcomePage'));
 const MainPage = lazy(() => import('@/pages/MainPage'));
@@ -13,9 +16,6 @@ const DiaryPage = lazy(() => import('@/pages/DiaryPage'));
 const RecommendedFoodPage = lazy(() => import('@/pages/RecommendedFoodPage'));
 const DashboardPage = lazy(() => import('@/pages/DashboardPage'));
 const ProfileSettingsPage = lazy(() => import('@/pages/ProfileSettingsPage'));
-
-import { PublicRoute } from './PublicRoute';
-import { PrivateRoute } from './PrivateRoute';
 
 const Router = () => {
   return (
@@ -64,9 +64,14 @@ const Router = () => {
             <PrivateRoute component={DiaryPage} redirect={ROUTES.SignInPage} />
           }
         />
-         <Route
+        <Route
           path={ROUTES.RecommendedFoodPage}
-          element={<PrivateRoute component={RecommendedFoodPage} redirect={ROUTES.SignInPage} />}
+          element={
+            <PrivateRoute
+              component={RecommendedFoodPage}
+              redirect={ROUTES.SignInPage}
+            />
+          }
         />
         <Route
           path={ROUTES.DashboardPage}

@@ -1,6 +1,7 @@
-import { axiosAuth } from '@/utils/network';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
+
+import { axiosAuth } from '@/utils/network';
 
 export const getMyFoodIntake = createAsyncThunk(
   'foodIntake/get',

@@ -1,13 +1,14 @@
-import image1 from '@/pages/SignUpPage/images/BodyParameters-diskt.png';
-import image2 from '@/pages/SignUpPage/images/BodyParameters-diskt@2x.png';
-import image3 from '@/pages/SignUpPage/images/BodyParameters-tab.png';
-import image4 from '@/pages/SignUpPage/images/BodyParameters-tab@2x.png';
-import image5 from '@/pages/SignUpPage/images/BodyParameters-mob.png';
-import image6 from '@/pages/SignUpPage/images/BodyParameters-mob@2x.jpg';
+import { Formik, Form, Field } from 'formik';
 
 import styles from './bodyParameters.module.scss';
-import { Formik, Form, Field } from 'formik';
+
 import { useSignUpContext } from '@/hooks/useSignUpContext';
+import image1 from '@/pages/SignUpPage/images/BodyParameters-diskt.png';
+import image2 from '@/pages/SignUpPage/images/BodyParameters-diskt@2x.png';
+import image5 from '@/pages/SignUpPage/images/BodyParameters-mob.png';
+import image6 from '@/pages/SignUpPage/images/BodyParameters-mob@2x.jpg';
+import image3 from '@/pages/SignUpPage/images/BodyParameters-tab.png';
+import image4 from '@/pages/SignUpPage/images/BodyParameters-tab@2x.png';
 
 const BodyParameters = () => {
   const { prevStage, nextStage, signUpData, addSignUpData } =

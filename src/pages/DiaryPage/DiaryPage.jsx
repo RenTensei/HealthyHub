@@ -1,11 +1,13 @@
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
 import DiaryBlock from './ components/DiaryBlock';
 import styles from './DiaryPage.module.scss';
-import { useSelector } from 'react-redux';
-import { selectFoodIntakeByCategory } from '@/store/features/foodIntake/selectors';
+
 import { ReactComponent as ArrowRight } from '@/assets/svg/arrow-right.svg';
-import { mealTypeSrcSets } from '@/utils/mealTypeSrcSets';
 import { ROUTES } from '@/constants/routes';
+import { selectFoodIntakeByCategory } from '@/store/features/foodIntake/selectors';
+import { mealTypeSrcSets } from '@/utils/mealTypeSrcSets';
 
 const DiaryPage = () => {
   const navigate = useNavigate();

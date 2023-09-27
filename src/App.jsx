@@ -1,15 +1,16 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-import './scss/main.scss';
-import Router from '@/routes/Router';
-import { refresh } from '@/store/features/auth/thunks';
-import { selectAppStatus, selectToken } from '@/store/features/auth/selectors';
-
-import { authActions } from './store/features/auth/authSlice';
-import { APP_STATUS } from './constants/appStatus';
-import { Triangle } from 'react-loader-spinner';
-import { Fetcher } from './components/Loaders/Fetcher';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { Triangle } from 'react-loader-spinner';
+import { useDispatch, useSelector } from 'react-redux';
+
+import './scss/main.scss';
+import { Fetcher } from './components/Loaders/Fetcher';
+import { APP_STATUS } from './constants/appStatus';
+import { authActions } from './store/features/auth/authSlice';
+
+import Router from '@/routes/Router';
+import { selectAppStatus, selectToken } from '@/store/features/auth/selectors';
+import { refresh } from '@/store/features/auth/thunks';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -64,14 +65,6 @@ const App = () => {
         )}
 
         {appStatus === APP_STATUS.fetching && !isLoadingOverlay && <Fetcher />}
-
-        {/* <button
-        onClick={() =>
-          dispatch(signIn({ email: 'admin23@admin.com', password: 'admin23' }))
-        }
-      >
-        fake sign in!
-      </button> */}
       </AnimatePresence>
 
       <Router />

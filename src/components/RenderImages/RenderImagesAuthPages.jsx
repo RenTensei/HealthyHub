@@ -13,18 +13,23 @@ const RenderImagesAuthPages = () => {
         className={styles.Img}
         media="(max-width: 833px)"
         srcSet={`${ImageMobile1x} 1x, ${ImageMobile2x} 2x`}
+        width={380}
+        height={376}
       />
       <source
         className={styles.Img}
         media="(max-width: 1439px)"
         srcSet={`${ImageTablet1x} 1x, ${ImageTablet2x} 2x`}
+        width={592}
+        height={588}
       />
       <img
         className={styles.Img}
-        loading="lazy"
         srcSet={`${ImageLaptop1x} 1x, ${ImageLaptop2x} 2x`}
-        src="Sport_and_fitness_tracker-mobile.png"
+        src="Sport_and_fitness_tracker-mobile.jpg"
         alt="Sport and fitness tracker"
+        width={300}
+        height={296}
       />
     </picture>
   );

@@ -51,6 +51,11 @@
   padding: 0px;
   background-color: transparent;
   transform: rotate(180deg);
+  transition: $transition-default
+}
+
+.toggleIsActive {
+  transform: rotate(0);
 }
 
 .lastButton {

@@ -15,7 +15,6 @@ const stages = [
 
 export const SignUpContext = createContext();
 
-// TODO: keep data in forms when switching pages
 const SignUpPage = () => {
   const [currentStage, setCurrentStage] = useState(0);
   const [signUpData, setSignUpData] = useState({
@@ -29,7 +28,7 @@ const SignUpPage = () => {
     weight: undefined,
     physicalActivityRatio: undefined,
   });
-  // console.log(signUpData);
+  console.log(signUpData);
 
   const prevStage = () => setCurrentStage(s => s - 1);
   const nextStage = () => setCurrentStage(s => s + 1);
@@ -38,13 +37,11 @@ const SignUpPage = () => {
   const CurrentStage = stages[currentStage];
 
   return (
-    <>
-      <SignUpContext.Provider
-        value={{ prevStage, nextStage, signUpData, addSignUpData }}
-      >
-        <CurrentStage />
-      </SignUpContext.Provider>
-    </>
+    <SignUpContext.Provider
+      value={{ prevStage, nextStage, signUpData, addSignUpData }}
+    >
+      <CurrentStage />
+    </SignUpContext.Provider>
   );
 };
 

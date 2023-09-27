@@ -1,4 +1,5 @@
 import styles from './Graph.module.scss'
+import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 import {
   Chart as ChartJS,
@@ -24,7 +25,10 @@ ChartJS.register(
   Legend
 );
 
-const Graph = ({labels, graphData}) => {
+const Graph = ({ type, graphData }) => {
+  const newLabels = graphData.map(item => item.period);
+  const newValue = graphData.map(item => item.value);
+
   const chartRef = useRef(null) //create reference hook
   const [tooltip, setTooltip] = useState({
     opacity: 0,
@@ -48,14 +52,12 @@ const Graph = ({labels, graphData}) => {
       },
       title: {
         display: false,
-        text: 'Chart.js Line Chart',
       },
       tooltip: {
         enabled: false,
         position: 'nearest',
         external: context => {
           const tooltipModel = context.tooltip
-
           if (tooltipModel.opacity === 0) {
             if (tooltip.opacity !== 0) {
               setTooltip(prev => ({ ...prev, opacity: 0, display: 'none' }))
@@ -67,21 +69,22 @@ const Graph = ({labels, graphData}) => {
             opacity: 1,
             display: "block",
             left: position.left + tooltipModel.caretX,
-            top: position.top + tooltipModel.caretY,
+            top: position.top + tooltipModel.caretY - 94,
             date: tooltipModel.dataPoints[0].label,
             value: tooltipModel.dataPoints[0].formattedValue,
           }
-
           if (!isEqual(tooltip, newTooltipData)) setTooltip(newTooltipData)
-          
         },
       },
     },
     indexAxis: 'x',
     scales: {
       x: {
+        alignToPixels: true,
+        offset: true,
         ticks: {
           padding: 6,
+          backdropPadding: 0,
         },
         beginAtZero: false,
         grid: {
@@ -95,8 +98,16 @@ const Graph = ({labels, graphData}) => {
       },
       y: {
         ticks: {
+          alignToPixels: true,
           stepSize: 1000,
           padding: 8,
+          backdropPadding: 0,
+          callback: function (value) {
+            if (value === 0) {
+              return 0
+            }
+            return `${value/1000}${type === 'calories' ? 'K' : 'L'}`;
+          }
         },
         beginAtZero: true,
         grid: {
@@ -111,11 +122,11 @@ const Graph = ({labels, graphData}) => {
   };
 
   const data = {
-    labels: labels,
+    labels: newLabels,
     datasets: [
       {
-        label: 'Dataset 1',
-        data: graphData,
+        label: 'Statistic',
+        data: newValue,
         borderColor: '#E3FFA8',
         tension: 0.4,
         backgroundColor: '#292928',
@@ -137,11 +148,22 @@ const Graph = ({labels, graphData}) => {
           </button>
           <div className={styles.tooltipField}>
             <p className={styles.tooltipValue}>{tooltip.value}</p>
-            <p className={styles.tooltipTitle}>calories</p>
+            <p className={styles.tooltipTitle}>{type === 'calories' ? 'calories' : 'milliliters'}</p>
           </div>
         </div>
     </>
   )
+};
+
+Graph.propTypes = {
+  type: PropTypes.string.isRequired,
+  graphData: PropTypes.arrayOf(PropTypes.exact({
+    period: PropTypes.oneOfType([
+      PropTypes.string.isRequired,
+      PropTypes.number.isRequired,
+    ]),
+    value: PropTypes.number.isRequired,
+  }))
 };
 
 export default Graph;

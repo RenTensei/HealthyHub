@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './RecommendedFoodMain.module.scss';
-import FoodList from './FoodListMain';
+import FoodList from './components/FoodListMain';
 import { ReactComponent as Logos } from '@/assets/svg/arrow-right-liqht.svg';
 
 const RecomendedFoodMain = () => {

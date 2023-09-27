@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import image1 from '@/pages/SignUpPage/images/SelectGender-disct.png';
 import image2 from '@/pages/SignUpPage/images/SelectGender-diskt@2x.png';
 import image3 from '@/pages/SignUpPage/images/SelectGender-tab.png';
@@ -8,29 +7,20 @@ import image6 from '@/pages/SignUpPage/images/SelectGender-mob@2x.png';
 
 import styles from './selectGender.module.scss';
 import { Formik, Form, Field } from 'formik';
-import { object, number, string } from 'yup';
 import { useSignUpContext } from '@/hooks/useSignUpContext';
 
-let userSchema = object({
-  gender: string().required(),
-  age: number().required().positive().integer().max(100),
-});
-
-const initialValues = {
-  gender: '',
-  age: '',
-};
-
 const SelectGender = () => {
-  const { prevStage, nextStage, addSignUpData } = useSignUpContext();
+  const { prevStage, nextStage, signUpData, addSignUpData } =
+    useSignUpContext();
+  const initialValues = {
+    gender: signUpData.gender || '',
+    age: signUpData.age || '',
+  };
 
   const handleSubmit = (values, { resetForm }) => {
     addSignUpData(values);
+    resetForm();
     nextStage();
-
-    // (JSON.stringify(values, null, 2));
-    // console.log(values);
-    // resetForm();
   };
 
   return (
@@ -60,11 +50,7 @@ const SelectGender = () => {
       </div>
       <div className={styles.container_form}>
         <h1 className={styles.title}>Select gender, Age</h1>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={userSchema}
-          onSubmit={handleSubmit}
-        >
+        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           <Form className={styles.form_checked}>
             <p className={styles.text}>
               Choose a goal so that we can help you effectively
@@ -83,6 +69,7 @@ const SelectGender = () => {
                       type="radio"
                       name="gender"
                       value="Male"
+                      required
                     />
                     Male
                   </label>
@@ -94,6 +81,7 @@ const SelectGender = () => {
                       type="radio"
                       name="gender"
                       value="Female"
+                      required
                     />
                     Female
                   </label>
@@ -107,6 +95,7 @@ const SelectGender = () => {
                     type="number"
                     name="age"
                     placeholder="Enter your age"
+                    required
                   />
                 </label>
               </div>

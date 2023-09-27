@@ -6,20 +6,21 @@
   padding-left: 150px;
   padding-right: 150px;
   padding-bottom: 90px;
-  padding-top: 40px;
+  padding-top: 20px;
+
   @include tablet-only {
     display: block;
     padding-left: 195px;
     padding-right: 195px;
-    padding-bottom: 244px;
-    padding-top: 40px;
+    // padding-bottom: 244px;
+    padding-top: 16px;
   }
   @include mobile-only {
     display: block;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 24px;
-    padding-top: 24px;
+    padding-top: 8px;
   }
   .container_picture {
     margin-right: 104px;

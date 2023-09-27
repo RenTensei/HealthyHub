@@ -5,6 +5,7 @@
   @include tablet-and-desktop {
     display: grid;
     grid-template-columns: 150px 20px 2fr 2fr;
+    align-items: center;
   }
 }
 

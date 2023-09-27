@@ -29,7 +29,7 @@ const DataList = ({ lastMonth, water, calories, weight }) => {
             <p className={styles.average}>
               Average value:
               <span className={styles.averageValue}>
-                {!averageCalories ? `0 kg` : `${averageCalories} kg`}
+                {!averageCalories ? `0 cal` : `${averageCalories} cal`}
               </span>
             </p>
           </div>

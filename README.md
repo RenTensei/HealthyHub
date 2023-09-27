@@ -22,7 +22,7 @@ To get started with HealthyHub, follow these simple steps:
 
 1. Clone this repository to your local machine.
 2. Install the necessary dependencies using `npm install`.
-3. Start the development server with `npm start`.
+3. Start the development server with `npm run dev`.
 
 ## Technologies Used
 

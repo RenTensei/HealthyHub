@@ -26,7 +26,6 @@ const Header = () => {
           {isLoggedIn && (
             <button
               className={styles.header_tablet_menu}
-              // onClick={() => toggleMenu()}
               onClick={() => openModal('ModalMenuTablet')}
               type="button"
             >

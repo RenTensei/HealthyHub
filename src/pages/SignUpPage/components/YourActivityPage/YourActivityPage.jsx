@@ -8,34 +8,29 @@ import styles from './YourActivityPage.module.scss';
 import { useSignUpContext } from '@/hooks/useSignUpContext';
 import { useDispatch } from 'react-redux';
 import { signUp } from '@/store/features/auth/thunks';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+import { Field, Form, Formik } from 'formik';
+import { toast } from 'react-toastify';
 
 const YourActivityPage = () => {
-  const { prevStage, signUpData, addSignUpData } = useSignUpContext();
+  const { prevStage, signUpData } = useSignUpContext();
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    // console.log(e.target.physicalActivityRatio.value);
-
-    // addSignUpData({
-    //   physicalActivityRatio: Number(e.target.physicalActivityRatio.value),
-    // });
-
-    dispatch(
+  const handleSubmit = async values => {
+    const res = await dispatch(
       signUp({
         ...signUpData,
-        physicalActivityRatio: Number(e.target.physicalActivityRatio.value),
+        physicalActivityRatio: Number(values.physicalActivityRatio),
       })
-    )
-      .then(() => {
-        navigate('/main');
-      })
-      .catch();
+    );
 
-    // console.log(signUpData);
+    if (res?.meta.requestStatus === 'fulfilled') {
+      toast.success('Account created successfully!');
+
+      // navigate('/main');
+    }
   };
 
   return (
@@ -64,87 +59,93 @@ const YourActivityPage = () => {
         <p className={styles.Text}>
           To correctly calculate calorie and water intake
         </p>
-        <form
-          autoComplete="off"
-          className={styles.Form}
+        <Formik
+          initialValues={{
+            physicalActivityRatio:
+              String(signUpData.physicalActivityRatio) || '',
+          }}
           onSubmit={handleSubmit}
         >
-          <div className={styles.Form_field}>
-            <input
-              type="radio"
-              name="physicalActivityRatio"
-              value="1.2"
-              placeholder="E-mail"
-              className={styles.Input}
-            />
-            <label className={styles.Label} htmlFor="1.2">
-              1.2 - if you do not have physical activity and sedentary work
-            </label>
-          </div>
-          <div className={styles.Form_field}>
-            <input
-              type="radio"
-              name="physicalActivityRatio"
-              value="1.375"
-              placeholder="Password"
-              className={styles.Input}
-            />
-            <label className={styles.Label} htmlFor="1.375">
-              1,375 - if you do short runs or light gymnastics 1-3 times a week
-            </label>
-          </div>
+          <Form className={styles.Form}>
+            <div className={styles.Form_field}>
+              <Field
+                type="radio"
+                name="physicalActivityRatio"
+                value="1.2"
+                className={styles.Input}
+                required
+              />
+              <label className={styles.Label} htmlFor="1.2">
+                1.2 - if you do not have physical activity and sedentary work
+              </label>
+            </div>
+            <div className={styles.Form_field}>
+              <Field
+                type="radio"
+                name="physicalActivityRatio"
+                value="1.375"
+                className={styles.Input}
+                required
+              />
+              <label className={styles.Label} htmlFor="1.375">
+                1,375 - if you do short runs or light gymnastics 1-3 times a
+                week
+              </label>
+            </div>
 
-          <div className={styles.Form_field}>
-            <input
-              type="radio"
-              name="physicalActivityRatio"
-              value="1.55"
-              placeholder="Password"
-              className={styles.Input}
-            />
-            <label className={styles.Label} htmlFor="1.55">
-              1.55 - if you play sports with average loads 3-5 times a week
-            </label>
-          </div>
+            <div className={styles.Form_field}>
+              <Field
+                type="radio"
+                name="physicalActivityRatio"
+                value="1.55"
+                className={styles.Input}
+                required
+              />
+              <label className={styles.Label} htmlFor="1.55">
+                1.55 - if you play sports with average loads 3-5 times a week
+              </label>
+            </div>
 
-          <div className={styles.Form_field}>
-            <input
-              type="radio"
-              name="physicalActivityRatio"
-              value="1.725"
-              placeholder="Password"
-              className={styles.Input}
-            />
-            <label className={styles.Label} htmlFor="1.725">
-              1,725 if you train fully 6-7 times a week
-            </label>
-          </div>
+            <div className={styles.Form_field}>
+              <Field
+                type="radio"
+                name="physicalActivityRatio"
+                value="1.725"
+                className={styles.Input}
+                required
+              />
+              <label className={styles.Label} htmlFor="1.725">
+                1,725 if you train fully 6-7 times a week
+              </label>
+            </div>
 
-          <div className={styles.Form_field}>
-            <input
-              type="radio"
-              name="physicalActivityRatio"
-              value="1.9"
-              placeholder="Password"
-              className={styles.Input}
-            />
-            <label className={styles.Label} htmlFor="1.9">
-              1.9 - if your work is related to physical labor, you train 2 times
-              a day and include strength exercises in your training program
-            </label>
-          </div>
+            <div className={styles.Form_field}>
+              <Field
+                type="radio"
+                name="physicalActivityRatio"
+                value="1.9"
+                className={styles.Input}
+                required
+              />
+              <label className={styles.Label} htmlFor="1.9">
+                1.9 - if your work is related to physical labor, you train 2
+                times a day and include strength exercises in your training
+                program
+              </label>
+            </div>
 
-          <button type="submit" className={styles.Button}>
-            Sign Up
-          </button>
-          <button
-            type="button"
-            onClick={prevStage}
-            className={styles.Button_back}
-          >
-            Back
-          </button>
-        </form>
+            <button type="submit" className={styles.Button}>
+              Sign Up
+            </button>
+            <button
+              type="button"
+              onClick={prevStage}
+              className={styles.Button_back}
+            >
+              Back
+            </button>
+          </Form>
+        </Formik>
       </div>
     </div>
   );

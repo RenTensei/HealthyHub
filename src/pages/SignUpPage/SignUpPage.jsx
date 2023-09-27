@@ -15,7 +15,6 @@ const stages = [
 
 export const SignUpContext = createContext();
 
-// TODO: keep data in forms when switching pages
 const SignUpPage = () => {
   const [currentStage, setCurrentStage] = useState(0);
   const [signUpData, setSignUpData] = useState({

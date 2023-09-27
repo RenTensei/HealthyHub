@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import image1 from '@/pages/SignUpPage/images/YourGoals-diskt.png';
 import image2 from '@/pages/SignUpPage/images/YourGoals-diskt@2x.png';
 import image3 from '@/pages/SignUpPage/images/YourGoals-tab.png';
@@ -8,27 +7,21 @@ import image6 from '@/pages/SignUpPage/images/YourGoals-mob@2x.png';
 
 import styles from './yourGoal.module.scss';
 import { Formik, Form, Field } from 'formik';
-import { object, string } from 'yup';
+
 import { useSignUpContext } from '@/hooks/useSignUpContext';
 
-let userSchema = object({
-  goal: string().required(),
-});
-
-const initialValues = {
-  goal: '',
-};
-
 const YourGoal = () => {
-  const { prevStage, nextStage, addSignUpData } = useSignUpContext();
+  const { nextStage, signUpData, addSignUpData } = useSignUpContext();
+
+  const initialValues = {
+    goal: signUpData.goal || '',
+  };
 
   const handleSubmit = (values, { resetForm }) => {
     addSignUpData(values);
     nextStage();
 
-    // (JSON.stringify(values, null, 2));
-    // console.log(values);
-    // resetForm()
+    resetForm();
   };
 
   return (
@@ -56,13 +49,10 @@ const YourGoal = () => {
           />
         </picture>
       </div>
+
       <div className={styles.container_form}>
         <h1 className={styles.title}>Your goal</h1>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={userSchema}
-          onSubmit={handleSubmit}
-        >
+        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           <Form className={styles.form_checked}>
             <p className={styles.text}>
               Choose a goal so that we can help you effectively
@@ -73,34 +63,40 @@ const YourGoal = () => {
                 aria-labelledby="my-radio-group"
                 className={styles.container_label}
               >
-                <label className={styles.list}>
+                <label className={styles.list} htmlFor="loseFat">
                   <Field
+                    id="loseFat"
                     className={styles.item}
                     type="radio"
                     name="goal"
                     value="Lose fat"
+                    required
                   />
                   Lose Fat
                 </label>
               </div>
               <div className={styles.container_label_ctnter}>
-                <label className={styles.list}>
+                <label className={styles.list} htmlFor="maintain">
                   <Field
+                    id="maintain"
                     className={styles.item}
                     type="radio"
                     name="goal"
                     value="Maintain"
+                    required
                   />
                   Maintain
                 </label>
               </div>
               <div className={styles.container_label_end}>
-                <label className={styles.list}>
+                <label className={styles.list} htmlFor="gainMuscle">
                   <Field
+                    id="gainMuscle"
                     className={styles.item}
                     type="radio"
                     name="goal"
                     value="Gain Muscle"
+                    required
                   />
                   Gain Muscle
                 </label>

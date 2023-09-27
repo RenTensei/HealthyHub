@@ -27,3 +27,9 @@ export const monthLabelsForGraph = {
   11: 'Nov',
   12: 'Dec',
 };
+
+export const initialValueGraph = [
+  { period: 1, value: 1000 },
+  { period: 2, value: 1500 },
+  { period: 3, value: 1000 }
+]

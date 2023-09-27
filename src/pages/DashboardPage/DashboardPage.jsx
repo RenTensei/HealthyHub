@@ -8,7 +8,7 @@ import { ReactComponent as GoBackBtn } from '@/assets/svg/arrow-right-liqht.svg'
 import { ReactComponent as ToggleBtn } from '@/assets/svg/arrow-down.svg';
 import { ROUTES } from '@/constants/routes';
 import { getMonthStatistic } from './service/dashboard-service';
-import { monthLabelsForGraph, monthLabelsForWeight } from './variables';
+import { initialValueGraph, monthLabelsForGraph, monthLabelsForWeight } from './variables';
 import { toast } from 'react-toastify';
 
 const DashboardPage = () => {
@@ -18,10 +18,10 @@ const DashboardPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showLastMonth, setShowLastMonth] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [water, setWater] = useState([{ period: 1, value: 1000 }, { period: 2, value: 1500 }, { period: 3, value: 1000 }]);
-  const [calories, setCalories] = useState([{ period: 1, value: 1000 }, { period: 2, value: 1500 }, { period: 3, value: 1000 }]);
-  const [weight, setWeight] = useState([{ period: 1, value: 1000 }, { period: 2, value: 1500 }, { period: 3, value: 1000 }]);
-  const [title, setTitle] = useState('');
+  const [water, setWater] = useState(initialValueGraph);
+  const [calories, setCalories] = useState(initialValueGraph);
+  const [weight, setWeight] = useState(initialValueGraph);
+  const [title, setTitle] = useState('Month');
 
   useEffect(() => {
     const query = showLastMonth ? 'month' : 'year'
@@ -30,7 +30,6 @@ const DashboardPage = () => {
     const fetchData = async () => {
       try {
         const data = await getMonthStatistic(query);
-        console.log(data)
 
         const statWater = data.water.map(item => {
           return showLastMonth ? { period: item._id.day, value: Math.round(item.water * 2) / 2 } : { period: monthLabelsForGraph[item._id.month], value: Math.round(item.avgMonth * 2) / 2 }

@@ -36,6 +36,10 @@ HealthyHub is built using the following technologies:
 - [Mongoose](https://mongoosejs.com/)
 - [Swagger](https://swagger.io/)
 
+## Links
+
+- [Backend Repo](https://github.com/RenTensei/HealthyHub-Backend)
+- [Swagger Docs](https://healthyhub.onrender.com/api/docs/)
 
 ## Contact Us
 

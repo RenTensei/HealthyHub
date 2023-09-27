@@ -4,8 +4,6 @@ import {
   setGlobalAuthHeader,
 } from '@/utils/network';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import { authActions } from './authSlice';
-// import { APP_STATUS } from '@/constants/appStatus';
 import { toast } from 'react-toastify';
 import { AxiosError } from 'axios';
 import { getMyFoodIntake } from '../foodIntake/thunks';
@@ -105,6 +103,22 @@ export const updateUser = createAsyncThunk(
 
       const res = await axiosAuth.patch('user/info', formData);
       toast.success('Profile updated!');
+
+      return res.data;
+    } catch (error) {
+      if (error instanceof AxiosError && error.response.data.message) {
+        toast.error(error.response.data.message);
+      }
+      return rejectWithValue();
+    }
+  }
+);
+
+export const checkEmail = createAsyncThunk(
+  'auth/checkEmail',
+  async (email, { rejectWithValue }) => {
+    try {
+      const res = await axiosAuth.post('auth/email', { email });
 
       return res.data;
     } catch (error) {

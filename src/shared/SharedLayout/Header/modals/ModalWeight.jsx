@@ -1,13 +1,15 @@
-import { ReactComponent as CloseSvg } from '@/assets/svg/close-circle.svg';
-import styles from './ModalWeight.module.scss';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
-import { motion, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
+
+import styles from './ModalWeight.module.scss';
+
+import { ReactComponent as CloseSvg } from '@/assets/svg/close-circle.svg';
 import { selectUserInfo } from '@/store/features/auth/selectors';
 import { updateUser } from '@/store/features/auth/thunks';
 import { formatDate } from '@/utils/formatDate';
-import { toast } from 'react-toastify';
 
 const ModalWeight = ({ open, onClose }) => {
   const now = new Date();

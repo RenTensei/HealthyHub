@@ -1,14 +1,14 @@
-import image1 from '@/pages/SignUpPage/images/YourGoals-diskt.png';
-import image2 from '@/pages/SignUpPage/images/YourGoals-diskt@2x.png';
-import image3 from '@/pages/SignUpPage/images/YourGoals-tab.png';
-import image4 from '@/pages/SignUpPage/images/YourGoals-tab@2x.png';
-import image5 from '@/pages/SignUpPage/images/YourGoals-mob.png';
-import image6 from '@/pages/SignUpPage/images/YourGoals-mob@2x.png';
-
-import styles from './yourGoal.module.scss';
 import { Formik, Form, Field } from 'formik';
 
+import styles from './yourGoal.module.scss';
+
 import { useSignUpContext } from '@/hooks/useSignUpContext';
+import image1 from '@/pages/SignUpPage/images/YourGoals-diskt.png';
+import image2 from '@/pages/SignUpPage/images/YourGoals-diskt@2x.png';
+import image5 from '@/pages/SignUpPage/images/YourGoals-mob.png';
+import image6 from '@/pages/SignUpPage/images/YourGoals-mob@2x.png';
+import image3 from '@/pages/SignUpPage/images/YourGoals-tab.png';
+import image4 from '@/pages/SignUpPage/images/YourGoals-tab@2x.png';
 
 const YourGoal = () => {
   const { nextStage, signUpData, addSignUpData } = useSignUpContext();

@@ -1,7 +1,9 @@
-import styles from './DiaryBlock.module.scss';
-import { useMediaQuery } from 'react-responsive';
-import { ReactComponent as Edit } from '@/assets/svg/Edit.svg';
 import { nanoid } from 'nanoid';
+import { useMediaQuery } from 'react-responsive';
+
+import styles from './DiaryBlock.module.scss';
+
+import { ReactComponent as Edit } from '@/assets/svg/Edit.svg';
 import { useModalContext } from '@/hooks/useModalContext';
 
 const DiaryBlock = ({ alt, title, srcSet, typeName, mealType }) => {

@@ -118,7 +118,8 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  outline: none;
+  outline: none; 
+  margin-right: 8px;
 }
 
 .Input::before {

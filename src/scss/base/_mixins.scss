@@ -28,11 +28,3 @@
     @content;
   }
 }
-
-// миксины кривые, надо переделать, в зависимости от того, будет ли верстка mobile-first
-
-/*
-  @include mobile-and-tablet {
-    width: ~px;
-  }
-*/

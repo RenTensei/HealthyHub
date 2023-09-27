@@ -1,12 +1,14 @@
-import styles from './ModalUser.module.scss';
-import { Link } from 'react-router-dom';
-import { ROUTES } from '@/constants/routes';
-import { useEffect } from 'react';
-import { ReactComponent as SettingsSvg } from '@/assets/svg/setting-2.svg';
-import { ReactComponent as LogOutSvg } from '@/assets/svg/logout.svg';
-import OutsideClickHandler from 'react-outside-click-handler';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect } from 'react';
+import OutsideClickHandler from 'react-outside-click-handler';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import styles from './ModalUser.module.scss';
+
+import { ReactComponent as LogOutSvg } from '@/assets/svg/logout.svg';
+import { ReactComponent as SettingsSvg } from '@/assets/svg/setting-2.svg';
+import { ROUTES } from '@/constants/routes';
 import { logOut } from '@/store/features/auth/thunks';
 
 const ModalUser = ({ open, onClose }) => {

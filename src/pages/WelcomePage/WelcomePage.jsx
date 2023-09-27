@@ -3,7 +3,6 @@ import AuthNav from './AuthNav';
 const WelcomePage = () => {
   return (
     <>
-
       <AuthNav />
     </>
   );

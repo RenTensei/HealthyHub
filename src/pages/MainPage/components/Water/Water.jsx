@@ -1,5 +1,4 @@
 import styles from './Water.module.scss';
-
 import Bar from '../Bar';
 
 const Water = ({ openModal }) => {

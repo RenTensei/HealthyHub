@@ -1,6 +1,3 @@
-import styles from './Graph.module.scss'
-import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -11,8 +8,13 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
-import { Line } from 'react-chartjs-2';
 import isEqual from 'lodash.isequal';
+import PropTypes from 'prop-types';
+import { useRef, useState } from 'react';
+import { Line } from 'react-chartjs-2';
+
+import styles from './Graph.module.scss';
+
 import { ReactComponent as CloseCircle } from '@/assets/svg/close-circle.svg';
 
 ChartJS.register(
@@ -29,7 +31,7 @@ const Graph = ({ type, graphData }) => {
   const newLabels = graphData.map(item => item.period);
   const newValue = graphData.map(item => item.value);
 
-  const chartRef = useRef(null) //create reference hook
+  const chartRef = useRef(null); //create reference hook
   const [tooltip, setTooltip] = useState({
     opacity: 0,
     top: 0,
@@ -57,23 +59,23 @@ const Graph = ({ type, graphData }) => {
         enabled: false,
         position: 'nearest',
         external: context => {
-          const tooltipModel = context.tooltip
+          const tooltipModel = context.tooltip;
           if (tooltipModel.opacity === 0) {
             if (tooltip.opacity !== 0) {
-              setTooltip(prev => ({ ...prev, opacity: 0, display: 'none' }))
-              return
+              setTooltip(prev => ({ ...prev, opacity: 0, display: 'none' }));
+              return;
             }
           }
-          const position = context.chart.canvas.getBoundingClientRect()
+          const position = context.chart.canvas.getBoundingClientRect();
           const newTooltipData = {
             opacity: 1,
-            display: "block",
+            display: 'block',
             left: position.left + tooltipModel.caretX,
             top: position.top + tooltipModel.caretY - 94,
             date: tooltipModel.dataPoints[0].label,
             value: tooltipModel.dataPoints[0].formattedValue,
-          }
-          if (!isEqual(tooltip, newTooltipData)) setTooltip(newTooltipData)
+          };
+          if (!isEqual(tooltip, newTooltipData)) setTooltip(newTooltipData);
         },
       },
     },
@@ -94,7 +96,7 @@ const Graph = ({ type, graphData }) => {
         },
         border: {
           color: '#292928',
-        }
+        },
       },
       y: {
         ticks: {
@@ -104,10 +106,10 @@ const Graph = ({ type, graphData }) => {
           backdropPadding: 0,
           callback: function (value) {
             if (value === 0) {
-              return 0
+              return 0;
             }
-            return `${value/1000}${type === 'calories' ? 'K' : 'L'}`;
-          }
+            return `${value / 1000}${type === 'calories' ? 'K' : 'L'}`;
+          },
         },
         beginAtZero: true,
         grid: {
@@ -116,7 +118,7 @@ const Graph = ({ type, graphData }) => {
         },
         border: {
           color: '#292928',
-        }
+        },
       },
     },
   };
@@ -141,29 +143,46 @@ const Graph = ({ type, graphData }) => {
 
   return (
     <>
-      <Line options={options} ref={chartRef} data={data} style={{width: '100%', fontSize: '10px'}} />
-        <div className={styles.graphTooltip} style={{ top: tooltip.top, left: tooltip.left, opacity: tooltip.opacity, display: tooltip.display }}>
-          <button className={styles.closeBtn}>
-            <CloseCircle width={16} height={16} stroke={'#B6B6B6'} />
-          </button>
-          <div className={styles.tooltipField}>
-            <p className={styles.tooltipValue}>{tooltip.value}</p>
-            <p className={styles.tooltipTitle}>{type === 'calories' ? 'calories' : 'milliliters'}</p>
-          </div>
+      <Line
+        options={options}
+        ref={chartRef}
+        data={data}
+        style={{ width: '100%', fontSize: '10px' }}
+      />
+      <div
+        className={styles.graphTooltip}
+        style={{
+          top: tooltip.top,
+          left: tooltip.left,
+          opacity: tooltip.opacity,
+          display: tooltip.display,
+        }}
+      >
+        <button className={styles.closeBtn}>
+          <CloseCircle width={16} height={16} stroke={'#B6B6B6'} />
+        </button>
+        <div className={styles.tooltipField}>
+          <p className={styles.tooltipValue}>{tooltip.value}</p>
+          <p className={styles.tooltipTitle}>
+            {type === 'calories' ? 'calories' : 'milliliters'}
+          </p>
         </div>
+      </div>
     </>
-  )
+  );
 };
 
 Graph.propTypes = {
   type: PropTypes.string.isRequired,
-  graphData: PropTypes.arrayOf(PropTypes.exact({
-    period: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.number.isRequired,
-    ]),
-    value: PropTypes.number.isRequired,
-  }))
+  graphData: PropTypes.arrayOf(
+    PropTypes.exact({
+      period: PropTypes.oneOfType([
+        PropTypes.string.isRequired,
+        PropTypes.number.isRequired,
+      ]),
+      value: PropTypes.number.isRequired,
+    })
+  ),
 };
 
 export default Graph;

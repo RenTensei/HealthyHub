@@ -1,15 +1,14 @@
-import { useState } from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
-import { physicalActivityRatio } from './activityLevel';
-import ProfileSettingsSchema from './ProfileSettingsSchema';
-import picture from './image/Setting.png';
+import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import style from './ProfileSettingsPage.module.scss';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectUserInfo } from '@/store/features/auth/selectors';
+import ProfileSettingsSchema from './ProfileSettingsSchema';
+import { physicalActivityRatio } from './activityLevel';
+import picture from './image/Setting.png';
 
 import { ReactComponent as AddPhotoSvg } from '@/assets/svg/direct-inbox.svg';
-
+import { selectUserInfo } from '@/store/features/auth/selectors';
 import { updateUser } from '@/store/features/auth/thunks';
 import { extractChangedFields } from '@/utils/extractChangedFields';
 

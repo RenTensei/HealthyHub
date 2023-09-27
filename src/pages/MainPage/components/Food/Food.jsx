@@ -1,10 +1,12 @@
 import { useSelector } from 'react-redux';
+
+import styles from './Food.module.scss';
 import BigDoughnutChart from '../DoughnutChart/BigDoughnutChart';
 import SmallDoughnutChart from '../DoughnutChart/SmallDoughnutChart';
-import styles from './Food.module.scss';
-import { selectFoodStatistics } from '@/store/features/foodIntake/selectors';
-import { selectAppStatus } from '@/store/features/auth/selectors';
+
 import { APP_STATUS } from '@/constants/appStatus';
+import { selectAppStatus } from '@/store/features/auth/selectors';
+import { selectFoodStatistics } from '@/store/features/foodIntake/selectors';
 
 const content = ['Carbonohidrates', 'Protein', 'Fat'];
 

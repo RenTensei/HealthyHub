@@ -1,1 +1,1 @@
-export { default } from './YourActivityPage'; 
+export { default } from './YourActivityPage';

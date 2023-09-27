@@ -1,6 +1,7 @@
+import { useSelector } from 'react-redux';
+
 import styles from './UserProfile.module.scss';
 
-import { useSelector } from 'react-redux';
 import { ReactComponent as ArrowDownSvg } from '@/assets/svg/arrow-down.svg';
 import { useModalContext } from '@/hooks/useModalContext';
 

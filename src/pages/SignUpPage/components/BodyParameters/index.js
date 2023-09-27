@@ -1,1 +1,1 @@
-export { default } from './BodyParameters'
+export { default } from './BodyParameters';

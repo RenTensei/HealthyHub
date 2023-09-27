@@ -10,7 +10,7 @@ export const monthLabelsForWeight = {
   9: 'September',
   10: 'October',
   11: 'November',
-  12: 'December'
+  12: 'December',
 };
 
 export const monthLabelsForGraph = {
@@ -31,5 +31,5 @@ export const monthLabelsForGraph = {
 export const initialValueGraph = [
   { period: 1, value: 1000 },
   { period: 2, value: 1500 },
-  { period: 3, value: 1000 }
-]
+  { period: 3, value: 1000 },
+];

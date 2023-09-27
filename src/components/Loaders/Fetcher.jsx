@@ -8,7 +8,6 @@ export const Fetcher = () => {
         height: '100vh',
         zIndex: '555',
         backgroundColor: 'rgba(5, 5, 5, 0.6)',
-        // opacity: '60%',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',

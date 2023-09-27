@@ -1,9 +1,10 @@
-import YourGoal from './components/YourGoal';
-import SelectGender from './components/SelectGender';
-import BodyParameters from './components/BodyParameters';
-import YourActivityPage from './components/YourActivityPage';
-import SignUpFormPage from './components/SignUpFormPage';
 import { createContext, useState } from 'react';
+
+import BodyParameters from './components/BodyParameters';
+import SelectGender from './components/SelectGender';
+import SignUpFormPage from './components/SignUpFormPage';
+import YourActivityPage from './components/YourActivityPage';
+import YourGoal from './components/YourGoal';
 
 const stages = [
   SignUpFormPage,
@@ -28,7 +29,7 @@ const SignUpPage = () => {
     weight: undefined,
     physicalActivityRatio: undefined,
   });
-  console.log(signUpData);
+  // console.log(signUpData);
 
   const prevStage = () => setCurrentStage(s => s - 1);
   const nextStage = () => setCurrentStage(s => s + 1);

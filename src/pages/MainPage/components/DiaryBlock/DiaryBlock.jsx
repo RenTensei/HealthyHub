@@ -3,7 +3,6 @@ import styles from './DiaryBlock.module.scss';
 import { useModalContext } from '@/hooks/useModalContext';
 
 const DiaryBlock = ({
-  // openModal,
   intakeInfo: { mealType, carbonohidrates, protein, fat },
   srcSet,
 }) => {

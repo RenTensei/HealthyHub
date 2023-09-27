@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+
 import {
   refresh,
   logOut,
@@ -7,13 +8,14 @@ import {
   updateUser,
   checkEmail,
 } from './thunks';
-import { APP_STATUS } from '@/constants/appStatus';
 import {
   getMyFoodIntake,
   postMyFoodIntake,
   postMyWaterIntake,
   updateMyFoodIntake,
 } from '../foodIntake/thunks';
+
+import { APP_STATUS } from '@/constants/appStatus';
 
 const initialState = {
   user: {

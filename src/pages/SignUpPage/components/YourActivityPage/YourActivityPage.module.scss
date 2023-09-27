@@ -2,198 +2,192 @@
 @import '@/scss/base/mixins.scss';
 
 .Container {
-    width: 320px;
-    padding: 24px 10px;
-    background-color: $primary-black;
-    margin-left: auto;
-    margin-right: auto;
+  width: 320px;
+  padding: 24px 10px;
+  padding-top: 8px;
+  background-color: $primary-black;
+  margin-left: auto;
+  margin-right: auto;
 
-    @include tablet-only {
-            width: 834px;
-            padding: 40px 188px 186px;
-            
-        }
-    
-        @include desktop-only {
-            width: 1440px;
-            padding: 40px 150px 72px;
-            display: flex;
-        }
+  @include tablet-only {
+    width: 834px;
+    padding: 40px 188px;
+    padding-top: 16px;
+  }
+
+  @include desktop-only {
+    width: 1440px;
+    padding: 40px 150px 72px;
+    padding-top: 16px;
+
+    display: flex;
+  }
 }
 
 .Picture {
-    @include desktop-only {
-        margin-right: 104px;
-    }
+  @include desktop-only {
+    margin-right: 104px;
+  }
 }
 
 .Img {
-    width: 300px;
+  width: 300px;
 
-    @include tablet-only {
-            width: 380px;
-        }
-    
-        @include desktop-only {
-            width: 592px;
-            margin-right: 104px;
-        }
+  @include tablet-only {
+    width: 380px;
+  }
+
+  @include desktop-only {
+    width: 592px;
+    margin-right: 104px;
+  }
 }
 .Text_container {
-    @include desktop-only {
-        padding-top: 80px;
-    }
+  @include desktop-only {
+    padding-top: 80px;
+  }
 }
 
 .Title {
-    font-family: $font-regular;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 1.25;
-    color: $primary-white;
-    margin-top: 24px;
-    margin-bottom: 16px;
+  font-family: $font-regular;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.25;
+  color: $primary-white;
+  margin-top: 24px;
+  margin-bottom: 16px;
 
-    @include tablet-only {
-            margin-top: 60px;
-            font-size: 30px;
-            line-height: 1.2;
-            text-align: center;
-        }
-    
-        @include desktop-only {
-            margin-top: 0;
-            font-size: 30px;
-            line-height: 1.2;
-        }
+  @include tablet-only {
+    margin-top: 60px;
+    font-size: 30px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  @include desktop-only {
+    margin-top: 0;
+    font-size: 30px;
+    line-height: 1.2;
+  }
 }
 
 .Text {
-font-family: $font-regular;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 1.33;
-    color: $primary-grey;
-    margin-bottom: 24px;
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.33;
+  color: $primary-grey;
+  margin-bottom: 24px;
 
-    @include tablet-only {
-text-align: center;
-    }
+  @include tablet-only {
+    text-align: center;
+  }
 
-    @include tablet-and-desktop {
-            font-size: 22px;
-            line-height: 1.45;
-           
-        }
+  @include tablet-and-desktop {
+    font-size: 22px;
+    line-height: 1.45;
+  }
 }
 
 .Form {
-    width: 100%;
-   
-    display: flex;
-        flex-direction: column;
-        gap: 16px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .Form_field {
-    display: flex;
-        align-items: center;
-        gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.Label{
-font-family: $font-regular;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.43;
-    color: $primary-white;
-   
+.Label {
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  color: $primary-white;
 }
 
 .Input {
-    position: relative;
-    height: 12px;
-    width: 12px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    outline: none;
+  position: relative;
+  height: 12px;
+  width: 12px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
 }
 
 .Input::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    background-color: $primary-black-2;
-    border: 1px solid $primary-grey;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $primary-black-2;
+  border: 1px solid $primary-grey;
 }
 
 input:checked::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: $primary-grey;
-    border: 1px solid $primary-black-2;
-    transform: translate(-50%, -50%);
-    visibility: visible;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $primary-grey;
+  border: 1px solid $primary-black-2;
+  transform: translate(-50%, -50%);
+  visibility: visible;
 }
 
 .Button {
-    width: 100%;
-    height: 36px;
-    border-radius: 12px;
-    background-color: $primary-green-lite;
-    font-family: $font-regular;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.43;
-    color: $primary-black-2;
+  width: 100%;
+  height: 36px;
+  border-radius: 12px;
+  background-color: $primary-green-lite;
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  color: $primary-black-2;
 
-    @include tablet-only {
-        width: 380px;
-        margin: 0 auto;
-            display: block;
-        
-    }
+  @include tablet-only {
+    width: 380px;
+    margin: 0 auto;
+    display: block;
+  }
 
-    @include desktop-only {
-        width: 212px;
-    }
-    
+  @include desktop-only {
+    width: 212px;
+  }
 }
 
 .Button_back {
-width: 100%;
-    height: 36px;
-    border-radius: 12px;
-    background-color: transparent;
-    font-family: $font-regular;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.43;
-    color: $primary-grey;
+  width: 100%;
+  height: 36px;
+  border-radius: 12px;
+  background-color: transparent;
+  font-family: $font-regular;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.43;
+  color: $primary-grey;
 
-    @include tablet-only {
-        width: 380px;
-        margin: 0 auto;
-        display: block;
+  @include tablet-only {
+    width: 380px;
+    margin: 0 auto;
+    display: block;
+  }
 
-    }
-
-    @include desktop-only {
-        width: 212px;
-    }
+  @include desktop-only {
+    width: 212px;
+  }
 }
-
-
-
-

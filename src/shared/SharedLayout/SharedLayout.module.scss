@@ -1,6 +1,12 @@
 @import '@/scss/base/variables';
 @import '@/scss//base/mixins';
 
+.resize_wrapper {
+  div {
+    transition: $transition-default;
+  }
+}
+
 .temptext {
   text-align: center;
 }

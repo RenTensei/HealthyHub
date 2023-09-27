@@ -27,12 +27,14 @@ const SignUpForm = () => {
     password: signUpData.password || '',
   };
 
-  const handleSubmit = async values => {
-    const res = dispatch(checkEmail(values.email));
-    console.log(res);
+  const handleSubmit = async (values, { resetForm }) => {
+    const res = await dispatch(checkEmail(values.email));
 
-    addSignUpData(values);
-    // nextStage();
+    if (res?.meta.requestStatus === 'fulfilled') {
+      addSignUpData(values);
+      resetForm();
+      nextStage();
+    }
   };
 
   return (

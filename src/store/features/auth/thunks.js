@@ -17,7 +17,10 @@ export const signUp = createAsyncThunk(
 
       return res.data;
     } catch (error) {
-      return rejectWithValue(error);
+      if (error instanceof AxiosError && error.response.data.details) {
+        toast.error(error.response.data.details);
+      }
+      return rejectWithValue();
     }
   }
 );

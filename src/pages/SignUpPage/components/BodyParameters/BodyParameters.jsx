@@ -1,4 +1,3 @@
-import React from 'react';
 import image1 from '@/pages/SignUpPage/images/BodyParameters-diskt.png';
 import image2 from '@/pages/SignUpPage/images/BodyParameters-diskt@2x.png';
 import image3 from '@/pages/SignUpPage/images/BodyParameters-tab.png';
@@ -8,29 +7,20 @@ import image6 from '@/pages/SignUpPage/images/BodyParameters-mob@2x.jpg';
 
 import styles from './bodyParameters.module.scss';
 import { Formik, Form, Field } from 'formik';
-import { object, number } from 'yup';
 import { useSignUpContext } from '@/hooks/useSignUpContext';
 
-let userSchema = object({
-  height: number().required().min(140).max(230),
-  weight: number().required().min(40).max(170),
-});
-
-const initialValues = {
-  height: '',
-  weight: '',
-};
-
 const BodyParameters = () => {
-  const { prevStage, nextStage, addSignUpData } = useSignUpContext();
+  const { prevStage, nextStage, signUpData, addSignUpData } =
+    useSignUpContext();
+  const initialValues = {
+    height: signUpData.height || '',
+    weight: signUpData.weight || '',
+  };
 
   const handleSubmit = (values, { resetForm }) => {
     addSignUpData(values);
+    resetForm();
     nextStage();
-
-    // (JSON.stringify(values, null, 2));
-    // console.log(values);
-    // resetForm()
   };
 
   return (
@@ -60,11 +50,7 @@ const BodyParameters = () => {
       </div>
       <div className={styles.container_form}>
         <h1 className={styles.title}>Body parameters</h1>
-        <Formik
-          initialValues={initialValues}
-          validationSchema={userSchema}
-          onSubmit={handleSubmit}
-        >
+        <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           <Form autoComplete="off" className={styles.form_checked}>
             <p className={styles.text}>
               Enter your parameters for correct performance tracking
@@ -77,6 +63,9 @@ const BodyParameters = () => {
                   type="number"
                   name="height"
                   placeholder="Enter your height"
+                  min={140}
+                  max={230}
+                  required
                 />
               </label>
 
@@ -87,6 +76,9 @@ const BodyParameters = () => {
                   type="number"
                   name="weight"
                   placeholder="Enter your weight"
+                  min={40}
+                  max={170}
+                  required
                 />
               </label>
             </div>

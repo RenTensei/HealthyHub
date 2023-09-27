@@ -6,24 +6,28 @@
   padding-left: 150px;
   padding-right: 150px;
   padding-bottom: 86px;
-  padding-top: 40px;
+  padding-top: 20px;
+
   @include tablet-only {
     display: block;
     padding-left: 195px;
     padding-right: 195px;
-    padding-bottom: 406px;
-    padding-top: 40px;
+    padding-top: 16px;
+    // padding-bottom: 406px;
   }
+
   @include mobile-only {
     display: block;
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 60px;
-    padding-top: 24px;
-    margin: auto;
+    padding-top: 8px;
+    margin: 0 auto;
   }
+
   .container_picture {
     margin-right: 104px;
+
     @include tablet-only {
       margin: 0;
       width: 100%;
@@ -31,6 +35,7 @@
         margin: auto;
       }
     }
+
     @include mobile-only {
       margin: 0;
       width: 100%;
@@ -42,6 +47,7 @@
   .container_form {
     display: block;
     margin-top: 80px;
+
     @include tablet-only {
       margin-top: 61px;
       text-align: center;

@@ -3,12 +3,12 @@ import { fetchFoodData } from '@/utils/fetchFoodData';
 import styles from './RecommendedFoodPage.module.scss';
 
 export default function FoodList() {
-  const [foodData, setfoodData] = useState([]);
+  const [foodData, setFoodData] = useState([]);
 
   useEffect(() => {
     fetchFoodData()
       .then(response => {
-        setfoodData(response);
+        setFoodData(response);
       })
       .catch(err => console.error(err));
   }, []);

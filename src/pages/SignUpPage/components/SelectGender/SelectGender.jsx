@@ -95,6 +95,8 @@ const SelectGender = () => {
                     type="number"
                     name="age"
                     placeholder="Enter your age"
+                    min={14}
+                    max={90}
                     required
                   />
                 </label>

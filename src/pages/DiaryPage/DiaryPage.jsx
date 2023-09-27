@@ -12,7 +12,6 @@ const DiaryPage = () => {
   const foodIntakeByCategory = useSelector(selectFoodIntakeByCategory);
 
   return (
-    
     <div className={styles.containerDiary}>
       <a onClick={() => navigate(ROUTES.HomePage)} className={styles.BeckHome}>
         <ArrowRight

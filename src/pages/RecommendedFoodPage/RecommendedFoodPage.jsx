@@ -5,7 +5,7 @@ import imageTab1 from '@/assets/images/recfood-tab1x.jpg';
 import imageTab2 from '@/assets/images/recfood-tab2x.jpg';
 import imageDesktop1 from '@/assets/images/recfood-desktop1x.jpg';
 import imageTabDesktop2 from '@/assets/images/recfood-desktop2x.jpg';
-import FoodList from './FoodListPage';
+import FoodList from './components/FoodListPage';
 
 export default function RecommendedFoodPage() {
   return (

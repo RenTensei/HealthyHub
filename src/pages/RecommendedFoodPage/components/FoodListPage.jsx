@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { fetchFoodData } from '@/utils/fetchFoodData';
-import styles from './RecommendedFoodPage.module.scss';
+import styles from '../RecommendedFoodPage.module.scss';
 
 export default function FoodList() {
   const [foodData, setFoodData] = useState([]);
@@ -26,7 +26,7 @@ export default function FoodList() {
             <div className={styles.product__info__page}>
               <h3 className={styles.product__name__page}>{foodItem.name}</h3>
               <p className={styles.product__calories__page}>
-                100 g{' '}
+                {foodItem.amount}{' '}
                 <span className={styles.calories__quantity__page}>
                   {foodItem.calories} calories
                 </span>

@@ -65,14 +65,14 @@ const DashboardPage = () => {
         });
 
         const lastLabel = Math.round(
-          data.calories
+          data.weight
             .map(item => {
-              if (!data.calories) {
+              if (!data.weight) {
                 return showLastMonth ? 'Month' : 'Year';
               }
               return showLastMonth ? item._id.month : item._id.year;
             })
-            .reduce((partialSum, a) => partialSum + a, 0) / data.calories.length
+            .reduce((partialSum, a) => partialSum + a, 0) / data.weight.length
         );
 
         setWater(statWater);
